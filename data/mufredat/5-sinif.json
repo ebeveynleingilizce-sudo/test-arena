@@ -1,0 +1,1944 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "test-arena-curriculum-grade-5-tr-2026-2027",
+  "grade": 5,
+  "academic_year": "2026-2027",
+  "language": "tr",
+  "purpose": "Yüklenen 5. sınıf yıllık planlarından çıkarılan tema ve öğrenme çıktıları; eksik metinler işaretlidir.",
+  "rules": {
+    "stable_ids": "ID alanları soru bankası ile eşleştirme için sabit tutulmalıdır.",
+    "source_fidelity": "Fen Bilimleri ve Sosyal Bilgiler 2026-2027 yüklenen planlarla güncellendi. Diğer dersler değiştirilmedi. Planlarda kullanılan kodlar resmî TYMM kodlarıyla birebir aynı olmayabilir.",
+    "outcome_mapping": "Kod ve açıklamalar yıllık planlardan çıkarılmıştır; okunamayan açıklamalar işaretlenmiştir.",
+    "year_warning": "Fen Bilimleri ve Sosyal Bilgiler kaynak planları 2025-2026 tarihlidir."
+  },
+  "sources": [
+    {
+      "subject": "turkce",
+      "file": "5-sinif-MEB-turkce-yillik-plan-turkcedersinet-2027.docx",
+      "academic_year": "2026-2027"
+    },
+    {
+      "subject": "matematik",
+      "file": "5.Sinif-Matematik-Yillik-Plan-2026-2027.docx",
+      "academic_year": "2026-2027"
+    },
+    {
+      "subject": "ingilizce",
+      "file": "5.-Sinif-Ingilizce-Yillik-Plan-2026-2027-by-ingilizceciyiz.com-TYMM-1(2).docx",
+      "academic_year": "2026-2027"
+    },
+    {
+      "subject": "din-kulturu",
+      "file": "2026_2027_5_Sinif_Din_kulturu_ve_Ahlak_Bilgisi_Yillik_Plan_Marif_Mufredati.xlsx",
+      "academic_year": "2026-2027"
+    },
+    {
+      "subject": "Fen Bilimleri",
+      "file": "2026-2027-5.sinif-fen-bilimleri-yillik-plan-word-fenbilgihanem-fenbilimleri.org_(1).docx",
+      "role": "2026-2027 yeni yıllık plan"
+    },
+    {
+      "subject": "Sosyal Bilgiler",
+      "file": "2026-2027-5.-SINIF-SOSYAL-BILGILER-MEB-CERCEVE-YILLIK-PLANI-TASLAK.xlsx",
+      "role": "2026-2027 taslak çerçeve yıllık plan"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "turkce",
+      "name": "Türkçe",
+      "themes": [
+        {
+          "id": "g5-turkce-tema-1",
+          "name": "1. Tema — Oyun Dünyası",
+          "outcomes": [
+            {
+              "code": "T.D.5.3",
+              "text": "Dinleyeceğinin/izleyeceğinin içeriğine yönelik tahminde bulunabilme"
+            },
+            {
+              "code": "T.D.5.5",
+              "text": "Dinlediğinin/izlediğinin yüzey anlamını belirleyebilme"
+            },
+            {
+              "code": "T.D.5.13",
+              "text": "Dinlediğinin/izlediğinin anahtar kelimelerini belirlemeye yönelik çözümleme"
+            },
+            {
+              "code": "T.D.5.17",
+              "text": "Dinlediğinden/izlediğinden hareketle söz varlığını geliştirmeye yönelik çözümleme yapabilme Okuma"
+            },
+            {
+              "code": "T.O.5.2",
+              "text": "Akıcı okuyabilme"
+            },
+            {
+              "code": "T.O.5.3",
+              "text": "Okumada strateji, yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.O.5.4",
+              "text": "Okuyacağı metnin içeriğine yönelik tahminde bulunabilme"
+            },
+            {
+              "code": "T.O.5.5",
+              "text": "Metinde geçen anlamını bilmediği söz varlığı unsurlarının anlamını tahmin edebilme"
+            },
+            {
+              "code": "T.O.5.6",
+              "text": "Metnin yüzey anlamını belirleyebilme"
+            },
+            {
+              "code": "T.O.5.7",
+              "text": "Görselle iletilen anlamı belirleyebilme"
+            },
+            {
+              "code": "T.O.5.15",
+              "text": "Metnin anahtar kelimelerini belirlemeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.O.5.20",
+              "text": "Metinden hareketle söz varlığını geliştirmeye yönelik çözümleme yapabilme Konuşma"
+            },
+            {
+              "code": "T.K.5.1",
+              "text": "Konuşma sürecini yönetebilme"
+            },
+            {
+              "code": "T.K.5.7",
+              "text": "Hazırlıksız konuşma yapabilme"
+            },
+            {
+              "code": "T.K.5.8",
+              "text": "Konuşmasında sesini uygun şekilde kullanabilme"
+            },
+            {
+              "code": "T.K.5.17",
+              "text": "Konuşmasını zenginleştirecek biçimde söz varlığını kullanabilme"
+            },
+            {
+              "code": "T.K.5.20",
+              "text": "Konuşmasında beden dilini kullanabilme Yazma"
+            },
+            {
+              "code": "T.Y.5.1",
+              "text": "Yazma sürecini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.2",
+              "text": "Yazmada strateji, yöntem ve tekniklerine yönelik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.3",
+              "text": "Yazısında içerik ve yapıya yönelik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.6",
+              "text": "Yazılı üretim ve yazılı etkileşiminde tahminlerinden yararlanabilme"
+            },
+            {
+              "code": "T.Y.5.13",
+              "text": "Yazısını zenginleştirecek biçimde söz varlığını kullanabilme"
+            },
+            {
+              "code": "T.Y.5.16",
+              "text": "Yazım ve noktalama işaretleriyle ilgili kuralları uygulayabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-turkce-tema-2",
+          "name": "2. Tema — Atatürk’ü Tanımak",
+          "outcomes": [
+            {
+              "code": "T.D.5.1",
+              "text": "Dinlemede/izlemede materyal seçimini yönetebilme"
+            },
+            {
+              "code": "T.D.5.2",
+              "text": "Dinlemede/izlemede strateji, yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.D.5.4",
+              "text": "Dinlediğinde/izlediğinde geçen anlamını bilmediği söz varlığı unsurlarının anlamını tahmin edebilme"
+            },
+            {
+              "code": "T.D.5.5",
+              "text": "Dinlediğinin/izlediğinin yüzey anlamını belirleyebilme"
+            },
+            {
+              "code": "T.D.5.11",
+              "text": "Öyküleyici metinde hikâye unsurlarını belirlemeye yönelik çözümleme Yapabilme"
+            },
+            {
+              "code": "T.D.5.14",
+              "text": "Dinlediğinin/izlediğinin bölümlerini belirlemeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.D.5.17",
+              "text": "Dinlediğinden/izlediğinden hareketle söz varlığını geliştirmeye yönelik çözümleme yapabilme Okuma"
+            },
+            {
+              "code": "T.O.5.1",
+              "text": "Okumada materyal seçimini yönetebilme"
+            },
+            {
+              "code": "T.O.5.2",
+              "text": "Akıcı okuyabilme"
+            },
+            {
+              "code": "T.O.5.3",
+              "text": "Okumada strateji, yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.O.5.5",
+              "text": "Metinde geçen anlamını bilmediği söz varlığı unsurlarının anlamını tahmin edebilme"
+            },
+            {
+              "code": "T.O.5.6",
+              "text": "Metnin yüzey anlamını belirleyebilme"
+            },
+            {
+              "code": "T.O.5.17",
+              "text": "Şiirin biçim özelliklerini belirlemeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.O.5.19",
+              "text": "Metindeki söz sanatlarını belirlemeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.O.5.20",
+              "text": "Metinden hareketle söz varlığını geliştirmeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.O.5.22",
+              "text": "Okuma sürecini değerlendirebilme Konuşma"
+            },
+            {
+              "code": "T.K.5.1",
+              "text": "Konuşma sürecini yönetebilme"
+            },
+            {
+              "code": "T.K.5.2",
+              "text": "Konuşma yöntem ve tekniklerine yönelik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.K.5.11",
+              "text": "Konuşmasında tahminlerinden yararlanabilme"
+            },
+            {
+              "code": "T.K.5.24",
+              "text": "Uygun geçiş ve bağlantı ifadelerini kullanabilme"
+            },
+            {
+              "code": "T.K.5.25",
+              "text": "Konuşmasında beden dilini ve mekânı etkili kullanabilme"
+            },
+            {
+              "code": "T.K.5.26",
+              "text": "Konuşma sürecine yönelik öz yansıtma yapabilme/kendini uyarlayabilme Yazma"
+            },
+            {
+              "code": "T.Y.5.1",
+              "text": "Yazma sürecini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.2",
+              "text": "Yazma strateji, yöntem ve tekniklerine yönelik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.3",
+              "text": "Yazısında içerik ve yapıya yönelik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.8",
+              "text": "Yazılı üretim ve yazılı etkileşiminde tahminlerinden yararlanabilme"
+            },
+            {
+              "code": "T.Y.5.20",
+              "text": "Uygun geçiş ve bağlantı ifadelerini kullanabilme"
+            },
+            {
+              "code": "T.Y.5.21",
+              "text": "Yazım kuralları ve noktalama işaretlerini uygulayabilme"
+            },
+            {
+              "code": "T.Y.5.22",
+              "text": "Yazma sürecine yönelik öz yansıtma yapabilme/kendini uyarlayabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-turkce-tema-3",
+          "name": "3. Tema — Duygularımı Tanıyorum",
+          "outcomes": [
+            {
+              "code": "T.D.5.2",
+              "text": "Dinlemede/izlemede strateji, yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.D.5.4",
+              "text": "Dinlediğinde/izlediğinde geçen anlamını bilmediği söz varlığı unsurlarının anlamını tahmin edebilme"
+            },
+            {
+              "code": "T.D.5.5",
+              "text": "Dinlediğinin/izlediğinin yüzey anlamını belirleyebilme"
+            },
+            {
+              "code": "T.D.5.6",
+              "text": "Basit çıkarımlar yoluyla dinlediğinin/izlediğinin derin anlamını belirleyebilme"
+            },
+            {
+              "code": "T.D.5.17",
+              "text": "Dinlediğinden/izlediğinden hareketle söz varlığını geliştirmeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.D.5.18",
+              "text": "Çoklu ortam ögelerine yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.D.5.20",
+              "text": "Dinleme/izleme sürecini değerlendirebilme Okuma"
+            },
+            {
+              "code": "T.O.5.1",
+              "text": "Okumada materyal seçimini yönetebilme"
+            },
+            {
+              "code": "T.O.5.3",
+              "text": "Okumada strateji, yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.O.5.5",
+              "text": "Metinde geçen anlamını bilmediği söz varlığı unsurlarının anlamını tahmin edebilme"
+            },
+            {
+              "code": "T.O.5.6",
+              "text": "Metnin yüzey anlamını belirleyebilme"
+            },
+            {
+              "code": "T.O.5.11",
+              "text": "Metindeki unsurları sınıflandırabilme"
+            },
+            {
+              "code": "T.O.5.13",
+              "text": "Öyküleyici metinde hikâye unsurlarını belirlemeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.O.5.16",
+              "text": "Metnin bölümlerini belirlemeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.O.5.18",
+              "text": "Bilgilendirici metinde düşünceyi geliştirme yollarını belirlemeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.O.5.20",
+              "text": "Metinden hareketle söz varlığını geliştirmeye yönelik çözümleme yapabilme Konuşma"
+            },
+            {
+              "code": "T.K.5.2",
+              "text": "Konuşmada yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.K.5.4",
+              "text": "İletişimi sürdürmek amacıyla soru sorabilme"
+            },
+            {
+              "code": "T.K.5.6",
+              "text": "Yaratıcı konuşma yapabilme"
+            },
+            {
+              "code": "T.K.5.16",
+              "text": "Düşünceyi geliştirme yollarını kullanarak konuşmasını yapılandırabilme"
+            },
+            {
+              "code": "T.K.5.19",
+              "text": "Uygun bağlantı ifadelerini kullanabilme"
+            },
+            {
+              "code": "T.K.5.21",
+              "text": "Konuşma sürecini değerlendirebilme Yazma"
+            },
+            {
+              "code": "T.Y.5.2",
+              "text": "Yazmada strateji, yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.3",
+              "text": "Yazısında içerik ve yapıya yönelik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.4",
+              "text": "Yazısında çoklu ortam ögeleriyle içerik oluşturabilme"
+            },
+            {
+              "code": "T.Y.5.5",
+              "text": "Yaratıcı yazı yazabilme"
+            },
+            {
+              "code": "T.Y.5.8",
+              "text": "Yazısında sınıflandırma yapabilme"
+            },
+            {
+              "code": "T.Y.5.13",
+              "text": "Yazısını zenginleştirecek biçimde söz varlığını kullanabilme"
+            },
+            {
+              "code": "T.Y.5.15",
+              "text": "Uygun bağlantı ifadelerini kullanabilme"
+            },
+            {
+              "code": "T.Y.5.16",
+              "text": "Yazım ve noktalama işaretleriyle ilgili kuralları uygulayabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-turkce-tema-4",
+          "name": "4. Tema — Geleneklerimiz",
+          "outcomes": [
+            {
+              "code": "T.D.5.1",
+              "text": "Dinlemede/izlemede materyal seçimini yönetebilme"
+            },
+            {
+              "code": "T.D.5.2",
+              "text": "Dinlemede/izlemede strateji, yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.D.5.4",
+              "text": "Dinlediğinde/izlediğinde geçen anlamını bilmediği söz varlığı unsurlarının anlamını tahmin edebilme"
+            },
+            {
+              "code": "T.D.5.6",
+              "text": "Basit çıkarımlar yoluyla dinlediğinin/izlediğinin derin anlamını belirleyebilme"
+            },
+            {
+              "code": "T.D.5.7",
+              "text": "Üst düzey çıkarımlar yoluyla dinlediğinin/izlediğinin derin anlamını belirleyebilme"
+            },
+            {
+              "code": "T.D.5.9",
+              "text": "Dinlediğindeki/izlediğindeki unsurları sınıflandırabilme"
+            },
+            {
+              "code": "T.D.5.10",
+              "text": "Dinlediğini/izlediğini yorumlayabilme"
+            },
+            {
+              "code": "T.D.5.15",
+              "text": "Bilgilendirici metinde düşünceyi geliştirme yollarını belirlemeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.D.5.17",
+              "text": "Dinlediğinden/izlediğinden hareketle söz varlığını geliştirmeye yönelik çözümleme yapabilme Okuma"
+            },
+            {
+              "code": "T.O.5.3",
+              "text": "Okumada strateji, yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.O.5.5",
+              "text": "Metinde geçen anlamını bilmediği söz varlığı unsurlarının anlamını tahmin edebilme"
+            },
+            {
+              "code": "T.O.5.8",
+              "text": "Basit çıkarımlar yoluyla metnin derin anlamını belirleyebilme"
+            },
+            {
+              "code": "T.O.5.9",
+              "text": "Üst düzey çıkarımlar yoluyla metnin derin anlamını belirleyebilme"
+            },
+            {
+              "code": "T.O.5.10",
+              "text": "Okuduklarını karşılaştırabilme"
+            },
+            {
+              "code": "T.O.5.20",
+              "text": "Metinden hareketle söz varlığını geliştirmeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.O.5.21",
+              "text": "Okuduğunu özetleyebilme"
+            },
+            {
+              "code": "T.O.5.22",
+              "text": "Okuma sürecini değerlendirebilme Konuşma"
+            },
+            {
+              "code": "T.K.5.2",
+              "text": "Konuşmada yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.K.5.5",
+              "text": "Konuşmasında çoklu ortam ögeleriyle içerik oluşturabilme"
+            },
+            {
+              "code": "T.K.5.11",
+              "text": "Konuşmasında sınıflandırma yapabilme"
+            },
+            {
+              "code": "T.K.5.12",
+              "text": "Yorumunu sözlü olarak ifade edebilme"
+            },
+            {
+              "code": "T.K.5.17",
+              "text": "Konuşmasını zenginleştirecek biçimde söz varlığını kullanabilme Yazma"
+            },
+            {
+              "code": "T.Y.5.2",
+              "text": "Yazmada strateji, yöntem ve tekniklerine yönelik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.3",
+              "text": "Yazısında içerik ve yapıya yönelik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.7",
+              "text": "Yazısında karşılaştırma yapabilme"
+            },
+            {
+              "code": "T.Y.5.10",
+              "text": "Yazılı olarak özetleyebilme"
+            },
+            {
+              "code": "T.Y.5.12",
+              "text": "Düşünceyi geliştirme yollarını kullanarak metni yapılandırabilme"
+            },
+            {
+              "code": "T.Y.5.16",
+              "text": "Yazım ve noktalama işaretleriyle ilgili kuralları uygulayabilme"
+            },
+            {
+              "code": "T.Y.5.17",
+              "text": "Yazma sürecini değerlendirebilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-turkce-tema-5",
+          "name": "5. Tema — İletişim ve Sosyal İlişkiler",
+          "outcomes": [
+            {
+              "code": "T.D.5.2",
+              "text": "Dinlemede/izlemede strateji, yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.D.5.4",
+              "text": "Dinlediğinde/izlediğinde geçen anlamını bilmediği söz varlığı unsurlarının anlamını tahmin edebilme"
+            },
+            {
+              "code": "T.D.5.7",
+              "text": "Üst düzey çıkarımlar yoluyla dinlediğinin/izlediğinin derin anlamını belirleyebilme"
+            },
+            {
+              "code": "T.D.5.8",
+              "text": "Dinlediklerini/izlediklerini karşılaştırabilme"
+            },
+            {
+              "code": "T.D.5.16",
+              "text": "Dinlediğindeki/izlediğindeki söz sanatlarını belirlemeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.D.5.17",
+              "text": "Dinlediğinden/izlediğinden hareketle söz varlığını geliştirmeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.D.5.19",
+              "text": "Dinlediğini/izlediğini özetleyebilme"
+            },
+            {
+              "code": "T.D.5.20",
+              "text": "Dinleme/izleme sürecini değerlendirebilme Okuma"
+            },
+            {
+              "code": "T.O.5.1",
+              "text": "Okumada materyal seçimini yönetebilme"
+            },
+            {
+              "code": "T.O.5.3",
+              "text": "Okumada strateji, yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.O.5.5",
+              "text": "Metinde geçen anlamını bilmediği söz varlığı unsurlarının anlamını tahmin edebilme"
+            },
+            {
+              "code": "T.O.5.8",
+              "text": "Basit çıkarımlar yoluyla metnin derin anlamını belirleyebilme"
+            },
+            {
+              "code": "T.O.5.9",
+              "text": "Üst düzey çıkarımlar yoluyla metnin derin anlamını belirleyebilme"
+            },
+            {
+              "code": "T.O.5.12",
+              "text": "Metni yorumlayabilme"
+            },
+            {
+              "code": "T.O.5.20",
+              "text": "Metinden hareketle söz varlığını geliştirmeye yönelik çözümleme yapabilme Konuşma"
+            },
+            {
+              "code": "T.K.5.4",
+              "text": "İletişimi sürdürmek amacıyla soru sorabilme"
+            },
+            {
+              "code": "T.K.5.10",
+              "text": "Konuşmasında karşılaştırma yapabilme"
+            },
+            {
+              "code": "T.K.5.13",
+              "text": "Sözlü olarak özetleyebilme"
+            },
+            {
+              "code": "T.K.5.18",
+              "text": "Konuşmasında açık ve örtük ifadeleri kullanabilme"
+            },
+            {
+              "code": "T.K.5.19",
+              "text": "Uygun bağlantı ifadelerini kullanabilme"
+            },
+            {
+              "code": "T.K.5.21",
+              "text": "Konuşma sürecini değerlendirebilme Yazma"
+            },
+            {
+              "code": "T.Y.5.2",
+              "text": "Yazmada strateji, yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.3",
+              "text": "Yazısında içerik ve yapıya yönelik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.9",
+              "text": "Yorumunu yazılı olarak ifade edebilme"
+            },
+            {
+              "code": "T.Y.5.13",
+              "text": "Yazısını zenginleştirecek biçimde söz varlığını kullanabilme"
+            },
+            {
+              "code": "T.Y.5.14",
+              "text": "Yazısında açık ve örtük ifadeleri kullanabilme"
+            },
+            {
+              "code": "T.Y.5.16",
+              "text": "Yazım ve noktalama işaretleriyle ilgili kuralları uygulayabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-turkce-tema-6",
+          "name": "6. Tema — Sağlıklı Yaşıyorum",
+          "outcomes": [
+            {
+              "code": "T.D.5.1",
+              "text": "Dinlemede/izlemede materyal seçimini yönetebilme,"
+            },
+            {
+              "code": "T.D.5.4",
+              "text": "Dinlediğinde/izlediğinde geçen anlamını bilmediği söz varlığı unsurlarının anlamını tahmin edebilme"
+            },
+            {
+              "code": "T.D.5.7",
+              "text": "Üst düzey çıkarımlar yoluyla dinlediğinin/izlediğinin derin anlamını belirleyebilme"
+            },
+            {
+              "code": "T.D.5.12",
+              "text": "Bilgilendirici metinde metin yapılarından hareketle önemli bilgileri belirlemeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.D.5.17",
+              "text": "Dinlediğinden/izlediğinden hareketle söz varlığını geliştirmeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.D.5.20",
+              "text": "Dinleme/izleme sürecini değerlendirebilme Okuma"
+            },
+            {
+              "code": "T.O.5.3",
+              "text": "Okumada strateji, yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.O.5.5",
+              "text": "Metinde geçen anlamını bilmediği söz varlığı unsurlarının anlamını tahmin edebilme"
+            },
+            {
+              "code": "T.O.5.9",
+              "text": "Üst düzey çıkarımlar yoluyla metnin derin anlamını belirleyebilme"
+            },
+            {
+              "code": "T.O.5.14",
+              "text": "Bilgilendirici metinde metin yapılarından hareketle önemli bilgileri belirlemeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.O.5.20",
+              "text": "Metinden hareketle söz varlığını geliştirmeye yönelik çözümleme yapabilme"
+            },
+            {
+              "code": "T.O.5.22",
+              "text": "Okuma sürecini değerlendirebilme Konuşma"
+            },
+            {
+              "code": "T.K.5.14",
+              "text": "Sözlü olarak tartışabilme"
+            },
+            {
+              "code": "T.K.5.15",
+              "text": "Hazırlıklı konuşmasını yapılandırabilme"
+            },
+            {
+              "code": "T.K.5.17",
+              "text": "Konuşmasını zenginleştirecek biçimde söz varlığını kullanabilme"
+            },
+            {
+              "code": "T.K.5.21",
+              "text": "Konuşma sürecini değerlendirebilme Yazma"
+            },
+            {
+              "code": "T.Y.5.1",
+              "text": "Yazma sürecini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.2",
+              "text": "Yazmada strateji, yöntem ve teknik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.3",
+              "text": "Yazısında içerik ve yapıya yönelik seçimlerini yönetebilme"
+            },
+            {
+              "code": "T.Y.5.11",
+              "text": "Yazılı üretiminde ve yazılı etkileşiminde tartışabilme"
+            },
+            {
+              "code": "T.Y.5.13",
+              "text": "Yazısını zenginleştirecek biçimde söz varlığını kullanabilme"
+            },
+            {
+              "code": "T.Y.5.15",
+              "text": "Uygun bağlantı ifadelerini kullanabilme"
+            },
+            {
+              "code": "T.Y.5.16",
+              "text": "Yazım ve noktalama işaretleriyle ilgili kuralları uygulayabilme"
+            },
+            {
+              "code": "T.Y.5.17",
+              "text": "Yazma sürecini değerlendirebilme"
+            }
+          ]
+        }
+      ],
+      "mappingStatus": "Yıllık planlardan aktarılmıştır; resmî güncellik doğrulanmadı."
+    },
+    {
+      "id": "matematik",
+      "name": "Matematik",
+      "themes": [
+        {
+          "id": "g5-matematik-tema-1",
+          "name": "1. Tema — Sayılar ve Nicelikler",
+          "outcomes": [
+            {
+              "code": "MAT.5.1.1",
+              "text": "Altı basamaklı sayıları okuma ve yazmayı çok basamaklı sayılara genelleyebilme"
+            },
+            {
+              "code": "MAT.5.1.2",
+              "text": "Doğal sayılar ve işlemler içeren gerçek yaşam problemlerini çözebilme"
+            },
+            {
+              "code": "MAT.5.1.3",
+              "text": "Gerçek yaşam durumlarına karşılık gelen kesirleri farklı biçimlerde temsil edebilme"
+            },
+            {
+              "code": "MAT.5.1.4",
+              "text": "Farklı gösterimlerle ifade edilen kesirlerin karşılaştırılmasına yönelik çıkarım yapabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-matematik-tema-2",
+          "name": "2. Tema — İşlemlerle Cebirsel Düşünme",
+          "outcomes": [
+            {
+              "code": "MAT.5.2.1",
+              "text": "Eşitliğin korunumuna ve işlem özelliklerine yönelik çıkarım yapabilme"
+            },
+            {
+              "code": "MAT.5.2.2",
+              "text": "Karşılaştığı günlük hayat ya da matematiksel durumlarda işlem önceliğini yorumlayabilme"
+            },
+            {
+              "code": "MAT.5.2.3",
+              "text": "Sayı ve şekil örüntülerinin kuralına ilişkin muhakeme yapabilme"
+            },
+            {
+              "code": "MAT.5.2.4",
+              "text": "Temel aritmetik işlem içeren durumlardaki algoritmaları yorumlayabilme *Okul Temelli Planlama"
+            }
+          ]
+        },
+        {
+          "id": "g5-matematik-tema-3",
+          "name": "3. Tema — Geometrik Şekiller",
+          "outcomes": [
+            {
+              "code": "MAT.5.3.1",
+              "text": "Temel geometrik çizimler için matematiksel araç ve teknolojiden yararlanabilme"
+            },
+            {
+              "code": "MAT.5.3.2",
+              "text": "Temel geometrik çizimlere dayalı deneyimlerini yansıtabilme"
+            },
+            {
+              "code": "MAT.5.3.3",
+              "text": "Açıları ölçmek için matematiksel araç ve teknolojiden yararlanabilme"
+            },
+            {
+              "code": "MAT.5.3.4",
+              "text": "Düzlemde iki veya üç doğrunun birbirine göre durumuna bağlı olarak oluşabilecek açılara dair çıkarım yapabilme"
+            },
+            {
+              "code": "MAT.5.3.5",
+              "text": "Çokgenleri düzlemde ardışık olarak kesişen doğruların oluşturduğu kapalı şekiller olarak yorumlayabilme"
+            },
+            {
+              "code": "MAT.5.3.6",
+              "text": "Çokgenlerin özellikleri ile ilgili edindiği deneyimleri yansıtabilme"
+            },
+            {
+              "code": "MAT.5.3.7",
+              "text": "Matematiksel araç ve teknoloji yardımıyla düzlemde iki noktada kesişen çember çiftinin merkezleri ve kesişim noktalarından biri ile inşa edilen üçgenlerin kenar özelliklerine yönelik çıkarım yapabilme *Okul Temelli Planlama"
+            }
+          ]
+        },
+        {
+          "id": "g5-matematik-tema-4",
+          "name": "4. Tema — Geometrik Nicelikler",
+          "outcomes": [
+            {
+              "code": "MAT.5.4.1",
+              "text": "Kenar uzunlukları doğal sayı olan bir dikdörtgenin çevre uzunluğu verildiğinde kenar uzunluklarını yorumlayabilme"
+            },
+            {
+              "code": "MAT.5.4.2",
+              "text": "Birim karelerden yola çıkarak dikdörtgenin alanını değerlendirebilme *Okul Temelli Planlama"
+            },
+            {
+              "code": "MAT.5.4.3",
+              "text": "Kenar uzunlukları doğal sayı olan bir dikdörtgenin alanının ölçüsü verildiğinde çevre uzunluğunu, çevre uzunluğu verildiğinde alanını yorumlayabilme"
+            },
+            {
+              "code": "MAT.5.4.4",
+              "text": "Dikdörtgenin çevre uzunluğu ve alanı ile ilgili problemleri çözebilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-matematik-tema-5",
+          "name": "5. Tema — İstatistiksel Araştırma Süreci",
+          "outcomes": [
+            {
+              "code": "MAT.5.5.1",
+              "text": "Kategorik veri ile çalışabilme ve veriye dayalı karar verebilme"
+            },
+            {
+              "code": "MAT.5.5.2",
+              "text": "Başkaları tarafından oluşturulan kategorik veriye dayalı istatistiksel sonuç veya yorumları tartışabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-matematik-tema-6",
+          "name": "6. Tema — Veriden Olasılığa",
+          "outcomes": [
+            {
+              "code": "MAT.5.6.1",
+              "text": "Herhangi bir olayın olasılığının 0 (imkânsız) ile 1 (kesin) arasında (0 ve 1 dâhil) olduğunu (olasılık spektrumu) yorumlayabilme"
+            },
+            {
+              "code": "MAT.5.6.2",
+              "text": "Olayları az ya da çok olasılıklı şeklinde yapılandırabilme"
+            }
+          ]
+        }
+      ],
+      "mappingStatus": "Yıllık planlardan aktarılmıştır; resmî güncellik doğrulanmadı."
+    },
+    {
+      "id": "fen-bilimleri",
+      "name": "Fen Bilimleri",
+      "themes": [
+        {
+          "id": "g5-fen-bilimleri-unite-1",
+          "name": "1. Ünite — Gökyüzündeki Komşularımız ve Biz",
+          "outcomes": [
+            {
+              "code": "FB.5.1.1.1",
+              "text": "Güneş’in yapısı ve dönme hareketi ile ilgili bilgileri toplayabilme"
+            },
+            {
+              "code": "FB.5.1.2.1",
+              "text": "Ay’ın özellikleri, dönme ve dolanma hareketleri ile ilgili bilimsel çıkarım yapabilme"
+            },
+            {
+              "code": "FB.5.1.2.2",
+              "text": "Ay’ın evrelerini temsil eden bilimsel model oluşturabilme"
+            },
+            {
+              "code": "FB.5.1.3.1",
+              "text": "Güneş, Dünya ve Ay’ın birbirlerine göre hareketlerini ve hacimsel büyüklüklerini temsil eden bilimsel model oluşturabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-fen-bilimleri-unite-2",
+          "name": "2. Ünite — Kuvveti Tanıyalım",
+          "outcomes": [
+            {
+              "code": "FB.5.2.1.1",
+              "text": "Kuvveti büyüklüğü ile tanımlayabilme"
+            },
+            {
+              "code": "FB.5.2.1.2",
+              "text": "Basit araç gereçler kullanarak bir dinamometre modeli tasarlayabilme"
+            },
+            {
+              "code": "FB.5.2.2.1",
+              "text": "Kütleye etki eden yer çekimi kuvvetini ağırlık olarak tanımlayabilme"
+            },
+            {
+              "code": "FB.5.2.3.1",
+              "text": "Sürtünme kuvvetinin çeşitli ortamlardaki etkilerine yönelik tümevarımsal akıl yürütebilme"
+            },
+            {
+              "code": "FB.5.2.3.2",
+              "text": "Günlük yaşamda sürtünmeyi artırma veya azaltmaya yönelik bilimsel bir model tasarlayabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-fen-bilimleri-unite-3",
+          "name": "3. Ünite — Canlıların Yapısına Yolculuk",
+          "outcomes": [
+            {
+              "code": "FB.5.3.1.1",
+              "text": "Bitki ve hayvan hücrelerini temel kısımları ve özellikleri açısından karşılaştırabilme"
+            },
+            {
+              "code": "FB.5.3.1.2",
+              "text": "Hücre-doku-organ-sistem-organizma kavramlarını yapılandırabilme"
+            },
+            {
+              "code": "FB.5.3.2.1",
+              "text": "Destek ve hareket sistemine ait yapıları sınıflandırabilme"
+            },
+            {
+              "code": "FB.5.3.2.2",
+              "text": "Destek ve hareket sisteminin sağlığı için yapılması gerekenler konusunda bilgi toplayabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-fen-bilimleri-unite-4",
+          "name": "4. Ünite — Işığın Dünyası",
+          "outcomes": [
+            {
+              "code": "FB.5.4.1.1",
+              "text": "Bir kaynaktan çıkan ışığın her yönde doğrusal bir yol izlediğini gözlem yoluyla açıklayabilme"
+            },
+            {
+              "code": "FB.5.4.2.1",
+              "text": "Maddeleri ışığı geçirme durumlarına göre sınıflandırabilme"
+            },
+            {
+              "code": "FB.5.4.3.1",
+              "text": "Tam gölgeye yönelik bilimsel gözlem yapabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-fen-bilimleri-unite-5",
+          "name": "5. Ünite — Maddenin Doğası",
+          "outcomes": [
+            {
+              "code": "FB.5.5.1.1",
+              "text": "Maddeleri tanecikli, boşluklu ve hareketli yapısına göre sınıflandırabilme"
+            },
+            {
+              "code": "FB.5.5.2.1",
+              "text": "Isı ve sıcaklık kavramlarını karşılaştırabilme"
+            },
+            {
+              "code": "FB.5.5.2.2",
+              "text": "Sıcaklığı farklı olan sıvıların karıştırılması sonucu ısı alışverişi olduğuna yönelik bilimsel çıkarım yapabilme"
+            },
+            {
+              "code": "FB.5.5.3.1",
+              "text": "Maddenin ısı etkisiyle hâl değiştirebileceğini bilimsel gözleme dayalı tahmin edebilme"
+            },
+            {
+              "code": "FB.5.5.4.1",
+              "text": "Maddeleri ısı iletimi bakımından sınıflandırabilme"
+            },
+            {
+              "code": "FB.5.5.4.2",
+              "text": "Isı yalıtımını gösteren model oluşturabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-fen-bilimleri-unite-6",
+          "name": "6. Ünite — Yaşamımızdaki Elektrik",
+          "outcomes": [
+            {
+              "code": "FB.5.6.1.1",
+              "text": "Bir elektrik devresindeki elemanları sembollerinin olup olmamasına göre sınıflandırabilme"
+            },
+            {
+              "code": "FB.5.6.1.2",
+              "text": "Şemasını çizdiği elektrik devresine uygun deney yapabilme"
+            },
+            {
+              "code": "FB.5.6.2.1",
+              "text": "Bir elektrik devresindeki ampul parlaklığını etkileyen değişkenlerin neler olduğuna ilişkin hipotez oluşturabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-fen-bilimleri-unite-7",
+          "name": "7. Ünite — Sürdürülebilir Yaşam ve Geri Dönüşüm",
+          "outcomes": [
+            {
+              "code": "FB.5.7.1.1",
+              "text": "Evsel atıklarda geri dönüştürülebilen ve dönüştürülemeyen maddeleri sınıflandırabilme"
+            },
+            {
+              "code": "FB.5.7.1.2",
+              "text": "Kaynakların etkili kullanımı konusunda geri dönüşümün önemli olduğuna yönelik bilimsel çıkarımda bulunabilme"
+            },
+            {
+              "code": "FB.5.7.1.3",
+              "text": "Yakın çevresinde atık yönetiminin uygulanabilirliğine ilişkin deneyimlerini yansıtabilme"
+            }
+          ]
+        }
+      ],
+      "mappingStatus": "2026-2027 yüklenen yıllık plandan kodlar ve açıklamalar tekilleştirildi; kaynak plan taslak veya yayıncı planı niteliğindedir, resmi program kodlarıyla farklar ayrıca kontrol edilmelidir."
+    },
+    {
+      "id": "sosyal-bilgiler",
+      "name": "Sosyal Bilgiler",
+      "themes": [
+        {
+          "id": "g5-sosyal-bilgiler-tema-1",
+          "name": "1. Tema — Birlikte Yaşamak",
+          "outcomes": [
+            {
+              "code": "SB.5.1.1",
+              "text": "Dâhil olduğu gruplar ve bu gruplardaki rolleri arasındaki ilişkileri çözümleyebilme"
+            },
+            {
+              "code": "SB.5.1.2",
+              "text": "Kültürel özelliklere saygı duymanın birlikte yaşamaya etkisini yorumlayabilme"
+            },
+            {
+              "code": "SB.5.1.3",
+              "text": "Toplumsal birliği sürdürmeye yönelik yardımlaşma ve dayanışma faaliyetlerine katkı sağlayabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-sosyal-bilgiler-tema-2",
+          "name": "2. Tema — Evimiz Dünya",
+          "outcomes": [
+            {
+              "code": "SB.5.2.1",
+              "text": "Yaşadığı ilin göreceli konum özelliklerini algılayabilme"
+            },
+            {
+              "code": "SB.5.2.2",
+              "text": "Yaşadığı ilde doğal ve beşerî çevredeki değişimi neden ve sonuçlarıyla yorumlayabilme"
+            },
+            {
+              "code": "SB.5.2.3",
+              "text": "Yaşadığı ilde meydana gelebilecek afetlerin etkilerini azaltmaya yönelik farkın dalık etkinliği fikrini eyleme dönüştürebilme"
+            },
+            {
+              "code": "SB.5.2.4",
+              "text": "Ülkemize kara sınırı olan komşu devletler hakkında bilgi toplayabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-sosyal-bilgiler-tema-3",
+          "name": "3. Tema — Ortak Mirasımız",
+          "outcomes": [
+            {
+              "code": "SB.5.3.1",
+              "text": "Yaşadığı ildeki ortak miras ögelerine ilişkin oluşturduğu ürünü paylaşabilme"
+            },
+            {
+              "code": "SB.5.3.2",
+              "text": "Anadolu’da ilk yerleşimleri kuran toplumların sosyal hayatlarına yönelik bakış açısı geliştirebilme"
+            },
+            {
+              "code": "SB.5.3.3",
+              "text": "Mezopotamya ve Anadolu medeniyetlerinin ortak mirasa katkılarını karşılaştırabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-sosyal-bilgiler-tema-4",
+          "name": "4. Tema — Yaşayan Demokrasimiz",
+          "outcomes": [
+            {
+              "code": "SB.5.4.1",
+              "text": "Demokrasi ve cumhuriyet kavramları arasındaki ilişkiyi çözümleyebilme"
+            },
+            {
+              "code": "SB.5.4.2",
+              "text": "Toplum düzenine etkisi bakımından etkin vatandaş olmanın önemine yönelik çıkarımda bulunabilme"
+            },
+            {
+              "code": "SB.5.4.3",
+              "text": "Temel insan hak ve sorumluluklarının önemini sorgulayabilme"
+            },
+            {
+              "code": "SB.5.4.4",
+              "text": "Bir ihtiyaç hâlinde veya sorun karşısında başvuru yapılabilecek kurumlar hakkında bilgi toplayabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-sosyal-bilgiler-tema-5",
+          "name": "5. Tema — Hayatımızdaki Ekonomi",
+          "outcomes": [
+            {
+              "code": "SB.5.5.1",
+              "text": "Kaynakları verimli kullanmanın doğa ve insanlar üzerindeki etkisini yorumlayabilme"
+            },
+            {
+              "code": "SB.5.5.2",
+              "text": "İhtiyaç ve isteklerini karşılamak için gerekli bütçe kaynaklarını yönetebilme"
+            },
+            {
+              "code": "SB.5.5.3",
+              "text": "Yaşadığı ildeki ekonomik faaliyetleri özetleyebilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-sosyal-bilgiler-tema-6",
+          "name": "6. Tema — Teknoloji ve Sosyal Bilimler",
+          "outcomes": [
+            {
+              "code": "SB.5.6.1",
+              "text": "Teknolojik gelişmelerin toplum hayatına etkilerini tartışabilme"
+            },
+            {
+              "code": "SB.5.6.2",
+              "text": "Teknolojik ürünlerin bilinçli kullanımının önemine ilişkin oluşturduğu ürünü paylaşabilme"
+            }
+          ]
+        }
+      ],
+      "mappingStatus": "2026-2027 yüklenen yıllık plandan kodlar ve açıklamalar tekilleştirildi; kaynak plan taslak veya yayıncı planı niteliğindedir, resmi program kodlarıyla farklar ayrıca kontrol edilmelidir."
+    },
+    {
+      "id": "ingilizce",
+      "name": "İngilizce",
+      "themes": [
+        {
+          "id": "g5-ingilizce-unite-1",
+          "name": "1. Ünite — School Life",
+          "outcomes": [
+            {
+              "code": "ENG.5.1.L1",
+              "text": "Students can get ready for the listeningwatching-comprehension process for the current content on school life with people places and rules at school school clubs countries national days and celebrations carefully. READING"
+            },
+            {
+              "code": "ENG.5.1.R1",
+              "text": "Students can get ready for the reading-comprehension process about the current content on school life with people places and rules at school school clubs countries national days and celebrations. WRITING"
+            },
+            {
+              "code": "ENG.5.1.W1",
+              "text": "Students can get ready for the writing-expression process about the current content on school life with people places and rules at school school clubs countries national days and celebrations. SPEAKING"
+            },
+            {
+              "code": "ENG.5.1.S1",
+              "text": "Students can get ready for speaking-expression process about the current content on school life with people places and rules at school school clubs countries national days and celebrations. VOCABULARY"
+            },
+            {
+              "code": "ENG.5.1.V1",
+              "text": "S tudents can select and use the target vocabulary of the current content about school life with people places and rules at school school clubs countries national days and celebrations accurately authentically spontaneously and naturally and use it…"
+            },
+            {
+              "code": "ENG.5.1.G1",
+              "text": "Students can select and use the target grammatical elements of the current content about school life with people places and rules at school school clubs countries national days and celebrations accurately authentically spontaneously and naturally…"
+            },
+            {
+              "code": "ENG.5.1.L2",
+              "text": "S tudents can bring information about the current content on school life with people places and rules at school school clubs countries national days and celebrations together through significant details and main components while listeningwatching…"
+            },
+            {
+              "code": "ENG.5.1.R2",
+              "text": "Students can bring information about the current content on school life with people places and rules at school school clubs countries national days and celebrations through skimming looking quickly at the audio-visual elements and reading the…"
+            },
+            {
+              "code": "ENG.5.1.W2",
+              "text": "Students can understand the modelexample for the writing task about the current content on school life with people places and rules at school school clubs countries national days and celebrations. SPEAKING"
+            },
+            {
+              "code": "ENG.5.1.S2",
+              "text": "Students can use the modelexample for producing verbal content about the current content on school life with people places and rules at school school clubs countries national days and celebrations. PRONUNCIATION"
+            },
+            {
+              "code": "ENG.5.1.P1",
+              "text": "Students can select and use the target phonological elements of the current content about school life with people places and rules at school school clubs countries national days and celebrations accurately authentically and naturally through…"
+            },
+            {
+              "code": "ENG.5.1.L3",
+              "text": "S tudents can make meaning ofderive meaning from the current content on school life with people places and rules at school school clubs countries national days and celebrations through significant details by listeningwatching it carefully."
+            },
+            {
+              "code": "ENG.5.1.L4",
+              "text": "Students can convey their knowledge experience thoughts and feelings examined carefully about the whole listeningwatching-comprehension process in relation to the current content on school life with people places and rules at school school clubs…"
+            },
+            {
+              "code": "ENG.5.1.R3",
+              "text": "Students can make meaning of derive meaning from the current content about school life with people places and rules at school school clubs countries national days and celebrations by reading it carefully. WRITING"
+            },
+            {
+              "code": "ENG.5.1.W3",
+              "text": "S tudents can organise a content for the assigned writing task on the current content school life with people places and rules at school school clubs countries national days and celebrations based on the modelexample provided. SPEAKING"
+            },
+            {
+              "code": "ENG.5.1.S3",
+              "text": "S tudents can organise a new verbal content on school life with people places and rules at school school clubs countries national days and celebrations by speaking accurately efficiently and authentically. READING"
+            },
+            {
+              "code": "ENG.5.1.R4",
+              "text": "Students can convey their knowledge experiences thoughts and feelings related to the reading-comprehension process about the current content school life with people places and rules at school school clubs countries national days and celebrations in…"
+            },
+            {
+              "code": "ENG.5.1.W4",
+              "text": "Students can individually constructform content for the assigned writing task on the current content school life with people places and rules at school school clubs countries national days and celebrations."
+            },
+            {
+              "code": "ENG.5.1.W5",
+              "text": "Students can reorganise reconstruct and use information in the new written tasks about the school life with people places and rules at school school clubs countries national days and celebrations to communicate with other people. SPEAKING"
+            },
+            {
+              "code": "ENG.5.1.S4",
+              "text": "Students can construct a new verbal content on school life with people places and rules at school school clubs countries national days and celebrations by speaking accurately efficiently and authentically. WRITING"
+            },
+            {
+              "code": "ENG.5.1.W6",
+              "text": "Students can reflect on their knowledge experiences thoughts and feelings related to the writing-expression process about the current content school life with people places and rules at school school clubs countries national days and celebrations in…"
+            },
+            {
+              "code": "ENG.5.1.S5",
+              "text": "Students can reorganise reconstruct and use information about the school life with people places and rules at school school clubs countries national days and celebrations to communicate with other people."
+            },
+            {
+              "code": "ENG.5.1.S6",
+              "text": "Students are expected to be able to convey their knowledge, experiences, thoughts, and feelings related to the speaking-expression process about the current content, “school life with people, places and rules at school; school clubs; countries;…"
+            }
+          ]
+        },
+        {
+          "id": "g5-ingilizce-unite-2",
+          "name": "2. Ünite — Classroom Life",
+          "outcomes": [
+            {
+              "code": "ENG.5.2.L1",
+              "text": "Students can get ready for the listeningwatching-comprehension process for the current content on classroom life with classroom rules and language school subjects timetables classroom objects days of the week time carefully. READING"
+            },
+            {
+              "code": "ENG.5.2.R1",
+              "text": "Students can get ready for the reading-comprehension process about the current content on classroom life with classroom rules and language school subjects timetables classroom objects days of the week time. WRITING"
+            },
+            {
+              "code": "ENG.5.2.W1",
+              "text": "Students can get ready for the writing-expression process about the current content on classroom life with classroom rules and language school subjects timetables classroom objects days of the week time. SPEAKING"
+            },
+            {
+              "code": "ENG.5.2.S1",
+              "text": "Students can get ready for speaking-expression process about the current content on classroom life with classroom rules and language school subjects timetables classroom objects days of the week time. VOCABULARY"
+            },
+            {
+              "code": "ENG.5.2.V1",
+              "text": "Students can select and use the target vocabulary of the current content about classroom life with classroom rules and language school subjects timetables classroom objects days of the week time accurately authentically spontaneously and naturally…"
+            },
+            {
+              "code": "ENG.5.2.G1",
+              "text": "Students can select and use the target grammatical elements of the current content about classroom life with classroom rules and language school subjects timetables classroom objects days of the week time accurately authentically spontaneously and…"
+            },
+            {
+              "code": "ENG.5.2.L2",
+              "text": "Students can bring information about the current content on classroom life with classroom rules and language school subjects timetables classroom objects days of the week time together through significant details and main components while…"
+            },
+            {
+              "code": "ENG.5.2.R2",
+              "text": "S tudents can bring information about the current content on classroom life with classroom rules and language school subjects timetables classroom objects days of the week time through skimming looking quickly at the audio-visual elements and…"
+            },
+            {
+              "code": "ENG.5.2.W2",
+              "text": "Students can understand the modelexample for the writing task about the current content on classroom life with classroom rules and language school subjects timetables classroom objects days of the week time. SPEAKING"
+            },
+            {
+              "code": "ENG.5.2.S2",
+              "text": "Students can use the modelexample for producing verbal content about the current content on classroom life with classroom rules and language school subjects timetables classroom objects days of the week time. PRONUNCIATION"
+            },
+            {
+              "code": "ENG.5.2.P1",
+              "text": "S tudents can select and use the target phonological elements of the current content about classroom life with classroom rules and language school subjects timetables classroom objects days of the week time accurately authentically and naturally…"
+            },
+            {
+              "code": "ENG.5.2.L3",
+              "text": "Students can make meaning ofderive meaning from the current content on classroom life with classroom rules and language school subjects timetables classroom objects days of the week time through significant details by listeningwatching it carefully."
+            },
+            {
+              "code": "ENG.5.2.L4",
+              "text": "Students can convey their knowledge experience thoughts and feelings examined carefully about the whole listeningwatching-comprehension process in relation to the current content on classroom life with classroom rules and language school subjects…"
+            },
+            {
+              "code": "ENG.5.2.R3",
+              "text": "Students can make meaning of derive meaning from the current content about classroom life with classroom rules and language school subjects timetables classroom objects days of the week time by reading it carefully. WRITING"
+            },
+            {
+              "code": "ENG.5.2.W3",
+              "text": "Students can organise a content for the assigned writing task on the current content classroom life with classroom rules and language school subjects timetables classroom objects days of the week time based on the modelexample provided. SPEAKING"
+            },
+            {
+              "code": "ENG.5.2.S3",
+              "text": "Students can organise a new verbal content on classroom life with classroom rules and language school subjects timetables classroom objects days of the week time by speaking accurately efficiently and authentically. READING"
+            },
+            {
+              "code": "ENG.5.2.R4",
+              "text": "Students can convey their knowledge experiences thoughts and feelings related to the reading-comprehension process about the current content classroom life with classroom rules and language school subjects timetables classroom objects days of the…"
+            },
+            {
+              "code": "ENG.5.2.W4",
+              "text": "Students can individually constructform content for the assigned writing task on the current content classroom life with classroom rules and language school subjects timetables classroom objects days of the week time."
+            },
+            {
+              "code": "ENG.5.2.W5",
+              "text": "Students can reorganise reconstruct and use information in the new written tasks about the classroom life with classroom rules and language school subjects timetables classroom objects days of the week time to communicate with other people. SPEAKING"
+            },
+            {
+              "code": "ENG.5.2.S4",
+              "text": "Students can construct a new verbal content on classroom life with classroom rules and language school subjects timetables classroom objects days of the week time by speaking accurately efficiently and authentically. WRITING"
+            },
+            {
+              "code": "ENG.5.2.W6",
+              "text": "Students can reflect on their knowledge experiences thoughts and feelings related to the writing-expression process about the current content classroom life with classroom rules and language school subjects timetables classroom objects days of the…"
+            },
+            {
+              "code": "ENG.5.2.S5",
+              "text": "Students can reorganise reconstruct and use information about the classroom life with classroom rules and language school subjects timetables classroom objects days of the week time to communicate with other people."
+            },
+            {
+              "code": "ENG.5.2.S6",
+              "text": "Students are expected to be able to convey their knowledge, experiences, thoughts, and feelings related to the speaking-expression process about the current content, “classroom life with classroom rules and language; school subjects; timetables;…"
+            }
+          ]
+        },
+        {
+          "id": "g5-ingilizce-unite-3",
+          "name": "3. Ünite — Personal Life",
+          "outcomes": [
+            {
+              "code": "ENG.5.3.L1",
+              "text": "Students can get ready for the listeningwatching-comprehension process for the current content on personal life with basic body parts and physical features clothes daily routines and activities carefully. READING"
+            },
+            {
+              "code": "ENG.5.3.R1",
+              "text": "Students can get ready for the reading-comprehension process about the current content on personal life with basic body parts and physical features clothes daily routines and activities. WRITING"
+            },
+            {
+              "code": "ENG.5.3.W1",
+              "text": "Students can get ready for the writing-expression process about the current content on personal life with basic body parts and physical features clothes daily routines and activities. SPEAKING"
+            },
+            {
+              "code": "ENG.5.3.S1",
+              "text": "Students can get ready for speaking-expression process about the current content on personal life with basic body parts and physical features clothes daily routines and activities. VOCABULARY"
+            },
+            {
+              "code": "ENG.5.3.V1",
+              "text": "Students can select and use the target vocabulary of the current content about personal life with basic body parts and physical features clothes daily routines and activities accurately authentically spontaneously and naturally and use it…"
+            },
+            {
+              "code": "ENG.5.3.G1",
+              "text": "Students can select and use the target grammatical elements of the current content about personal life with basic body parts and physical features clothes daily routines and activities accurately authentically spontaneously and naturally and use it…"
+            },
+            {
+              "code": "ENG.5.3.L2",
+              "text": "Students can bring information about the current content on personal life with basic body parts and physical features clothes daily routines and activities together through significant details and main components while listeningwatching it. READING"
+            },
+            {
+              "code": "ENG.5.3.R2",
+              "text": "Students can bring information about the current content on personal life with basic body parts and physical features clothes daily routines and activities through skimming looking quickly at the audio-visual elements and reading the content very…"
+            },
+            {
+              "code": "ENG.5.3.W2",
+              "text": "Students can understand the modelexample for the writing task about the current content on personal life with basic body parts and physical features clothes daily routines and activities. SPEAKING"
+            },
+            {
+              "code": "ENG.5.3.S2",
+              "text": "Students can use the modelexample for producing verbal content about the current content on personal life with basic body parts and physical features clothes daily routines and activities. PRONUNCIATION"
+            },
+            {
+              "code": "ENG.5.3.P1",
+              "text": "Students can select and use the target phonological elements of the current content about personal life with basic body parts and physical features clothes daily routines and activities accurately authentically and naturally through spontaneous…"
+            },
+            {
+              "code": "ENG.5.3.L3",
+              "text": "Students can make meaning ofderive meaning from the current content on personal life with basic body parts and physical features clothes daily routines and activities through significant details by listeningwatching it carefully."
+            },
+            {
+              "code": "ENG.5.3.L4",
+              "text": "Students can convey their knowledge experience thoughts and feelings examined carefully about the whole listeningwatching-comprehension process in relation to the current content on personal life with basic body parts and physical features clothes…"
+            },
+            {
+              "code": "ENG.5.3.R3",
+              "text": "Students can make meaning of derive meaning from the current content about personal life with basic body parts and physical features clothes daily routines and activities by reading it carefully. WRITING"
+            },
+            {
+              "code": "ENG.5.3.W3",
+              "text": "Students can organise a content for the assigned writing task on the current content personal life with basic body parts and physical features clothes daily routines and activities based on the modelexample provided. SPEAKING"
+            },
+            {
+              "code": "ENG.5.3.S3",
+              "text": "Students can organise a new verbal content on personal life with basic body parts and physical features clothes daily routines and activities by speaking accurately efficiently and authentically. READING"
+            },
+            {
+              "code": "ENG.5.3.R4",
+              "text": "Students can convey their knowledge experiences thoughts and feelings related to the reading-comprehension process about the current content personal life with basic body parts and physical features clothes daily routines and activities in relation…"
+            },
+            {
+              "code": "ENG.5.3.W4",
+              "text": "Students can individually constructform content for the assigned writing task on the current content personal life with basic body parts and physical features clothes daily routines and activities."
+            },
+            {
+              "code": "ENG.5.3.W5",
+              "text": "Students can reorganise reconstruct and use information in the new written tasks about the personal life with basic body parts and physical features clothes daily routines and activities to communicate with other people. SPEAKING"
+            },
+            {
+              "code": "ENG.5.3.S4",
+              "text": "Students can construct a new verbal content on personal life with basic body parts and physical features clothes daily routines and activities by speaking accurately efficiently and authentically. WRITING"
+            },
+            {
+              "code": "ENG.5.3.W6",
+              "text": "Students can reflect on their knowledge experiences thoughts and feelings related to the writing-expression process about the current content personal life with basic body parts and physical features clothes daily routines and activities in relation…"
+            },
+            {
+              "code": "ENG.5.3.S5",
+              "text": "Students can reorganise reconstruct and use information about the personal life with basic body parts and physical features clothes daily routines and activities to communicate with other people."
+            },
+            {
+              "code": "ENG.5.3.S6",
+              "text": "Students are expected to be able to convey their knowledge, experiences, thoughts, and feelings related to the speaking-expression process about the current content, “personal life with basic body parts and physical features; clothes; daily routines…"
+            }
+          ]
+        },
+        {
+          "id": "g5-ingilizce-unite-4",
+          "name": "4. Ünite — Family Life",
+          "outcomes": [
+            {
+              "code": "ENG.5.4.L1",
+              "text": "Students can get ready for the listeningwatching-comprehension process for the current content on family life with family members routines family members hobbies and activities carefully. READING"
+            },
+            {
+              "code": "ENG.5.4.R1",
+              "text": "Students can get ready for the writing-comprehension process about the current content on family life with family members routines family members hobbies and activities. WRITING"
+            },
+            {
+              "code": "ENG.5.4.W1",
+              "text": "Students can get ready for the writing-expression process about the current content on family life with family members routines family members hobbies and activities. SPEAKING"
+            },
+            {
+              "code": "ENG.5.4.S1",
+              "text": "Students can get ready for speaking-expression process about the current content on family life with family members routines family members hobbies and activities. VOCABULARY"
+            },
+            {
+              "code": "ENG.5.4.V1",
+              "text": "Students can select and use the target vocabulary of the current content about family life with family members routines family members hobbies and activities accurately authentically spontaneously and naturally and use it appropriately and…"
+            },
+            {
+              "code": "ENG.5.4.G1",
+              "text": "S tudents can select and use the target grammatical elements of the current content about family life with family members routines family members hobbies and activities accurately authentically spontaneously and naturally and use it appropriately…"
+            },
+            {
+              "code": "ENG.5.4.L2",
+              "text": "Students can bring information about the current content on family life with family members routines family members hobbies and activities together through significant details and main components while listeningwatching it. READING"
+            },
+            {
+              "code": "ENG.5.4.R2",
+              "text": "Students can bring information about the current content on family life with family members routines family members hobbies and activities through skimming looking quickly at the audio-visual elements and reading the content very quickly. WRITING"
+            },
+            {
+              "code": "ENG.5.4.W2",
+              "text": "Students can understand the modelexample for the writing task about the current content on family life with family members routines family members hobbies and activities. SPEAKING"
+            },
+            {
+              "code": "ENG.5.4.S2",
+              "text": "Students can use the modelexample for producing verbal content about the current content on family life with family members routines family members hobbies and activities. PRONUNCIATION"
+            },
+            {
+              "code": "ENG.5.4.P1",
+              "text": "Students can select and use the target phonological elements of the current content about family life with family members routines family members hobbies and activities accurately authentically and naturally through spontaneous decision-making…"
+            },
+            {
+              "code": "ENG.5.4.L3",
+              "text": "Students can make meaning ofderive meaning from the current content on family life with family members routines family members hobbies and activities through significant details by listeningwatching it carefully."
+            },
+            {
+              "code": "ENG.5.4.L4",
+              "text": "Students can convey their knowledge experience thoughts and feelings examined carefully about the whole listeningwatching-comprehension process in relation to the current content on family life with family members routines family members hobbies and…"
+            },
+            {
+              "code": "ENG.5.4.R3",
+              "text": "S tudents can make meaning of derive meaning from the current content about family life with family members routines family members hobbies and activities by reading it carefully. WRITING"
+            },
+            {
+              "code": "ENG.5.4.W3",
+              "text": "S tudents can organise a content for the assigned writing task on the current content family life with family members routines family members hobbies and activities based on the modelexample provided. SPEAKING"
+            },
+            {
+              "code": "ENG.5.4.S3",
+              "text": "Students can organise a new verbal content on family life with family members routines family members hobbies and activities by speaking accurately efficiently and authentically. READING"
+            },
+            {
+              "code": "ENG.5.4.R4",
+              "text": "Students can convey their knowledge experiences thoughts and feelings related to the reading-comprehension process about the current content family life with family members routines family members hobbies and activities in relation to themselves or…"
+            },
+            {
+              "code": "ENG.5.4.W4",
+              "text": "Students can individually constructform content for the assigned writing task on the current content family life with family members routines family members hobbies and activities. https://www.ingilizceciyiz.com/"
+            },
+            {
+              "code": "ENG.5.4.W5",
+              "text": "Students can reorganise reconstruct and use information in the new written tasks about the family life with family members routines family members hobbies and activities to communicate with other people. SPEAKING"
+            },
+            {
+              "code": "ENG.5.4.S4",
+              "text": "Students can construct a new verbal content on family life with family members routines family members hobbies and activities by speaking accurately efficiently and authentically. WRITING"
+            },
+            {
+              "code": "ENG.5.4.W6",
+              "text": "Students can reflect on their knowledge experiences thoughts and feelings related to the writing-expression process about the current content family life with family members routines family members hobbies and activities in relation to themselves or…"
+            },
+            {
+              "code": "ENG.5.4.S5",
+              "text": "Students can reorganise reconstruct and use information about the family life with family members routines family members hobbies and activities to communicate with other people."
+            },
+            {
+              "code": "ENG.5.4.S6",
+              "text": "Students are expected to be able to convey their knowledge, experiences, thoughts, and feelings related to the speaking-expression process about the current content, “family life with family members’ routines; family members’ hobbies and activities”…"
+            }
+          ]
+        },
+        {
+          "id": "g5-ingilizce-unite-5",
+          "name": "5. Ünite — Life In The Neighbourhood City",
+          "outcomes": [
+            {
+              "code": "ENG.5.5.L1",
+              "text": "Students are expected to be able to get ready for the listening (to)/watching-comprehension process for the current content on “life in the neighborhood and city with places for recreation and attractions in the neighborhood and city ; different…"
+            },
+            {
+              "code": "ENG.5.5.V1",
+              "text": "Students are expected to be able to select and use the target vocabulary of the current content about “life in the neighborhood and city with places for recreation and attractions in the neighborhood and city ; different types of houses” accurately,…"
+            },
+            {
+              "code": "ENG.5.5.G1",
+              "text": "Students are expected to be able to select and use the target grammatical elements of the current content about “life in the neighborhood and city with places for recreation and attractions in the neighborhood and city ; different types of houses”…"
+            },
+            {
+              "code": "ENG.5.5.W1",
+              "text": "Students are expected to be able to get ready for the writing-expression process about the current content on “life in the neighborhood and city with places for recreation and attractions in the neighborhood and city ; different types of houses”."
+            },
+            {
+              "code": "ENG.5.5.P1",
+              "text": "Students are expected to be able to select and use the target phonological elements of the current content about “life in the neighborhood and city with places for recreation and attractions in the neighborhood and city ; different types of houses”…"
+            },
+            {
+              "code": "ENG.5.5.R1",
+              "text": "Students are expected to be able to get ready for the reading-comprehension process about the current content on “life in the neighborhood and city with places for recreation and attractions in the neighborhood and city ; different types of houses”."
+            },
+            {
+              "code": "ENG.5.5.L2",
+              "text": "S tudents can bring information about the current content on life in the neighbourhood and city with places for recreation and attractions in the neighbourhood and city different types of houses together through significant details and main…"
+            },
+            {
+              "code": "ENG.5.5.R2",
+              "text": "Students can bring information about the current content on life in the neighbourhood and city with places for recreation and attractions in the neighbourhood and city different types of houses through skimming looking quickly at the audio-visual…"
+            },
+            {
+              "code": "ENG.5.5.W2",
+              "text": "Students can understand the modelexample for the writing task about the current content on life in the neighbourhood and city with places for recreation and attractions in the neighbourhood and city different types of houses. SPEAKING"
+            },
+            {
+              "code": "ENG.5.5.S2",
+              "text": "Students can use the modelexample for producing verbal content about the current content on life in the neighbourhood and city with places for recreation and attractions in the neighbourhood and city different types of houses. PRONUNCIATION"
+            },
+            {
+              "code": "ENG.5.5.L3",
+              "text": "Students can make meaning ofderive meaning from the current content on life in the neighbourhood and city with places for recreation and attractions in the neighbourhood and city different types of houses through significant details by…"
+            },
+            {
+              "code": "ENG.5.5.L4",
+              "text": "Students can convey their knowledge experience thoughts and feelings examined carefully about the whole listeningwatching-comprehension process in relation to the current content on life in the neighbourhood and city with places for recreation and…"
+            },
+            {
+              "code": "ENG.5.5.R3",
+              "text": "S tudents can make meaning of derive meaning from the current content about life in the neighbourhood and city with places for recreation and attractions in the neighbourhood and city different types of houses by reading it carefully. WRITING"
+            },
+            {
+              "code": "ENG.5.5.W3",
+              "text": "S tudents can organise a content for the assigned writing task on the current content life in the neighbourhood and city with places for recreation and attractions in the neighbourhood and city different types of houses based on the modelexample…"
+            },
+            {
+              "code": "ENG.5.5.S3",
+              "text": "Students can organise a new verbal content on life in the neighbourhood and city with places for recreation and attractions in the neighbourhood and city different types of houses by speaking accurately efficiently and authentically. READING"
+            },
+            {
+              "code": "ENG.5.5.R4",
+              "text": "Students can convey their knowledge experiences thoughts and feelings related to the reading-comprehension process about the current content life in the neighbourhood and city with places for recreation and attractions in the neighbourhood and city…"
+            },
+            {
+              "code": "ENG.5.5.W4",
+              "text": "Students can individually constructform content for the assigned writing task on the current content life in the neighbourhood and city with places for recreation and attractions in the neighbourhood and city different types of houses. WRITING"
+            },
+            {
+              "code": "ENG.5.5.W5",
+              "text": "Students can reorganise reconstruct and use information in the new written tasks about the life in the neighbourhood and city with places for recreation and attractions in the neighbourhood and city different types of houses to communicate with…"
+            },
+            {
+              "code": "ENG.5.5.S4",
+              "text": "Students can construct a new verbal content on life in the neighbourhood and city with places for recreation and attractions in the neighbourhood and city different types of houses by speaking accurately efficiently and authentically. WRITING"
+            },
+            {
+              "code": "ENG.5.5.W6",
+              "text": "Students can reflect on their knowledge experiences thoughts and feelings related to the writing-expression process about the current content life in the neighbourhood and city with places for recreation and attractions in the neighbourhood and city…"
+            },
+            {
+              "code": "ENG.5.5.S5",
+              "text": "Students can reorganise reconstruct and use information about the life in the neighbourhood and city with places for recreation and attractions in the neighbourhood and city different types of houses to communicate with other people."
+            },
+            {
+              "code": "ENG.5.5.S6",
+              "text": "Students are expected to be able to convey their knowledge, experiences, thoughts, and feelings related to the speaking-expression process about the current content, “life in the neighborhood and city with places for recreation and attractions in…"
+            }
+          ]
+        },
+        {
+          "id": "g5-ingilizce-unite-6",
+          "name": "6. Ünite — Life In The World",
+          "outcomes": [
+            {
+              "code": "ENG.5.6.L1",
+              "text": "Students can get ready for the listeningwatching-comprehension process for the current content on life in the world with basic food types ordering in a restaurant food events in the city carefully. READING"
+            },
+            {
+              "code": "ENG.5.6.R1",
+              "text": "Students can get ready for the reading-comprehension process about the current content on life in the world with basic food types ordering in a restaurant food events in the city. WRITING"
+            },
+            {
+              "code": "ENG.5.6.W1",
+              "text": "Students can get ready for the writing-expression process about the current content on life in the world with basic food types ordering in a restaurant food events in the city. SPEAKING"
+            },
+            {
+              "code": "ENG.5.6.S1",
+              "text": "Students can get ready for speaking-expression process about the current content on life in the world with basic food types ordering in a restaurant food events in the city. VOCABULARY"
+            },
+            {
+              "code": "ENG.5.6.V1",
+              "text": "Students can select and use the target vocabulary of the current content about life in the world with basic food types ordering in a restaurant food events in the city accurately authentically spontaneously and naturally and use it appropriately and…"
+            },
+            {
+              "code": "ENG.5.6.G1",
+              "text": "Students can select and use the target grammatical elements of the current content about life in the world with basic food types ordering in a restaurant food events in the city accurately authentically spontaneously and naturally and use it…"
+            },
+            {
+              "code": "ENG.5.6.L2",
+              "text": "S tudents can bring information about the current conte t on life in the world with basic food types ordering in a restaurant food events in the city together through significant details and main components while listeningwatching it. READING"
+            },
+            {
+              "code": "ENG.5.6.R2",
+              "text": "Students can bring information about the current content on life in the world with basic food types ordering in a restaurant food events in the city through skimming looking quickly at the audio-visual elements and reading the content very quickly.…"
+            },
+            {
+              "code": "ENG.5.6.W2",
+              "text": "Students can understand the modelexample for the writing task about the current content on life in the world with basic food types ordering in a restaurant food events in the city. SPEAKING"
+            },
+            {
+              "code": "ENG.5.6.S2",
+              "text": "Students can use the modelexample for producing verbal content about the current content on life in the world with basic food types ordering in a restaurant food events in the city. PRONUNCIATION"
+            },
+            {
+              "code": "ENG.5.6.P1",
+              "text": "Students can select and use the target phonological elements of the current content about life in the world with basic food types ordering in a restaurant food events in the city accurately authentically and naturally through spontaneous…"
+            },
+            {
+              "code": "ENG.5.6.L3",
+              "text": "Students can make meaning ofderive meaning from the current content on life in the world with basic food types ordering in a restaurant food events in the city through significant details by listeningwatching it carefully.…"
+            },
+            {
+              "code": "ENG.5.6.L4",
+              "text": "Students can convey their knowledge experience thoughts and feelings examined carefully about the whole listeningwatching-comprehension process in relation to the current content on life in the world with basic food types ordering in a restaurant…"
+            },
+            {
+              "code": "ENG.5.6.R3",
+              "text": "S tudents can make meaning of derive meaning from the current content about life in the world with basic food types ordering in a restaurant food events in the city by reading it carefully. WRITING"
+            },
+            {
+              "code": "ENG.5.6.W3",
+              "text": "S tudents can organise a content for the assigned writing task on the current content life in the world with basic food types ordering in a restaurant food events in the city based on the modelexample provided. SPEAKING"
+            },
+            {
+              "code": "ENG.5.6.S3",
+              "text": "Students can organise a new verbal content on life in the world with basic food types ordering in a restaurant food events in the city by speaking accurately efficiently and authentically. READING"
+            },
+            {
+              "code": "ENG.5.6.R4",
+              "text": "Students can convey their knowledge experiences thoughts and feelings related to the reading-comprehension process about the current content life in the world with basic food types ordering in a restaurant food events in the city in relation to…"
+            },
+            {
+              "code": "ENG.5.6.W4",
+              "text": "Students can individually constructform content for the assigned writing task on the current content life in the world with basic food types ordering in a restaurant food events in the city. WRITING"
+            },
+            {
+              "code": "ENG.5.6.W5",
+              "text": "Students can reorganise reconstruct and use information in the new written tasks about the life in the world with basic food types ordering in a restaurant food events in the city to communicate with other people. SPEAKING"
+            },
+            {
+              "code": "ENG.5.6.S4",
+              "text": "Students can construct a new verbal content on life in the world with basic food types ordering in a restaurant food events in the city by speaking accurately efficiently and authentically. WRITING"
+            },
+            {
+              "code": "ENG.5.6.W6",
+              "text": "Students can reflect on their knowledge experiences thoughts and feelings related to the writing-expression process about the current content life in the world with basic food types ordering in a restaurant food events in the city in relation to…"
+            },
+            {
+              "code": "ENG.5.6.S5",
+              "text": "Students can reorganise reconstruct and use information about the life in the world with basic food types ordering in a restaurant food events in the city to communicate with other people."
+            }
+          ]
+        },
+        {
+          "id": "g5-ingilizce-unite-7",
+          "name": "7. Ünite — Life In Nature",
+          "outcomes": [
+            {
+              "code": "ENG.5.7.L1",
+              "text": "Students can get ready for the listeningwatching-comprehension process for the current content on life in nature with types of animals in nature wild animals in nature their habitats carefully. READING"
+            },
+            {
+              "code": "ENG.5.7.R1",
+              "text": "Students can get ready for the reading-comprehension process about the current content on life in nature with types of animals in nature wild animals in nature their habitats. WRITING"
+            },
+            {
+              "code": "ENG.5.7.W1",
+              "text": "Students can get ready for the writing-expression process about the current content on life in nature with types of animals in nature wild animals in nature their habitats. SPEAKING"
+            },
+            {
+              "code": "ENG.5.7.S1",
+              "text": "Students can get ready for speaking-expression process about the current content on life in nature with types of animals in nature wild animals in nature their habitats. VOCABULARY"
+            },
+            {
+              "code": "ENG.5.7.V1",
+              "text": "Students can select and use the target vocabulary of the current content about life in nature with types of animals in nature wild animals in nature their habitats accurately authentically spontaneously and naturally and use it appropriately and…"
+            },
+            {
+              "code": "ENG.5.7.G1",
+              "text": "Students can select and use the target grammatical elements of the current content about life in nature with types of animals in nature wild animals in nature their habitats accurately authentically spontaneously and naturally and use it…"
+            },
+            {
+              "code": "ENG.5.7.L2",
+              "text": "Students can bring information about the current content on life in nature with types of animals in nature wild animals in nature their habitats together through significant details and main components while listeningwatching it. READING"
+            },
+            {
+              "code": "ENG.5.7.R2",
+              "text": "Students can bring information about the current content on life in nature with types of animals in nature wild animals in nature their habitats through skimming looking quickly at the audio-visual elements and reading the content very quickly.…"
+            },
+            {
+              "code": "ENG.5.7.W2",
+              "text": "Students can understand the modelexample for the writing task about the current content on life in nature with types of animals in nature wild animals in nature their habitats. SPEAKING"
+            },
+            {
+              "code": "ENG.5.7.S2",
+              "text": "Students can use the modelexample for producing verbal content about the current content on life in nature with types of animals in nature wild animals in nature their habitats. PRONUNCIATION"
+            },
+            {
+              "code": "ENG.5.7.P1",
+              "text": "Students can select and use the target phonological elements of the current content about life in nature with types of animals in nature wild animals in nature their habitats accurately authentically and naturally through spontaneous decision-making…"
+            },
+            {
+              "code": "ENG.5.7.L3",
+              "text": "Students can make meaning ofderive meaning from the current content on life in nature with types of animals in nature wild animals in nature their habitats through significant details by listeningwatching it carefully. https://www.ingilizceciyiz.com/"
+            },
+            {
+              "code": "ENG.5.7.L4",
+              "text": "Students can convey their knowledge experience thoughts and feelings examined carefully about the whole listeningwatching-comprehension process in relation to the current content on life in nature with types of animals in nature wild animals in…"
+            },
+            {
+              "code": "ENG.5.7.R3",
+              "text": "Students can make meaning of derive meaning from the current content about life in nature with types of animals in nature wild animals in nature their habitats by reading it carefully. WRITING"
+            },
+            {
+              "code": "ENG.5.7.W3",
+              "text": "S tudents can organise a content for the assigned writing task on the current content life in nature with types of animals in nature wild animals in nature their habitats based on the modelexample provided. SPEAKING"
+            },
+            {
+              "code": "ENG.5.7.S3",
+              "text": "Students can organise a new verbal content on life in nature with types of animals in nature wild animals in nature their habitats by speaking accurately efficiently and authentically. READING"
+            },
+            {
+              "code": "ENG.5.7.R4",
+              "text": "Students can convey their knowledge experiences thoughts and feelings related to the reading-comprehension process about the current content life in nature with types of animals in nature wild animals in nature their habitats in relation to…"
+            },
+            {
+              "code": "ENG.5.7.W4",
+              "text": "Students can individually constructform content for the assigned writing task on the current content life in nature with types of animals in nature wild animals in nature their habitats."
+            },
+            {
+              "code": "ENG.5.7.W5",
+              "text": "Students can reorganise reconstruct and use information in the new written tasks about the life in nature with types of animals in nature wild animals in nature their habitats to communicate with other people. SPEAKING"
+            },
+            {
+              "code": "ENG.5.7.S4",
+              "text": "Students can construct a new verbal content on life in nature with types of animals in nature wild animals in nature their habitats by speaking accurately efficiently and authentically. WRITING"
+            },
+            {
+              "code": "ENG.5.7.W6",
+              "text": "Students can reflect on their knowledge experiences thoughts and feelings related to the writing-expression process about the current content life in nature with types of animals in nature wild animals in nature their habitats in relation to…"
+            },
+            {
+              "code": "ENG.5.7.S5",
+              "text": "Students can reorganise reconstruct and use information about the life in nature with types of animals in nature wild animals in nature their habitats to communicate with other people. WRITING"
+            }
+          ]
+        }
+      ],
+      "mappingStatus": "Yıllık planlardan aktarılmıştır; resmî güncellik doğrulanmadı."
+    },
+    {
+      "id": "din-kulturu",
+      "name": "Din Kültürü ve Ahlak Bilgisi",
+      "themes": [
+        {
+          "id": "g5-din-kulturu-unite-1",
+          "name": "1. Ünite — Allah İnancı",
+          "outcomes": [
+            {
+              "code": "DKAB.5.1.1",
+              "text": "Evrendeki mükemmel düzene ilişkin akıl yürütebilme"
+            },
+            {
+              "code": "DKAB.5.1.2",
+              "text": "Evrendeki mükemmel düzenden hareketle Allah’ın (cc) varlığı ve birliğini müşahede edebilme"
+            },
+            {
+              "code": "DKAB.5.1.3",
+              "text": "Allah’ın (cc) güzel isimlerini bağlamına uygun kullanabilme"
+            },
+            {
+              "code": "DKAB.5.1.4",
+              "text": "İhlas suresini ve bu surenin anlamını okuyarak yorumlayabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-din-kulturu-unite-2",
+          "name": "2. Ünite — Namaz",
+          "outcomes": [
+            {
+              "code": "DKAB.5.2.1",
+              "text": "Namaz ibadetini özetleyebilme"
+            },
+            {
+              "code": "DKAB.5.2.2",
+              "text": "Namazın kılınışını gözlemleyebilme"
+            },
+            {
+              "code": "DKAB.5.2.3",
+              "text": "Namazın insana kazandırdıkları konusunda analitik düşünebilme"
+            },
+            {
+              "code": "DKAB.5.2.4",
+              "text": "Tahiyyat duasını ve bu duanın anlamını okuyarak yorumlayabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-din-kulturu-unite-3",
+          "name": "3. Ünite — Kur’an-ı Kerim",
+          "outcomes": [
+            {
+              "code": "DKAB.5.3.1",
+              "text": "Kur’an-ı Kerim’in iç düzenini çözümleyebilme"
+            },
+            {
+              "code": "DKAB.5.3.2",
+              "text": "Kur’an-ı Kerim’in temel özellikleri hakkında bilgi toplayabilme"
+            },
+            {
+              "code": "DKAB.5.3.3",
+              "text": "Kur’an-ı Kerim’in ana konuları hakkında ayet meallerine başvurabilme"
+            },
+            {
+              "code": "DKAB.5.3.4",
+              "text": "Kevser suresini ve bu surenin anlamını okuyarak yorumlayabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-din-kulturu-unite-4",
+          "name": "4. Ünite — Peygamber Kıssaları",
+          "outcomes": [
+            {
+              "code": "DKAB.5.4.1",
+              "text": "Peygamberlikle ilgili naklî delilleri kullanabilme"
+            },
+            {
+              "code": "DKAB.5.4.2",
+              "text": "Peygamber kıssalarında verilen öğütleri sentezleyebilme"
+            },
+            {
+              "code": "DKAB.5.4.3",
+              "text": "Kureyş suresini ve bu surenin anlamını okuyarak yorumlayabilme"
+            }
+          ]
+        },
+        {
+          "id": "g5-din-kulturu-unite-5",
+          "name": "5. Ünite — Mimarimizdeki Dinî Motifler",
+          "outcomes": [
+            {
+              "code": "DKAB.5.5.1",
+              "text": "Dinin mimarimize etkisini çözümleyebilme"
+            },
+            {
+              "code": "DKAB.5.5.2",
+              "text": "Camilerin bölümlerini sınıflandırabilme"
+            },
+            {
+              "code": "DKAB.5.5.3",
+              "text": "Kültürümüzde yer alan cami örneklerinin özellikleriyle ilgili mukayese yapabilme"
+            }
+          ]
+        }
+      ],
+      "mappingStatus": "Yıllık planlardan aktarılmıştır; resmî güncellik doğrulanmadı."
+    }
+  ]
+}

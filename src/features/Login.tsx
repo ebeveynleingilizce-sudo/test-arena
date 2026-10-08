@@ -1,7 +1,7 @@
 import { InstallApp } from '../ui/InstallApp';
 import { useState, type FormEvent } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signInWithCustomToken } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, call, persistenceReady } from '../data/firebase';
 import { useSession } from '../app/Session';
 import { AuthLayout, Brand, Star, Icon, errorMessage } from '../ui/components';
@@ -29,7 +29,7 @@ export function StudentLogin() {
   if (role) return <Navigate to={role === 'student' ? '/ogrenci' : '/ogretmen'} replace/>;
   async function login(event: FormEvent) {
     event.preventDefault(); setBusy(true); setError('');
-    try { await persistenceReady; const result = await call<{ token: string }>('studentLogin', { code }); await signInWithCustomToken(auth, result.token); }
+    try { await persistenceReady; await call('studentLogin', { code }); }
     catch (e) { setError(errorMessage(e)); } finally { setBusy(false); }
   }
   return <AuthLayout eyebrow="ARENA SENİ BEKLİYOR" title="Hazır mısın?"><p>Öğretmeninin verdiği altı karakterli kısa kodla giriş yap.</p><form onSubmit={login}><label>Öğrenci kısa kodu<input className="code-input" name="code" value={code} onChange={e => setCode(e.target.value.toUpperCase())} maxLength={6} minLength={6} autoCapitalize="characters" autoComplete="off" spellCheck={false} placeholder="K7M4Q9" required/></label><p role="alert" className="error-message">{error}</p><button className="button primary" disabled={busy}>{busy ? 'Kod doğrulanıyor…' : 'Giriş yap'} <Icon kind="arrow"/></button></form><p className="code-help">Kodunu bilmiyor musun?<br/>Öğretmeninden kısa kodunu iste.</p></AuthLayout>;

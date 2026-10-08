@@ -10,6 +10,10 @@ test-results/
 playwright-report/
 .env*
 !.env.example
+# Prepared question/answer sources stay local; only validated public DTOs are deployed.
+data/questions/**
+!data/questions/.gitkeep
+!data/questions/SCHEMA.json
 functions/.secret.local
 tools/runtime/
 *.log

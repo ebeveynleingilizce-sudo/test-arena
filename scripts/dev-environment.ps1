@@ -121,7 +121,7 @@ try {
         if (-not $npm) { throw 'npm.cmd bulunamadi. Node.js/npm kurulumunu kontrol edin.' }
         if (-not (Test-Path -LiteralPath (Join-Path $project 'node_modules\.bin\firebase.cmd'))) { throw 'Proje bagimliliklari eksik: once npm.cmd install calistirin.' }
         $package = Get-Content -LiteralPath (Join-Path $project 'package.json') -Raw | ConvertFrom-Json
-        if ($package.scripts.emulators -ne 'npm run build --workspace functions && firebase emulators:start --project demo-test-arena --only auth,firestore,functions' -or
+        if ($package.scripts.emulators -ne 'firebase emulators:start --project demo-test-arena --only auth,firestore' -or
             $package.scripts.dev -ne 'vite --host 127.0.0.1') { throw 'Proje dev/emulators scriptleri degisti. Launcher kontrol edilmeli; servis baslatilmadi.' }
         Write-Host ('Java 21+ hazir: ' + $java)
         if ($ValidateOnly) { Write-Host 'Kontroller gecti; servis veya tarayici baslatilmadi.'; exit 0 }
@@ -156,7 +156,7 @@ try {
         Write-Host 'Yalniz bu launcher tarafindan baslatilan surecler kapatildi. Onceden acik servisler korunur.'
         exit 0
     }
-    $ports = @(8080,9099,5001)
+    $ports = @(8080,9099)
     $busy = @($ports | Where-Object { Listening $_ })
     if ($busy.Count -gt 0 -and $busy.Count -lt $ports.Count) { throw ('Emulator portlarinin bir kismi kullanimda: ' + ($busy -join ', ') + '. Yeni instance baslatilmadi; mevcut terminali kontrol edin.') }
     $reuseFirebase = $busy.Count -eq $ports.Count
@@ -178,14 +178,17 @@ try {
         if ($record -and (Owned-Process $record)) { Write-Host ('Mevcut launcher penceresinin hazir olmasi bekleniyor: ' + $name) }
         else { Launch-Service $name }
     }
-    Wait-Ready @(8080,9099,5001,5173) 120
+    Wait-Ready @(8080,9099,5173) 120
     # Load navigation, then import only prepared banks placed in data/questions.
     $env:GCLOUD_PROJECT = 'demo-test-arena'
     $env:FIRESTORE_EMULATOR_HOST = '127.0.0.1:8080'
+    $env:FIREBASE_AUTH_EMULATOR_HOST = '127.0.0.1:9099'
     & npm.cmd run seed:curriculum -- --navigation-only
     if ($LASTEXITCODE -ne 0) { throw 'Mevcut mufredat yuklenemedi. seed:curriculum logunu kontrol edin.' }
     & node.exe (Join-Path $project 'scripts\import-question-folder.mjs')
     if ($LASTEXITCODE -ne 0) { throw 'Local soru importer baslatilamadi; logu kontrol edin.' }
+    & node.exe (Join-Path $project 'scripts\migrate-spark-local.mjs')
+    if ($LASTEXITCODE -ne 0) { throw 'Spark local hesap gecisi tamamlanamadi; veri yedegi korunuyor.' }
     $page = Invoke-WebRequest 'http://127.0.0.1:5173/ogrenci-giris' -UseBasicParsing -TimeoutSec 5
     if ($page.StatusCode -ne 200) { throw 'Vite ogrenci sayfasi hazir degil.' }
     Write-Host 'Hazir: http://127.0.0.1:5173/ogrenci-giris'

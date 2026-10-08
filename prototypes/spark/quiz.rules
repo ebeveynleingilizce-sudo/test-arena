@@ -1,0 +1,155 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Separate full-quiz experiment; no per-question pre-completion award route.
+    function teacher(t) { return request.auth != null && request.auth.uid == t
+      && get(/databases/$(database)/documents/roles/$(t)).data.role == 'teacher'; }
+    function pupil(t,s) {
+      let b = get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data;
+      let p = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data;
+      return request.auth != null && b.teacherUid == t && b.studentId == s
+        && p.status == 'active' && b.version == p.credentialVersion;
+    }
+    function ownClass(t,c) {
+      let b = get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data;
+      return pupil(t,b.studentId)
+        && get(/databases/$(database)/documents/teachers/$(t)/students/$(b.studentId)).data.classId == c;
+    }
+    function gradeAllowed(t,s,g) {
+      let p = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data;
+      return g == p.gradeLevel || (p.gradeLevel > 2 && g == p.gradeLevel - 1);
+    }
+    function session(t,s,id) {
+      return get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)).data;
+    }
+    function template(id) { return get(/databases/$(database)/documents/quizTemplates/$(id)).data; }
+    function knownQuestion(t,s,id,q) {
+      let test = session(t,s,id);
+      let pack = template(test.templateId);
+      return test.status == 'active' && q in pack.questionIds && gradeAllowed(t,s,pack.gradeLevel);
+    }
+    function grading(t,s,id,q) {
+      // An immutable committed submission must predate any result probe.
+      let answer = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)/submissions/$(q)).data;
+      let test = session(t,s,id);
+      let key = get(/databases/$(database)/documents/privateQuizKeys/$(test.templateId)/answers/$(q)).data;
+      let d = request.resource.data;
+      return d.skipped == (answer.selectedChoiceId == '')
+        && d.isCorrect == (answer.selectedChoiceId != '' && answer.selectedChoiceId == key.correctOptionId);
+    }
+    function newAward(t,s,q) {
+      let a = getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/awardedQuestions/$(q)).data;
+      return !exists(/databases/$(database)/documents/teachers/$(t)/students/$(s)/awardedQuestions/$(q))
+        && a.xp == 1 && a.awardedAt == request.time;
+    }
+    function inWeek(w) {
+      let p = get(/databases/$(database)/documents/arenaWeeks/$(w)).data;
+      return request.time >= p.startsAt && request.time < p.endsAt;
+    }
+    function completedInWeek(t,s,id,w) {
+      let p = get(/databases/$(database)/documents/arenaWeeks/$(w)).data;
+      let completedAt = session(t,s,id).completedAt;
+      return completedAt >= p.startsAt && completedAt < p.endsAt;
+    }
+    match /roles/{uid} { allow get: if request.auth != null && request.auth.uid == uid; }
+    match /studentBindings/{uid} { allow get: if request.auth != null && request.auth.uid == uid; }
+    match /quizTemplates/{id} {
+      allow get: if request.auth != null && (get(/databases/$(database)/documents/roles/$(request.auth.uid)).data.role == 'teacher'
+        || (pupil(get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.teacherUid,
+                  get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.studentId)
+          && gradeAllowed(get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.teacherUid,
+                          get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.studentId,resource.data.gradeLevel)));
+    }
+    match /questions/{q} { allow get: if request.auth != null && (get(/databases/$(database)/documents/roles/$(request.auth.uid)).data.role == 'teacher'
+      || (pupil(get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.teacherUid,
+                get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.studentId)
+        && gradeAllowed(get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.teacherUid,
+                        get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.studentId,resource.data.gradeLevel))); }
+    match /arenaWeeks/{w} { allow read: if request.auth != null; }
+    match /teachers/{t}/students/{s} {
+      allow get: if teacher(t) || pupil(t,s);
+      match /quizzes/{id} {
+        allow read: if teacher(t) || pupil(t,s);
+        allow create: if pupil(t,s)
+          && request.resource.data.keys().hasOnly(['templateId','classId','resolved','correct','wrong','blank','lastQuestionId','status','startedAt','completedAt'])
+          && template(request.resource.data.templateId).questionIds.size() == 10
+          && gradeAllowed(t,s,template(request.resource.data.templateId).gradeLevel)
+          && request.resource.data.classId == get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId
+          && request.resource.data.resolved == 0 && request.resource.data.correct == 0
+          && request.resource.data.wrong == 0 && request.resource.data.blank == 0
+          && request.resource.data.lastQuestionId == '' && request.resource.data.status == 'active'
+          && request.resource.data.startedAt == request.time && request.resource.data.completedAt == null;
+        allow update: if pupil(t,s) && resource.data.status == 'active'
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['resolved','correct','wrong','blank','lastQuestionId','status','completedAt'])
+          && request.resource.data.lastQuestionId is string
+          && !exists(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)/results/$(request.resource.data.lastQuestionId))
+          && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)/results/$(request.resource.data.lastQuestionId)).data.gradedAt == request.time
+          && request.resource.data.resolved == resource.data.resolved + 1 && request.resource.data.resolved <= 10
+          && request.resource.data.correct == resource.data.correct + (getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)/results/$(request.resource.data.lastQuestionId)).data.isCorrect ? 1 : 0)
+          && request.resource.data.blank == resource.data.blank + (getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)/results/$(request.resource.data.lastQuestionId)).data.skipped ? 1 : 0)
+          && request.resource.data.wrong == request.resource.data.resolved - request.resource.data.correct - request.resource.data.blank
+          && request.resource.data.status == (request.resource.data.resolved == 10 ? 'completed' : 'active')
+          && request.resource.data.completedAt == (request.resource.data.resolved == 10 ? request.time : null);
+        match /submissions/{q} {
+          allow read: if teacher(t) || pupil(t,s);
+          allow create: if pupil(t,s) && knownQuestion(t,s,id,q)
+            && request.resource.data.keys().hasOnly(['selectedChoiceId','submittedAt'])
+            && request.resource.data.submittedAt == request.time
+            && (request.resource.data.selectedChoiceId == '' || request.resource.data.selectedChoiceId in
+                get(/databases/$(database)/documents/questions/$(q)).data.choiceIds);
+        }
+        match /results/{q} {
+          allow read: if teacher(t) || pupil(t,s);
+          allow create: if pupil(t,s) && knownQuestion(t,s,id,q)
+            && request.resource.data.keys().hasOnly(['isCorrect','skipped','gradedAt'])
+            && request.resource.data.isCorrect is bool && request.resource.data.skipped is bool
+            && request.resource.data.gradedAt == request.time && grading(t,s,id,q)
+            && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)).data.lastQuestionId == q
+            && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)).data.resolved == session(t,s,id).resolved + 1;
+        }
+      }
+      match /awardedQuestions/{q} {
+        allow read: if teacher(t) || pupil(t,s);
+        allow create: if pupil(t,s)
+          && request.resource.data.keys().hasOnly(['testSessionId','weekKey','xp','awardedAt'])
+          && request.resource.data.xp == 1 && request.resource.data.awardedAt == request.time
+          && completedInWeek(t,s,request.resource.data.testSessionId,request.resource.data.weekKey)
+          && session(t,s,request.resource.data.testSessionId).status == 'completed'
+          && gradeAllowed(t,s,template(session(t,s,request.resource.data.testSessionId).templateId).gradeLevel)
+          && get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(request.resource.data.testSessionId)/results/$(q)).data.isCorrect == true
+          && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.totalXP ==
+              get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.totalXP + 1
+          && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.lastAwardQuestionId == q
+          && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/academicWeeks/$(request.resource.data.weekKey)).data.lastAwardQuestionId == q
+          && getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId)/leaderboard/$(s)).data.lastAwardQuestionId == q;
+      }
+      match /learning/{id} {
+        allow read: if teacher(t) || pupil(t,s);
+        allow update: if id == 'summary' && pupil(t,s)
+          && request.resource.data.keys().hasOnly(['totalXP','academicXP','lastAwardQuestionId'])
+          && newAward(t,s,request.resource.data.lastAwardQuestionId)
+          && request.resource.data.totalXP == resource.data.totalXP + 1 && request.resource.data.academicXP == request.resource.data.totalXP;
+      }
+      match /academicWeeks/{w} {
+        allow read: if teacher(t) || pupil(t,s);
+        allow create, update: if pupil(t,s)
+          && request.resource.data.keys().hasOnly(['academicXP','lastAwardQuestionId'])
+          && newAward(t,s,request.resource.data.lastAwardQuestionId)
+          && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/awardedQuestions/$(request.resource.data.lastAwardQuestionId)).data.weekKey == w
+          && request.resource.data.academicXP == (exists(/databases/$(database)/documents/teachers/$(t)/students/$(s)/academicWeeks/$(w)) ? resource.data.academicXP + 1 : 1);
+      }
+    }
+    match /teachers/{t}/classes/{c}/leaderboard/{s} {
+      allow read: if teacher(t) || ownClass(t,c);
+      allow update: if pupil(t,s) && ownClass(t,c)
+        && request.resource.data.keys().hasOnly(['studentId','classId','academicXP','weeklyAcademicXP','weekKey','lastAwardQuestionId'])
+        && request.resource.data.studentId == s && request.resource.data.classId == c
+        && newAward(t,s,request.resource.data.lastAwardQuestionId)
+        && inWeek(request.resource.data.weekKey)
+        && request.resource.data.academicXP == getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.totalXP
+        && request.resource.data.weeklyAcademicXP == (existsAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/academicWeeks/$(request.resource.data.weekKey))
+          ? getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/academicWeeks/$(request.resource.data.weekKey)).data.academicXP : 0);
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

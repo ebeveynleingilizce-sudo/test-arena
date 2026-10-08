@@ -1,0 +1,69 @@
+    // Additive experiment only: combined with quiz.rules by the isolated tests.
+    function ticket(code) { return get(/databases/$(database)/documents/codeTickets/$(code)).data; }
+    function proof(uid) { return get(/databases/$(database)/documents/enrollmentProofs/$(uid)).data; }
+    function activation(t,s,uid,v) {
+      let p = proof(uid);
+      let b = getAfter(/databases/$(database)/documents/studentBindings/$(uid)).data;
+      return p.teacherUid == t && p.studentId == s && p.version == v
+        && b.teacherUid == t && b.studentId == s && b.version == v;
+    }
+    match /teachers/{t}/classes/{c} {
+      allow get: if teacher(t);
+      allow create: if teacher(t) && request.resource.data.keys().hasOnly(['className','defaultGradeLevel'])
+        && request.resource.data.className is string && request.resource.data.defaultGradeLevel >= 2
+        && request.resource.data.defaultGradeLevel <= 12;
+    }
+    match /teachers/{t}/students/{s} {
+      allow create: if teacher(t)
+        && request.resource.data.keys().hasOnly(['teacherUid','studentId','classId','gradeLevel','status','credentialVersion'])
+        && request.resource.data.teacherUid == t && request.resource.data.studentId == s
+        && exists(/databases/$(database)/documents/teachers/$(t)/classes/$(request.resource.data.classId))
+        && request.resource.data.gradeLevel >= 2 && request.resource.data.gradeLevel <= 12
+        && request.resource.data.status == 'pending' && request.resource.data.credentialVersion == 0;
+      allow update: if teacher(t)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','credentialVersion','authUid'])
+        && request.resource.data.status == 'active'
+        && request.resource.data.credentialVersion == resource.data.credentialVersion + 1
+        && activation(t,s,request.resource.data.authUid,request.resource.data.credentialVersion);
+      match /learning/{id} {
+        allow create: if id == 'summary' && teacher(t)
+          && get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.status == 'pending'
+          && request.resource.data == {'totalXP':0,'academicXP':0,'lastAwardQuestionId':''};
+      }
+    }
+    match /teachers/{t}/classes/{c}/leaderboard/{s} {
+      allow create: if teacher(t)
+        && get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.status == 'pending'
+        && get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId == c
+        && request.resource.data == {'studentId':s,'classId':c,'academicXP':0,'weeklyAcademicXP':0,'weekKey':'','lastAwardQuestionId':''};
+    }
+    // Permanent reservations: changed email/deleted Auth user cannot recycle a code.
+    match /codeTickets/{code} {
+      allow get: if teacher(resource.data.teacherUid);
+      allow create: if code.matches('^[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{6}$')
+        && teacher(request.resource.data.teacherUid)
+        && request.resource.data.keys().hasOnly(['teacherUid','studentId','version','email'])
+        && request.resource.data.email == code.lower() + '@students.testarena.invalid'
+        && request.resource.data.version == get(/databases/$(database)/documents/teachers/$(request.resource.data.teacherUid)/students/$(request.resource.data.studentId)).data.credentialVersion + 1;
+    }
+    match /enrollmentProofs/{uid} {
+      allow get: if request.auth != null && (request.auth.uid == uid || teacher(resource.data.teacherUid));
+      allow create: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['teacherUid','studentId','version','code'])
+        && ticket(request.resource.data.code).teacherUid == request.resource.data.teacherUid
+        && ticket(request.resource.data.code).studentId == request.resource.data.studentId
+        && ticket(request.resource.data.code).version == request.resource.data.version
+        && request.auth.token.email == ticket(request.resource.data.code).email;
+    }
+    match /studentBindings/{uid} {
+      allow create: if teacher(request.resource.data.teacherUid)
+        && request.resource.data.keys().hasOnly(['teacherUid','studentId','version'])
+        && proof(uid).teacherUid == request.resource.data.teacherUid
+        && proof(uid).studentId == request.resource.data.studentId && proof(uid).version == request.resource.data.version
+        && getAfter(/databases/$(database)/documents/teachers/$(request.resource.data.teacherUid)/students/$(request.resource.data.studentId)).data.authUid == uid
+        && getAfter(/databases/$(database)/documents/teachers/$(request.resource.data.teacherUid)/students/$(request.resource.data.studentId)).data.credentialVersion == request.resource.data.version;
+    }
+    match /roles/{uid} {
+      allow create: if request.resource.data == {'role':'student'} && teacher(proof(uid).teacherUid)
+        && getAfter(/databases/$(database)/documents/studentBindings/$(uid)).data.studentId == proof(uid).studentId;
+    }

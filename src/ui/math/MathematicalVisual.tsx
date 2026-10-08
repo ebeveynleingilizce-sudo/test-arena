@@ -30,7 +30,7 @@ export function MathematicalVisual({ visual: v }: {
     const clipId = useId();
     let content: ReactNode;
     switch (v.kind) {
-        case 'image': content=<img className="package-question-image" src={v.src} alt={v.alt}/>; break;
+        case 'image': content=<img className="package-question-image" src={(import.meta.env?.BASE_URL || '/') + v.src.replace(/^\//,'')} alt={v.alt}/>; break;
         case 'school-place': case 'school-person': case 'school-dialogue': content=<SchoolVisual visual={v}/>; break;
         case 'object': content = <ObjectAsset asset={v.asset} alt={v.alt}/>; break;
         case 'composition': content = <CompositionAsset asset={v.asset} alt={v.alt}/>; break;

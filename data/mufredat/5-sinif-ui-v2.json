@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 3,
+  "datasetId": "test-arena-grade-5-student-ui-2026-2027",
+  "grade": 5,
+  "gradeLabel": "5. Sınıf",
+  "sourceDatasetId": "test-arena-curriculum-grade-5-tr-2026-2027",
+  "purpose": "5. sınıf Test Arena ders → tema/ünite → test navigasyonu",
+  "rules": {
+    "sourceOfTruth": "5-sinif.json",
+    "navigationIntegrity": "Yalnızca kanonik temalar kullanılır; sahte topicId oluşturulmaz.",
+    "questionBinding": "Sorular grade, subjectId, unitId ve doğrulanmış outcomeCode ile bağlanır.",
+    "testPack": "Testler kazanım veya konu değildir.",
+    "availability": "Sorusu bulunan temalar gösterilebilir."
+  },
+  "subjects": [
+    {
+      "id": "turkce",
+      "name": "Türkçe",
+      "navigationModel": "theme-test",
+      "sectionLabel": "TEMA",
+      "units": [
+        {
+          "order": 1,
+          "id": "g5-turkce-tema-1",
+          "name": "1. Tema — Oyun Dünyası",
+          "displayName": "1. Tema — Oyun Dünyası"
+        },
+        {
+          "order": 2,
+          "id": "g5-turkce-tema-2",
+          "name": "2. Tema — Atatürk’ü Tanımak",
+          "displayName": "2. Tema — Atatürk’ü Tanımak"
+        },
+        {
+          "order": 3,
+          "id": "g5-turkce-tema-3",
+          "name": "3. Tema — Duygularımı Tanıyorum",
+          "displayName": "3. Tema — Duygularımı Tanıyorum"
+        },
+        {
+          "order": 4,
+          "id": "g5-turkce-tema-4",
+          "name": "4. Tema — Geleneklerimiz",
+          "displayName": "4. Tema — Geleneklerimiz"
+        },
+        {
+          "order": 5,
+          "id": "g5-turkce-tema-5",
+          "name": "5. Tema — İletişim ve Sosyal İlişkiler",
+          "displayName": "5. Tema — İletişim ve Sosyal İlişkiler"
+        },
+        {
+          "order": 6,
+          "id": "g5-turkce-tema-6",
+          "name": "6. Tema — Sağlıklı Yaşıyorum",
+          "displayName": "6. Tema — Sağlıklı Yaşıyorum"
+        }
+      ],
+      "mappingStatus": "Kanonik tema ID eşleşmesi kontrol edildi."
+    },
+    {
+      "id": "matematik",
+      "name": "Matematik",
+      "navigationModel": "theme-test",
+      "sectionLabel": "TEMA",
+      "units": [
+        {
+          "order": 1,
+          "id": "g5-matematik-tema-1",
+          "name": "1. Tema — Sayılar ve Nicelikler",
+          "displayName": "1. Tema — Sayılar ve Nicelikler"
+        },
+        {
+          "order": 2,
+          "id": "g5-matematik-tema-2",
+          "name": "2. Tema — İşlemlerle Cebirsel Düşünme",
+          "displayName": "2. Tema — İşlemlerle Cebirsel Düşünme"
+        },
+        {
+          "order": 3,
+          "id": "g5-matematik-tema-3",
+          "name": "3. Tema — Geometrik Şekiller",
+          "displayName": "3. Tema — Geometrik Şekiller"
+        },
+        {
+          "order": 4,
+          "id": "g5-matematik-tema-4",
+          "name": "4. Tema — Geometrik Nicelikler",
+          "displayName": "4. Tema — Geometrik Nicelikler"
+        },
+        {
+          "order": 5,
+          "id": "g5-matematik-tema-5",
+          "name": "5. Tema — İstatistiksel Araştırma Süreci",
+          "displayName": "5. Tema — İstatistiksel Araştırma Süreci"
+        },
+        {
+          "order": 6,
+          "id": "g5-matematik-tema-6",
+          "name": "6. Tema — Veriden Olasılığa",
+          "displayName": "6. Tema — Veriden Olasılığa"
+        }
+      ],
+      "mappingStatus": "Kanonik tema ID eşleşmesi kontrol edildi."
+    },
+    {
+      "id": "fen-bilimleri",
+      "name": "Fen Bilimleri",
+      "navigationModel": "theme-test",
+      "sectionLabel": "ÜNİTE",
+      "units": [
+        {
+          "order": 1,
+          "id": "g5-fen-bilimleri-unite-1",
+          "name": "1. Ünite — Gökyüzündeki Komşularımız ve Biz",
+          "displayName": "1. Ünite — Gökyüzündeki Komşularımız ve Biz"
+        },
+        {
+          "order": 2,
+          "id": "g5-fen-bilimleri-unite-2",
+          "name": "2. Ünite — Kuvveti Tanıyalım",
+          "displayName": "2. Ünite — Kuvveti Tanıyalım"
+        },
+        {
+          "order": 3,
+          "id": "g5-fen-bilimleri-unite-3",
+          "name": "3. Ünite — Canlıların Yapısına Yolculuk",
+          "displayName": "3. Ünite — Canlıların Yapısına Yolculuk"
+        },
+        {
+          "order": 4,
+          "id": "g5-fen-bilimleri-unite-4",
+          "name": "4. Ünite — Işığın Dünyası",
+          "displayName": "4. Ünite — Işığın Dünyası"
+        },
+        {
+          "order": 5,
+          "id": "g5-fen-bilimleri-unite-5",
+          "name": "5. Ünite — Maddenin Doğası",
+          "displayName": "5. Ünite — Maddenin Doğası"
+        },
+        {
+          "order": 6,
+          "id": "g5-fen-bilimleri-unite-6",
+          "name": "6. Ünite — Yaşamımızdaki Elektrik",
+          "displayName": "6. Ünite — Yaşamımızdaki Elektrik"
+        },
+        {
+          "order": 7,
+          "id": "g5-fen-bilimleri-unite-7",
+          "name": "7. Ünite — Sürdürülebilir Yaşam ve Geri Dönüşüm",
+          "displayName": "7. Ünite — Sürdürülebilir Yaşam ve Geri Dönüşüm"
+        }
+      ],
+      "mappingStatus": "2026-2027 yüklenen yıllık plandan kodlar ve açıklamalar tekilleştirildi; kaynak plan taslak veya yayıncı planı niteliğindedir, resmi program kodlarıyla farklar ayrıca kontrol edilmelidir."
+    },
+    {
+      "id": "sosyal-bilgiler",
+      "name": "Sosyal Bilgiler",
+      "navigationModel": "theme-test",
+      "sectionLabel": "TEMA",
+      "units": [
+        {
+          "order": 1,
+          "id": "g5-sosyal-bilgiler-tema-1",
+          "name": "1. Tema — Birlikte Yaşamak",
+          "displayName": "1. Tema — Birlikte Yaşamak"
+        },
+        {
+          "order": 2,
+          "id": "g5-sosyal-bilgiler-tema-2",
+          "name": "2. Tema — Evimiz Dünya",
+          "displayName": "2. Tema — Evimiz Dünya"
+        },
+        {
+          "order": 3,
+          "id": "g5-sosyal-bilgiler-tema-3",
+          "name": "3. Tema — Ortak Mirasımız",
+          "displayName": "3. Tema — Ortak Mirasımız"
+        },
+        {
+          "order": 4,
+          "id": "g5-sosyal-bilgiler-tema-4",
+          "name": "4. Tema — Yaşayan Demokrasimiz",
+          "displayName": "4. Tema — Yaşayan Demokrasimiz"
+        },
+        {
+          "order": 5,
+          "id": "g5-sosyal-bilgiler-tema-5",
+          "name": "5. Tema — Hayatımızdaki Ekonomi",
+          "displayName": "5. Tema — Hayatımızdaki Ekonomi"
+        },
+        {
+          "order": 6,
+          "id": "g5-sosyal-bilgiler-tema-6",
+          "name": "6. Tema — Teknoloji ve Sosyal Bilimler",
+          "displayName": "6. Tema — Teknoloji ve Sosyal Bilimler"
+        }
+      ],
+      "mappingStatus": "2026-2027 yüklenen yıllık plandan kodlar ve açıklamalar tekilleştirildi; kaynak plan taslak veya yayıncı planı niteliğindedir, resmi program kodlarıyla farklar ayrıca kontrol edilmelidir."
+    },
+    {
+      "id": "ingilizce",
+      "name": "İngilizce",
+      "navigationModel": "theme-test",
+      "sectionLabel": "ÜNİTE",
+      "units": [
+        {
+          "order": 1,
+          "id": "g5-ingilizce-unite-1",
+          "name": "1. Ünite — School Life",
+          "displayName": "1. Ünite — School Life"
+        },
+        {
+          "order": 2,
+          "id": "g5-ingilizce-unite-2",
+          "name": "2. Ünite — Classroom Life",
+          "displayName": "2. Ünite — Classroom Life"
+        },
+        {
+          "order": 3,
+          "id": "g5-ingilizce-unite-3",
+          "name": "3. Ünite — Personal Life",
+          "displayName": "3. Ünite — Personal Life"
+        },
+        {
+          "order": 4,
+          "id": "g5-ingilizce-unite-4",
+          "name": "4. Ünite — Family Life",
+          "displayName": "4. Ünite — Family Life"
+        },
+        {
+          "order": 5,
+          "id": "g5-ingilizce-unite-5",
+          "name": "5. Ünite — Life In The Neighbourhood City",
+          "displayName": "5. Ünite — Life In The Neighbourhood City"
+        },
+        {
+          "order": 6,
+          "id": "g5-ingilizce-unite-6",
+          "name": "6. Ünite — Life In The World",
+          "displayName": "6. Ünite — Life In The World"
+        },
+        {
+          "order": 7,
+          "id": "g5-ingilizce-unite-7",
+          "name": "7. Ünite — Life In Nature",
+          "displayName": "7. Ünite — Life In Nature"
+        }
+      ],
+      "mappingStatus": "Kanonik tema ID eşleşmesi kontrol edildi."
+    },
+    {
+      "id": "din-kulturu",
+      "name": "Din Kültürü ve Ahlak Bilgisi",
+      "navigationModel": "theme-test",
+      "sectionLabel": "ÜNİTE",
+      "units": [
+        {
+          "order": 1,
+          "id": "g5-din-kulturu-unite-1",
+          "name": "1. Ünite — Allah İnancı",
+          "displayName": "1. Ünite — Allah İnancı"
+        },
+        {
+          "order": 2,
+          "id": "g5-din-kulturu-unite-2",
+          "name": "2. Ünite — Namaz",
+          "displayName": "2. Ünite — Namaz"
+        },
+        {
+          "order": 3,
+          "id": "g5-din-kulturu-unite-3",
+          "name": "3. Ünite — Kur’an-ı Kerim",
+          "displayName": "3. Ünite — Kur’an-ı Kerim"
+        },
+        {
+          "order": 4,
+          "id": "g5-din-kulturu-unite-4",
+          "name": "4. Ünite — Peygamber Kıssaları",
+          "displayName": "4. Ünite — Peygamber Kıssaları"
+        },
+        {
+          "order": 5,
+          "id": "g5-din-kulturu-unite-5",
+          "name": "5. Ünite — Mimarimizdeki Dinî Motifler",
+          "displayName": "5. Ünite — Mimarimizdeki Dinî Motifler"
+        }
+      ],
+      "mappingStatus": "Kanonik tema ID eşleşmesi kontrol edildi."
+    }
+  ]
+}

@@ -24,3 +24,4 @@
 .question-content{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:16px 0;color:var(--navy);font-size:clamp(16px,1.2vw,19px);line-height:1.65;text-align:left}
 .feedback-correct .question-content,.feedback-wrong .question-content{display:none}
 .quiz-question-navigation{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}.quiz-question-navigation .button{flex:1;min-width:0;padding-inline:12px}.quiz-question-navigation .button:disabled{opacity:.45;cursor:not-allowed}
+.answer-feedback{min-width:0;overflow-wrap:anywhere}.answer-feedback .feedback-continue{display:inline-flex;justify-content:center;margin-top:16px;min-width:148px;max-width:100%}

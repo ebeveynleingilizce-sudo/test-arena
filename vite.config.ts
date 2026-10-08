@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import {readFileSync,writeFileSync,copyFileSync,readdirSync} from 'node:fs';
 import {resolve,join} from 'node:path';
 import {createHash} from 'node:crypto';
+import {localQuestionBank} from './scripts/local-question-bank.mjs';
 function pwaBuild() {
   let directory = '', base = '/';
   return {name:'arena-pwa-build', apply:'build' as const,
@@ -16,8 +17,8 @@ function pwaBuild() {
       if(base!=='/')copyFileSync(join(directory,'index.html'),join(directory,'404.html'));
     }};
 }
-export default defineConfig({ plugins: [react(),pwaBuild()], server: { host: '127.0.0.1', port: 5173, strictPort: true,
+export default defineConfig({ plugins: [react(),pwaBuild(),localQuestionBank()], server: { host: '127.0.0.1', port: 5173, strictPort: true,
   fs: { deny: ['.env', '.env.*', '*.{crt,pem}', '**/.git/**', '**/.firebase/**', '**/data/questions/**', '**/data/soru-bankasi/**'] },
   watch: { ignored: ['**/.firebase/**', '**/firebase-export-*/**'] } },
-  build: { rollupOptions: { output: { manualChunks: { 'firebase-auth': ['firebase/auth'], 'firebase-data': ['firebase/firestore', 'firebase/functions'], 'react': ['react', 'react-dom', 'react-router-dom'] } } } }
+  build: { rollupOptions: { output: { manualChunks: { 'firebase-auth': ['firebase/auth'], 'firebase-data': ['firebase/firestore'], 'react': ['react', 'react-dom', 'react-router-dom'] } } } }
 });

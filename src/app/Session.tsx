@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from '
 import { onAuthStateChanged, signOut, type User } from 'firebase/auth';
 import { doc, getDoc, onSnapshot } from 'firebase/firestore';
 import { auth, db } from '../data/firebase';
+import { ensureTeacher } from '../data/spark.mjs';
 import type { Student, StudentSession } from '../domain/models';
 
 interface SessionState { user: User | null; student: Student | null; role: 'teacher' | 'student' | null; loading: boolean; notice: string }
@@ -26,14 +27,16 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       try {
         const token = await user.getIdTokenResult();
         if (run !== generation) return;
-        if (['password', 'google.com'].includes(token.signInProvider || '')) {
-          setState({ user, student: null, role: 'teacher', loading: false, notice: '' }); return;
-        }
-        if (token.signInProvider !== 'custom') { await revoke(); return; }
-        const sessionDoc = await getDoc(doc(db, 'studentSessions', user.uid));
+        const sessionDoc = await getDoc(doc(db, 'studentBindings', user.uid));
         if (run !== generation) return;
-        if (!sessionDoc.exists()) { await revoke(); return; }
-        const session = sessionDoc.data() as StudentSession;
+        if (!sessionDoc.exists()) {
+          if (!['password','google.com'].includes(token.signInProvider || '') || user.email?.endsWith('@students.testarena.invalid')) {await revoke(); return;}
+          await ensureTeacher(db,user);
+          if (run === generation) setState({ user, student: null, role: 'teacher', loading: false, notice: '' });
+          return;
+        }
+        const binding = sessionDoc.data();
+        const session = {...binding,credentialVersion:binding.version} as StudentSession;
         unsubscribeStudent = onSnapshot(doc(db, 'teachers', session.teacherUid, 'students', session.studentId), { includeMetadataChanges: true }, snapshot => {
           if (run !== generation) return;
           // After code rotation, the SDK may first emit the previous session's

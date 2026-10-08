@@ -23,3 +23,8 @@ test('shared renderer does not request missing assets, supplied paths or images 
   }
   assert.equal(renderToStaticMarkup(createElement(component,{visualId:'teacher',alt:' '})), '');
 });
+test('GitHub Pages asset paths retain the repository base',async()=>{
+  const renderer=await loadAssetVisual(false,'/test-arena/');
+  const markup=renderToStaticMarkup(createElement(renderer,{visualId:'teacher',alt:'School scene'}));
+  assert(markup.includes('src="/test-arena/assets/openmoji/selected/'));
+});

@@ -1,0 +1,73 @@
+    function duel(t,c,d) { return get(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/duels/$(d)).data; }
+    function availableDuel(t,c,s) {
+      return exists(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/duelSlots/$(s))
+        ? expiredDuel(duel(t,c,get(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/duelSlots/$(s)).data.duelId))
+        : true;
+    }
+    function expiredDuel(d) { return d.status in ['declined','expired','completed']
+      || (d.status == 'pending' && request.time >= d.createdAt + duration.value(60,'s'))
+      || (d.status == 'active' && request.time >= d.acceptedAt + duration.value(310,'s')); }
+    function duelPlayer(t,c,s,g) {
+      let p = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data;
+      return p.status == 'active' && p.classId == c && gradeAllowed(t,s,g)
+        && get(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/presence/$(s)).data.at > request.time - duration.value(75,'s');
+    }
+    match /teachers/{t}/classes/{c}/presence/{s} {
+      allow read: if ownClass(t,c);
+      allow create, update: if pupil(t,s) && ownClass(t,c)
+        && request.resource.data.keys().hasOnly(['at']) && request.resource.data.at == request.time;
+    }
+    match /teachers/{t}/classes/{c}/duelSlots/{s} {
+      allow read: if ownClass(t,c);
+      allow create, update: if ownClass(t,c) && availableDuel(t,c,s)
+        && request.resource.data.keys().hasOnly(['duelId'])
+        && getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/duels/$(request.resource.data.duelId)).data.status == 'pending'
+        && getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/duels/$(request.resource.data.duelId)).data.createdAt == request.time
+        && s in getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/duels/$(request.resource.data.duelId)).data.participants;
+    }
+    match /teachers/{t}/classes/{c}/duels/{d} {
+      allow read: if ownClass(t,c) || teacher(t);
+      allow create: if ownClass(t,c) && pupil(t,request.resource.data.from)
+        && request.resource.data.keys().hasOnly(['participants','from','to','templateId','status','createdAt','acceptedAt'])
+        && request.resource.data.participants == [request.resource.data.from,request.resource.data.to]
+        && request.resource.data.from != request.resource.data.to
+        && request.resource.data.status == 'pending' && request.resource.data.createdAt == request.time && request.resource.data.acceptedAt == null
+        && template(request.resource.data.templateId).active == true && template(request.resource.data.templateId).questionIds.size() == 10
+        && duelPlayer(t,c,request.resource.data.from,template(request.resource.data.templateId).gradeLevel)
+        && duelPlayer(t,c,request.resource.data.to,template(request.resource.data.templateId).gradeLevel)
+        && getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/duelSlots/$(request.resource.data.from)).data.duelId == d
+        && getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/duelSlots/$(request.resource.data.to)).data.duelId == d;
+      allow update: if ownClass(t,c) && pupil(t,resource.data.to) && resource.data.status == 'pending'
+        && request.time < resource.data.createdAt + duration.value(60,'s')
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','acceptedAt'])
+        && ((request.resource.data.status == 'declined' && request.resource.data.acceptedAt == null)
+          || (request.resource.data.status == 'active' && request.resource.data.acceptedAt == request.time
+            && duelPlayer(t,c,resource.data.from,template(resource.data.templateId).gradeLevel)
+            && duelPlayer(t,c,resource.data.to,template(resource.data.templateId).gradeLevel)));
+      allow update: if ownClass(t,c)
+        && get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.studentId in resource.data.participants
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+        && ((resource.data.status == 'pending' && request.time >= resource.data.createdAt + duration.value(60,'s') && request.resource.data.status == 'expired')
+          || (resource.data.status == 'active' && request.time >= resource.data.acceptedAt + duration.value(310,'s') && request.resource.data.status == 'completed')
+          || (resource.data.status in ['completed','expired'] && request.resource.data == resource.data));
+      match /answers/{a} {
+        allow read: if ownClass(t,c) || teacher(t);
+        allow create: if ownClass(t,c) && pupil(t,request.resource.data.studentId)
+          && request.resource.data.studentId in duel(t,c,d).participants
+          && validDuelAnswer(t,c,d,a);
+      }
+    }
+    function validDuelAnswer(t,c,d,a) {
+      let v = request.resource.data;
+      let game = duel(t,c,d);
+      let q = template(game.templateId).questionIds[v.index];
+      let sid = d + '-' + v.studentId;
+      let submission = get(/databases/$(database)/documents/teachers/$(t)/students/$(v.studentId)/quizzes/$(sid)/submissions/$(q)).data;
+      let result = get(/databases/$(database)/documents/teachers/$(t)/students/$(v.studentId)/quizzes/$(sid)/results/$(q)).data;
+      let start = game.acceptedAt + duration.value(10 + v.index * 30,'s');
+      return v.keys().hasOnly(['studentId','index','isCorrect','submittedAt'])
+        && v.index is int && v.index >= 0 && v.index < 10 && a == v.studentId + '-' + string(v.index)
+        && game.status in ['active','completed'] && session(t,v.studentId,sid).templateId == game.templateId
+        && v.isCorrect == result.isCorrect && v.submittedAt == submission.submittedAt
+        && submission.submittedAt >= start && submission.submittedAt < start + duration.value(30,'s');
+    }

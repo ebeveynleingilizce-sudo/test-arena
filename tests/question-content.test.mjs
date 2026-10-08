@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {preparedBankFixture} from './prepared-bank-fixture.mjs';
 import {prepareQuestionBank} from '../scripts/curriculum-bank.mjs';
 import {parsePresentation} from '../functions/visuals/contract.mjs';
 
@@ -14,8 +14,9 @@ test('optional content preserves multiline plain text and old presentation',()=>
 });
 test('prepared importer sends content only to public data and preserves private answers',()=>{
   for(const subject of ['ingilizce','matematik']){
-    const bank=JSON.parse(readFileSync(`data/soru-bankasi/2-sinif/2-sinif-${subject}-1-unite-10-soru-demo.json`,'utf8'));
+    const bank=structuredClone(preparedBankFixture(subject).bank);
     bank.questions=[bank.questions[0]];bank.questionCount=1;
+    delete bank.questions[0].content; // Legacy variant in memory, not a bank edit.
     const old=prepareQuestionBank(bank).records[0];
     assert.equal('content' in old.question,false);
     bank.questions[0].content='First line\nSecond line';

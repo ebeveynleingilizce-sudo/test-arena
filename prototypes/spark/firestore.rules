@@ -1,0 +1,112 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // EXPERIMENT ONLY: independent emulator project, never deployed.
+    function teacher(uid) {
+      return request.auth != null && request.auth.uid == uid
+        && get(/databases/$(database)/documents/roles/$(uid)).data.role == 'teacher';
+    }
+    function pupil(t, s) {
+      let binding = get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data;
+      let profile = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data;
+      return request.auth != null && binding.teacherUid == t && binding.studentId == s
+        && profile.status == 'active' && binding.version == profile.credentialVersion;
+    }
+    function eligible(t, s, q) {
+      let profile = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data;
+      let question = get(/databases/$(database)/documents/questions/$(q)).data;
+      return question.status == 'published' && (question.gradeLevel == profile.gradeLevel
+        || (profile.gradeLevel > 2 && question.gradeLevel == profile.gradeLevel - 1));
+    }
+    function visibleGrade(t, s) {
+      let profile = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data;
+      return resource.data.status == 'published' && (resource.data.gradeLevel == profile.gradeLevel
+        || (profile.gradeLevel > 2 && resource.data.gradeLevel == profile.gradeLevel - 1));
+    }
+    function validStudent(t, s) {
+      let d = request.resource.data;
+      return d.keys().hasOnly(['studentId', 'teacherUid', 'classId', 'gradeLevel', 'status', 'credentialVersion'])
+        && d.studentId == s && d.teacherUid == t && d.gradeLevel is int
+        && d.gradeLevel >= 2 && d.gradeLevel <= 12 && d.status in ['active', 'removed']
+        && d.credentialVersion is int && d.credentialVersion >= 1
+        && exists(/databases/$(database)/documents/teachers/$(t)/classes/$(d.classId));
+    }
+    function receiptCorrect(t, s, a) {
+      // get(), deliberately NOT getAfter(): a committed immutable answer must
+      // exist before any grading probe. No answer oracle before submission.
+      let attempt = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/attempts/$(a)).data;
+      let key = get(/databases/$(database)/documents/privateQuestionAnswers/$(attempt.questionId)).data;
+      return attempt.selectedChoiceId == key.correctOptionId;
+    }
+    match /roles/{uid} { allow get: if request.auth != null && request.auth.uid == uid; }
+    match /studentBindings/{uid} { allow get: if request.auth != null && request.auth.uid == uid; }
+    match /teachers/{t}/classes/{c} {
+      allow read: if teacher(t);
+      allow create, update: if teacher(t)
+        && request.resource.data.keys().hasOnly(['className', 'defaultGradeLevel'])
+        && request.resource.data.className is string && request.resource.data.className.size() > 0
+        && request.resource.data.className.size() <= 60
+        && request.resource.data.defaultGradeLevel is int
+        && request.resource.data.defaultGradeLevel >= 2 && request.resource.data.defaultGradeLevel <= 12;
+    }
+    match /teachers/{t}/students/{s} {
+      allow get: if teacher(t) || pupil(t, s);
+      allow list: if teacher(t);
+      allow create: if teacher(t) && validStudent(t, s) && request.resource.data.credentialVersion == 1;
+      allow update: if teacher(t) && validStudent(t, s)
+        && request.resource.data.credentialVersion >= resource.data.credentialVersion;
+      match /attempts/{a} {
+        allow read: if teacher(t) || pupil(t, s);
+        allow create: if pupil(t, s)
+          && request.resource.data.keys().hasOnly(['questionId', 'selectedChoiceId', 'submittedAt'])
+          && request.resource.data.questionId is string && request.resource.data.selectedChoiceId is string
+          && request.resource.data.submittedAt == request.time
+          && eligible(t, s, request.resource.data.questionId)
+          && request.resource.data.selectedChoiceId in
+            get(/databases/$(database)/documents/questions/$(request.resource.data.questionId)).data.choiceIds;
+      }
+      match /results/{a} {
+        allow read: if teacher(t) || pupil(t, s);
+        allow create: if pupil(t, s)
+          && request.resource.data.keys().hasOnly(['isCorrect', 'gradedAt'])
+          && request.resource.data.isCorrect is bool && request.resource.data.gradedAt == request.time
+          && request.resource.data.isCorrect == receiptCorrect(t, s, a);
+      }
+      match /learning/{id} {
+        allow read: if teacher(t) || pupil(t, s);
+        allow create: if id == 'summary' && teacher(t)
+          && request.resource.data.keys().hasOnly(['totalXP', 'lastAwardQuestionId'])
+          && request.resource.data.totalXP == 0 && request.resource.data.lastAwardQuestionId == '';
+        allow update: if id == 'summary' && pupil(t, s)
+          && request.resource.data.keys().hasOnly(['totalXP', 'lastAwardQuestionId'])
+          && request.resource.data.lastAwardQuestionId is string
+          && request.resource.data.totalXP == resource.data.totalXP + 1
+          && !exists(/databases/$(database)/documents/teachers/$(t)/students/$(s)/awardedQuestions/$(request.resource.data.lastAwardQuestionId))
+          && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/awardedQuestions/$(request.resource.data.lastAwardQuestionId)).data.xp == 1
+          && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/awardedQuestions/$(request.resource.data.lastAwardQuestionId)).data.awardedAt == request.time;
+      }
+      match /awardedQuestions/{q} {
+        allow read: if teacher(t) || pupil(t, s);
+        allow create: if pupil(t, s) && eligible(t, s, q)
+          && request.resource.data.keys().hasOnly(['attemptId', 'xp', 'awardedAt'])
+          && request.resource.data.attemptId is string && request.resource.data.xp == 1
+          && request.resource.data.awardedAt == request.time
+          && get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/attempts/$(request.resource.data.attemptId)).data.questionId == q
+          && get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/results/$(request.resource.data.attemptId)).data.isCorrect == true
+          && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.totalXP ==
+            get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.totalXP + 1
+          && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.lastAwardQuestionId == q;
+      }
+    }
+    match /questions/{q} {
+      allow read: if request.auth != null && (
+        get(/databases/$(database)/documents/roles/$(request.auth.uid)).data.role == 'teacher'
+        || (pupil(get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.teacherUid,
+                  get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.studentId)
+          && visibleGrade(get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.teacherUid,
+                      get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.studentId)));
+    }
+    match /privateQuestionAnswers/{q} { allow read, write: if false; }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

@@ -5,8 +5,9 @@ import {createHash} from 'node:crypto';
 import {isDeepStrictEqual} from 'node:util';
 import {initializeApp,getApps,deleteApp} from 'firebase-admin/app';
 import {getFirestore} from 'firebase-admin/firestore';
-import {prepareQuestionBank} from './curriculum-bank.mjs';
+import {prepareQuestionBank,loadCurriculumBank} from './curriculum-bank.mjs';
 import {publishPackageImages} from './package-images.mjs';
+import {prepareSparkStore} from './prepare-spark-store.mjs';
 const project=fileURLToPath(new URL('../',import.meta.url));
 const defaultFolder=join(project,'data/questions');
 const state=join(project,'.firebase/question-bank-sync');
@@ -68,6 +69,17 @@ export async function importQuestionFolder({folder=defaultFolder,log=console.log
   }
  }
 
+ // Rebuild navigation from the current canonical IDs and published pool.
+ // An existing grade may still reference a retired bank's unit/question IDs.
+ for(const grade of new Set(banks.map(bank=>bank.curriculum.grade))){
+  const pool=await db.collection('questions').where('gradeLevel','==',grade).where('status','==','published').where('isDemo','==',false).get();
+  const tree=loadCurriculumBank(undefined,{grade,records:pool.docs.map(d=>({question:d.data(),answer:{}}))}).curricula[0];
+  await db.runTransaction(async tx=>{const ref=db.doc('curricula/'+grade),old=await tx.get(ref);
+   if(old.exists&&old.data().sourceDatasetId!==tree.sourceDatasetId)throw Error('Existing curriculum source differs.');
+   if(!old.exists||!isDeepStrictEqual(old.data(),tree))tx.set(ref,tree);
+  });
+ }
+ await prepareSparkStore(db);
  report.totalActive=(await db.collection('questions').where('status','==','published').get()).size;report.completedAt=new Date().toISOString();
  log(`Question bank sync: files scanned ${report.scanned}; valid banks ${report.validBanks}; new questions ${report.imported}; unchanged ${report.unchanged}; removed questions ${report.removedQuestions}; removed private answers ${report.removedAnswers}; conflicts ${report.conflicts}; errors ${report.failed}.`);
  for(const f of report.files.filter(f=>!f.ok))log(`[SORU BANKASI] ${f.file}: ${f.reason}`);

@@ -1,6 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { httpsCallable } from 'firebase/functions';
-import { functions } from '../data/firebase';
+import { call } from '../data/firebase';
 import { errorMessage } from '../ui/components';
 import type { ArenaClass } from '../domain/models';
 
@@ -14,8 +13,8 @@ export function BulkStudents({ cls, close, completed }: { cls: ArenaClass; close
     if (!names.length || names.length > 50) { setError('Bir işlemde 1–50 öğrenci eklenebilir.'); return; }
     setBusy(true); setLocked(true); setError(''); setNotice('');
     try {
-      const response = await httpsCallable<unknown, { results: Result[] }>(functions, 'bulkCreateStudents', { timeout: 130000 })({ classId: cls.classId, names, requestId });
-      setResults(response.data.results); completed();
+      const response = await call<{results: Result[]}>('bulkCreateStudents', { classId: cls.classId, names, requestId });
+      setResults(response.results); completed();
     } catch (e) { setError(errorMessage(e) + ' Sonuç alınamadı; aynı listeyle yeniden denemek çift kayıt oluşturmaz.'); }
     finally { setBusy(false); }
   }

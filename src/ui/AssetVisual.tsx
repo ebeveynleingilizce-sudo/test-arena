@@ -5,6 +5,6 @@ import { resolveVisualAsset } from '../assets/visual-assets.mjs';
 export function AssetVisual({ visualId, alt }: { visualId: string; alt: string }) {
   const asset = resolveVisualAsset(visualId);
   if (!asset || !alt.trim()) return null;
-  return <img src={asset.file} alt={alt} data-visual-id={visualId} data-asset-source={asset.source}
+  return <img src={(import.meta.env?.BASE_URL || '/') + asset.file.replace(/^\//,'')} alt={alt} data-visual-id={visualId} data-asset-source={asset.source}
     width={144} height={144} style={{ display: 'block', maxWidth: '100%', height: 'auto', objectFit: 'contain' }} />;
 }

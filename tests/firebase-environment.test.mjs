@@ -1,0 +1,15 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+import ts from 'typescript';
+const exports={};
+vm.runInNewContext(ts.transpileModule(readFileSync('src/data/firebaseEnvironment.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,{exports});
+const configure=exports.firebaseEnvironment;
+const live={VITE_USE_EMULATORS:'false',VITE_FIREBASE_PROJECT_ID:'test-arena-example',VITE_FIREBASE_API_KEY:'public-test-key',VITE_FIREBASE_AUTH_DOMAIN:'test-arena-example.firebaseapp.com',VITE_FIREBASE_APP_ID:'test-web-app',VITE_FIREBASE_APPCHECK_SITE_KEY:'public-test-site-key'};
+test('localhost retains demo emulators without live credentials',()=>{const result=configure({},'127.0.0.1');assert.equal(result.emulator,true);assert.equal(result.config.projectId,'demo-test-arena');});
+test('remote origin uses only explicit live configuration',()=>{const result=configure(live,'example.web.app');assert.equal(result.emulator,false);assert.equal(result.config.projectId,live.VITE_FIREBASE_PROJECT_ID);});
+test('emulator mode is forbidden on remote origins',()=>assert.throws(()=>configure({VITE_USE_EMULATORS:'true'},'example.web.app'),/yalnız localhost/));
+test('missing live connection parameters fail closed; optional App Check does not block pilot',()=>{for(const key of Object.keys(live).filter(k=>!['VITE_USE_EMULATORS','VITE_FIREBASE_APPCHECK_SITE_KEY'].includes(k))){const env={...live};delete env[key];assert.throws(()=>configure(env,'example.web.app'),/eksik/);}const env={...live};delete env.VITE_FIREBASE_APPCHECK_SITE_KEY;assert.equal(configure(env,'example.web.app').siteKey,'');});
+test('isolated browser test ports never affect normal local or remote connection',()=>{const result=configure({VITE_SPARK_TEST:'true'},'localhost');assert.equal(result.config.projectId,'demo-test-arena-spark-prototype');assert.equal(result.ports.auth,9199);assert.equal(configure({...live,VITE_SPARK_TEST:'true'},'example.web.app').config.projectId,live.VITE_FIREBASE_PROJECT_ID);});
+test('old production project and demo project cannot be selected',()=>{for(const project of ['yildizyarislari','demo-test-arena'])assert.throws(()=>configure({...live,VITE_FIREBASE_PROJECT_ID:project},'example.web.app'),/ayrı/);});
