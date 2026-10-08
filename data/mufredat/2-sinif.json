@@ -1,0 +1,1095 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "test-arena-curriculum-grade-2-tr-2026-2027",
+  "grade": 2,
+  "academic_year": "2026-2027",
+  "language": "tr",
+  "purpose": "Test Arena soru bankası için korunacak kanonik müfredat ağacı. Kaynak plan yapısı korunur; öğrenciye gösterilecek sade konu adları ve sorular sonraki aşamada bu kimliklere bağlanır.",
+  "rules": {
+    "stable_ids": "id alanları kalıcı anahtar olarak kullanılmalı; görünen ad değişse bile id mümkün olduğunca değiştirilmemeli.",
+    "source_fidelity": "Bu dosyada kaynaklarda bulunmayan yeni kazanım üretilmemiştir.",
+    "questions": "Sorular ayrı dosyada tutulmalı ve curriculum_id/outcome_code ile bu ağaca bağlanmalıdır.",
+    "english_pronunciation_outcomes": "İngilizce yıllık planındaki ENG.2.1.P1–ENG.2.6.P1 telaffuz çıktıları kanonik tema kodlarına dahildir; yalnızca metin tabanlı çoktan seçmeli sorularla telaffuz performansı doğrudan ölçülmüş sayılmaz."
+  },
+  "sources": [
+    {
+      "subject": "Türkçe",
+      "file": "2. Sınıf 1.Türkçe Dersi Maarif Yıllık Plan (2026-2027).xlsx"
+    },
+    {
+      "subject": "Matematik",
+      "file": "2. Sınıf 2.Matematik Dersi Maarif Yıllık Plan (2026-2027).xlsx"
+    },
+    {
+      "subject": "Hayat Bilgisi",
+      "file": "2. Sınıf 3.Hayat Bilgisi Dersi Maarif Yıllık Plan (2026-2027).xlsx"
+    },
+    {
+      "subject": "İngilizce",
+      "file": "2.-Sinif-Ingilizce-Yillik-Plan-2026-2027-by-ingilizceciyiz.com_-1.docx"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "turkce",
+      "name": "Türkçe",
+      "structure_note": "Yıllık planda temalar içerik bağlamını; dinleme/izleme, konuşma, okuma ve yazma ise tekrar eden beceri alanlarını oluşturur.",
+      "themes": [
+        {
+          "id": "g2-turkce-degerlerimizle-variz",
+          "name": "DEĞERLERİMİZLE VARIZ"
+        },
+        {
+          "id": "g2-turkce-ataturk-ve-cocuk",
+          "name": "ATATÜRK VE ÇOCUK"
+        },
+        {
+          "id": "g2-turkce-dogada-neler-oluyor",
+          "name": "DOĞADA NELER OLUYOR?"
+        },
+        {
+          "id": "g2-turkce-okuma-seruvenimiz",
+          "name": "OKUMA SERÜVENİMİZ"
+        },
+        {
+          "id": "g2-turkce-yeteneklerimizi-taniyoruz",
+          "name": "YETENEKLERİMİZİ TANIYORUZ"
+        },
+        {
+          "id": "g2-turkce-mucit-cocuk",
+          "name": "MUCİT ÇOCUK"
+        },
+        {
+          "id": "g2-turkce-kultur-hazinemiz",
+          "name": "KÜLTÜR HAZİNEMİZ"
+        },
+        {
+          "id": "g2-turkce-haklarimizi-biliyoruz",
+          "name": "HAKLARIMIZI BİLİYORUZ"
+        }
+      ],
+      "skill_domains": [
+        {
+          "id": "g2-turkce-dinleme-izleme",
+          "name": "Dinleme/İzleme",
+          "outcomes": [
+            {
+              "code": "T.D.2.1",
+              "text": "Dinlemeyi/izlemeyi yönetebilme"
+            },
+            {
+              "code": "T.D.2.2",
+              "text": "Dinledikleri/izledikleri ile ilgili anlam oluşturabilme"
+            },
+            {
+              "code": "T.D.2.3",
+              "text": "Dinlediklerini/izlediklerini çözümleyebilme"
+            },
+            {
+              "code": "T.D.2.4",
+              "text": "Dinleme/izleme sürecine etki eden durumları gözden geçirebilme"
+            },
+            {
+              "code": "T.D.2.5",
+              "text": "Dinleme/izleme sürecini değerlendirebilme"
+            }
+          ]
+        },
+        {
+          "id": "g2-turkce-konusma",
+          "name": "Konuşma",
+          "outcomes": [
+            {
+              "code": "T.K.2.1",
+              "text": "Konuşmalarını yönetebilme"
+            },
+            {
+              "code": "T.K.2.2",
+              "text": "Konuşmalarında içerik oluşturabilme"
+            },
+            {
+              "code": "T.K.2.3",
+              "text": "Konuşma kurallarını uygulayabilme"
+            },
+            {
+              "code": "T.K.2.4",
+              "text": "Konuşma sürecine etki eden durumları gözden geçirebilme"
+            },
+            {
+              "code": "T.K.2.5",
+              "text": "Konuşma sürecini değerlendirebilme"
+            }
+          ]
+        },
+        {
+          "id": "g2-turkce-okuma",
+          "name": "Okuma",
+          "outcomes": [
+            {
+              "code": "T.O.2.1",
+              "text": "Okuma sürecini yönetebilme"
+            },
+            {
+              "code": "T.O.2.2",
+              "text": "Okudukları ile ilgili anlam oluşturabilme"
+            },
+            {
+              "code": "T.O.2.3",
+              "text": "Okuduklarını çözümleyebilme"
+            },
+            {
+              "code": "T.O.2.4",
+              "text": "Okuma sürecine etki eden durumları gözden geçirebilme"
+            },
+            {
+              "code": "T.O.2.5",
+              "text": "Okuma sürecini değerlendirebilme"
+            }
+          ]
+        },
+        {
+          "id": "g2-turkce-yazma",
+          "name": "Yazma",
+          "outcomes": [
+            {
+              "code": "T.Y.2.1",
+              "text": "Yazılı anlatım becerilerini yönetebilme"
+            },
+            {
+              "code": "T.Y.2.2",
+              "text": "Yazılarında içerik oluşturabilme"
+            },
+            {
+              "code": "T.Y.2.3",
+              "text": "Yazma kurallarını uygulayabilme"
+            },
+            {
+              "code": "T.Y.2.4",
+              "text": "Yazma sürecine etki eden durumları gözden geçirebilme"
+            },
+            {
+              "code": "T.Y.2.5",
+              "text": "Yazma sürecini değerlendirebilme"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matematik",
+      "name": "Matematik",
+      "themes": [
+        {
+          "id": "g2-matematik-nesnelerin-geometrisi-1",
+          "name": "NESNELERİN GEOMETRİSİ (1)",
+          "topics": [
+            {
+              "id": "g2-matematik-geometrik-cisimler",
+              "name": "Geometrik Cisimler",
+              "outcomes": [
+                {
+                  "code": "MAT.2.3.1",
+                  "text": "Günlük yaşamda kullanılan nesneleri biçimsel özelliklerine göre geometrik cisim olarak sınıflandırabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-geometrik-cisim-modelleri",
+              "name": "Geometrik Cisim Modelleri",
+              "outcomes": [
+                {
+                  "code": "MAT.2.3.2",
+                  "text": "Geometrik cisim modellerini kullanarak yapılar sentezleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-geometrik-sekil-modelleri",
+              "name": "Geometrik Şekil Modelleri",
+              "outcomes": [
+                {
+                  "code": "MAT.2.3.3",
+                  "text": "Geometrik şekiller kullanarak modeller sentezleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-geometrik-sekil-ve-cisimlerin-bicimsel-ozellikleri",
+              "name": "Geometrik Şekil ve Cisimlerin Biçimsel Özellikleri",
+              "outcomes": [
+                {
+                  "code": "MAT.2.3.4",
+                  "text": "Geometrik cisim ve şekillerin yön, konum veya büyüklükleri değiştiğinde biçimsel özelliklerinin değişmediğini yorumlayabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-sivi-miktarini-tahmin-etme",
+              "name": "Sıvı Miktarını Tahmin Etme",
+              "outcomes": [
+                {
+                  "code": "MAT.2.3.5",
+                  "text": "Standart olmayan sıvı ölçme araçları ile sıvı miktarını tahmin edebilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g2-matematik-sayilar-ve-nicelikler-1",
+          "name": "SAYILAR VE NİCELİKLER (1)",
+          "topics": [
+            {
+              "id": "g2-matematik-sayilar",
+              "name": "Sayılar",
+              "outcomes": [
+                {
+                  "code": "MAT.2.1.1",
+                  "text": "100’e kadar olan niceliklerin büyüklüklerini temsil etmede sayıların sembolik temsillerinden yararlanabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-sayilari-cozumleme",
+              "name": "Sayıları Çözümleme",
+              "outcomes": [
+                {
+                  "code": "MAT.2.1.2",
+                  "text": "İki basamaklı sayıları çözümleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-sayilari-siralama",
+              "name": "Sayıları Sıralama",
+              "outcomes": [
+                {
+                  "code": "MAT.2.1.3",
+                  "text": "Sayıların sırasını belirleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-ritmik-sayma",
+              "name": "Ritmik Sayma",
+              "outcomes": [
+                {
+                  "code": "MAT.2.1.4",
+                  "text": "İleriye ve geriye doğru ritmik sayabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-sayi-ve-sekil-oruntuleri",
+              "name": "Sayı ve Şekil Örüntüleri",
+              "outcomes": [
+                {
+                  "code": "MAT.2.1.5",
+                  "text": "Sayı ve sayı temsiline dönüşen şekil örüntülerine dayalı çıkarım yapabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-nesne-sayisini-tahmin-etme",
+              "name": "Nesne Sayısını Tahmin Etme",
+              "outcomes": [
+                {
+                  "code": "MAT.2.1.6",
+                  "text": "Bir çokluktaki ilişkilerden yararlanarak 50’ye kadar olan nesnelerin sayısını tahmin edebilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g2-matematik-islemlerden-cebirsel-dusunmeye",
+          "name": "İŞLEMLERDEN CEBİRSEL DÜŞÜNMEYE",
+          "topics": [
+            {
+              "id": "g2-matematik-toplama-ve-cikarma-islemleriyle-ilgili-problemler",
+              "name": "Toplama ve Çıkarma İşlemleriyle İlgili Problemler",
+              "outcomes": [
+                {
+                  "code": "MAT.2.2.1",
+                  "text": "Toplama ve çıkarma işlemleri gerektiren günlük yaşam problemlerini çözebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-toplama-ve-cikarma-islemlerinin-sonuclarini-tahmin-etme-ve-zihinden-islem",
+              "name": "Toplama ve Çıkarma İşlemlerinin Sonuçlarını Tahmin Etme ve Zihinden İşlem",
+              "outcomes": [
+                {
+                  "code": "MAT.2.2.2",
+                  "text": "Toplama ve çıkarma işlemlerinin sonuçlarını tahminde bulunarak ve zihinden işlem yaparak muhakeme edebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-toplama-ve-cikarma-islemlerinin-iliskisi",
+              "name": "Toplama ve Çıkarma İşlemlerinin İlişkisi",
+              "outcomes": [
+                {
+                  "code": "MAT.2.2.3",
+                  "text": "Toplama ve çıkarma işlemlerinin ilişkisini yorumlayabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-carpma-ve-bolme-islemleri",
+              "name": "Çarpma ve Bölme İşlemleri",
+              "outcomes": [
+                {
+                  "code": "MAT.2.2.4",
+                  "text": "Çarpma ve bölme işlemlerini toplama ve çıkarma işlemlerine dayalı olarak çözümleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-carpma-ve-bolme-islemlerinin-sonuclarini-tahmin-etme-ve-zihinden-islem",
+              "name": "Çarpma ve Bölme İşlemlerinin Sonuçlarını Tahmin Etme ve Zihinden İşlem",
+              "outcomes": [
+                {
+                  "code": "MAT.2.2.5",
+                  "text": "Çarpma ve bölme işlemlerinin sonuçlarını tahminde bulunarak ve zihinden işlem yaparak muhakeme edebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-dort-islemde-esitlik",
+              "name": "Dört İşlemde Eşitlik",
+              "outcomes": [
+                {
+                  "code": "MAT.2.2.6",
+                  "text": "Dört işlem bağlamında eşitliğin farklı anlamlarını yorumlayabilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g2-matematik-sayilar-ve-nicelikler-2",
+          "name": "SAYILAR VE NİCELİKLER (2)",
+          "topics": [
+            {
+              "id": "g2-matematik-kesirler",
+              "name": "Kesirler",
+              "outcomes": [
+                {
+                  "code": "MAT.2.1.7",
+                  "text": "Bütün, yarım ve çeyrek arasındaki ilişkiyi çözümleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-paralarimiz",
+              "name": "Paralarımız",
+              "outcomes": [
+                {
+                  "code": "MAT.2.1.8",
+                  "text": "Paraları değerlerine göre ilişkilendirerek çözümleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-zaman-olcme",
+              "name": "Zaman Ölçme",
+              "outcomes": [
+                {
+                  "code": "MAT.2.1.9",
+                  "text": "Zaman ölçü birimlerini okuyabilme ve yazabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-uzunluk-ve-kutle-olcme-arac-ve-birimleri",
+              "name": "Uzunluk ve Kütle Ölçme Araç ve Birimleri",
+              "outcomes": [
+                {
+                  "code": "MAT.2.1.10",
+                  "text": "Standart uzunluk ve kütle ölçme araçlarının ve birimlerinin gerekliliğini yansıtabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-uzunluk-ve-kutle-olcmede-tahmin",
+              "name": "Uzunluk ve Kütle Ölçmede Tahmin",
+              "outcomes": [
+                {
+                  "code": "MAT.2.1.11",
+                  "text": "Standart uzunluk ve kütle ölçü birimleri cinsinden uzunlukları ve kütleleri tahmin edebilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g2-matematik-nesnelerin-geometrisi-2",
+          "name": "NESNELERİN GEOMETRİSİ (2)",
+          "topics": [
+            {
+              "id": "g2-matematik-yer-ve-yon-bulma",
+              "name": "Yer ve Yön Bulma",
+              "outcomes": [
+                {
+                  "code": "MAT.2.3.6",
+                  "text": "Mesafe ve yönleri içerecek şekilde hedefe ulaşmak için uygun stratejilere karar verebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-matematik-simetri",
+              "name": "Simetri",
+              "outcomes": [
+                {
+                  "code": "MAT.2.3.7",
+                  "text": "Verilen şekiller arasından simetrik olanları ayırt edebilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g2-matematik-veriye-dayali-arastirma",
+          "name": "VERİYE DAYALI ARAŞTIRMA",
+          "topics": [
+            {
+              "id": "g2-matematik-veriyle-calisma-ve-veriye-dayali-karar-verme",
+              "name": "Veriyle Çalışma ve Veriye Dayalı Karar Verme",
+              "outcomes": [
+                {
+                  "code": "MAT.2.4.1",
+                  "text": "Kategorik veriye dayalı en çok iki veri grubu ile çalışabilme ve veriye dayalı karar verebilme"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hayat-bilgisi",
+      "name": "Hayat Bilgisi",
+      "themes": [
+        {
+          "id": "g2-hayat-bilgisi-ben-ve-okulum",
+          "name": "BEN VE OKULUM",
+          "topics": [
+            {
+              "id": "g2-hayat-bilgisi-zaman-yonetimi",
+              "name": "Zaman Yönetimi",
+              "outcomes": [
+                {
+                  "code": "HB.2.1.1",
+                  "text": "Planlı olmanın kişisel yaşama etkilerini fark edebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-iletisim-kurallari",
+              "name": "İletişim Kuralları",
+              "outcomes": [
+                {
+                  "code": "HB.2.1.2",
+                  "text": "Öğretmen ve arkadaşlarıyla etkili iletişim kurabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+              "name": "Arkadaşlık İlişkilerini Etkileyen Davranışlar",
+              "outcomes": [
+                {
+                  "code": "HB.2.1.3",
+                  "text": "Arkadaşlık ilişkilerini düzenleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-sinif-ici-karar-alma-surecleri",
+              "name": "Sınıf İçi Karar Alma Süreçleri",
+              "outcomes": [
+                {
+                  "code": "HB.2.1.4",
+                  "text": "Sınıf içi karar alma süreçlerinde sosyal temas oluşturabilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g2-hayat-bilgisi-sagligim-ve-guvenligim",
+          "name": "SAĞLIĞIM VE GÜVENLİĞİM",
+          "topics": [
+            {
+              "id": "g2-hayat-bilgisi-saglikli-buyume-ve-gelismeyi-etkileyen-aliskanliklar",
+              "name": "Sağlıklı Büyüme ve Gelişmeyi Etkileyen Alışkanlıklar",
+              "outcomes": [
+                {
+                  "code": "HB.2.2.1",
+                  "text": "Sağlıklı büyüme ve gelişme ile alışkanlıkları arasındaki ilişkiyi çözümleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-cevrim-ici-ortamlarda-kisisel-guvenlik",
+              "name": "Çevrim İçi Ortamlarda Kişisel Güvenlik",
+              "outcomes": [
+                {
+                  "code": "HB.2.2.2",
+                  "text": "Çevrim içi ortamlarda kişisel güvenliğini sağlayabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-trafik-isaret-levhalari",
+              "name": "Trafik İşaret Levhaları",
+              "outcomes": [
+                {
+                  "code": "HB.2.2.3",
+                  "text": "Temel trafik işaret levhalarını tanıyabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-acil-durumlarda-iletisim",
+              "name": "Acil Durumlarda İletişim",
+              "outcomes": [
+                {
+                  "code": "HB.2.2.4",
+                  "text": "Acil bir durumda yetkililerle etkili iletişim kurabilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g2-hayat-bilgisi-ailem-ve-toplum",
+          "name": "AİLEM VE TOPLUM",
+          "topics": [
+            {
+              "id": "g2-hayat-bilgisi-ailenin-onemi",
+              "name": "Ailenin Önemi",
+              "outcomes": [
+                {
+                  "code": "HB.2.3.1",
+                  "text": "Ailenin önemini yorumlayabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-nezaket-ve-gorgu-kurallari",
+              "name": "Nezaket ve Görgü Kuralları",
+              "outcomes": [
+                {
+                  "code": "HB.2.3.2",
+                  "text": "Toplumsal yaşamda nezaket ve görgü kurallarına uygun davranabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-gorev-ve-sorumluluklar",
+              "name": "Görev ve Sorumluluklar",
+              "outcomes": [
+                {
+                  "code": "HB.2.3.3",
+                  "text": "Yakın çevresinde üzerine düşen görev ve sorumlulukları günlük yaşamına yansıtabilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g2-hayat-bilgisi-yasadigim-yer-ve-ulkem",
+          "name": "YAŞADIĞIM YER VE ÜLKEM",
+          "topics": [
+            {
+              "id": "g2-hayat-bilgisi-tarihi-mekanlar-ve-dogal-guzellikler",
+              "name": "Tarihî Mekânlar ve Doğal Güzellikler",
+              "outcomes": [
+                {
+                  "code": "HB.2.4.1",
+                  "text": "Yakın çevresinde bulunan tarihî mekân ve doğal güzellikleri belirleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-yasadigi-yerin-yonetim-birimleri",
+              "name": "Yaşadığı Yerin Yönetim Birimleri",
+              "outcomes": [
+                {
+                  "code": "HB.2.4.2",
+                  "text": "Yaşadığı yerin yönetim birimleri ile ilgili kaynaklardan bilgi toplayabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-mustafa-kemal-ataturkun-ogrencilik-hayati",
+              "name": "Mustafa Kemal Atatürk’ün Öğrencilik Hayatı",
+              "outcomes": [
+                {
+                  "code": "HB.2.4.3",
+                  "text": "Mustafa Kemal Atatürk’ün öğrencilik hayatını ifade edebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-milli-gun-ve-bayramlarin-onemi",
+              "name": "Millî Gün ve Bayramların Önemi",
+              "outcomes": [
+                {
+                  "code": "HB.2.4.4",
+                  "text": "Millî gün ve bayramların önemini yorumlayabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-dini-gun-ve-bayramlarin-onemi",
+              "name": "Dinî Gün ve Bayramların Önemi",
+              "outcomes": [
+                {
+                  "code": "HB.2.4.5",
+                  "text": "Dinî gün ve bayramların önemini yorumlayabilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g2-hayat-bilgisi-doga-ve-cevre",
+          "name": "DOĞA VE ÇEVRE",
+          "topics": [
+            {
+              "id": "g2-hayat-bilgisi-hava-olaylari-ve-mevsimler",
+              "name": "Hava Olayları ve Mevsimler",
+              "outcomes": [
+                {
+                  "code": "HB.2.5.1",
+                  "text": "Hava olayları ve mevsimler arasındaki ilişkiyi çözümleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-dogadan-yararlanarak-yon-bulma",
+              "name": "Doğadan Yararlanarak Yön Bulma",
+              "outcomes": [
+                {
+                  "code": "HB.2.5.2",
+                  "text": "Doğadan yararlanarak yönünü belirleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-afetlere-karsi-alinacak-onlemler",
+              "name": "Afetlere Karşı Alınacak Önlemler",
+              "outcomes": [
+                {
+                  "code": "HB.2.5.3",
+                  "text": "Afetlere karşı alınması gereken önlemlere ilişkin bilgi toplayabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-dogal-kaynaklari-tasarruflu-kullanma",
+              "name": "Doğal Kaynakları Tasarruflu Kullanma",
+              "outcomes": [
+                {
+                  "code": "HB.2.5.4",
+                  "text": "Doğal kaynakları tasarruflu kullanma davranışlarını günlük yaşamına yansıtabilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g2-hayat-bilgisi-bilim-teknoloji-ve-sanat",
+          "name": "BİLİM, TEKNOLOJİ VE SANAT",
+          "topics": [
+            {
+              "id": "g2-hayat-bilgisi-bilim-insanlarinin-bilime-katkilari",
+              "name": "Bilim İnsanlarının Bilime Katkıları",
+              "outcomes": [
+                {
+                  "code": "HB.2.6.1",
+                  "text": "Bilim insanlarının bilime katkılarına yönelik kaynaklardan bilgi toplayabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-teknolojik-urunlerin-degisim-ve-surekliligi",
+              "name": "Teknolojik Ürünlerin Değişim ve Sürekliliği",
+              "outcomes": [
+                {
+                  "code": "HB.2.6.2",
+                  "text": "Teknolojik bir ürünün değişim ve sürekliliğine dair kanıta dayalı öngörüde bulunabilme"
+                }
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-sanatin-gunluk-yasamdaki-yeri",
+              "name": "Sanatın Günlük Yaşamdaki Yeri",
+              "outcomes": [
+                {
+                  "code": "HB.2.6.3",
+                  "text": "Sanatın günlük yaşamdaki yerini belirleyebilme"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ingilizce",
+      "name": "İngilizce",
+      "themes": [
+        {
+          "id": "g2-ingilizce-school-life",
+          "name": "SCHOOL LIFE",
+          "subthemes": [
+            {
+              "id": "g2-ingilizce-school-life-greetings-and-introductions-at-school",
+              "name": "Greetings and introductions at school",
+              "outcomes": [
+                {
+                  "code": "ENG.2.1.R3",
+                  "text": "Pupils can make meaning of/derive meaning from the current content about “greetings and introductions at school; people and places at school; days of the week; national days and celebrations” by reading it carefully."
+                }
+              ],
+              "outcomeSource": "https://tymm.meb.gov.tr/ingilizce-dersi-temel-egitim/unite/629",
+              "mappingNote": "ENG.2.1.R3 explicitly includes this sub-theme. This is a reading-comprehension assessment slice, not evidence of speaking/listening performance."
+            },
+            {
+              "id": "g2-ingilizce-school-life-people-and-places-at-school",
+              "name": "people and places at school",
+              "outcomes": [
+                {
+                  "code": "ENG.2.1.R3",
+                  "text": "Pupils can make meaning of/derive meaning from the current content about “greetings and introductions at school; people and places at school; days of the week; national days and celebrations” by reading it carefully."
+                }
+              ],
+              "outcomeSource": "https://tymm.meb.gov.tr/ingilizce-dersi-temel-egitim/unite/629",
+              "mappingNote": "ENG.2.1.R3 explicitly includes this sub-theme. Closed visual vocabulary: classroom, library, garden, teacher, pupil, headmaster; all appear in the source target vocabulary."
+            },
+            {
+              "id": "g2-ingilizce-school-life-days-of-the-week",
+              "name": "days of the week"
+            },
+            {
+              "id": "g2-ingilizce-school-life-national-and-religious-days-and-celebrations",
+              "name": "national and religious days and celebrations"
+            }
+          ],
+          "outcome_codes": [
+            "ENG.2.1.G1",
+            "ENG.2.1.L1",
+            "ENG.2.1.L2",
+            "ENG.2.1.L3",
+            "ENG.2.1.L4",
+            "ENG.2.1.P1",
+            "ENG.2.1.R1",
+            "ENG.2.1.R2",
+            "ENG.2.1.R3",
+            "ENG.2.1.R4",
+            "ENG.2.1.S1",
+            "ENG.2.1.S2",
+            "ENG.2.1.S3",
+            "ENG.2.1.S4",
+            "ENG.2.1.S5",
+            "ENG.2.1.S6",
+            "ENG.2.1.V1",
+            "ENG.2.1.W1",
+            "ENG.2.1.W2",
+            "ENG.2.1.W3",
+            "ENG.2.1.W4",
+            "ENG.2.1.W5",
+            "ENG.2.1.W6"
+          ]
+        },
+        {
+          "id": "g2-ingilizce-classroom-life",
+          "name": "CLASSROOM LIFE",
+          "subthemes": [
+            {
+              "id": "g2-ingilizce-classroom-life-classroom-instructions-and-language",
+              "name": "Classroom instructions and language",
+              "outcomes": [
+                {
+                  "code": "ENG.2.2.R3",
+                  "text": "Pupils can make meaning of/derive meaning from the current content about “classroom life with classroom instructions and language; classroom furniture, devices and objects; colours” by reading it carefully."
+                }
+              ],
+              "outcomeSource": "https://tymm.meb.gov.tr/ingilizce-dersi-temel-egitim/unite/634",
+              "mappingNote": "The linked official theme R3 explicitly names this subtheme. Receptive reading only; no listening or performance claim."
+            },
+            {
+              "id": "g2-ingilizce-classroom-life-classroom-furniture-devices-and-objects",
+              "name": "classroom furniture, devices and objects",
+              "outcomes": [
+                {
+                  "code": "ENG.2.2.R3",
+                  "text": "Pupils can make meaning of/derive meaning from the current content about “classroom life with classroom instructions and language; classroom furniture, devices and objects; colours” by reading it carefully."
+                }
+              ],
+              "outcomeSource": "https://tymm.meb.gov.tr/ingilizce-dersi-temel-egitim/unite/634",
+              "mappingNote": "The linked official theme R3 explicitly names this subtheme. Receptive reading only; no listening or performance claim."
+            },
+            {
+              "id": "g2-ingilizce-classroom-life-colours",
+              "name": "colours",
+              "outcomes": [
+                {
+                  "code": "ENG.2.2.R3",
+                  "text": "Pupils can make meaning of/derive meaning from the current content about “classroom life with classroom instructions and language; classroom furniture, devices and objects; colours” by reading it carefully."
+                }
+              ],
+              "outcomeSource": "https://tymm.meb.gov.tr/ingilizce-dersi-temel-egitim/unite/634",
+              "mappingNote": "The linked official theme R3 explicitly names this subtheme. Receptive reading only; no listening or performance claim."
+            }
+          ],
+          "outcome_codes": [
+            "ENG.2.2.G1",
+            "ENG.2.2.L1",
+            "ENG.2.2.L2",
+            "ENG.2.2.L3",
+            "ENG.2.2.L4",
+            "ENG.2.2.P1",
+            "ENG.2.2.R1",
+            "ENG.2.2.R2",
+            "ENG.2.2.R3",
+            "ENG.2.2.R4",
+            "ENG.2.2.S1",
+            "ENG.2.2.S2",
+            "ENG.2.2.S3",
+            "ENG.2.2.S4",
+            "ENG.2.2.S5",
+            "ENG.2.2.S6",
+            "ENG.2.2.V1",
+            "ENG.2.2.W1",
+            "ENG.2.2.W2",
+            "ENG.2.2.W3",
+            "ENG.2.2.W4",
+            "ENG.2.2.W5",
+            "ENG.2.2.W6"
+          ]
+        },
+        {
+          "id": "g2-ingilizce-personal-life",
+          "name": "PERSONAL LIFE",
+          "subthemes": [
+            {
+              "id": "g2-ingilizce-personal-life-parts-of-the-body-and-physical-features",
+              "name": "Parts of the body and physical features",
+              "outcomes": [
+                {
+                  "code": "ENG.2.3.R3",
+                  "text": "Pupils can make meaning of/derive meaning from the current content about “personal life with basic parts of the human body, physical features, clothes, days of the week, ages, and birthdays; weather conditions” by reading it carefully."
+                }
+              ],
+              "outcomeSource": "https://tymm.meb.gov.tr/ingilizce-dersi-temel-egitim/unite/756",
+              "mappingNote": "The linked official theme R3 explicitly names this subtheme. Receptive reading only; no listening or performance claim."
+            },
+            {
+              "id": "g2-ingilizce-personal-life-clothes",
+              "name": "clothes",
+              "outcomes": [
+                {
+                  "code": "ENG.2.3.R3",
+                  "text": "Pupils can make meaning of/derive meaning from the current content about “personal life with basic parts of the human body, physical features, clothes, days of the week, ages, and birthdays; weather conditions” by reading it carefully."
+                }
+              ],
+              "outcomeSource": "https://tymm.meb.gov.tr/ingilizce-dersi-temel-egitim/unite/756",
+              "mappingNote": "The linked official theme R3 explicitly names this subtheme. Receptive reading only; no listening or performance claim."
+            },
+            {
+              "id": "g2-ingilizce-personal-life-days-of-the-week-ages-and-birthdays",
+              "name": "days of the week, ages and birthdays",
+              "outcomes": [
+                {
+                  "code": "ENG.2.3.R3",
+                  "text": "Pupils can make meaning of/derive meaning from the current content about “personal life with basic parts of the human body, physical features, clothes, days of the week, ages, and birthdays; weather conditions” by reading it carefully."
+                }
+              ],
+              "outcomeSource": "https://tymm.meb.gov.tr/ingilizce-dersi-temel-egitim/unite/756",
+              "mappingNote": "The linked official theme R3 explicitly names this subtheme. Receptive reading only; no listening or performance claim."
+            },
+            {
+              "id": "g2-ingilizce-personal-life-weather-conditions",
+              "name": "weather conditions",
+              "outcomes": [
+                {
+                  "code": "ENG.2.3.R3",
+                  "text": "Pupils can make meaning of/derive meaning from the current content about “personal life with basic parts of the human body, physical features, clothes, days of the week, ages, and birthdays; weather conditions” by reading it carefully."
+                }
+              ],
+              "outcomeSource": "https://tymm.meb.gov.tr/ingilizce-dersi-temel-egitim/unite/756",
+              "mappingNote": "The linked official theme R3 explicitly names this subtheme. Receptive reading only; no listening or performance claim."
+            }
+          ],
+          "outcome_codes": [
+            "ENG.2.3.L1",
+            "ENG.2.3.L2",
+            "ENG.2.3.L3",
+            "ENG.2.3.L4",
+            "ENG.2.3.P1",
+            "ENG.2.3.R1",
+            "ENG.2.3.R2",
+            "ENG.2.3.R3",
+            "ENG.2.3.R4",
+            "ENG.2.3.S1",
+            "ENG.2.3.S2",
+            "ENG.2.3.S3",
+            "ENG.2.3.S4",
+            "ENG.2.3.S6",
+            "ENG.2.3.W1",
+            "ENG.2.3.W2",
+            "ENG.2.3.W3",
+            "ENG.2.3.W4",
+            "ENG.2.3.W6"
+          ]
+        },
+        {
+          "id": "g2-ingilizce-family-life",
+          "name": "FAMILY LIFE",
+          "subthemes": [
+            {
+              "id": "g2-ingilizce-family-life-family-members-and-family-members-physical-appearances-and-physical-features",
+              "name": "Family members and family members’ physical appearances and physical features",
+              "outcomes": [
+                {
+                  "code": "ENG.2.4.R3",
+                  "text": "Pupils can make meaning of/derive meaning from the current content about “family life with family members and family members’ physical appearances and physical features” by reading it carefully."
+                }
+              ],
+              "outcomeSource": "https://tymm.meb.gov.tr/ingilizce-dersi-temel-egitim/unite/763",
+              "mappingNote": "The linked official theme R3 explicitly names this subtheme. Receptive reading only; no listening or performance claim."
+            }
+          ],
+          "outcome_codes": [
+            "ENG.2.4.G1",
+            "ENG.2.4.L1",
+            "ENG.2.4.L2",
+            "ENG.2.4.L3",
+            "ENG.2.4.L4",
+            "ENG.2.4.P1",
+            "ENG.2.4.R1",
+            "ENG.2.4.R2",
+            "ENG.2.4.R3",
+            "ENG.2.4.R4",
+            "ENG.2.4.S1",
+            "ENG.2.4.S2",
+            "ENG.2.4.S3",
+            "ENG.2.4.S4",
+            "ENG.2.4.S5",
+            "ENG.2.4.S6",
+            "ENG.2.4.V1",
+            "ENG.2.4.W1",
+            "ENG.2.4.W2",
+            "ENG.2.4.W3",
+            "ENG.2.4.W4",
+            "ENG.2.4.W5",
+            "ENG.2.4.W6"
+          ]
+        },
+        {
+          "id": "g2-ingilizce-homes-houses-neighbourhoods",
+          "name": "HOMES & HOUSES & NEIGHBOURHOODS",
+          "subthemes": [
+            {
+              "id": "g2-ingilizce-homes-houses-neighbourhoods-parts-rooms-and-furniture-in-the-house",
+              "name": "Parts, rooms and furniture in the house",
+              "outcomes": [
+                {
+                  "code": "ENG.2.5.R3",
+                  "text": "Pupils can make meaning of/derive meaning from the current content about “homes, houses and neighbourhoods with parts, rooms and furniture in the house; pets in the house” by reading it carefully."
+                }
+              ],
+              "outcomeSource": "https://tymm.meb.gov.tr/ingilizce-dersi-temel-egitim/unite/766",
+              "mappingNote": "The linked official theme R3 explicitly names this subtheme. Receptive reading only; no listening or performance claim."
+            },
+            {
+              "id": "g2-ingilizce-homes-houses-neighbourhoods-pets-in-the-house",
+              "name": "pets in the house",
+              "outcomes": [
+                {
+                  "code": "ENG.2.5.R3",
+                  "text": "Pupils can make meaning of/derive meaning from the current content about “homes, houses and neighbourhoods with parts, rooms and furniture in the house; pets in the house” by reading it carefully."
+                }
+              ],
+              "outcomeSource": "https://tymm.meb.gov.tr/ingilizce-dersi-temel-egitim/unite/766",
+              "mappingNote": "The linked official theme R3 explicitly names this subtheme. Receptive reading only; no listening or performance claim."
+            }
+          ],
+          "outcome_codes": [
+            "ENG.2.5.G1",
+            "ENG.2.5.L1",
+            "ENG.2.5.L2",
+            "ENG.2.5.L3",
+            "ENG.2.5.L4",
+            "ENG.2.5.P1",
+            "ENG.2.5.R1",
+            "ENG.2.5.R2",
+            "ENG.2.5.R3",
+            "ENG.2.5.R4",
+            "ENG.2.5.S1",
+            "ENG.2.5.S2",
+            "ENG.2.5.S3",
+            "ENG.2.5.S4",
+            "ENG.2.5.S5",
+            "ENG.2.5.S6",
+            "ENG.2.5.V1",
+            "ENG.2.5.W1",
+            "ENG.2.5.W2",
+            "ENG.2.5.W3",
+            "ENG.2.5.W4",
+            "ENG.2.5.W5",
+            "ENG.2.5.W6"
+          ]
+        },
+        {
+          "id": "g2-ingilizce-life-in-the-city-the-world",
+          "name": "LIFE IN THE CITY & THE WORLD",
+          "subthemes": [
+            {
+              "id": "g2-ingilizce-life-in-the-city-the-world-basic-food-types-items-and-meals",
+              "name": "Basic food types, items, and meals",
+              "outcomes": [
+                {
+                  "code": "ENG.2.6.R3",
+                  "text": "Pupils can make meaning of/derive meaning from the current content about “life in the city and the world with basic food types, items, and meals” by reading it carefully."
+                }
+              ],
+              "outcomeSource": "https://tymm.meb.gov.tr/ingilizce-dersi-temel-egitim/unite/776",
+              "mappingNote": "The linked official theme R3 explicitly names this subtheme. Receptive reading only; no listening or performance claim."
+            }
+          ],
+          "outcome_codes": [
+            "ENG.2.6.G1",
+            "ENG.2.6.L1",
+            "ENG.2.6.L2",
+            "ENG.2.6.L3",
+            "ENG.2.6.L4",
+            "ENG.2.6.P1",
+            "ENG.2.6.R1",
+            "ENG.2.6.R2",
+            "ENG.2.6.R3",
+            "ENG.2.6.R4",
+            "ENG.2.6.S1",
+            "ENG.2.6.S2",
+            "ENG.2.6.S3",
+            "ENG.2.6.S4",
+            "ENG.2.6.S5",
+            "ENG.2.6.S6",
+            "ENG.2.6.V1",
+            "ENG.2.6.W1",
+            "ENG.2.6.W2",
+            "ENG.2.6.W3",
+            "ENG.2.6.W4",
+            "ENG.2.6.W5",
+            "ENG.2.6.W6"
+          ]
+        }
+      ]
+    }
+  ]
+}

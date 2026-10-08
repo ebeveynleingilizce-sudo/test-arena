@@ -1,0 +1,1254 @@
+{
+  "grade": 2,
+  "subjectId": "hayat-bilgisi",
+  "unitId": "g2-hayat-bilgisi-ben-ve-okulum",
+  "questionCount": 50,
+  "questions": [
+    {
+      "id": "g2-hb-ben-ve-okulum-q001-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Bu davranışının ona en önemli yararı nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hem sorumluluğunu yerine getirir hem oyuna zaman ayırır."
+        },
+        {
+          "id": "b",
+          "text": "Hiç dinlenmesine gerek kalmaz."
+        },
+        {
+          "id": "c",
+          "text": "Bütün gün ders çalışır."
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-zaman-yonetimi",
+      "outcomeCode": "HB.2.1.1",
+      "outcomeMappingStatus": "exact",
+      "content": "Ali okuldan gelince önce ödevini yapıyor, sonra oyun oynuyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q002-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Bunun sonucu ne olabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sabah daha geç uyanmak zorunda kalır."
+        },
+        {
+          "id": "b",
+          "text": "Okula giderken eşyalarını unutma ihtimali azalır."
+        },
+        {
+          "id": "c",
+          "text": "Derslerine katılmasına gerek kalmaz."
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-zaman-yonetimi",
+      "outcomeCode": "HB.2.1.1",
+      "outcomeMappingStatus": "exact",
+      "content": "Elif, okul çantasını her akşam hazırlıyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q003-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Planına hangisini eklemesi daha uygun olur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Daha fazla ekran süresi"
+        },
+        {
+          "id": "b",
+          "text": "Sadece televizyon izleme"
+        },
+        {
+          "id": "c",
+          "text": "Ders çalışma ve dinlenme"
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-zaman-yonetimi",
+      "outcomeCode": "HB.2.1.1",
+      "outcomeMappingStatus": "exact",
+      "content": "Mert'in günlük planında yalnızca oyun oynamak var."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q004-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu alışkanlığını değiştirmek için ne yapabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kitap okumayı günlük planına ekleyebilir."
+        },
+        {
+          "id": "b",
+          "text": "Bütün kitaplarını kaldırabilir."
+        },
+        {
+          "id": "c",
+          "text": "Yalnızca canı sıkılınca okuyabilir."
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-zaman-yonetimi",
+      "outcomeCode": "HB.2.1.1",
+      "outcomeMappingStatus": "exact",
+      "content": "Zeynep, kitap okumayı sürekli erteliyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q005-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Bu öğrencinin davranışı için ne söylenebilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dinlenmeye önem vermiyor."
+        },
+        {
+          "id": "b",
+          "text": "Zamanını planlı kullanıyor."
+        },
+        {
+          "id": "c",
+          "text": "Sorumluluklarını unutuyor."
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-zaman-yonetimi",
+      "outcomeCode": "HB.2.1.1",
+      "outcomeMappingStatus": "exact",
+      "content": "Bir öğrenci ödevini, oyununu ve dinlenmesini dengeli biçimde yapıyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q006-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Ne yapması daha uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Planını tamamen bırakmak"
+        },
+        {
+          "id": "b",
+          "text": "Bir daha plan hazırlamamak"
+        },
+        {
+          "id": "c",
+          "text": "Neden unuttuğunu düşünüp planını düzenlemek"
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-zaman-yonetimi",
+      "outcomeCode": "HB.2.1.1",
+      "outcomeMappingStatus": "exact",
+      "content": "Ece günlük planındaki bir işi yapmayı unuttu."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q007-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Planında önce hangi etkinliğe yer vermesi uygun olabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kısa bir dinlenmeye"
+        },
+        {
+          "id": "b",
+          "text": "Aralıksız bilgisayar oyununa"
+        },
+        {
+          "id": "c",
+          "text": "Gece geç saatlere kadar televizyona"
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-zaman-yonetimi",
+      "outcomeCode": "HB.2.1.1",
+      "outcomeMappingStatus": "exact",
+      "content": "Arda okuldan sonra çok yoruluyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q008-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bunun yararı nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bütün işleri yeniden yapmasını sağlar."
+        },
+        {
+          "id": "b",
+          "text": "Yaptığı ve yapmadığı işleri görmesini sağlar."
+        },
+        {
+          "id": "c",
+          "text": "Planını başkalarının hazırlamasını sağlar."
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-zaman-yonetimi",
+      "outcomeCode": "HB.2.1.1",
+      "outcomeMappingStatus": "exact",
+      "content": "Bir çocuk günlük görev çizelgesindeki tamamladığı işlere işaret koyuyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q009-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "En uygun değişiklik nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Uyku zamanını tamamen kaldırmak"
+        },
+        {
+          "id": "b",
+          "text": "Bütün günü oyuna ayırmak"
+        },
+        {
+          "id": "c",
+          "text": "Ailesiyle birlikte yapacağı bir etkinlik eklemek"
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-zaman-yonetimi",
+      "outcomeCode": "HB.2.1.1",
+      "outcomeMappingStatus": "exact",
+      "content": "Deniz'in günlük planında ders, oyun ve uyku var ancak ailesiyle zaman geçirme yok."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q010-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Ertesi gün ne yapmalıdır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ödev için belirlediği sıraya uymaya çalışmalıdır."
+        },
+        {
+          "id": "b",
+          "text": "Ödev yapmaktan vazgeçmelidir."
+        },
+        {
+          "id": "c",
+          "text": "Planındaki bütün etkinlikleri silmelidir."
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-zaman-yonetimi",
+      "outcomeCode": "HB.2.1.1",
+      "outcomeMappingStatus": "exact",
+      "content": "Ödevini yaparken oyuna dalan Kerem, görevini tamamlayamadı."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q011-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu durumda ne yapması uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yapamadığı görevleri gizlemek"
+        },
+        {
+          "id": "b",
+          "text": "Planını gözden geçirip daha uygulanabilir hâle getirmek"
+        },
+        {
+          "id": "c",
+          "text": "Plan hazırlamanın gereksiz olduğunu düşünmek"
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-zaman-yonetimi",
+      "outcomeCode": "HB.2.1.1",
+      "outcomeMappingStatus": "exact",
+      "content": "Sude planını üç gün uyguladı. Bazı görevlerini yapamadığını gördü."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q012-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Hangisi söylenebilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "İkisi de mutlaka aynı zorluğu yaşar."
+        },
+        {
+          "id": "b",
+          "text": "Planlı öğrenci hiç yorulmaz."
+        },
+        {
+          "id": "c",
+          "text": "Planlı öğrenci görevlerini zamanında bitirmekte daha az zorlanabilir."
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-zaman-yonetimi",
+      "outcomeCode": "HB.2.1.1",
+      "outcomeMappingStatus": "exact",
+      "content": "İki öğrenciden biri ödevini sürekli son ana bırakıyor, diğeri ise günlük planına uygun yapıyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q013-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "En doğru değerlendirme nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Planında dinlenmeye de yer vermelidir."
+        },
+        {
+          "id": "b",
+          "text": "Daha fazla ödev eklemelidir."
+        },
+        {
+          "id": "c",
+          "text": "Dinlenmeyi tamamen bırakmalıdır."
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-zaman-yonetimi",
+      "outcomeCode": "HB.2.1.1",
+      "outcomeMappingStatus": "exact",
+      "content": "Bora'nın planında oyun ve ders için yer var ama yeterli dinlenme yok."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q014-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Ne yapmalıdır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Arkadaşının sözünü kesmelidir."
+        },
+        {
+          "id": "b",
+          "text": "Söz isteyip sırasını beklemelidir."
+        },
+        {
+          "id": "c",
+          "text": "Yüksek sesle bağırmalıdır."
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-iletisim-kurallari",
+      "outcomeCode": "HB.2.1.2",
+      "outcomeMappingStatus": "exact",
+      "content": "Öğretmen bir soru sorarken Ayşe cevap vermek istiyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q015",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Bir arkadaşın konuşurken onu dikkatle dinlediğini nasıl gösterebilirsin?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Başka biriyle konuşarak"
+        },
+        {
+          "id": "b",
+          "text": "Oyuncağınla ilgilenerek"
+        },
+        {
+          "id": "c",
+          "text": "Ona yönelip söylediklerini dinleyerek"
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-iletisim-kurallari",
+      "outcomeCode": "HB.2.1.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q016-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Ne yapmalıdır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Daha anlaşılır ve uygun hızda konuşmalıdır."
+        },
+        {
+          "id": "b",
+          "text": "Konuşmayı tamamen bırakmalıdır."
+        },
+        {
+          "id": "c",
+          "text": "Daha yüksek sesle bağırmalıdır."
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-iletisim-kurallari",
+      "outcomeCode": "HB.2.1.2",
+      "outcomeMappingStatus": "exact",
+      "content": "Can arkadaşına bir konuyu anlatıyor ama çok hızlı konuştuğu için anlaşılmıyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q017",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Öğretmenini anlamayan bir öğrenci hangi cümleyi kullanmalıdır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bir daha anlatmayın."
+        },
+        {
+          "id": "b",
+          "text": "Öğretmenim, tekrar açıklar mısınız?"
+        },
+        {
+          "id": "c",
+          "text": "Bu konuyu dinlemek istemiyorum."
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-iletisim-kurallari",
+      "outcomeCode": "HB.2.1.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q018-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu durum neye yol açabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Konuşmanın daha anlaşılır olmasına"
+        },
+        {
+          "id": "b",
+          "text": "İkisinin de daha iyi dinlemesine"
+        },
+        {
+          "id": "c",
+          "text": "Konuşanın kendini ifade etmekte zorlanmasına"
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-iletisim-kurallari",
+      "outcomeCode": "HB.2.1.2",
+      "outcomeMappingStatus": "exact",
+      "content": "İki arkadaş konuşurken biri sürekli diğerinin sözünü kesiyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q019-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Nasıl konuşması daha uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ben farklı düşünüyorum, çünkü..."
+        },
+        {
+          "id": "b",
+          "text": "Senin fikrini dinlemem."
+        },
+        {
+          "id": "c",
+          "text": "Yalnızca benim söylediğim doğrudur."
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-iletisim-kurallari",
+      "outcomeCode": "HB.2.1.2",
+      "outcomeMappingStatus": "exact",
+      "content": "Defne arkadaşının fikrine katılmıyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q020-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Ne yapmalıdır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Konuşmayı bırakmalıdır."
+        },
+        {
+          "id": "b",
+          "text": "Herkesin duyabileceği uygun bir sesle konuşmalıdır."
+        },
+        {
+          "id": "c",
+          "text": "Arkadaşlarına kızmalıdır."
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-iletisim-kurallari",
+      "outcomeCode": "HB.2.1.2",
+      "outcomeMappingStatus": "exact",
+      "content": "Eren sınıfta konuşurken çok kısık ses kullanıyor ve arkadaşları onu duyamıyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q021-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Etkili iletişim kurmak için ne yaparsın?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Konuyu hemen değiştiririm."
+        },
+        {
+          "id": "b",
+          "text": "Onun sözünü keserim."
+        },
+        {
+          "id": "c",
+          "text": "Onu dikkatle dinler, duygusunu anlamaya çalışırım."
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-iletisim-kurallari",
+      "outcomeCode": "HB.2.1.2",
+      "outcomeMappingStatus": "exact",
+      "content": "Bir arkadaşın üzgün olduğunu söylüyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q022",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Sınıfta herkes aynı anda konuşmaya başlarsa ne olabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Birbirlerini anlamaları zorlaşır."
+        },
+        {
+          "id": "b",
+          "text": "Herkes birbirini daha iyi dinler."
+        },
+        {
+          "id": "c",
+          "text": "Konuşmalar daha düzenli olur."
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-iletisim-kurallari",
+      "outcomeCode": "HB.2.1.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q023-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Hangisi ona yardımcı olabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Düşüncesini hiç söylememesi"
+        },
+        {
+          "id": "b",
+          "text": "Sakinleşip anlaşılır cümlelerle konuşması"
+        },
+        {
+          "id": "c",
+          "text": "Arkadaşlarının yerine konuşması"
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-iletisim-kurallari",
+      "outcomeCode": "HB.2.1.2",
+      "outcomeMappingStatus": "exact",
+      "content": "Mina, öğretmenine düşüncesini anlatırken heyecanlanıyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q024-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu davranış neyi gösterir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Konuşmaktan çekindiğini"
+        },
+        {
+          "id": "b",
+          "text": "Dersi anlamadığını"
+        },
+        {
+          "id": "c",
+          "text": "İletişimde saygılı davrandığını"
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-iletisim-kurallari",
+      "outcomeCode": "HB.2.1.2",
+      "outcomeMappingStatus": "exact",
+      "content": "Öğretmeni konuşurken söz almak isteyen öğrenci, öğretmenin konuşmasını bitirmesini bekliyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q025-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Hangisi en uygun davranıştır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ne demek istediğini nazikçe sormak"
+        },
+        {
+          "id": "b",
+          "text": "Ona hemen kızmak"
+        },
+        {
+          "id": "c",
+          "text": "Bir daha onunla konuşmamak"
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-iletisim-kurallari",
+      "outcomeCode": "HB.2.1.2",
+      "outcomeMappingStatus": "exact",
+      "content": "Bir arkadaşın söylediğini yanlış anladın."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q026-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Ne yapman arkadaşlık ilişkilerini olumlu etkiler?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Onu görmezden gelmek"
+        },
+        {
+          "id": "b",
+          "text": "Oyuna katılmak isteyip istemediğini sormak"
+        },
+        {
+          "id": "c",
+          "text": "Yalnız kalması gerektiğini söylemek"
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+      "outcomeCode": "HB.2.1.3",
+      "outcomeMappingStatus": "exact",
+      "content": "Yeni gelen bir öğrenci teneffüste tek başına duruyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q027-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Nasıl davranırsın?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Onunla alay ederim."
+        },
+        {
+          "id": "b",
+          "text": "Kalemini saklarım."
+        },
+        {
+          "id": "c",
+          "text": "Kalemini almasına yardım ederim."
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+      "outcomeCode": "HB.2.1.3",
+      "outcomeMappingStatus": "exact",
+      "content": "Bir arkadaşın yanlışlıkla kalemini düşürdü."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q028-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Ne söylemen daha uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sorun değil, tekrar deneyebiliriz."
+        },
+        {
+          "id": "b",
+          "text": "Seninle bir daha oynamam."
+        },
+        {
+          "id": "c",
+          "text": "Her şeyi sen bozdun."
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+      "outcomeCode": "HB.2.1.3",
+      "outcomeMappingStatus": "exact",
+      "content": "Oyun sırasında arkadaşın hata yaptı."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q029-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Ne yapmalısın?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Oyuncağı zorla almalısın."
+        },
+        {
+          "id": "b",
+          "text": "Kararına saygı göstermelisin."
+        },
+        {
+          "id": "c",
+          "text": "Onu arkadaş grubundan çıkarmalısın."
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+      "outcomeCode": "HB.2.1.3",
+      "outcomeMappingStatus": "exact",
+      "content": "Bir arkadaşın seninle oyuncağını paylaşmak istemiyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q030-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Sorunu çözmek için ne yapmaları uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Birbirlerine bağırmaları"
+        },
+        {
+          "id": "b",
+          "text": "Bir daha konuşmamaları"
+        },
+        {
+          "id": "c",
+          "text": "Sakin biçimde konuşup birbirlerini dinlemeleri"
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+      "outcomeCode": "HB.2.1.3",
+      "outcomeMappingStatus": "exact",
+      "content": "İki arkadaş küçük bir anlaşmazlık yaşıyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q031-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Nasıl davranırsın?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Duygusunu anlayıp onu desteklerim."
+        },
+        {
+          "id": "b",
+          "text": "Kaybettiği için onunla alay ederim."
+        },
+        {
+          "id": "c",
+          "text": "Üzüldüğü için onu suçlarım."
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+      "outcomeCode": "HB.2.1.3",
+      "outcomeMappingStatus": "exact",
+      "content": "Arkadaşın oyun sırasında kaybettiği için üzülüyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q032-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Hangisi yapıcı bir tepkidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Herkese hatasını anlatmak"
+        },
+        {
+          "id": "b",
+          "text": "Özrünü dinleyip sorunu konuşmak"
+        },
+        {
+          "id": "c",
+          "text": "Onunla asla konuşmamak"
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+      "outcomeCode": "HB.2.1.3",
+      "outcomeMappingStatus": "exact",
+      "content": "Bir arkadaşın senden özür diledi."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q033-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu davranışın sonucu ne olabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Arkadaşları kendini daha değerli hisseder."
+        },
+        {
+          "id": "b",
+          "text": "Arkadaşlıkları mutlaka güçlenir."
+        },
+        {
+          "id": "c",
+          "text": "Arkadaşlarının duyguları incinebilir."
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+      "outcomeCode": "HB.2.1.3",
+      "outcomeMappingStatus": "exact",
+      "content": "Bir öğrenci arkadaşlarının konuşma biçimiyle sürekli alay ediyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q034-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Arkadaşlıklarını korumak için ne yapabilirler?",
+      "options": [
+        {
+          "id": "a",
+          "text": "İkisinin de kabul edebileceği başka bir oyun bulabilirler."
+        },
+        {
+          "id": "b",
+          "text": "Biri diğerini zorlayabilir."
+        },
+        {
+          "id": "c",
+          "text": "Birbirlerine küsebilirler."
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+      "outcomeCode": "HB.2.1.3",
+      "outcomeMappingStatus": "exact",
+      "content": "Selin ve İpek aynı oyunu oynamak istemiyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q035-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Ne yapman daha uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ona daha kırıcı sözler söylemek"
+        },
+        {
+          "id": "b",
+          "text": "Sözünün seni üzdüğünü sakin biçimde anlatmak"
+        },
+        {
+          "id": "c",
+          "text": "Bütün arkadaşlarına onu kötülemek"
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+      "outcomeCode": "HB.2.1.3",
+      "outcomeMappingStatus": "exact",
+      "content": "Bir arkadaşın sana kırıcı bir söz söyledi."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q036-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu davranış nasıl değerlendirilebilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Arkadaşlığı güçlendiren bir davranıştır."
+        },
+        {
+          "id": "b",
+          "text": "Herkesin mutlu olmasını sağlar."
+        },
+        {
+          "id": "c",
+          "text": "Arkadaşlık ilişkilerini olumsuz etkileyebilir."
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+      "outcomeCode": "HB.2.1.3",
+      "outcomeMappingStatus": "exact",
+      "content": "Bir grup öğrenci oyun kuruyor ancak bir arkadaşlarını sürekli dışarıda bırakıyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q037-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Ne yapması uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hatasını kabul edip düzeltmeye çalışması"
+        },
+        {
+          "id": "b",
+          "text": "Suçu başka bir arkadaşına atması"
+        },
+        {
+          "id": "c",
+          "text": "Aynı davranışı sürdürmesi"
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+      "outcomeCode": "HB.2.1.3",
+      "outcomeMappingStatus": "exact",
+      "content": "Efe, arkadaşıyla tartıştıktan sonra kendi davranışını düşünüyor ve hatasını fark ediyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q038-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Ne söylemen daha uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Beni bir daha rahatsız etme."
+        },
+        {
+          "id": "b",
+          "text": "İşimi bitirince sana yardımcı olabilirim."
+        },
+        {
+          "id": "c",
+          "text": "Bütün işini benim yapmam gerekiyor."
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+      "outcomeCode": "HB.2.1.3",
+      "outcomeMappingStatus": "exact",
+      "content": "Bir arkadaşın senden yardım istiyor ancak sen de görevini tamamlamaya çalışıyorsun."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q039-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Karar verilmeden önce ne yapılmalıdır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yalnızca en uzun öğrencinin fikri alınmalıdır."
+        },
+        {
+          "id": "b",
+          "text": "Öğretmen konuşurken herkes bağırmalıdır."
+        },
+        {
+          "id": "c",
+          "text": "Öğrencilerin görüşleri dinlenmelidir."
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-sinif-ici-karar-alma-surecleri",
+      "outcomeCode": "HB.2.1.4",
+      "outcomeMappingStatus": "exact",
+      "content": "Sınıf kitaplığının yeri değiştirilecek."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q040",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Sınıf başkanı seçimi sırasında hangi davranış uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Adayları dinleyip kendi kararını vermek"
+        },
+        {
+          "id": "b",
+          "text": "Arkadaşlarını belirli bir adaya oy vermeye zorlamak"
+        },
+        {
+          "id": "c",
+          "text": "Farklı adayı destekleyenlere kızmak"
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-sinif-ici-karar-alma-surecleri",
+      "outcomeCode": "HB.2.1.4",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q041-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Ne yapılmalıdır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Farklı fikirler yasaklanmalıdır."
+        },
+        {
+          "id": "b",
+          "text": "Fikirler sırayla dinlenmelidir."
+        },
+        {
+          "id": "c",
+          "text": "Yalnızca ilk konuşan dinlenmelidir."
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-sinif-ici-karar-alma-surecleri",
+      "outcomeCode": "HB.2.1.4",
+      "outcomeMappingStatus": "exact",
+      "content": "Bir grup çalışmasında herkes farklı fikir söylüyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q042-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Hangisi uygun bir karar alma yoludur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "En yüksek sesle konuşanın oyununu seçmek"
+        },
+        {
+          "id": "b",
+          "text": "Hiç kimsenin fikrini almamak"
+        },
+        {
+          "id": "c",
+          "text": "Önerileri konuşup oylama yapmak"
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-sinif-ici-karar-alma-surecleri",
+      "outcomeCode": "HB.2.1.4",
+      "outcomeMappingStatus": "exact",
+      "content": "Sınıfça bir oyun seçilecek. Üç farklı öneri var."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q043-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Ne yapabilirsin?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Onu fikrini paylaşmaya nazikçe davet edebilirsin."
+        },
+        {
+          "id": "b",
+          "text": "Onun yerine karar verebilirsin."
+        },
+        {
+          "id": "c",
+          "text": "Fikrinin önemli olmadığını söyleyebilirsin."
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-sinif-ici-karar-alma-surecleri",
+      "outcomeCode": "HB.2.1.4",
+      "outcomeMappingStatus": "exact",
+      "content": "Sınıf toplantısında konuşmak isteyen ancak çekinen bir arkadaşın var."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q044-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Arkadaşları ne yapmalıdır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Önerisini hemen reddetmelidir."
+        },
+        {
+          "id": "b",
+          "text": "Önerisini dinleyip değerlendirmelidir."
+        },
+        {
+          "id": "c",
+          "text": "Öneride bulunduğu için onunla alay etmelidir."
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-sinif-ici-karar-alma-surecleri",
+      "outcomeCode": "HB.2.1.4",
+      "outcomeMappingStatus": "exact",
+      "content": "Sınıf kuralları belirlenirken bir öğrenci öneride bulunuyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q045-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu durumun sorunu nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Karar daha hızlı alınır."
+        },
+        {
+          "id": "b",
+          "text": "Herkes fikrini paylaşmış olur."
+        },
+        {
+          "id": "c",
+          "text": "Diğer öğrencilerin katılımı engellenir."
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-sinif-ici-karar-alma-surecleri",
+      "outcomeCode": "HB.2.1.4",
+      "outcomeMappingStatus": "exact",
+      "content": "Bir grup karar alırken yalnızca iki öğrencinin konuşmasına izin veriliyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q046-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Nasıl davranmalısın?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Karara saygı gösterip düşünceni uygun biçimde ifade etmelisin."
+        },
+        {
+          "id": "b",
+          "text": "Oylamayı bozmalısın."
+        },
+        {
+          "id": "c",
+          "text": "Arkadaşlarına küsmelisin."
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-sinif-ici-karar-alma-surecleri",
+      "outcomeCode": "HB.2.1.4",
+      "outcomeMappingStatus": "exact",
+      "content": "Sınıfça yapılan oylamada senin istemediğin karar çıktı."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q047-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "İş bölümü yaparken neye dikkat edilmelidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bütün işler tek kişiye verilmelidir."
+        },
+        {
+          "id": "b",
+          "text": "Görevler öğrencilerin katılımıyla adil biçimde paylaşılmalıdır."
+        },
+        {
+          "id": "c",
+          "text": "Kimse sorumluluk almamalıdır."
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-sinif-ici-karar-alma-surecleri",
+      "outcomeCode": "HB.2.1.4",
+      "outcomeMappingStatus": "exact",
+      "content": "Bir grup, sınıf panosunu düzenleyecek."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q048-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Ne yapılabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bir öneri hiç dinlenmeden silinebilir."
+        },
+        {
+          "id": "b",
+          "text": "Karar verme işi bırakılabilir."
+        },
+        {
+          "id": "c",
+          "text": "İki önerinin uygun yönleri birleştirilebilir."
+        }
+      ],
+      "correctOptionId": "c",
+      "topicId": "g2-hayat-bilgisi-sinif-ici-karar-alma-surecleri",
+      "outcomeCode": "HB.2.1.4",
+      "outcomeMappingStatus": "exact",
+      "content": "Sınıf kuralları belirlenirken iki farklı öneri de yararlı görünüyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q049-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Nasıl davranılmalıdır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fikri yine de saygıyla dinlenmelidir."
+        },
+        {
+          "id": "b",
+          "text": "Arkadaşın konuşması yasaklanmalıdır."
+        },
+        {
+          "id": "c",
+          "text": "Fikriyle alay edilmelidir."
+        }
+      ],
+      "correctOptionId": "a",
+      "topicId": "g2-hayat-bilgisi-sinif-ici-karar-alma-surecleri",
+      "outcomeCode": "HB.2.1.4",
+      "outcomeMappingStatus": "exact",
+      "content": "Grup toplantısında bir arkadaşın fikrine kimse katılmıyor."
+    },
+    {
+      "id": "g2-hb-ben-ve-okulum-q050-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Ne yapılması uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zorlanan öğrenciler görmezden gelinmelidir."
+        },
+        {
+          "id": "b",
+          "text": "Karar yeniden değerlendirilip gerekirse düzenlenmelidir."
+        },
+        {
+          "id": "c",
+          "text": "Bir daha ortak karar alınmamalıdır."
+        }
+      ],
+      "correctOptionId": "b",
+      "topicId": "g2-hayat-bilgisi-sinif-ici-karar-alma-surecleri",
+      "outcomeCode": "HB.2.1.4",
+      "outcomeMappingStatus": "exact",
+      "content": "Sınıfça alınan bir karar uygulandığında bazı öğrencilerin zorlandığı görüldü."
+    }
+  ]
+}

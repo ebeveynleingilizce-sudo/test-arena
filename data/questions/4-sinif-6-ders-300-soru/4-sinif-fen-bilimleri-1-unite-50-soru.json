@@ -1,0 +1,1458 @@
+{
+  "grade": 4,
+  "subjectId": "fen-bilimleri",
+  "unitId": "g4-fen-bilimleri-1-unite",
+  "questionCount": 50,
+  "questions": [
+    {
+      "id": "g4-fen-bilimleri-u1-q001",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Bir öğrenci yer kabuğundaki taşları inceliyor.",
+      "question": "Yer kabuğunun kara tabakası büyük ölçüde neden oluşur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bulutlardan"
+        },
+        {
+          "id": "b",
+          "text": "Kayaçlardan"
+        },
+        {
+          "id": "c",
+          "text": "Işıktan"
+        },
+        {
+          "id": "d",
+          "text": "Rüzgârdan"
+        }
+      ],
+      "correctOptionId": "b",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q002",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Bakır elektrik kablolarında kullanılan bir madendir.",
+      "question": "Bakırın bu kullanımı neyi gösterir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kayaçların canlı olduğunu"
+        },
+        {
+          "id": "b",
+          "text": "Madenlerin yalnız süs olduğunu"
+        },
+        {
+          "id": "c",
+          "text": "Fosillerin elektrik ürettiğini"
+        },
+        {
+          "id": "d",
+          "text": "Madenlerin ham madde olduğunu"
+        }
+      ],
+      "correctOptionId": "d",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q003",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Bir kayanın içinde eski bir deniz canlısının izi bulundu.",
+      "question": "Bu iz ne olarak adlandırılır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fosil"
+        },
+        {
+          "id": "b",
+          "text": "Maden"
+        },
+        {
+          "id": "c",
+          "text": "Kristal"
+        },
+        {
+          "id": "d",
+          "text": "Toprak"
+        }
+      ],
+      "correctOptionId": "a",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q004",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Canlı kalıntıları tortulların altında çok uzun süre korunabilir.",
+      "question": "Bu süreç sonucunda ne oluşabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rüzgâr"
+        },
+        {
+          "id": "b",
+          "text": "Bulut"
+        },
+        {
+          "id": "c",
+          "text": "Fosil"
+        },
+        {
+          "id": "d",
+          "text": "Gökkuşağı"
+        }
+      ],
+      "correctOptionId": "c",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q005",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Dünya kendi ekseni etrafında hareket eder.",
+      "question": "Bu hareketin adı nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dönme"
+        },
+        {
+          "id": "b",
+          "text": "Dolanma"
+        },
+        {
+          "id": "c",
+          "text": "Erime"
+        },
+        {
+          "id": "d",
+          "text": "Büyüme"
+        }
+      ],
+      "correctOptionId": "a",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q006",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Bir yerde gündüz yaşanırken başka bir yerde gece yaşanıyor.",
+      "question": "Bunun temel nedeni nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dünyanın kendi ekseninde dönmesi"
+        },
+        {
+          "id": "b",
+          "text": "Güneşin Dünya çevresinde dönmesi"
+        },
+        {
+          "id": "c",
+          "text": "Bulutların yer değiştirmesi"
+        },
+        {
+          "id": "d",
+          "text": "Ayın ışık saçması"
+        }
+      ],
+      "correctOptionId": "a",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q007",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Dünya, Güneş çevresinde bir tur tamamlıyor.",
+      "question": "Bu hareket yaklaşık ne kadar sürer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bir ay"
+        },
+        {
+          "id": "b",
+          "text": "Bir yıl"
+        },
+        {
+          "id": "c",
+          "text": "Bir gün"
+        },
+        {
+          "id": "d",
+          "text": "Bir hafta"
+        }
+      ],
+      "correctOptionId": "b",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q008",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Dünya hem dönme hem dolanma hareketi yapar.",
+      "question": "Hangi eşleştirme doğrudur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "İkisi: bir gün"
+        },
+        {
+          "id": "b",
+          "text": "Dönme: bir yıl; dolanma: bir gün"
+        },
+        {
+          "id": "c",
+          "text": "Dönme: bir gün; dolanma: bir yıl"
+        },
+        {
+          "id": "d",
+          "text": "İkisi: bir saat"
+        }
+      ],
+      "correctOptionId": "c",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q009",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Sabah Güneş doğuda, akşam batıda görülür.",
+      "question": "Bu görünür değişimin temel nedeni nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dünyanın dönmesi"
+        },
+        {
+          "id": "b",
+          "text": "Ayın dolanması"
+        },
+        {
+          "id": "c",
+          "text": "Rüzgârın esmesi"
+        },
+        {
+          "id": "d",
+          "text": "Bulutların artması"
+        }
+      ],
+      "correctOptionId": "a",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q010",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Bir müzede geçmişte yaşamış canlılara ait taşlaşmış izler sergileniyor.",
+      "question": "Bu izler bize ne hakkında bilgi verir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gelecekteki şehirler"
+        },
+        {
+          "id": "b",
+          "text": "Geçmişteki canlılar"
+        },
+        {
+          "id": "c",
+          "text": "Günlük sıcaklık"
+        },
+        {
+          "id": "d",
+          "text": "Yarınki hava"
+        }
+      ],
+      "correctOptionId": "b",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q011",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Verilen durumu inceleyiniz.\nBir öğrenci yer kabuğundaki taşları inceliyor.",
+      "question": "Yer kabuğunun kara tabakası büyük ölçüde neden oluşur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kayaçlardan"
+        },
+        {
+          "id": "b",
+          "text": "Işıktan"
+        },
+        {
+          "id": "c",
+          "text": "Rüzgârdan"
+        },
+        {
+          "id": "d",
+          "text": "Bulutlardan"
+        }
+      ],
+      "correctOptionId": "a",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q012",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Verilen durumu inceleyiniz.\nBakır elektrik kablolarında kullanılan bir madendir.",
+      "question": "Bakırın bu kullanımı neyi gösterir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Madenlerin yalnız süs olduğunu"
+        },
+        {
+          "id": "b",
+          "text": "Fosillerin elektrik ürettiğini"
+        },
+        {
+          "id": "c",
+          "text": "Madenlerin ham madde olduğunu"
+        },
+        {
+          "id": "d",
+          "text": "Kayaçların canlı olduğunu"
+        }
+      ],
+      "correctOptionId": "c",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q013",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Verilen durumu inceleyiniz.\nBir kayanın içinde eski bir deniz canlısının izi bulundu.",
+      "question": "Bu iz ne olarak adlandırılır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Maden"
+        },
+        {
+          "id": "b",
+          "text": "Kristal"
+        },
+        {
+          "id": "c",
+          "text": "Toprak"
+        },
+        {
+          "id": "d",
+          "text": "Fosil"
+        }
+      ],
+      "correctOptionId": "d",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q014",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Verilen durumu inceleyiniz.\nCanlı kalıntıları tortulların altında çok uzun süre korunabilir.",
+      "question": "Bu süreç sonucunda ne oluşabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bulut"
+        },
+        {
+          "id": "b",
+          "text": "Fosil"
+        },
+        {
+          "id": "c",
+          "text": "Gökkuşağı"
+        },
+        {
+          "id": "d",
+          "text": "Rüzgâr"
+        }
+      ],
+      "correctOptionId": "b",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q015",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Verilen durumu inceleyiniz.\nDünya kendi ekseni etrafında hareket eder.",
+      "question": "Bu hareketin adı nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dolanma"
+        },
+        {
+          "id": "b",
+          "text": "Erime"
+        },
+        {
+          "id": "c",
+          "text": "Büyüme"
+        },
+        {
+          "id": "d",
+          "text": "Dönme"
+        }
+      ],
+      "correctOptionId": "d",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q016",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Verilen durumu inceleyiniz.\nBir yerde gündüz yaşanırken başka bir yerde gece yaşanıyor.",
+      "question": "Bunun temel nedeni nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Güneşin Dünya çevresinde dönmesi"
+        },
+        {
+          "id": "b",
+          "text": "Bulutların yer değiştirmesi"
+        },
+        {
+          "id": "c",
+          "text": "Ayın ışık saçması"
+        },
+        {
+          "id": "d",
+          "text": "Dünyanın kendi ekseninde dönmesi"
+        }
+      ],
+      "correctOptionId": "d",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q017",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Verilen durumu inceleyiniz.\nDünya, Güneş çevresinde bir tur tamamlıyor.",
+      "question": "Bu hareket yaklaşık ne kadar sürer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bir yıl"
+        },
+        {
+          "id": "b",
+          "text": "Bir gün"
+        },
+        {
+          "id": "c",
+          "text": "Bir hafta"
+        },
+        {
+          "id": "d",
+          "text": "Bir ay"
+        }
+      ],
+      "correctOptionId": "a",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q018",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Verilen durumu inceleyiniz.\nDünya hem dönme hem dolanma hareketi yapar.",
+      "question": "Hangi eşleştirme doğrudur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dönme: bir yıl; dolanma: bir gün"
+        },
+        {
+          "id": "b",
+          "text": "Dönme: bir gün; dolanma: bir yıl"
+        },
+        {
+          "id": "c",
+          "text": "İkisi: bir saat"
+        },
+        {
+          "id": "d",
+          "text": "İkisi: bir gün"
+        }
+      ],
+      "correctOptionId": "b",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q019",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Verilen durumu inceleyiniz.\nSabah Güneş doğuda, akşam batıda görülür.",
+      "question": "Bu görünür değişimin temel nedeni nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ayın dolanması"
+        },
+        {
+          "id": "b",
+          "text": "Rüzgârın esmesi"
+        },
+        {
+          "id": "c",
+          "text": "Bulutların artması"
+        },
+        {
+          "id": "d",
+          "text": "Dünyanın dönmesi"
+        }
+      ],
+      "correctOptionId": "d",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q020",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Verilen durumu inceleyiniz.\nBir müzede geçmişte yaşamış canlılara ait taşlaşmış izler sergileniyor.",
+      "question": "Bu izler bize ne hakkında bilgi verir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Geçmişteki canlılar"
+        },
+        {
+          "id": "b",
+          "text": "Günlük sıcaklık"
+        },
+        {
+          "id": "c",
+          "text": "Yarınki hava"
+        },
+        {
+          "id": "d",
+          "text": "Gelecekteki şehirler"
+        }
+      ],
+      "correctOptionId": "a",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q021",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Aşağıdaki bilgiyi değerlendiriniz.\nBir öğrenci yer kabuğundaki taşları inceliyor.",
+      "question": "Yer kabuğunun kara tabakası büyük ölçüde neden oluşur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Işıktan"
+        },
+        {
+          "id": "b",
+          "text": "Rüzgârdan"
+        },
+        {
+          "id": "c",
+          "text": "Bulutlardan"
+        },
+        {
+          "id": "d",
+          "text": "Kayaçlardan"
+        }
+      ],
+      "correctOptionId": "d",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q022",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Aşağıdaki bilgiyi değerlendiriniz.\nBakır elektrik kablolarında kullanılan bir madendir.",
+      "question": "Bakırın bu kullanımı neyi gösterir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fosillerin elektrik ürettiğini"
+        },
+        {
+          "id": "b",
+          "text": "Madenlerin ham madde olduğunu"
+        },
+        {
+          "id": "c",
+          "text": "Kayaçların canlı olduğunu"
+        },
+        {
+          "id": "d",
+          "text": "Madenlerin yalnız süs olduğunu"
+        }
+      ],
+      "correctOptionId": "b",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q023",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Aşağıdaki bilgiyi değerlendiriniz.\nBir kayanın içinde eski bir deniz canlısının izi bulundu.",
+      "question": "Bu iz ne olarak adlandırılır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kristal"
+        },
+        {
+          "id": "b",
+          "text": "Toprak"
+        },
+        {
+          "id": "c",
+          "text": "Fosil"
+        },
+        {
+          "id": "d",
+          "text": "Maden"
+        }
+      ],
+      "correctOptionId": "c",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q024",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Aşağıdaki bilgiyi değerlendiriniz.\nCanlı kalıntıları tortulların altında çok uzun süre korunabilir.",
+      "question": "Bu süreç sonucunda ne oluşabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fosil"
+        },
+        {
+          "id": "b",
+          "text": "Gökkuşağı"
+        },
+        {
+          "id": "c",
+          "text": "Rüzgâr"
+        },
+        {
+          "id": "d",
+          "text": "Bulut"
+        }
+      ],
+      "correctOptionId": "a",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q025",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Aşağıdaki bilgiyi değerlendiriniz.\nDünya kendi ekseni etrafında hareket eder.",
+      "question": "Bu hareketin adı nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Erime"
+        },
+        {
+          "id": "b",
+          "text": "Büyüme"
+        },
+        {
+          "id": "c",
+          "text": "Dönme"
+        },
+        {
+          "id": "d",
+          "text": "Dolanma"
+        }
+      ],
+      "correctOptionId": "c",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q026",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Aşağıdaki bilgiyi değerlendiriniz.\nBir yerde gündüz yaşanırken başka bir yerde gece yaşanıyor.",
+      "question": "Bunun temel nedeni nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bulutların yer değiştirmesi"
+        },
+        {
+          "id": "b",
+          "text": "Ayın ışık saçması"
+        },
+        {
+          "id": "c",
+          "text": "Dünyanın kendi ekseninde dönmesi"
+        },
+        {
+          "id": "d",
+          "text": "Güneşin Dünya çevresinde dönmesi"
+        }
+      ],
+      "correctOptionId": "c",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q027",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Aşağıdaki bilgiyi değerlendiriniz.\nDünya, Güneş çevresinde bir tur tamamlıyor.",
+      "question": "Bu hareket yaklaşık ne kadar sürer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bir gün"
+        },
+        {
+          "id": "b",
+          "text": "Bir hafta"
+        },
+        {
+          "id": "c",
+          "text": "Bir ay"
+        },
+        {
+          "id": "d",
+          "text": "Bir yıl"
+        }
+      ],
+      "correctOptionId": "d",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q028",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Aşağıdaki bilgiyi değerlendiriniz.\nDünya hem dönme hem dolanma hareketi yapar.",
+      "question": "Hangi eşleştirme doğrudur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dönme: bir gün; dolanma: bir yıl"
+        },
+        {
+          "id": "b",
+          "text": "İkisi: bir saat"
+        },
+        {
+          "id": "c",
+          "text": "İkisi: bir gün"
+        },
+        {
+          "id": "d",
+          "text": "Dönme: bir yıl; dolanma: bir gün"
+        }
+      ],
+      "correctOptionId": "a",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q029",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Aşağıdaki bilgiyi değerlendiriniz.\nSabah Güneş doğuda, akşam batıda görülür.",
+      "question": "Bu görünür değişimin temel nedeni nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rüzgârın esmesi"
+        },
+        {
+          "id": "b",
+          "text": "Bulutların artması"
+        },
+        {
+          "id": "c",
+          "text": "Dünyanın dönmesi"
+        },
+        {
+          "id": "d",
+          "text": "Ayın dolanması"
+        }
+      ],
+      "correctOptionId": "c",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q030",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Aşağıdaki bilgiyi değerlendiriniz.\nBir müzede geçmişte yaşamış canlılara ait taşlaşmış izler sergileniyor.",
+      "question": "Bu izler bize ne hakkında bilgi verir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Günlük sıcaklık"
+        },
+        {
+          "id": "b",
+          "text": "Yarınki hava"
+        },
+        {
+          "id": "c",
+          "text": "Gelecekteki şehirler"
+        },
+        {
+          "id": "d",
+          "text": "Geçmişteki canlılar"
+        }
+      ],
+      "correctOptionId": "d",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q031",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Metni dikkatle okuyunuz.\nBir öğrenci yer kabuğundaki taşları inceliyor.",
+      "question": "Yer kabuğunun kara tabakası büyük ölçüde neden oluşur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rüzgârdan"
+        },
+        {
+          "id": "b",
+          "text": "Bulutlardan"
+        },
+        {
+          "id": "c",
+          "text": "Kayaçlardan"
+        },
+        {
+          "id": "d",
+          "text": "Işıktan"
+        }
+      ],
+      "correctOptionId": "c",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q032",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Metni dikkatle okuyunuz.\nBakır elektrik kablolarında kullanılan bir madendir.",
+      "question": "Bakırın bu kullanımı neyi gösterir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Madenlerin ham madde olduğunu"
+        },
+        {
+          "id": "b",
+          "text": "Kayaçların canlı olduğunu"
+        },
+        {
+          "id": "c",
+          "text": "Madenlerin yalnız süs olduğunu"
+        },
+        {
+          "id": "d",
+          "text": "Fosillerin elektrik ürettiğini"
+        }
+      ],
+      "correctOptionId": "a",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q033",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Metni dikkatle okuyunuz.\nBir kayanın içinde eski bir deniz canlısının izi bulundu.",
+      "question": "Bu iz ne olarak adlandırılır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Toprak"
+        },
+        {
+          "id": "b",
+          "text": "Fosil"
+        },
+        {
+          "id": "c",
+          "text": "Maden"
+        },
+        {
+          "id": "d",
+          "text": "Kristal"
+        }
+      ],
+      "correctOptionId": "b",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q034",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Metni dikkatle okuyunuz.\nCanlı kalıntıları tortulların altında çok uzun süre korunabilir.",
+      "question": "Bu süreç sonucunda ne oluşabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gökkuşağı"
+        },
+        {
+          "id": "b",
+          "text": "Rüzgâr"
+        },
+        {
+          "id": "c",
+          "text": "Bulut"
+        },
+        {
+          "id": "d",
+          "text": "Fosil"
+        }
+      ],
+      "correctOptionId": "d",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q035",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Metni dikkatle okuyunuz.\nDünya kendi ekseni etrafında hareket eder.",
+      "question": "Bu hareketin adı nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Büyüme"
+        },
+        {
+          "id": "b",
+          "text": "Dönme"
+        },
+        {
+          "id": "c",
+          "text": "Dolanma"
+        },
+        {
+          "id": "d",
+          "text": "Erime"
+        }
+      ],
+      "correctOptionId": "b",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q036",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Metni dikkatle okuyunuz.\nBir yerde gündüz yaşanırken başka bir yerde gece yaşanıyor.",
+      "question": "Bunun temel nedeni nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ayın ışık saçması"
+        },
+        {
+          "id": "b",
+          "text": "Dünyanın kendi ekseninde dönmesi"
+        },
+        {
+          "id": "c",
+          "text": "Güneşin Dünya çevresinde dönmesi"
+        },
+        {
+          "id": "d",
+          "text": "Bulutların yer değiştirmesi"
+        }
+      ],
+      "correctOptionId": "b",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q037",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Metni dikkatle okuyunuz.\nDünya, Güneş çevresinde bir tur tamamlıyor.",
+      "question": "Bu hareket yaklaşık ne kadar sürer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bir hafta"
+        },
+        {
+          "id": "b",
+          "text": "Bir ay"
+        },
+        {
+          "id": "c",
+          "text": "Bir yıl"
+        },
+        {
+          "id": "d",
+          "text": "Bir gün"
+        }
+      ],
+      "correctOptionId": "c",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q038",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Metni dikkatle okuyunuz.\nDünya hem dönme hem dolanma hareketi yapar.",
+      "question": "Hangi eşleştirme doğrudur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "İkisi: bir saat"
+        },
+        {
+          "id": "b",
+          "text": "İkisi: bir gün"
+        },
+        {
+          "id": "c",
+          "text": "Dönme: bir yıl; dolanma: bir gün"
+        },
+        {
+          "id": "d",
+          "text": "Dönme: bir gün; dolanma: bir yıl"
+        }
+      ],
+      "correctOptionId": "d",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q039",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Metni dikkatle okuyunuz.\nSabah Güneş doğuda, akşam batıda görülür.",
+      "question": "Bu görünür değişimin temel nedeni nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bulutların artması"
+        },
+        {
+          "id": "b",
+          "text": "Dünyanın dönmesi"
+        },
+        {
+          "id": "c",
+          "text": "Ayın dolanması"
+        },
+        {
+          "id": "d",
+          "text": "Rüzgârın esmesi"
+        }
+      ],
+      "correctOptionId": "b",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q040",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Metni dikkatle okuyunuz.\nBir müzede geçmişte yaşamış canlılara ait taşlaşmış izler sergileniyor.",
+      "question": "Bu izler bize ne hakkında bilgi verir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yarınki hava"
+        },
+        {
+          "id": "b",
+          "text": "Gelecekteki şehirler"
+        },
+        {
+          "id": "c",
+          "text": "Geçmişteki canlılar"
+        },
+        {
+          "id": "d",
+          "text": "Günlük sıcaklık"
+        }
+      ],
+      "correctOptionId": "c",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q041",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Durumu düşününüz.\nBir öğrenci yer kabuğundaki taşları inceliyor.",
+      "question": "Yer kabuğunun kara tabakası büyük ölçüde neden oluşur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bulutlardan"
+        },
+        {
+          "id": "b",
+          "text": "Kayaçlardan"
+        },
+        {
+          "id": "c",
+          "text": "Işıktan"
+        },
+        {
+          "id": "d",
+          "text": "Rüzgârdan"
+        }
+      ],
+      "correctOptionId": "b",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q042",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Durumu düşününüz.\nBakır elektrik kablolarında kullanılan bir madendir.",
+      "question": "Bakırın bu kullanımı neyi gösterir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kayaçların canlı olduğunu"
+        },
+        {
+          "id": "b",
+          "text": "Madenlerin yalnız süs olduğunu"
+        },
+        {
+          "id": "c",
+          "text": "Fosillerin elektrik ürettiğini"
+        },
+        {
+          "id": "d",
+          "text": "Madenlerin ham madde olduğunu"
+        }
+      ],
+      "correctOptionId": "d",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q043",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Durumu düşününüz.\nBir kayanın içinde eski bir deniz canlısının izi bulundu.",
+      "question": "Bu iz ne olarak adlandırılır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fosil"
+        },
+        {
+          "id": "b",
+          "text": "Maden"
+        },
+        {
+          "id": "c",
+          "text": "Kristal"
+        },
+        {
+          "id": "d",
+          "text": "Toprak"
+        }
+      ],
+      "correctOptionId": "a",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q044",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Durumu düşününüz.\nCanlı kalıntıları tortulların altında çok uzun süre korunabilir.",
+      "question": "Bu süreç sonucunda ne oluşabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rüzgâr"
+        },
+        {
+          "id": "b",
+          "text": "Bulut"
+        },
+        {
+          "id": "c",
+          "text": "Fosil"
+        },
+        {
+          "id": "d",
+          "text": "Gökkuşağı"
+        }
+      ],
+      "correctOptionId": "c",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q045",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Durumu düşününüz.\nDünya kendi ekseni etrafında hareket eder.",
+      "question": "Bu hareketin adı nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dönme"
+        },
+        {
+          "id": "b",
+          "text": "Dolanma"
+        },
+        {
+          "id": "c",
+          "text": "Erime"
+        },
+        {
+          "id": "d",
+          "text": "Büyüme"
+        }
+      ],
+      "correctOptionId": "a",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q046",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Durumu düşününüz.\nBir yerde gündüz yaşanırken başka bir yerde gece yaşanıyor.",
+      "question": "Bunun temel nedeni nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dünyanın kendi ekseninde dönmesi"
+        },
+        {
+          "id": "b",
+          "text": "Güneşin Dünya çevresinde dönmesi"
+        },
+        {
+          "id": "c",
+          "text": "Bulutların yer değiştirmesi"
+        },
+        {
+          "id": "d",
+          "text": "Ayın ışık saçması"
+        }
+      ],
+      "correctOptionId": "a",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q047",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Durumu düşününüz.\nDünya, Güneş çevresinde bir tur tamamlıyor.",
+      "question": "Bu hareket yaklaşık ne kadar sürer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bir ay"
+        },
+        {
+          "id": "b",
+          "text": "Bir yıl"
+        },
+        {
+          "id": "c",
+          "text": "Bir gün"
+        },
+        {
+          "id": "d",
+          "text": "Bir hafta"
+        }
+      ],
+      "correctOptionId": "b",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q048",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "content": "Durumu düşününüz.\nDünya hem dönme hem dolanma hareketi yapar.",
+      "question": "Hangi eşleştirme doğrudur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "İkisi: bir gün"
+        },
+        {
+          "id": "b",
+          "text": "Dönme: bir yıl; dolanma: bir gün"
+        },
+        {
+          "id": "c",
+          "text": "Dönme: bir gün; dolanma: bir yıl"
+        },
+        {
+          "id": "d",
+          "text": "İkisi: bir saat"
+        }
+      ],
+      "correctOptionId": "c",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q049",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "content": "Durumu düşününüz.\nSabah Güneş doğuda, akşam batıda görülür.",
+      "question": "Bu görünür değişimin temel nedeni nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dünyanın dönmesi"
+        },
+        {
+          "id": "b",
+          "text": "Ayın dolanması"
+        },
+        {
+          "id": "c",
+          "text": "Rüzgârın esmesi"
+        },
+        {
+          "id": "d",
+          "text": "Bulutların artması"
+        }
+      ],
+      "correctOptionId": "a",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.2.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g4-fen-bilimleri-u1-q050",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "content": "Durumu düşününüz.\nBir müzede geçmişte yaşamış canlılara ait taşlaşmış izler sergileniyor.",
+      "question": "Bu izler bize ne hakkında bilgi verir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gelecekteki şehirler"
+        },
+        {
+          "id": "b",
+          "text": "Geçmişteki canlılar"
+        },
+        {
+          "id": "c",
+          "text": "Günlük sıcaklık"
+        },
+        {
+          "id": "d",
+          "text": "Yarınki hava"
+        }
+      ],
+      "correctOptionId": "b",
+      "unitId": "g4-fen-bilimleri-1-unite",
+      "outcomeCode": "F.4.1.1.3",
+      "outcomeMappingStatus": "exact"
+    }
+  ]
+}

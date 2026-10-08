@@ -1,0 +1,7 @@
+.school-picture{display:block;width:min(100%,320px);height:auto;margin:auto}
+.school-dialogue{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;width:min(100%,480px);margin:auto}
+.school-dialogue .character-data{display:flex;flex-direction:column-reverse;align-items:center;gap:6px;min-width:0}
+.school-dialogue .character-data>div{width:100%;min-width:0}
+.school-dialogue .speech-bubble{margin:0;min-height:48px;display:flex;align-items:center;justify-content:center;font-size:clamp(14px,3.8vw,18px);overflow-wrap:anywhere;text-align:center;padding:10px}
+.school-dialogue .math-avatar{width:76px;height:91px}
+.school-dialogue .mathematical-visual{padding:0;min-width:0}

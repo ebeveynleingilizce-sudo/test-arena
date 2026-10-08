@@ -1,0 +1,16 @@
+{
+  "school": { "source": "openmoji", "concept": "school", "status": "ready", "annotation": "school", "hexcode": "1F3EB", "file": "/assets/openmoji/selected/1F3EB.svg" },
+  "teacher": { "source": "openmoji", "concept": "teacher", "status": "ready", "annotation": "teacher", "hexcode": "1F9D1-200D-1F3EB", "file": "/assets/openmoji/selected/1F9D1-200D-1F3EB.svg" },
+  "book": { "source": "openmoji", "concept": "book", "status": "ready", "annotation": "open book", "hexcode": "1F4D6", "file": "/assets/openmoji/selected/1F4D6.svg" },
+  "pencil": { "source": "openmoji", "concept": "pencil", "status": "ready", "annotation": "pencil", "hexcode": "270F", "file": "/assets/openmoji/selected/270F.svg" },
+  "schoolbag": { "source": "openmoji", "concept": "schoolbag", "status": "ready", "annotation": "backpack", "hexcode": "1F392", "file": "/assets/openmoji/selected/1F392.svg" },
+  "chair": { "source": "openmoji", "concept": "chair", "status": "ready", "annotation": "chair", "hexcode": "1FA91", "file": "/assets/openmoji/selected/1FA91.svg" },
+  "student": { "source": "custom-education", "concept": "student", "status": "missing", "file": null, "plannedFile": "/assets/education/school/pupil.svg", "note": "Same planned pupil illustration; OpenMoji student wears graduation cap and gown." },
+  "pupil": { "source": "custom-education", "concept": "pupil", "status": "missing", "file": null, "plannedFile": "/assets/education/school/pupil.svg" },
+  "headmaster": { "source": "custom-education", "concept": "headmaster", "status": "missing", "file": null, "plannedFile": "/assets/education/school/headmaster.svg" },
+  "principal": { "source": "custom-education", "concept": "principal", "status": "missing", "file": null, "plannedFile": "/assets/education/school/headmaster.svg" },
+  "classroom": { "source": "custom-education", "concept": "classroom", "status": "missing", "file": null, "plannedFile": "/assets/education/school/classroom.svg" },
+  "library": { "source": "custom-education", "concept": "library", "status": "missing", "file": null, "plannedFile": "/assets/education/school/library.svg" },
+  "garden": { "source": "custom-education", "concept": "garden", "status": "missing", "file": null, "plannedFile": "/assets/education/school/garden.svg" },
+  "desk": { "source": "openmoji", "concept": "desk", "status": "missing", "file": null }
+}

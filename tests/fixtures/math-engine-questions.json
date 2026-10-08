@@ -1,0 +1,1094 @@
+{
+  "fixtureOnly": true,
+  "grade": 2,
+  "subjectId": "matematik",
+  "stimuli": {
+    "wheel": {
+      "kind": "rotation",
+      "startIndex": 0,
+      "labels": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "alt": "Başlangıç ibresi üstteki 12 değerini gösteren dört bölümlü çark"
+    }
+  },
+  "questions": [
+    {
+      "id": "01-count",
+      "question": "Grupta kaç kalem vardır?",
+      "visual": {
+        "kind": "objects",
+        "objectType": "pencil",
+        "count": 36,
+        "layout": "grid",
+        "alt": "Tek tek sayılabilen kalemlerin grubu"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "36"
+        },
+        {
+          "id": "b",
+          "text": "34"
+        },
+        {
+          "id": "c",
+          "text": "38"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "02-dozen",
+      "question": "Hangi grup bir destedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "",
+          "visual": {
+            "kind": "objects",
+            "objectType": "pencil",
+            "count": 10,
+            "layout": "grid",
+            "alt": "Tek tek sayılabilen kalemlerin grubu"
+          }
+        },
+        {
+          "id": "b",
+          "text": "",
+          "visual": {
+            "kind": "objects",
+            "objectType": "pencil",
+            "count": 12,
+            "layout": "grid",
+            "alt": "Tek tek sayılabilen kalemlerin grubu"
+          }
+        },
+        {
+          "id": "c",
+          "text": "",
+          "visual": {
+            "kind": "objects",
+            "objectType": "pencil",
+            "count": 9,
+            "layout": "grid",
+            "alt": "Tek tek sayılabilen kalemlerin grubu"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "03-base-read",
+      "question": "Modelin gösterdiği sayı hangisidir?",
+      "visual": {
+        "kind": "base-ten",
+        "tens": 3,
+        "ones": 4,
+        "alt": "On eş hücreli çubuklar ve ayrı tek hücreler"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "34"
+        },
+        {
+          "id": "b",
+          "text": "43"
+        },
+        {
+          "id": "c",
+          "text": "30"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır.",
+      "visualPlacement": "above"
+    },
+    {
+      "id": "04-base-options",
+      "question": "23 sayısını gösteren model hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "",
+          "visual": {
+            "kind": "base-ten",
+            "tens": 2,
+            "ones": 3,
+            "alt": "On eş hücreli çubuklar ve ayrı tek hücreler"
+          }
+        },
+        {
+          "id": "b",
+          "text": "",
+          "visual": {
+            "kind": "base-ten",
+            "tens": 3,
+            "ones": 2,
+            "alt": "On eş hücreli çubuklar ve ayrı tek hücreler"
+          }
+        },
+        {
+          "id": "c",
+          "text": "",
+          "visual": {
+            "kind": "base-ten",
+            "tens": 1,
+            "ones": 3,
+            "alt": "On eş hücreli çubuklar ve ayrı tek hücreler"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "05-base-add",
+      "question": "Modellerin toplamı kaçtır?",
+      "visual": {
+        "kind": "scene",
+        "preset": "equation",
+        "items": [
+          {
+            "kind": "base-ten",
+            "tens": 2,
+            "ones": 3,
+            "alt": "On eş hücreli çubuklar ve ayrı tek hücreler"
+          },
+          {
+            "kind": "base-ten",
+            "tens": 1,
+            "ones": 4,
+            "alt": "On eş hücreli çubuklar ve ayrı tek hücreler"
+          }
+        ],
+        "operators": [
+          "+"
+        ],
+        "alt": "Verilen matematik modellerinin birlikte sunumu"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "37"
+        },
+        {
+          "id": "b",
+          "text": "35"
+        },
+        {
+          "id": "c",
+          "text": "17"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "06-character-data",
+      "question": "Buğra, Aycan’dan kaç kg daha ağırdır?",
+      "visual": {
+        "kind": "scene",
+        "preset": "compare",
+        "items": [
+          {
+            "kind": "character",
+            "avatar": "ada",
+            "name": "Aycan",
+            "value": 36,
+            "unit": "kg",
+            "alt": "Aycanın yanında verilen kütle ölçüsü"
+          },
+          {
+            "kind": "character",
+            "avatar": "efe",
+            "name": "Buğra",
+            "value": 72,
+            "unit": "kg",
+            "alt": "Buğranın yanında verilen kütle ölçüsü"
+          }
+        ],
+        "alt": "Verilen matematik modellerinin birlikte sunumu"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "36"
+        },
+        {
+          "id": "b",
+          "text": "34"
+        },
+        {
+          "id": "c",
+          "text": "108"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "07-speech",
+      "question": "Deniz’in bilye sayısı hangisi olabilir?",
+      "visual": {
+        "kind": "character",
+        "avatar": "deniz",
+        "name": "Deniz",
+        "speech": "Bilyelerimin sayısı 2 onluk ile 3 onluk arasındadır. Birler basamağında 8 vardır. Bu sayıyı bulmak için önce onlar basamağını düşünür, sonra verilen birlikleri kullanırım.",
+        "alt": "Denizin sayının basamaklarına ilişkin verdiği ipucu"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "28"
+        },
+        {
+          "id": "b",
+          "text": "38"
+        },
+        {
+          "id": "c",
+          "text": "18"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "08-vertical-add",
+      "question": "İşlemin sonucu kaçtır?",
+      "visual": {
+        "kind": "vertical",
+        "operator": "+",
+        "top": 46,
+        "bottom": 28,
+        "result": null,
+        "alt": "Basamakları hizalı iki sayının toplama işlemi"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "74"
+        },
+        {
+          "id": "b",
+          "text": "64"
+        },
+        {
+          "id": "c",
+          "text": "72"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "09-vertical-subtract",
+      "question": "İşlemin sonucu kaçtır?",
+      "visual": {
+        "kind": "vertical",
+        "operator": "−",
+        "top": 57,
+        "bottom": 14,
+        "result": null,
+        "alt": "Basamakları hizalı iki sayının çıkarma işlemi"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "43"
+        },
+        {
+          "id": "b",
+          "text": "41"
+        },
+        {
+          "id": "c",
+          "text": "71"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "10-sequence",
+      "question": "Eksik sayıyı seç.",
+      "visual": {
+        "kind": "sequence",
+        "mode": "numbers",
+        "items": [
+          26,
+          29,
+          32,
+          null,
+          38
+        ],
+        "alt": "Oklarla bağlı sayıların bir yerinde soru işareti var"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "35"
+        },
+        {
+          "id": "b",
+          "text": "34"
+        },
+        {
+          "id": "c",
+          "text": "36"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "11-pattern",
+      "question": "Eksik şekli seç.",
+      "visual": {
+        "kind": "sequence",
+        "mode": "shapes",
+        "items": [
+          "triangle",
+          "circle",
+          "square",
+          "triangle",
+          "circle",
+          null
+        ],
+        "alt": "Düz kenarlı ve yuvarlak biçimlerden oluşan tekrar eden sıra"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "square",
+            "alt": "Dört eşit düz kenarlı kapalı şekil"
+          }
+        },
+        {
+          "id": "b",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "circle",
+            "alt": "Yuvarlak kapalı çizgi ile sınırlı düz şekil"
+          }
+        },
+        {
+          "id": "c",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "triangle",
+            "alt": "Üç düz kenarlı kapalı şekil"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "12-paths",
+      "question": "Dörder ritmik sayılan yol hangisidir?",
+      "visual": {
+        "kind": "paths",
+        "rows": [
+          {
+            "label": "I",
+            "values": [
+              16,
+              18,
+              20,
+              22,
+              24
+            ]
+          },
+          {
+            "label": "II",
+            "values": [
+              19,
+              22,
+              25,
+              27,
+              29
+            ]
+          },
+          {
+            "label": "III",
+            "values": [
+              13,
+              17,
+              21,
+              25,
+              29
+            ]
+          }
+        ],
+        "alt": "Üç ayrı etiketli sayı yolu"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "III"
+        },
+        {
+          "id": "b",
+          "text": "I"
+        },
+        {
+          "id": "c",
+          "text": "II"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "13-symbols",
+      "question": "Yıldız ve kutudaki işlemlerin sonuçları toplamı kaçtır?",
+      "visual": {
+        "kind": "math-cards",
+        "mode": "equations",
+        "items": [
+          {
+            "shape": "star",
+            "value": "29 + 16"
+          },
+          {
+            "shape": "box",
+            "value": "17 + 28"
+          },
+          {
+            "shape": "chip",
+            "value": "★ + ■ = ?"
+          }
+        ],
+        "alt": "Yıldız ve kutu içinde verilen işlemler ve toplamı soran ifade"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "90"
+        },
+        {
+          "id": "b",
+          "text": "80"
+        },
+        {
+          "id": "c",
+          "text": "45"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "14-share",
+      "question": "Her tabakta kaç çilek vardır?",
+      "visual": {
+        "kind": "groups",
+        "objectType": "strawberry",
+        "totalObjects": 12,
+        "groupCount": 3,
+        "arrangement": "plates",
+        "alt": "Çilekler üç ayrı tabağa eşit dağıtılmış"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "4"
+        },
+        {
+          "id": "b",
+          "text": "3"
+        },
+        {
+          "id": "c",
+          "text": "6"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "15-array",
+      "question": "Dizilimde toplam kaç top vardır?",
+      "visual": {
+        "kind": "groups",
+        "objectType": "ball",
+        "totalObjects": 12,
+        "objectsPerGroup": 3,
+        "arrangement": "array",
+        "alt": "Eşit uzunlukta top satırlarından oluşan dizilim"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "12"
+        },
+        {
+          "id": "b",
+          "text": "9"
+        },
+        {
+          "id": "c",
+          "text": "15"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "16-geometry",
+      "question": "Dört eşit kenarlı düz şekli seç.",
+      "options": [
+        {
+          "id": "a",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "square",
+            "alt": "Dört eşit düz kenarlı kapalı şekil"
+          }
+        },
+        {
+          "id": "b",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "triangle",
+            "alt": "Üç düz kenarlı kapalı şekil"
+          }
+        },
+        {
+          "id": "c",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "circle",
+            "alt": "Yuvarlak kapalı çizgi ile sınırlı düz şekil"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "17-object-geometry",
+      "question": "Pil hangi cisme benzer?",
+      "visual": {
+        "kind": "objects",
+        "objectType": "battery",
+        "count": 1,
+        "layout": "grid",
+        "alt": "İki uçlu, yuvarlak tabanlı günlük nesne"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "cylinder",
+            "alt": "Dairesel kapakları ve bunları birleştiren yan yüzeyi olan cisim"
+          }
+        },
+        {
+          "id": "b",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "cube",
+            "alt": "Kare yüzlü, üst ve iki yan yüzü görünen cisim"
+          }
+        },
+        {
+          "id": "c",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "cone",
+            "alt": "Sivri tepeli, dairesel tabanlı cisim"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "18-symmetry",
+      "question": "İki taraftaki şekillerin simetrisi doğru mu?",
+      "visual": {
+        "kind": "symmetry",
+        "axis": "vertical",
+        "left": [
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 3
+          }
+        ],
+        "right": [
+          {
+            "x": 7,
+            "y": 2
+          },
+          {
+            "x": 6,
+            "y": 2
+          },
+          {
+            "x": 6,
+            "y": 3
+          }
+        ],
+        "showAxis": true,
+        "alt": "Kesikli doğru iki yanındaki renkli hücreler arasında yer alıyor"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Evet"
+        },
+        {
+          "id": "b",
+          "text": "Hayır"
+        },
+        {
+          "id": "c",
+          "text": "Yalnız üst hücre doğru"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "19-turn",
+      "question": "İbre saat yönünde çeyrek dönüş yaparsa hangi sayıyı gösterir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "24"
+        },
+        {
+          "id": "b",
+          "text": "36"
+        },
+        {
+          "id": "c",
+          "text": "48"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır.",
+      "stimulusId": "wheel"
+    },
+    {
+      "id": "20-fraction",
+      "question": "Boyalı bölüm bütünün ne kadarıdır?",
+      "visual": {
+        "kind": "fraction",
+        "model": "circle",
+        "parts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "shaded": [
+          0
+        ],
+        "alt": "Daire eş parçalara ayrılmış ve bir bölüm vurgulanmış"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Çeyrek"
+        },
+        {
+          "id": "b",
+          "text": "Yarım"
+        },
+        {
+          "id": "c",
+          "text": "Bütün"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "21-clock",
+      "question": "Saat iki buçuğu gösteren seçeneği seç.",
+      "options": [
+        {
+          "id": "a",
+          "text": "",
+          "visual": {
+            "kind": "clock",
+            "hour": 2,
+            "minute": 30,
+            "alt": "Uzun ibre 6 yönünde; kısa ibre 2 ile 3 arasında"
+          }
+        },
+        {
+          "id": "b",
+          "text": "",
+          "visual": {
+            "kind": "clock",
+            "hour": 3,
+            "minute": 30,
+            "alt": "Uzun ibre 6 yönünde; kısa ibre 3 ile 4 arasında"
+          }
+        },
+        {
+          "id": "c",
+          "text": "",
+          "visual": {
+            "kind": "clock",
+            "hour": 2,
+            "minute": 0,
+            "alt": "Uzun ibre 0 yönünde; kısa ibre 2 ile 3 arasında"
+          }
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "22-money",
+      "question": "Paraların toplam değeri kaç TL’dir?",
+      "visual": {
+        "kind": "money",
+        "items": [
+          {
+            "kurus": 1000,
+            "count": 2
+          },
+          {
+            "kurus": 500,
+            "count": 1
+          }
+        ],
+        "alt": "Değerleri üzerlerinde yazılı eğitimsel para temsilleri"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "25"
+        },
+        {
+          "id": "b",
+          "text": "20"
+        },
+        {
+          "id": "c",
+          "text": "15"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "23-ruler",
+      "question": "Gösterilen nesnenin uzunluğu kaç cm’dir?",
+      "visual": {
+        "kind": "ruler",
+        "maxCm": 8,
+        "startCm": 2,
+        "endCm": 6,
+        "objectType": "pencil",
+        "showLength": false,
+        "alt": "Nesnenin iki ucu cetvelin 2 ve 6 işaretlerine hizalı"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "4"
+        },
+        {
+          "id": "b",
+          "text": "6"
+        },
+        {
+          "id": "c",
+          "text": "8"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "24-mass",
+      "question": "Elmanın verilen kütlesi kitaplarınkinden kaç kg fazladır?",
+      "visual": {
+        "kind": "balance",
+        "left": {
+          "objectType": "apple",
+          "value": 3,
+          "unit": "kg"
+        },
+        "right": {
+          "objectType": "book",
+          "value": 1,
+          "unit": "kg"
+        },
+        "tilt": "left",
+        "alt": "İki kefede nesneler ve verilen kütle etiketleri bulunuyor"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "2"
+        },
+        {
+          "id": "b",
+          "text": "4"
+        },
+        {
+          "id": "c",
+          "text": "3"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "25-liquid",
+      "question": "Hangi kapta şu anda daha çok sıvı vardır?",
+      "visual": {
+        "kind": "scene",
+        "preset": "compare",
+        "items": [
+          {
+            "kind": "container",
+            "vessel": "jug",
+            "capacityClass": "large",
+            "fill": 0.5,
+            "capacityMl": 1000,
+            "amountMl": 500,
+            "alt": "Kapasite ve içindeki sıvı miktarı ayrı verilen sürahi"
+          },
+          {
+            "kind": "container",
+            "vessel": "glass",
+            "capacityClass": "small",
+            "fill": 1,
+            "capacityMl": 200,
+            "amountMl": 200,
+            "alt": "Kapasite ve içindeki sıvı miktarı ayrı verilen bardak"
+          }
+        ],
+        "alt": "Verilen matematik modellerinin birlikte sunumu"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Sürahi"
+        },
+        {
+          "id": "b",
+          "text": "Bardak"
+        },
+        {
+          "id": "c",
+          "text": "Eşit"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "26-data",
+      "question": "En çok tercih edilen meyve hangisidir?",
+      "visual": {
+        "kind": "data",
+        "mode": "bar",
+        "unitValue": 1,
+        "rows": [
+          {
+            "label": "Elma",
+            "value": 8
+          },
+          {
+            "label": "Çilek",
+            "value": 5
+          }
+        ],
+        "alt": "İki meyve grubunun verilen sayılarıyla çizilmiş sütunlar"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Elma"
+        },
+        {
+          "id": "b",
+          "text": "Çilek"
+        },
+        {
+          "id": "c",
+          "text": "Eşit"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "27-base-subtract",
+      "question": "Modellerin farkı kaçtır?",
+      "visual": {
+        "kind": "scene",
+        "preset": "equation",
+        "items": [
+          {
+            "kind": "base-ten",
+            "tens": 3,
+            "ones": 8,
+            "alt": "On eş hücreli çubuklar ve ayrı tek hücreler"
+          },
+          {
+            "kind": "base-ten",
+            "tens": 1,
+            "ones": 3,
+            "alt": "On eş hücreli çubuklar ve ayrı tek hücreler"
+          }
+        ],
+        "operators": [
+          "−"
+        ],
+        "alt": "Verilen matematik modellerinin birlikte sunumu"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "25"
+        },
+        {
+          "id": "b",
+          "text": "21"
+        },
+        {
+          "id": "c",
+          "text": "51"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "28-geometry-model",
+      "question": "Modelde kaç küp vardır?",
+      "visual": {
+        "kind": "geometry-layout",
+        "items": [
+          {
+            "shape": "cube",
+            "column": 1,
+            "row": 0,
+            "size": "large",
+            "rotation": 0,
+            "mark": "edge"
+          },
+          {
+            "shape": "cube",
+            "column": 1,
+            "row": 1,
+            "size": "large",
+            "rotation": 0
+          },
+          {
+            "shape": "cube",
+            "column": 2,
+            "row": 1,
+            "size": "large",
+            "rotation": 0
+          }
+        ],
+        "alt": "İşaretli ayrıtı da görünen cisimlerden oluşan yapı"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "3"
+        },
+        {
+          "id": "b",
+          "text": "2"
+        },
+        {
+          "id": "c",
+          "text": "4"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "29-number-line",
+      "question": "Sayı doğrusunda 20’den sonra hangi sayı gelir?",
+      "visual": {
+        "kind": "number-line",
+        "min": 10,
+        "max": 30,
+        "step": 5,
+        "points": [],
+        "alt": "Eş aralıklı ve etiketli sayı doğrusu"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "25"
+        },
+        {
+          "id": "b",
+          "text": "21"
+        },
+        {
+          "id": "c",
+          "text": "30"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır."
+    },
+    {
+      "id": "30-shared-wheel",
+      "question": "Aynı başlangıçtan saat yönünde yarım dönüşte hangi sayı gösterilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "36"
+        },
+        {
+          "id": "b",
+          "text": "24"
+        },
+        {
+          "id": "c",
+          "text": "48"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Verilen modeldeki bilgileri kullanarak seçenekleri karşılaştır.",
+      "stimulusId": "wheel"
+    }
+  ]
+}

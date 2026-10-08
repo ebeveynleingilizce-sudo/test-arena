@@ -1,0 +1,69 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function teacher(uid) {
+      return request.auth != null && request.auth.uid == uid
+        && request.auth.token.firebase.sign_in_provider in ['password', 'google.com'];
+    }
+    function activeStudent(uid, sid) {
+      let session = get(/databases/$(database)/documents/studentSessions/$(request.auth.uid)).data;
+      let student = get(/databases/$(database)/documents/teachers/$(uid)/students/$(sid)).data;
+      return request.auth != null && request.auth.token.firebase.sign_in_provider == 'custom'
+        && session.teacherUid == uid && session.studentId == sid
+        && student.status == 'active' && session.credentialVersion == student.credentialVersion;
+    }
+    function allowedContentGrade(uid, sid, contentGrade) {
+      let grade = get(/databases/$(database)/documents/teachers/$(uid)/students/$(sid)).data.gradeLevel;
+      return contentGrade == grade || (grade > 2 && contentGrade == grade - 1);
+    }
+    function ownArena(uid, classId) {
+      let session = get(/databases/$(database)/documents/studentSessions/$(request.auth.uid)).data;
+      let student = get(/databases/$(database)/documents/teachers/$(uid)/students/$(session.studentId)).data;
+      return activeStudent(uid, session.studentId) && student.classId == classId;
+    }
+    match /teachers/{uid} {
+      allow read: if teacher(uid);
+      allow write: if false;
+      match /classes/{classId} {
+        allow read: if teacher(uid);
+        allow write: if false;
+        match /classMembers/{sid} { allow read: if teacher(uid); allow write: if false; }
+        match /leaderboard/{sid} { allow read: if teacher(uid) || ownArena(uid, classId); allow write: if false; }
+      }
+      match /students/{sid} {
+        allow get: if teacher(uid) || activeStudent(uid, sid);
+        allow list: if teacher(uid);
+        allow write: if false;
+        match /analytics/{documentId} { allow read: if teacher(uid); allow write: if false; }
+        match /analyticsDimensions/{documentId} { allow read: if teacher(uid); allow write: if false; }
+        match /learning/{documentId} { allow read: if teacher(uid) || activeStudent(uid, sid); allow write: if false; }
+        match /academicWeeks/{weekKey} { allow read: if teacher(uid) || activeStudent(uid, sid); allow write: if false; }
+        match /awardedQuestions/{questionId} { allow read: if teacher(uid) || activeStudent(uid, sid); allow write: if false; }
+        match /performance/{documentId} { allow read: if teacher(uid) || activeStudent(uid, sid); allow write: if false; }
+        match /testSessions/{testId} {
+          allow read: if teacher(uid) || (activeStudent(uid, sid) && allowedContentGrade(uid, sid, resource.data.gradeLevel));
+          allow write: if false;
+          match /answers/{questionId} {
+            allow read: if teacher(uid) || (activeStudent(uid, sid) && allowedContentGrade(uid, sid,
+              get(/databases/$(database)/documents/teachers/$(uid)/students/$(sid)/testSessions/$(testId)).data.gradeLevel));
+            allow write: if false;
+          }
+        }
+      }
+      match /studentCodes/{sid} { allow read: if teacher(uid); allow write: if false; }
+    }
+    match /studentSessions/{sessionUid} {
+      // This contains only the caller's identity mapping; access to student data
+      // always rechecks status and credentialVersion on the canonical student.
+      allow get: if request.auth != null && request.auth.uid == sessionUid
+        && request.auth.token.firebase.sign_in_provider == 'custom';
+      allow list, write: if false;
+    }
+    // Questions are delivered as grade-checked, answer-free callable DTOs.
+    // Bank writes and all answer keys remain server-only.
+    match /questions/{questionId} { allow read, write: if false; }
+    match /privateQuestionAnswers/{questionId} { allow read, write: if false; }
+    match /privateTestKeys/{testId} { allow read, write: if false; }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

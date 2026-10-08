@@ -1,0 +1,12 @@
+{
+  "functions": [{ "source": "functions", "codebase": "arena", "runtime": "nodejs22" }],
+  "firestore": { "rules": "firestore.rules", "indexes": "firestore.indexes.json" },
+  "hosting": { "public": "dist", "ignore": ["firebase.json", "**/.*", "**/node_modules/**"], "rewrites": [{ "source": "**", "destination": "/index.html" }], "headers": [{ "source": "/service-worker.js", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }] },
+  "emulators": {
+    "auth": { "host": "127.0.0.1", "port": 9099 },
+    "firestore": { "host": "127.0.0.1", "port": 8080 },
+    "functions": { "host": "127.0.0.1", "port": 5001 },
+    "ui": { "enabled": false },
+    "singleProjectMode": true
+  }
+}

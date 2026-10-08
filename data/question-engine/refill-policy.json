@@ -1,0 +1,14 @@
+{
+  "defaults": {
+    "targetVerifiedQuestions": 30,
+    "overgenerationFactor": 1.4,
+    "batchSize": 5,
+    "maxBatches": 6,
+    "maxGeneratedCandidates": 30,
+    "maxProviderCalls": 6,
+    "maxVerifierCalls": 30,
+    "maxTotalTokens": 50000,
+    "maxNoProgressBatches": 2
+  },
+  "targets": []
+}

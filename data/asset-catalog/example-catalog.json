@@ -1,0 +1,1093 @@
+{
+  "release": "17.0.0",
+  "purpose": "human-review-catalog",
+  "entries": [
+    {
+      "visualId": "mother",
+      "concept": "mother",
+      "source": "openmoji",
+      "status": "review",
+      "approved": false,
+      "requiresContext": true,
+      "reason": "Relationship requires context; person appearance cannot establish kinship",
+      "candidates": [
+        {
+          "annotation": "woman",
+          "hexcode": "1F469",
+          "sourceFile": "1F469.svg",
+          "match": "annotation-exact",
+          "score": 100
+        },
+        {
+          "annotation": "woman feeding baby",
+          "hexcode": "1F469-200D-1F37C",
+          "sourceFile": "1F469-200D-1F37C.svg",
+          "match": "annotation-exact",
+          "score": 100
+        },
+        {
+          "annotation": "dj woman",
+          "hexcode": "1F469-200D-1FAA9",
+          "sourceFile": "1F469-200D-1FAA9.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "old woman",
+          "hexcode": "1F475",
+          "sourceFile": "1F475.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "woman elf",
+          "hexcode": "1F9DD-200D-2640-FE0F",
+          "sourceFile": "1F9DD-200D-2640-FE0F.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "woman cook",
+          "hexcode": "1F469-200D-1F373",
+          "sourceFile": "1F469-200D-1F373.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "deaf woman",
+          "hexcode": "1F9CF-200D-2640-FE0F",
+          "sourceFile": "1F9CF-200D-2640-FE0F.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "woman mage",
+          "hexcode": "1F9D9-200D-2640-FE0F",
+          "sourceFile": "1F9D9-200D-2640-FE0F.svg",
+          "match": "annotation-words",
+          "score": 60
+        }
+      ]
+    },
+    {
+      "visualId": "father",
+      "concept": "father",
+      "source": "openmoji",
+      "status": "review",
+      "approved": false,
+      "requiresContext": true,
+      "reason": "Relationship requires context; person appearance cannot establish kinship",
+      "candidates": [
+        {
+          "annotation": "man",
+          "hexcode": "1F468",
+          "sourceFile": "1F468.svg",
+          "match": "annotation-exact",
+          "score": 100
+        },
+        {
+          "annotation": "man feeding baby",
+          "hexcode": "1F468-200D-1F37C",
+          "sourceFile": "1F468-200D-1F37C.svg",
+          "match": "annotation-exact",
+          "score": 100
+        },
+        {
+          "annotation": "dj man",
+          "hexcode": "1F468-200D-1FAA9",
+          "sourceFile": "1F468-200D-1FAA9.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "old man",
+          "hexcode": "1F474",
+          "sourceFile": "1F474.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "man elf",
+          "hexcode": "1F9DD-200D-2642-FE0F",
+          "sourceFile": "1F9DD-200D-2642-FE0F.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "man cook",
+          "hexcode": "1F468-200D-1F373",
+          "sourceFile": "1F468-200D-1F373.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "deaf man",
+          "hexcode": "1F9CF-200D-2642-FE0F",
+          "sourceFile": "1F9CF-200D-2642-FE0F.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "man mage",
+          "hexcode": "1F9D9-200D-2642-FE0F",
+          "sourceFile": "1F9D9-200D-2642-FE0F.svg",
+          "match": "annotation-words",
+          "score": 60
+        }
+      ]
+    },
+    {
+      "visualId": "sister",
+      "concept": "sister",
+      "source": "openmoji",
+      "status": "review",
+      "approved": false,
+      "requiresContext": true,
+      "reason": "Relationship requires context; person appearance cannot establish kinship",
+      "candidates": [
+        {
+          "annotation": "girl",
+          "hexcode": "1F467",
+          "sourceFile": "1F467.svg",
+          "match": "annotation-exact",
+          "score": 100
+        },
+        {
+          "annotation": "family: man, girl",
+          "hexcode": "1F468-200D-1F467",
+          "sourceFile": "1F468-200D-1F467.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "family: woman, girl",
+          "hexcode": "1F469-200D-1F467",
+          "sourceFile": "1F469-200D-1F467.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "family: man, girl, boy",
+          "hexcode": "1F468-200D-1F467-200D-1F466",
+          "sourceFile": "1F468-200D-1F467-200D-1F466.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "family: man, man, girl",
+          "hexcode": "1F468-200D-1F468-200D-1F467",
+          "sourceFile": "1F468-200D-1F468-200D-1F467.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "family: man, girl, girl",
+          "hexcode": "1F468-200D-1F467-200D-1F467",
+          "sourceFile": "1F468-200D-1F467-200D-1F467.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "family: man, woman, girl",
+          "hexcode": "1F468-200D-1F469-200D-1F467",
+          "sourceFile": "1F468-200D-1F469-200D-1F467.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "family: woman, girl, boy",
+          "hexcode": "1F469-200D-1F467-200D-1F466",
+          "sourceFile": "1F469-200D-1F467-200D-1F466.svg",
+          "match": "annotation-words",
+          "score": 60
+        }
+      ]
+    },
+    {
+      "visualId": "brother",
+      "concept": "brother",
+      "source": "openmoji",
+      "status": "review",
+      "approved": false,
+      "requiresContext": true,
+      "reason": "Relationship requires context; person appearance cannot establish kinship",
+      "candidates": [
+        {
+          "annotation": "boy",
+          "hexcode": "1F466",
+          "sourceFile": "1F466.svg",
+          "match": "annotation-exact",
+          "score": 100
+        },
+        {
+          "annotation": "family: man, boy",
+          "hexcode": "1F468-200D-1F466",
+          "sourceFile": "1F468-200D-1F466.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "family: woman, boy",
+          "hexcode": "1F469-200D-1F466",
+          "sourceFile": "1F469-200D-1F466.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "family: man, boy, boy",
+          "hexcode": "1F468-200D-1F466-200D-1F466",
+          "sourceFile": "1F468-200D-1F466-200D-1F466.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "family: man, man, boy",
+          "hexcode": "1F468-200D-1F468-200D-1F466",
+          "sourceFile": "1F468-200D-1F468-200D-1F466.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "family: man, girl, boy",
+          "hexcode": "1F468-200D-1F467-200D-1F466",
+          "sourceFile": "1F468-200D-1F467-200D-1F466.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "family: man, woman, boy",
+          "hexcode": "1F468-200D-1F469-200D-1F466",
+          "sourceFile": "1F468-200D-1F469-200D-1F466.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "family: woman, boy, boy",
+          "hexcode": "1F469-200D-1F466-200D-1F466",
+          "sourceFile": "1F469-200D-1F466-200D-1F466.svg",
+          "match": "annotation-words",
+          "score": 60
+        }
+      ]
+    },
+    {
+      "visualId": "grandmother",
+      "concept": "grandmother",
+      "source": "openmoji",
+      "status": "review",
+      "approved": false,
+      "requiresContext": true,
+      "reason": "Relationship requires context; person appearance cannot establish kinship",
+      "candidates": [
+        {
+          "annotation": "old woman",
+          "hexcode": "1F475",
+          "sourceFile": "1F475.svg",
+          "match": "annotation-exact",
+          "score": 100
+        }
+      ]
+    },
+    {
+      "visualId": "grandfather",
+      "concept": "grandfather",
+      "source": "openmoji",
+      "status": "review",
+      "approved": false,
+      "requiresContext": true,
+      "reason": "Relationship requires context; person appearance cannot establish kinship",
+      "candidates": [
+        {
+          "annotation": "old man",
+          "hexcode": "1F474",
+          "sourceFile": "1F474.svg",
+          "match": "annotation-exact",
+          "score": 100
+        }
+      ]
+    },
+    {
+      "visualId": "baby",
+      "concept": "baby",
+      "source": "openmoji",
+      "status": "ready",
+      "approved": false,
+      "requiresContext": false,
+      "reason": "Direct proposal; human approval required before registry/copy",
+      "candidates": [
+        {
+          "annotation": "baby",
+          "hexcode": "1F476",
+          "sourceFile": "1F476.svg",
+          "match": "annotation-exact",
+          "score": 100
+        },
+        {
+          "annotation": "baby chick",
+          "hexcode": "1F424",
+          "sourceFile": "1F424.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "baby angel",
+          "hexcode": "1F47C",
+          "sourceFile": "1F47C.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "baby bottle",
+          "hexcode": "1F37C",
+          "sourceFile": "1F37C.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "baby symbol",
+          "hexcode": "1F6BC",
+          "sourceFile": "1F6BC.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "man feeding baby",
+          "hexcode": "1F468-200D-1F37C",
+          "sourceFile": "1F468-200D-1F37C.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "woman feeding baby",
+          "hexcode": "1F469-200D-1F37C",
+          "sourceFile": "1F469-200D-1F37C.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "person feeding baby",
+          "hexcode": "1F9D1-200D-1F37C",
+          "sourceFile": "1F9D1-200D-1F37C.svg",
+          "match": "annotation-words",
+          "score": 60
+        }
+      ]
+    },
+    {
+      "visualId": "cat",
+      "concept": "cat",
+      "source": "openmoji",
+      "status": "ready",
+      "approved": false,
+      "requiresContext": false,
+      "reason": "Direct proposal; human approval required before registry/copy",
+      "candidates": [
+        {
+          "annotation": "cat",
+          "hexcode": "1F408",
+          "sourceFile": "1F408.svg",
+          "match": "annotation-exact",
+          "score": 100
+        },
+        {
+          "annotation": "cat face",
+          "hexcode": "1F431",
+          "sourceFile": "1F431.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "black cat",
+          "hexcode": "1F408-200D-2B1B",
+          "sourceFile": "1F408-200D-2B1B.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "weary cat",
+          "hexcode": "1F640",
+          "sourceFile": "1F640.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "hacker cat",
+          "hexcode": "1F431-200D-1F4BB",
+          "sourceFile": "1F431-200D-1F4BB.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "crying cat",
+          "hexcode": "1F63F",
+          "sourceFile": "1F63F.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "kissing cat",
+          "hexcode": "1F63D",
+          "sourceFile": "1F63D.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "pouting cat",
+          "hexcode": "1F63E",
+          "sourceFile": "1F63E.svg",
+          "match": "annotation-words",
+          "score": 60
+        }
+      ]
+    },
+    {
+      "visualId": "dog",
+      "concept": "dog",
+      "source": "openmoji",
+      "status": "ready",
+      "approved": false,
+      "requiresContext": false,
+      "reason": "Direct proposal; human approval required before registry/copy",
+      "candidates": [
+        {
+          "annotation": "dog",
+          "hexcode": "1F415",
+          "sourceFile": "1F415.svg",
+          "match": "annotation-exact",
+          "score": 100
+        },
+        {
+          "annotation": "hot dog",
+          "hexcode": "1F32D",
+          "sourceFile": "1F32D.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "dog face",
+          "hexcode": "1F436",
+          "sourceFile": "1F436.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "guide dog",
+          "hexcode": "1F9AE",
+          "sourceFile": "1F9AE.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "service dog",
+          "hexcode": "1F415-200D-1F9BA",
+          "sourceFile": "1F415-200D-1F9BA.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "person with dog",
+          "hexcode": "E182",
+          "sourceFile": "E182.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "wolf",
+          "hexcode": "1F43A",
+          "sourceFile": "1F43A.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "bone",
+          "hexcode": "1F9B4",
+          "sourceFile": "1F9B4.svg",
+          "match": "metadata-tags",
+          "score": 30
+        }
+      ]
+    },
+    {
+      "visualId": "bird",
+      "concept": "bird",
+      "source": "openmoji",
+      "status": "ready",
+      "approved": false,
+      "requiresContext": false,
+      "reason": "Direct proposal; human approval required before registry/copy",
+      "candidates": [
+        {
+          "annotation": "bird",
+          "hexcode": "1F426",
+          "sourceFile": "1F426.svg",
+          "match": "annotation-exact",
+          "score": 100
+        },
+        {
+          "annotation": "black bird",
+          "hexcode": "1F426-200D-2B1B",
+          "sourceFile": "1F426-200D-2B1B.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "owl",
+          "hexcode": "1F989",
+          "sourceFile": "1F989.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "dove",
+          "hexcode": "1F54A",
+          "sourceFile": "1F54A.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "duck",
+          "hexcode": "1F986",
+          "sourceFile": "1F986.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "swan",
+          "hexcode": "1F9A2",
+          "sourceFile": "1F9A2.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "dodo",
+          "hexcode": "1F9A4",
+          "sourceFile": "1F9A4.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "wing",
+          "hexcode": "1FABD",
+          "sourceFile": "1FABD.svg",
+          "match": "metadata-tags",
+          "score": 30
+        }
+      ]
+    },
+    {
+      "visualId": "fish",
+      "concept": "fish",
+      "source": "openmoji",
+      "status": "ready",
+      "approved": false,
+      "requiresContext": false,
+      "reason": "Direct proposal; human approval required before registry/copy",
+      "candidates": [
+        {
+          "annotation": "fish",
+          "hexcode": "1F41F",
+          "sourceFile": "1F41F.svg",
+          "match": "annotation-exact",
+          "score": 100
+        },
+        {
+          "annotation": "tropical fish",
+          "hexcode": "1F420",
+          "sourceFile": "1F420.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "fish cake with swirl",
+          "hexcode": "1F365",
+          "sourceFile": "1F365.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "shark",
+          "hexcode": "1F988",
+          "sourceFile": "1F988.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "Pisces",
+          "hexcode": "2653",
+          "sourceFile": "2653.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "blowfish",
+          "hexcode": "1F421",
+          "sourceFile": "1F421.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "goldfish",
+          "hexcode": "E000",
+          "sourceFile": "E000.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "fishing pole",
+          "hexcode": "1F3A3",
+          "sourceFile": "1F3A3.svg",
+          "match": "metadata-tags",
+          "score": 30
+        }
+      ]
+    },
+    {
+      "visualId": "apple",
+      "concept": "apple",
+      "source": "openmoji",
+      "status": "ready",
+      "approved": false,
+      "requiresContext": false,
+      "reason": "Direct proposal; human approval required before registry/copy",
+      "candidates": [
+        {
+          "annotation": "red apple",
+          "hexcode": "1F34E",
+          "sourceFile": "1F34E.svg",
+          "match": "explicit-search-hint",
+          "score": 110
+        },
+        {
+          "annotation": "green apple",
+          "hexcode": "1F34F",
+          "sourceFile": "1F34F.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "pie",
+          "hexcode": "1F967",
+          "sourceFile": "1F967.svg",
+          "match": "metadata-tags",
+          "score": 30
+        }
+      ]
+    },
+    {
+      "visualId": "banana",
+      "concept": "banana",
+      "source": "openmoji",
+      "status": "ready",
+      "approved": false,
+      "requiresContext": false,
+      "reason": "Direct proposal; human approval required before registry/copy",
+      "candidates": [
+        {
+          "annotation": "banana",
+          "hexcode": "1F34C",
+          "sourceFile": "1F34C.svg",
+          "match": "annotation-exact",
+          "score": 100
+        },
+        {
+          "annotation": "monkey",
+          "hexcode": "1F412",
+          "sourceFile": "1F412.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "monkey face",
+          "hexcode": "1F435",
+          "sourceFile": "1F435.svg",
+          "match": "metadata-tags",
+          "score": 30
+        }
+      ]
+    },
+    {
+      "visualId": "milk",
+      "concept": "milk",
+      "source": "openmoji",
+      "status": "ready",
+      "approved": false,
+      "requiresContext": false,
+      "reason": "Direct proposal; human approval required before registry/copy",
+      "candidates": [
+        {
+          "annotation": "glass of milk",
+          "hexcode": "1F95B",
+          "sourceFile": "1F95B.svg",
+          "match": "explicit-search-hint",
+          "score": 110
+        },
+        {
+          "annotation": "milk jug",
+          "hexcode": "E153",
+          "sourceFile": "E153.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "cow",
+          "hexcode": "1F404",
+          "sourceFile": "1F404.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "goat",
+          "hexcode": "1F410",
+          "sourceFile": "1F410.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "cow face",
+          "hexcode": "1F42E",
+          "sourceFile": "1F42E.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "bubble tea",
+          "hexcode": "1F9CB",
+          "sourceFile": "1F9CB.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "baby bottle",
+          "hexcode": "1F37C",
+          "sourceFile": "1F37C.svg",
+          "match": "metadata-tags",
+          "score": 30
+        }
+      ]
+    },
+    {
+      "visualId": "water",
+      "concept": "water",
+      "source": "openmoji",
+      "status": "review",
+      "approved": false,
+      "requiresContext": false,
+      "reason": "Semantic or visual suitability requires human review",
+      "candidates": [
+        {
+          "annotation": "droplet",
+          "hexcode": "1F4A7",
+          "sourceFile": "1F4A7.svg",
+          "match": "explicit-search-hint",
+          "score": 110
+        },
+        {
+          "annotation": "water wave",
+          "hexcode": "1F30A",
+          "sourceFile": "1F30A.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "water pistol",
+          "hexcode": "1F52B",
+          "sourceFile": "1F52B.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "water closet",
+          "hexcode": "1F6BE",
+          "sourceFile": "1F6BE.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "water buffalo",
+          "hexcode": "1F403",
+          "sourceFile": "1F403.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "potable water",
+          "hexcode": "1F6B0",
+          "sourceFile": "1F6B0.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "hot-water bottle",
+          "hexcode": "E30F",
+          "sourceFile": "E30F.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "non-potable water",
+          "hexcode": "1F6B1",
+          "sourceFile": "1F6B1.svg",
+          "match": "annotation-words",
+          "score": 60
+        }
+      ]
+    },
+    {
+      "visualId": "bus",
+      "concept": "bus",
+      "source": "openmoji",
+      "status": "ready",
+      "approved": false,
+      "requiresContext": false,
+      "reason": "Direct proposal; human approval required before registry/copy",
+      "candidates": [
+        {
+          "annotation": "bus",
+          "hexcode": "1F68C",
+          "sourceFile": "1F68C.svg",
+          "match": "annotation-exact",
+          "score": 100
+        },
+        {
+          "annotation": "bus stop",
+          "hexcode": "1F68F",
+          "sourceFile": "1F68F.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "oncoming bus",
+          "hexcode": "1F68D",
+          "sourceFile": "1F68D.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "minibus",
+          "hexcode": "1F690",
+          "sourceFile": "1F690.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "tram car",
+          "hexcode": "1F68B",
+          "sourceFile": "1F68B.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "trolleybus",
+          "hexcode": "1F68E",
+          "sourceFile": "1F68E.svg",
+          "match": "metadata-tags",
+          "score": 30
+        }
+      ]
+    },
+    {
+      "visualId": "car",
+      "concept": "car",
+      "source": "openmoji",
+      "status": "ready",
+      "approved": false,
+      "requiresContext": false,
+      "reason": "Direct proposal; human approval required before registry/copy",
+      "candidates": [
+        {
+          "annotation": "automobile",
+          "hexcode": "1F697",
+          "sourceFile": "1F697.svg",
+          "match": "explicit-search-hint",
+          "score": 110
+        },
+        {
+          "annotation": "tram car",
+          "hexcode": "1F68B",
+          "sourceFile": "1F68B.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "racing car",
+          "hexcode": "1F3CE",
+          "sourceFile": "1F3CE.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "police car",
+          "hexcode": "1F693",
+          "sourceFile": "1F693.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "railway car",
+          "hexcode": "1F683",
+          "sourceFile": "1F683.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "autonomous car",
+          "hexcode": "E1C2",
+          "sourceFile": "E1C2.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "police car light",
+          "hexcode": "1F6A8",
+          "sourceFile": "1F6A8.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "exhaust gases car",
+          "hexcode": "E2CF",
+          "sourceFile": "E2CF.svg",
+          "match": "annotation-words",
+          "score": 60
+        }
+      ]
+    },
+    {
+      "visualId": "teacher",
+      "concept": "teacher",
+      "source": "openmoji",
+      "status": "ready",
+      "approved": true,
+      "requiresContext": false,
+      "reason": "Direct proposal; human approval required before registry/copy",
+      "candidates": [
+        {
+          "annotation": "teacher",
+          "hexcode": "1F9D1-200D-1F3EB",
+          "sourceFile": "1F9D1-200D-1F3EB.svg",
+          "match": "existing-approved-registry",
+          "score": 120
+        },
+        {
+          "annotation": "man teacher",
+          "hexcode": "1F468-200D-1F3EB",
+          "sourceFile": "1F468-200D-1F3EB.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "woman teacher",
+          "hexcode": "1F469-200D-1F3EB",
+          "sourceFile": "1F469-200D-1F3EB.svg",
+          "match": "annotation-words",
+          "score": 60
+        }
+      ]
+    },
+    {
+      "visualId": "book",
+      "concept": "book",
+      "source": "openmoji",
+      "status": "ready",
+      "approved": true,
+      "requiresContext": false,
+      "reason": "Direct proposal; human approval required before registry/copy",
+      "candidates": [
+        {
+          "annotation": "open book",
+          "hexcode": "1F4D6",
+          "sourceFile": "1F4D6.svg",
+          "match": "existing-approved-registry",
+          "score": 120
+        },
+        {
+          "annotation": "blue book",
+          "hexcode": "1F4D8",
+          "sourceFile": "1F4D8.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "green book",
+          "hexcode": "1F4D7",
+          "sourceFile": "1F4D7.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "closed book",
+          "hexcode": "1F4D5",
+          "sourceFile": "1F4D5.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "orange book",
+          "hexcode": "1F4D9",
+          "sourceFile": "1F4D9.svg",
+          "match": "annotation-words",
+          "score": 60
+        },
+        {
+          "annotation": "books",
+          "hexcode": "1F4DA",
+          "sourceFile": "1F4DA.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "ledger",
+          "hexcode": "1F4D2",
+          "sourceFile": "1F4D2.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "notebook",
+          "hexcode": "1F4D3",
+          "sourceFile": "1F4D3.svg",
+          "match": "metadata-tags",
+          "score": 30
+        }
+      ]
+    },
+    {
+      "visualId": "pencil",
+      "concept": "pencil",
+      "source": "openmoji",
+      "status": "ready",
+      "approved": true,
+      "requiresContext": false,
+      "reason": "Direct proposal; human approval required before registry/copy",
+      "candidates": [
+        {
+          "annotation": "pencil",
+          "hexcode": "270F",
+          "sourceFile": "270F.svg",
+          "match": "existing-approved-registry",
+          "score": 120
+        },
+        {
+          "annotation": "memo",
+          "hexcode": "1F4DD",
+          "sourceFile": "1F4DD.svg",
+          "match": "metadata-tags",
+          "score": 30
+        },
+        {
+          "annotation": "edit",
+          "hexcode": "E25D",
+          "sourceFile": "E25D.svg",
+          "match": "metadata-tags",
+          "score": 30
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total": 20,
+    "ready": 13,
+    "review": 7,
+    "missing": 0
+  }
+}

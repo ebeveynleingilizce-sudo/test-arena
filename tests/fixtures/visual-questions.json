@@ -1,0 +1,388 @@
+{
+  "fixtureOnly": true,
+  "grade": 2,
+  "subjectId": "matematik",
+  "note": "Emulator-only technical examples. No curriculum/outcome claim. Never imported by production seed.",
+  "questions": [
+    {
+      "id": "local-visual-solid-choice",
+      "unitId": "local-visual-fixture",
+      "topicId": "local-geometry",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Aşağıdaki cisimlerden hangisi küredir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "cube",
+            "alt": "Kare yüzleri olan, üst ve iki yan yüzü görünen cisim"
+          }
+        },
+        {
+          "id": "b",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "sphere",
+            "alt": "Top gibi yuvarlak ve eğri yüzeyli cisim"
+          }
+        },
+        {
+          "id": "c",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "cylinder",
+            "alt": "Dairesel kapakları ve bunları birleştiren yan yüzeyi olan cisim"
+          }
+        },
+        {
+          "id": "d",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "cone",
+            "alt": "Tepesinde sivri uç, tabanında dairesel sınır olan cisim"
+          }
+        }
+      ],
+      "correctOptionId": "b",
+      "explanation": "Küre top gibi yuvarlaktır; düz yüzü ve köşesi yoktur."
+    },
+    {
+      "id": "local-visual-shape-choice",
+      "unitId": "local-visual-fixture",
+      "topicId": "local-geometry",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Aşağıdaki şekillerden hangisi üçgendir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "square",
+            "alt": "Eşit uzunluktaki düz kenarlarla çizilmiş kapalı şekil"
+          }
+        },
+        {
+          "id": "b",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "rectangle",
+            "alt": "Karşılıklı kenarları eşit, yatay kenarları daha uzun kapalı şekil"
+          }
+        },
+        {
+          "id": "c",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "triangle",
+            "alt": "Üç düz kenarla çizilmiş kapalı şekil"
+          }
+        },
+        {
+          "id": "d",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "circle",
+            "alt": "Yuvarlak, kapalı bir çizgiyle sınırlanan düz şekil"
+          }
+        }
+      ],
+      "correctOptionId": "c",
+      "explanation": "Üçgenin üç kenarı ve üç köşesi vardır."
+    },
+    {
+      "id": "local-visual-question-solid",
+      "unitId": "local-visual-fixture",
+      "topicId": "local-geometry",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Görseldeki cismin adı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Küp"
+        },
+        {
+          "id": "b",
+          "text": "Küre"
+        },
+        {
+          "id": "c",
+          "text": "Silindir"
+        },
+        {
+          "id": "d",
+          "text": "Dikdörtgenler prizması"
+        }
+      ],
+      "correctOptionId": "d",
+      "explanation": "Bu uzun kutu biçimindeki cisim dikdörtgenler prizmasıdır.",
+      "visual": {
+        "kind": "geometry",
+        "shape": "rectangular-prism",
+        "alt": "Yatay uzayan, karşılıklı düz dikdörtgen yüzleri olan cisim"
+      }
+    },
+    {
+      "id": "local-visual-both-visuals",
+      "unitId": "local-visual-fixture",
+      "topicId": "local-geometry",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Görseldeki şekille aynı olanı seç.",
+      "options": [
+        {
+          "id": "a",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "triangle",
+            "alt": "Üç düz kenarla çizilmiş kapalı şekil"
+          }
+        },
+        {
+          "id": "b",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "rectangle",
+            "alt": "Karşılıklı kenarları eşit, yatay kenarları daha uzun kapalı şekil"
+          }
+        },
+        {
+          "id": "c",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "square",
+            "alt": "Eşit uzunluktaki düz kenarlarla çizilmiş kapalı şekil"
+          }
+        },
+        {
+          "id": "d",
+          "text": "",
+          "visual": {
+            "kind": "geometry",
+            "shape": "circle",
+            "alt": "Yuvarlak, kapalı bir çizgiyle sınırlanan düz şekil"
+          }
+        }
+      ],
+      "correctOptionId": "d",
+      "explanation": "Görsel ve doğru seçenek aynı dairesel şekli gösterir.",
+      "visual": {
+        "kind": "geometry",
+        "shape": "circle",
+        "alt": "Yuvarlak, kapalı bir çizgiyle sınırlanan düz şekil"
+      }
+    },
+    {
+      "id": "local-visual-cube-faces",
+      "unitId": "local-visual-fixture",
+      "topicId": "local-geometry",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Görseldeki cismin toplam kaç yüzü vardır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "4"
+        },
+        {
+          "id": "b",
+          "text": "5"
+        },
+        {
+          "id": "c",
+          "text": "6"
+        },
+        {
+          "id": "d",
+          "text": "8"
+        }
+      ],
+      "correctOptionId": "c",
+      "explanation": "Küpün toplam altı kare yüzü vardır.",
+      "visual": {
+        "kind": "geometry",
+        "shape": "cube",
+        "alt": "Kare yüzleri olan, üst ve iki yan yüzü görünen cisim"
+      }
+    },
+    {
+      "id": "local-visual-cylinder-flat-faces",
+      "unitId": "local-visual-fixture",
+      "topicId": "local-geometry",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Görseldeki cismin kaç düz yüzü vardır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "1"
+        },
+        {
+          "id": "b",
+          "text": "2"
+        },
+        {
+          "id": "c",
+          "text": "3"
+        },
+        {
+          "id": "d",
+          "text": "4"
+        }
+      ],
+      "correctOptionId": "b",
+      "explanation": "Silindirin üst ve alt tarafında iki düz dairesel yüzü vardır.",
+      "visual": {
+        "kind": "geometry",
+        "shape": "cylinder",
+        "alt": "Dairesel kapakları ve bunları birleştiren yan yüzeyi olan cisim"
+      }
+    },
+    {
+      "id": "local-visual-cone-tip",
+      "unitId": "local-visual-fixture",
+      "topicId": "local-geometry",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Görseldeki cismin kaç sivri ucu vardır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "0"
+        },
+        {
+          "id": "b",
+          "text": "1"
+        },
+        {
+          "id": "c",
+          "text": "2"
+        },
+        {
+          "id": "d",
+          "text": "3"
+        }
+      ],
+      "correctOptionId": "b",
+      "explanation": "Koninin tepesinde bir sivri uç vardır.",
+      "visual": {
+        "kind": "geometry",
+        "shape": "cone",
+        "alt": "Tepesinde sivri uç, tabanında dairesel sınır olan cisim"
+      }
+    },
+    {
+      "id": "local-visual-rectangle-name",
+      "unitId": "local-visual-fixture",
+      "topicId": "local-geometry",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Görseldeki şeklin adı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kare"
+        },
+        {
+          "id": "b",
+          "text": "Üçgen"
+        },
+        {
+          "id": "c",
+          "text": "Daire"
+        },
+        {
+          "id": "d",
+          "text": "Dikdörtgen"
+        }
+      ],
+      "correctOptionId": "d",
+      "explanation": "Yatay kenarları daha uzun olan bu şekil dikdörtgendir.",
+      "visual": {
+        "kind": "geometry",
+        "shape": "rectangle",
+        "alt": "Karşılıklı kenarları eşit, yatay kenarları daha uzun kapalı şekil"
+      }
+    },
+    {
+      "id": "local-visual-square-corners",
+      "unitId": "local-visual-fixture",
+      "topicId": "local-geometry",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Görseldeki şeklin kaç köşesi vardır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "3"
+        },
+        {
+          "id": "b",
+          "text": "4"
+        },
+        {
+          "id": "c",
+          "text": "5"
+        },
+        {
+          "id": "d",
+          "text": "6"
+        }
+      ],
+      "correctOptionId": "b",
+      "explanation": "Karenin dört köşesi vardır.",
+      "visual": {
+        "kind": "geometry",
+        "shape": "square",
+        "alt": "Eşit uzunluktaki düz kenarlarla çizilmiş kapalı şekil"
+      }
+    },
+    {
+      "id": "local-visual-sphere-corners",
+      "unitId": "local-visual-fixture",
+      "topicId": "local-geometry",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Görseldeki cismin kaç köşesi vardır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "0"
+        },
+        {
+          "id": "b",
+          "text": "1"
+        },
+        {
+          "id": "c",
+          "text": "2"
+        },
+        {
+          "id": "d",
+          "text": "4"
+        }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Kürenin köşesi yoktur.",
+      "visual": {
+        "kind": "geometry",
+        "shape": "sphere",
+        "alt": "Top gibi yuvarlak ve eğri yüzeyli cisim"
+      }
+    }
+  ]
+}

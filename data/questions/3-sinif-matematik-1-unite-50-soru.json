@@ -1,0 +1,1242 @@
+{
+  "grade": 3,
+  "subjectId": "matematik",
+  "unitId": "g3-matematik-sayilar-ve-ni-celi-kler-1",
+  "questionCount": 50,
+  "questions": [
+    {
+      "id": "g3-matematik-u1-q001",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Bu kitapların sayısı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "375"
+        },
+        {
+          "id": "b",
+          "text": "357"
+        },
+        {
+          "id": "c",
+          "text": "537"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Bir okulun kütüphanesinde 3 yüzlük, 5 onluk ve 7 birlik kitap bulunmaktadır.",
+      "outcomeCode": "MAT.3.1.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-matematik-u1-q002",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu öğrencinin hatası nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yüzlük sayısını yanlış belirlemiştir."
+        },
+        {
+          "id": "b",
+          "text": "Birler basamağındaki rakamı 6 sanmıştır."
+        },
+        {
+          "id": "c",
+          "text": "4 birliği, 4 onluk olarak göstermiştir."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Bir öğrenci 604 sayısını “6 yüzlük, 4 onluk” olarak çözümlemiştir.",
+      "outcomeCode": "MAT.3.1.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-matematik-u1-q003",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "En çok kâğıt toplayan sınıftan en az toplayan sınıfa doğru sıralama hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "3/B – 3/A – 3/C"
+        },
+        {
+          "id": "b",
+          "text": "3/A – 3/C – 3/B"
+        },
+        {
+          "id": "c",
+          "text": "3/B – 3/C – 3/A"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Üç sınıfın topladığı atık kâğıt miktarı:\n3/A: 485 kg\n3/B: 548 kg\n3/C: 458 kg",
+      "outcomeCode": "MAT.3.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-matematik-u1-q004",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Sıradaki sayı kaçtır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "34"
+        },
+        {
+          "id": "b",
+          "text": "35"
+        },
+        {
+          "id": "c",
+          "text": "36"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Bir öğrenci 7’şer ritmik sayıyor: 7 – 14 – 21 – 28 – ?",
+      "outcomeCode": "MAT.3.1.4",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-matematik-u1-q005",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu gruplandırmanın kuralı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sayıların yüzler basamağı"
+        },
+        {
+          "id": "b",
+          "text": "Sayıların büyüklüğü"
+        },
+        {
+          "id": "c",
+          "text": "Sayıların tek veya çift olması"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "I. Grup: 124, 236, 458\nII. Grup: 135, 247, 369",
+      "outcomeCode": "MAT.3.1.5",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-matematik-u1-q006",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Elif bu örneklerden hangi genellemeye ulaşabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "İki tek sayının toplamı çift sayıdır."
+        },
+        {
+          "id": "b",
+          "text": "İki tek sayının toplamı tek sayıdır."
+        },
+        {
+          "id": "c",
+          "text": "İki tek sayının toplamı her zaman 10’dan küçüktür."
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "3 + 5 = 8\n7 + 9 = 16\n11 + 13 = 24",
+      "outcomeCode": "MAT.3.1.6",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-matematik-u1-q007",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "“Her adımda 5 ekleniyor.” yorumu neden yanlıştır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Örüntüde tek sayı bulunamaz."
+        },
+        {
+          "id": "b",
+          "text": "Sayılar her adımda iki katına çıkmaktadır."
+        },
+        {
+          "id": "c",
+          "text": "Bütün sayılar 10’dan büyük olmalıdır."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Bir öğrenci şu örüntüyü oluşturuyor: 5 – 10 – 20 – 40 – ?",
+      "outcomeCode": "MAT.3.1.7",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-matematik-u1-q008",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Kutuda yaklaşık kaç boncuk vardır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "15"
+        },
+        {
+          "id": "b",
+          "text": "45"
+        },
+        {
+          "id": "c",
+          "text": "90"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Bir kutuda 5 eşit bölme vardır. Her bölmede yaklaşık 9 boncuk bulunuyor.",
+      "outcomeCode": "MAT.3.1.8",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-matematik-u1-q009",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "582 sayısının doğru çözümlemesi hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "500 + 80 + 2"
+        },
+        {
+          "id": "b",
+          "text": "500 + 8 + 20"
+        },
+        {
+          "id": "c",
+          "text": "50 + 80 + 2"
+        }
+      ],
+      "correctOptionId": "a",
+      "outcomeCode": "MAT.3.1.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-matematik-u1-q010",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Doğru sıralama hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "648 – 684 – 864"
+        },
+        {
+          "id": "b",
+          "text": "684 – 648 – 864"
+        },
+        {
+          "id": "c",
+          "text": "864 – 684 – 648"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Bir öğrenci 684, 648 ve 864 sayılarını küçükten büyüğe sıralamak istiyor.",
+      "outcomeCode": "MAT.3.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-matematik-u1-q011",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Verilen sayı kaçtır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "264"
+        },
+        {
+          "id": "b",
+          "text": "426"
+        },
+        {
+          "id": "c",
+          "text": "246"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "2 yüzlük, 4 onluk ve 6 birlik",
+      "outcomeCode": "MAT.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 246"
+    },
+    {
+      "id": "g3-matematik-u1-q012",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Verilen sayı kaçtır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "750"
+        },
+        {
+          "id": "b",
+          "text": "705"
+        },
+        {
+          "id": "c",
+          "text": "75"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "7 yüzlük, 0 onluk ve 5 birlik",
+      "outcomeCode": "MAT.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 705"
+    },
+    {
+      "id": "g3-matematik-u1-q013",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Verilen sayı kaçtır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "380"
+        },
+        {
+          "id": "b",
+          "text": "830"
+        },
+        {
+          "id": "c",
+          "text": "308"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "3 yüzlük, 8 onluk ve 0 birlik",
+      "outcomeCode": "MAT.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 380"
+    },
+    {
+      "id": "g3-matematik-u1-q014",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Verilen sayı kaçtır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "192"
+        },
+        {
+          "id": "b",
+          "text": "912"
+        },
+        {
+          "id": "c",
+          "text": "921"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "9 yüzlük, 1 onluk ve 2 birlik",
+      "outcomeCode": "MAT.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 912"
+    },
+    {
+      "id": "g3-matematik-u1-q015",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Verilen sayı kaçtır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "490"
+        },
+        {
+          "id": "b",
+          "text": "49"
+        },
+        {
+          "id": "c",
+          "text": "409"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "4 yüzlük, 0 onluk ve 9 birlik",
+      "outcomeCode": "MAT.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 409"
+    },
+    {
+      "id": "g3-matematik-u1-q016",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "306 sayısının doğru çözümlenmesi hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "3 yüzlük + 6 onluk + 0 birlik"
+        },
+        {
+          "id": "b",
+          "text": "3 yüzlük + 0 onluk + 6 birlik"
+        },
+        {
+          "id": "c",
+          "text": "0 yüzlük + 3 onluk + 6 birlik"
+        }
+      ],
+      "correctOptionId": "b",
+      "outcomeCode": "MAT.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 3 yüzlük + 0 onluk + 6 birlik"
+    },
+    {
+      "id": "g3-matematik-u1-q017",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "750 sayısının doğru çözümlenmesi hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "5 yüzlük + 7 onluk + 0 birlik"
+        },
+        {
+          "id": "b",
+          "text": "7 yüzlük + 5 onluk + 0 birlik"
+        },
+        {
+          "id": "c",
+          "text": "7 yüzlük + 0 onluk + 5 birlik"
+        }
+      ],
+      "correctOptionId": "b",
+      "outcomeCode": "MAT.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 7 yüzlük + 5 onluk + 0 birlik"
+    },
+    {
+      "id": "g3-matematik-u1-q018",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "482 sayısının doğru çözümlenmesi hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "4 yüzlük + 8 onluk + 2 birlik"
+        },
+        {
+          "id": "b",
+          "text": "8 yüzlük + 4 onluk + 2 birlik"
+        },
+        {
+          "id": "c",
+          "text": "4 yüzlük + 2 onluk + 8 birlik"
+        }
+      ],
+      "correctOptionId": "a",
+      "outcomeCode": "MAT.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 4 yüzlük + 8 onluk + 2 birlik"
+    },
+    {
+      "id": "g3-matematik-u1-q019",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "909 sayısının doğru çözümlenmesi hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "9 yüzlük + 9 onluk + 0 birlik"
+        },
+        {
+          "id": "b",
+          "text": "9 yüzlük + 0 onluk + 9 birlik"
+        },
+        {
+          "id": "c",
+          "text": "0 yüzlük + 9 onluk + 9 birlik"
+        }
+      ],
+      "correctOptionId": "b",
+      "outcomeCode": "MAT.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 9 yüzlük + 0 onluk + 9 birlik"
+    },
+    {
+      "id": "g3-matematik-u1-q020",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "615 sayısının doğru çözümlenmesi hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "6 yüzlük + 1 onluk + 5 birlik"
+        },
+        {
+          "id": "b",
+          "text": "6 yüzlük + 5 onluk + 1 birlik"
+        },
+        {
+          "id": "c",
+          "text": "1 yüzlük + 6 onluk + 5 birlik"
+        }
+      ],
+      "correctOptionId": "a",
+      "outcomeCode": "MAT.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 6 yüzlük + 1 onluk + 5 birlik"
+    },
+    {
+      "id": "g3-matematik-u1-q021",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Sayıların küçükten büyüğe doğru sıralanışı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "412 < 241 < 421"
+        },
+        {
+          "id": "b",
+          "text": "421 < 412 < 241"
+        },
+        {
+          "id": "c",
+          "text": "241 < 412 < 421"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Sayılar: 421, 412, 241",
+      "outcomeCode": "MAT.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 241 < 412 < 421"
+    },
+    {
+      "id": "g3-matematik-u1-q022",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Sayıların küçükten büyüğe doğru sıralanışı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "706 < 670 < 760"
+        },
+        {
+          "id": "b",
+          "text": "670 < 706 < 760"
+        },
+        {
+          "id": "c",
+          "text": "760 < 706 < 670"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Sayılar: 706, 670, 760",
+      "outcomeCode": "MAT.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 670 < 706 < 760"
+    },
+    {
+      "id": "g3-matematik-u1-q023",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Sayıların küçükten büyüğe doğru sıralanışı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "390 < 399 < 903"
+        },
+        {
+          "id": "b",
+          "text": "903 < 399 < 390"
+        },
+        {
+          "id": "c",
+          "text": "399 < 390 < 903"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Sayılar: 399, 903, 390",
+      "outcomeCode": "MAT.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 390 < 399 < 903"
+    },
+    {
+      "id": "g3-matematik-u1-q024",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Sayıların küçükten büyüğe doğru sıralanışı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "815 < 581 < 518"
+        },
+        {
+          "id": "b",
+          "text": "581 < 518 < 815"
+        },
+        {
+          "id": "c",
+          "text": "518 < 581 < 815"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Sayılar: 518, 581, 815",
+      "outcomeCode": "MAT.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 518 < 581 < 815"
+    },
+    {
+      "id": "g3-matematik-u1-q025",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Sayıların küçükten büyüğe doğru sıralanışı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "280 < 208 < 802"
+        },
+        {
+          "id": "b",
+          "text": "802 < 280 < 208"
+        },
+        {
+          "id": "c",
+          "text": "208 < 280 < 802"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Sayılar: 208, 280, 802",
+      "outcomeCode": "MAT.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 208 < 280 < 802"
+    },
+    {
+      "id": "g3-matematik-u1-q026",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Örüntüde boş bırakılan yere hangi sayı gelmelidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "49"
+        },
+        {
+          "id": "b",
+          "text": "35"
+        },
+        {
+          "id": "c",
+          "text": "42"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "14 – 21 – 28 – 35 – ?",
+      "outcomeCode": "MAT.3.1.4",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 42"
+    },
+    {
+      "id": "g3-matematik-u1-q027",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Örüntüde boş bırakılan yere hangi sayı gelmelidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "40"
+        },
+        {
+          "id": "b",
+          "text": "50"
+        },
+        {
+          "id": "c",
+          "text": "60"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "90 – 80 – 70 – 60 – ?",
+      "outcomeCode": "MAT.3.1.4",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 50"
+    },
+    {
+      "id": "g3-matematik-u1-q028",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Örüntüde boş bırakılan yere hangi sayı gelmelidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "48"
+        },
+        {
+          "id": "b",
+          "text": "40"
+        },
+        {
+          "id": "c",
+          "text": "56"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "16 – 24 – 32 – 40 – ?",
+      "outcomeCode": "MAT.3.1.4",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 48"
+    },
+    {
+      "id": "g3-matematik-u1-q029",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Örüntüde boş bırakılan yere hangi sayı gelmelidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "20"
+        },
+        {
+          "id": "b",
+          "text": "60"
+        },
+        {
+          "id": "c",
+          "text": "40"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "120 – 100 – 80 – 60 – ?",
+      "outcomeCode": "MAT.3.1.4",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 40"
+    },
+    {
+      "id": "g3-matematik-u1-q030",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Örüntüde boş bırakılan yere hangi sayı gelmelidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "81"
+        },
+        {
+          "id": "b",
+          "text": "72"
+        },
+        {
+          "id": "c",
+          "text": "63"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "36 – 45 – 54 – 63 – ?",
+      "outcomeCode": "MAT.3.1.4",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 72"
+    },
+    {
+      "id": "g3-matematik-u1-q031",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Verilen sayıların ortak özelliği hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hepsinin onlar basamağı aynıdır."
+        },
+        {
+          "id": "b",
+          "text": "Hepsi tek sayıdır."
+        },
+        {
+          "id": "c",
+          "text": "Hepsi çift sayıdır."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Sayılar: 213, 216, 219",
+      "outcomeCode": "MAT.3.1.5",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Hepsi tek sayıdır."
+    },
+    {
+      "id": "g3-matematik-u1-q032",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Verilen sayıların ortak özelliği hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hepsinin onlar basamağı aynıdır."
+        },
+        {
+          "id": "b",
+          "text": "Hepsi tek sayıdır."
+        },
+        {
+          "id": "c",
+          "text": "Hepsi çift sayıdır."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Sayılar: 430, 433, 436",
+      "outcomeCode": "MAT.3.1.5",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Hepsi çift sayıdır."
+    },
+    {
+      "id": "g3-matematik-u1-q033",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Verilen sayıların ortak özelliği hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hepsinin onlar basamağı aynıdır."
+        },
+        {
+          "id": "b",
+          "text": "Hepsi tek sayıdır."
+        },
+        {
+          "id": "c",
+          "text": "Hepsi çift sayıdır."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Sayılar: 807, 809, 811",
+      "outcomeCode": "MAT.3.1.5",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Hepsi tek sayıdır."
+    },
+    {
+      "id": "g3-matematik-u1-q034",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Verilen sayıların ortak özelliği hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hepsinin onlar basamağı aynıdır."
+        },
+        {
+          "id": "b",
+          "text": "Hepsi tek sayıdır."
+        },
+        {
+          "id": "c",
+          "text": "Hepsi çift sayıdır."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Sayılar: 520, 522, 524",
+      "outcomeCode": "MAT.3.1.5",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Hepsi çift sayıdır."
+    },
+    {
+      "id": "g3-matematik-u1-q035",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Verilen sayıların ortak özelliği hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hepsi çift sayıdır."
+        },
+        {
+          "id": "b",
+          "text": "Hepsi tek sayıdır."
+        },
+        {
+          "id": "c",
+          "text": "Hepsinin onlar basamağı aynıdır."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Sayılar: 315, 317, 319",
+      "outcomeCode": "MAT.3.1.5",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Hepsi tek sayıdır."
+    },
+    {
+      "id": "g3-matematik-u1-q036",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "13 ve 17 sayılarının toplamı için hangi ifade doğrudur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Toplam tek sayıdır."
+        },
+        {
+          "id": "b",
+          "text": "Toplam çift sayıdır."
+        },
+        {
+          "id": "c",
+          "text": "Toplamın tek veya çift olduğu belirlenemez."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Toplamı hesaplayabilir veya sayıların tek-çift özelliklerinden yararlanabilirsin.",
+      "outcomeCode": "MAT.3.1.6",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Toplam çift sayıdır."
+    },
+    {
+      "id": "g3-matematik-u1-q037",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "22 ve 14 sayılarının toplamı için hangi ifade doğrudur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Toplam tek sayıdır."
+        },
+        {
+          "id": "b",
+          "text": "Toplam çift sayıdır."
+        },
+        {
+          "id": "c",
+          "text": "Toplamın tek veya çift olduğu belirlenemez."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Toplamı hesaplayabilir veya sayıların tek-çift özelliklerinden yararlanabilirsin.",
+      "outcomeCode": "MAT.3.1.6",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Toplam çift sayıdır."
+    },
+    {
+      "id": "g3-matematik-u1-q038",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "35 ve 21 sayılarının toplamı için hangi ifade doğrudur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Toplam tek sayıdır."
+        },
+        {
+          "id": "b",
+          "text": "Toplam çift sayıdır."
+        },
+        {
+          "id": "c",
+          "text": "Toplamın tek veya çift olduğu belirlenemez."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Toplamı hesaplayabilir veya sayıların tek-çift özelliklerinden yararlanabilirsin.",
+      "outcomeCode": "MAT.3.1.6",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Toplam çift sayıdır."
+    },
+    {
+      "id": "g3-matematik-u1-q039",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "46 ve 17 sayılarının toplamı için hangi ifade doğrudur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Toplam tek sayıdır."
+        },
+        {
+          "id": "b",
+          "text": "Toplam çift sayıdır."
+        },
+        {
+          "id": "c",
+          "text": "Toplamın tek veya çift olduğu belirlenemez."
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Toplamı hesaplayabilir veya sayıların tek-çift özelliklerinden yararlanabilirsin.",
+      "outcomeCode": "MAT.3.1.6",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Toplam tek sayıdır."
+    },
+    {
+      "id": "g3-matematik-u1-q040",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "28 ve 33 sayılarının toplamı için hangi ifade doğrudur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Toplamın tek veya çift olduğu belirlenemez."
+        },
+        {
+          "id": "b",
+          "text": "Toplam tek sayıdır."
+        },
+        {
+          "id": "c",
+          "text": "Toplam çift sayıdır."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Toplamı hesaplayabilir veya sayıların tek-çift özelliklerinden yararlanabilirsin.",
+      "outcomeCode": "MAT.3.1.6",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Toplam tek sayıdır."
+    },
+    {
+      "id": "g3-matematik-u1-q041",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu sayı örüntüsünün kuralı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Her adımda 1 artıyor."
+        },
+        {
+          "id": "b",
+          "text": "Her adımda sayı iki katına çıkıyor."
+        },
+        {
+          "id": "c",
+          "text": "Her adımda 3 ekleniyor."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "3 – 6 – 12 – 24",
+      "outcomeCode": "MAT.3.1.7",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Her adımda sayı iki katına çıkıyor."
+    },
+    {
+      "id": "g3-matematik-u1-q042",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu sayı örüntüsünün kuralı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Her adımda 1 artıyor."
+        },
+        {
+          "id": "b",
+          "text": "Her adımda 20 azalıyor."
+        },
+        {
+          "id": "c",
+          "text": "Her adımda 10 azalıyor."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "100 – 90 – 80 – 70",
+      "outcomeCode": "MAT.3.1.7",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Her adımda 10 azalıyor."
+    },
+    {
+      "id": "g3-matematik-u1-q043",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu sayı örüntüsünün kuralı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Her adımda 3 artıyor."
+        },
+        {
+          "id": "b",
+          "text": "Her adımda 2 artıyor."
+        },
+        {
+          "id": "c",
+          "text": "Her adımda 1 artıyor."
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "2 – 5 – 8 – 11",
+      "outcomeCode": "MAT.3.1.7",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Her adımda 3 artıyor."
+    },
+    {
+      "id": "g3-matematik-u1-q044",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu sayı örüntüsünün kuralı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Her adımda 30 artıyor."
+        },
+        {
+          "id": "b",
+          "text": "Her adımda 1 artıyor."
+        },
+        {
+          "id": "c",
+          "text": "Her adımda 15 artıyor."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "15 – 30 – 45 – 60",
+      "outcomeCode": "MAT.3.1.7",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Her adımda 15 artıyor."
+    },
+    {
+      "id": "g3-matematik-u1-q045",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu sayı örüntüsünün kuralı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Her adımda 1 artıyor."
+        },
+        {
+          "id": "b",
+          "text": "Her adımda 8 azalıyor."
+        },
+        {
+          "id": "c",
+          "text": "Her adımda sayı yarıya iniyor."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "64 – 32 – 16 – 8",
+      "outcomeCode": "MAT.3.1.7",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Her adımda sayı yarıya iniyor."
+    },
+    {
+      "id": "g3-matematik-u1-q046",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Yaklaşık nesne sayısını belirlemek için en uygun sonuç hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "108"
+        },
+        {
+          "id": "b",
+          "text": "14"
+        },
+        {
+          "id": "c",
+          "text": "48"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "6 eşit grup var; her grupta yaklaşık 8 nesne bulunuyor.",
+      "outcomeCode": "MAT.3.1.8",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 48"
+    },
+    {
+      "id": "g3-matematik-u1-q047",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Yaklaşık nesne sayısını belirlemek için en uygun sonuç hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "88"
+        },
+        {
+          "id": "b",
+          "text": "48"
+        },
+        {
+          "id": "c",
+          "text": "16"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "4 eşit grup var; her grupta yaklaşık 12 nesne bulunuyor.",
+      "outcomeCode": "MAT.3.1.8",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 48"
+    },
+    {
+      "id": "g3-matematik-u1-q048",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Yaklaşık nesne sayısını belirlemek için en uygun sonuç hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "63"
+        },
+        {
+          "id": "b",
+          "text": "153"
+        },
+        {
+          "id": "c",
+          "text": "16"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "9 eşit grup var; her grupta yaklaşık 7 nesne bulunuyor.",
+      "outcomeCode": "MAT.3.1.8",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 63"
+    },
+    {
+      "id": "g3-matematik-u1-q049",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Yaklaşık nesne sayısını belirlemek için en uygun sonuç hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "80"
+        },
+        {
+          "id": "b",
+          "text": "21"
+        },
+        {
+          "id": "c",
+          "text": "130"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "5 eşit grup var; her grupta yaklaşık 16 nesne bulunuyor.",
+      "outcomeCode": "MAT.3.1.8",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 80"
+    },
+    {
+      "id": "g3-matematik-u1-q050",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Yaklaşık nesne sayısını belirlemek için en uygun sonuç hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "168"
+        },
+        {
+          "id": "b",
+          "text": "19"
+        },
+        {
+          "id": "c",
+          "text": "88"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "8 eşit grup var; her grupta yaklaşık 11 nesne bulunuyor.",
+      "outcomeCode": "MAT.3.1.8",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: 88"
+    }
+  ]
+}

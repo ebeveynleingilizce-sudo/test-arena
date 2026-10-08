@@ -1,0 +1,6 @@
+All emojis designed by OpenMoji – the open-source emoji and icon project. License: CC BY-SA 4.0
+
+Source: https://github.com/hfg-gmuend/openmoji/releases/tag/17.0.0
+Website: https://openmoji.org/
+License: https://creativecommons.org/licenses/by-sa/4.0/
+Selected color SVGs are unmodified OpenMoji 17.0.0 originals.

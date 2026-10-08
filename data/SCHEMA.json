@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 5,
+  "questionContract": {
+    "required": [
+      "id",
+      "type",
+      "difficulty",
+      "question",
+      "options",
+      "correctOptionId"
+    ],
+    "type": [
+      "multiple-choice"
+    ],
+    "difficulty": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "optionIds": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "curriculumMapping": {
+      "outcomeCode": "Use only when the source supports the exact question→outcome mapping.",
+      "outcomeMappingStatus": [
+        "exact",
+        "theme-level-only"
+      ],
+      "candidateOutcomeCodes": "Allowed when the source only supplies a theme-level outcome-code list.",
+      "levels": [
+        "unit-theme",
+        "topic-skill",
+        "outcome"
+      ],
+      "default": "No topic/skill/outcome is required. Never derive curriculum identifiers from question id.",
+      "explicit": "topicId/skillId must exist in the selected canonical scope. outcomeCode/outcomeId must belong to the supplied topic/skill, or to the unit if no detail is given. Invalid explicit mapping is rejected.",
+      "runtimeGrouping": "Public legacy topic/topicId fields use unitId as a grouping key when there is no detailed mapping. This does not assert a canonical skill relationship."
+    },
+    "optional": [
+      "content",
+      "visual",
+      "visualPlacement",
+      "stimulusId",
+      "explanation",
+      "unitId",
+      "topicId",
+      "skillId",
+      "outcomeCode",
+      "outcomeId",
+      "outcomeMappingStatus",
+      "candidateOutcomeCodes",
+      "themeId"
+    ],
+    "content": "Optional public plain text (1–10000 characters); line breaks are preserved. Never interpreted as HTML.",
+    "visual": {
+      "packageImage": {"type":"image","src":"Package-relative .png/.jpg/.jpeg/.webp path; existing file required. No URLs, absolute paths, traversal or symlinks.","alt":"Required readable description. Importer publishes only verified raster bytes and generates a controlled public visual DTO."},
+      "contract": "functions/visuals/contract.mjs (shared authoritative runtime whitelist)",
+      "required": [
+        "kind",
+        "alt"
+      ],
+      "geometryBackwardCompatible": true,
+      "kind": [
+        "school-dialogue",
+        "school-place",
+        "school-person",
+        "geometry",
+        "objects",
+        "base-ten",
+        "math-cards",
+        "vertical",
+        "sequence",
+        "paths",
+        "character",
+        "groups",
+        "geometry-layout",
+        "symmetry",
+        "rotation",
+        "fraction",
+        "clock",
+        "money",
+        "ruler",
+        "balance",
+        "container",
+        "data",
+        "number-line",
+        "scene",
+        "object",
+        "composition"
+      ],
+      "additionalProperties": false,
+      "composition": {
+        "preset": [
+          "compare",
+          "equation",
+          "stack"
+        ],
+        "maxItems": 6,
+        "maxDepth": 1
+      },
+      "limits": {
+        "visualCost": 180,
+        "presentationCost": 600
+      },
+      "alt": "Describe given visible structure, never computed results or correctness. Human editorial accessibility review required.",
+      "controlledAssets": {
+        "school": "functions/visuals/school-life.mjs: closed School Life presets, fixed descriptive alt; school-dialogue additionally requires speech identical to the question stem",
+        "object": "functions/visuals/contract.mjs objectAssets whitelist",
+        "composition": "functions/visuals/contract.mjs compositionAssets whitelist",
+        "fields": [
+          "kind",
+          "asset",
+          "alt"
+        ]
+      },
+      "unit2Extensions": {
+        "objects": {
+          "layout": [
+            "grid",
+            "rows",
+            "scattered"
+          ],
+          "addedObjectType": "dot",
+          "scattered": "Internal deterministic positions; no coordinates accepted"
+        },
+        "numberLine": {
+          "maxIntervals": 10,
+          "jumps": "Optional integer 1–10, cannot exceed displayed intervals"
+        }
+      }
+    },
+    "optionContract": {
+      "required": [
+        "id",
+        "text"
+      ],
+      "optional": [
+        "visual"
+      ],
+      "text": "Existing text is preserved. An empty string is allowed only with a valid visual.",
+      "visual": "Same contract as question.visual; question and option visuals can coexist.",
+      "count": [
+        3,
+        4
+      ]
+    },
+    "visualPlacement": [
+      "above",
+      "below"
+    ],
+    "explanation": "Optional private plain text; missing or blank becomes an empty explanation. Non-string values are rejected."
+  },
+  "rules": [
+    "Do not invent a precise outcome mapping when the source does not establish one.",
+    "Explicit topic/skill/outcome metadata must match the canonical curriculum; omission means unit/theme-level scope.",
+    "correctOptionId must reference an existing option id.",
+    "Student UI must not display curriculum codes.",
+    "Difficulty is pedagogical metadata, not an XP multiplier unless the app explicitly chooses that later.",
+    "Structured visuals only: no raw SVG/HTML, scripts, URLs or correctness fields in visual. Unknown kinds/shapes are rejected until a validated renderer is added."
+  ],
+  "sharedStimuli": {
+    "optional": "bank.stimuli",
+    "max": 30,
+    "reference": "question.stimulusId",
+    "resolution": "import resolves to frozen validated visual; no shared XP or client answer key"
+  },
+  "bankContract": {
+    "required": [
+      "grade",
+      "subjectId",
+      "unitId",
+      "questions"
+    ],
+    "optional": [
+      "topicId",
+      "skillId",
+      "outcomeCode",
+      "outcomeId",
+      "questionCount",
+      "stimuli"
+    ],
+    "inheritance": "Questions inherit unitId/topicId/skillId/outcomeCode/outcomeId from bank metadata. Conflicting explicit values are rejected. Legacy banks may omit bank.unitId when every question provides it (or use bank.unit.id).",
+    "questions": "1–200 questions. Canonical grade + subject + unit/theme are always verified."
+  }
+}

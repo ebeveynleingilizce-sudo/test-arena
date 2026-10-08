@@ -1,0 +1,23 @@
+{
+  "groups": [
+    {
+      "match": {"grade": 2, "subjectId": "hayat-bilgisi"},
+      "strategy": "knowledge-mcq@1",
+      "family": "KNOWLEDGE_MCQ",
+      "approvedOutcomes": [
+        {"code":"HB.2.1.1","text":"Planlı olmanın kişisel yaşama etkilerini fark edebilme"},
+        {"code":"HB.2.2.1","text":"Sağlıklı büyüme ve gelişme ile alışkanlıkları arasındaki ilişkiyi çözümleyebilme"},
+        {"code":"HB.2.3.1","text":"Ailenin önemini yorumlayabilme"},
+        {"code":"HB.2.4.4","text":"Millî gün ve bayramların önemini yorumlayabilme"},
+        {"code":"HB.2.4.5","text":"Dinî gün ve bayramların önemini yorumlayabilme"},
+        {"code":"HB.2.5.1","text":"Hava olayları ve mevsimler arasındaki ilişkiyi çözümleyebilme"},
+        {"code":"HB.2.6.3","text":"Sanatın günlük yaşamdaki yerini belirleyebilme"}
+      ],
+      "blockedGroups": [
+        {"reason":"PERFORMANCE_ASSESSMENT_REQUIRED","outcomeCodes":["HB.2.1.2","HB.2.1.3","HB.2.1.4","HB.2.2.2","HB.2.2.4","HB.2.3.2","HB.2.3.3","HB.2.5.2","HB.2.5.4"]},
+        {"reason":"SPECIAL_VISUAL_CAPABILITY_REQUIRED","outcomeCodes":["HB.2.2.3"]},
+        {"reason":"SOURCE_OR_LOCAL_CONTEXT_REQUIRED","outcomeCodes":["HB.2.4.1","HB.2.4.2","HB.2.4.3","HB.2.5.3","HB.2.6.1","HB.2.6.2"]}
+      ]
+    }
+  ]
+}

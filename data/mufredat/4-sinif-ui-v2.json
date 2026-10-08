@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 3,
+  "datasetId": "test-arena-grade-4-student-ui-2026-2027",
+  "grade": 4,
+  "gradeLabel": "4. Sınıf",
+  "sourceDatasetId": "test-arena-curriculum-grade-4-tr-2026-2027",
+  "purpose": "Test Arena öğrenci arayüzü için müfredatla uyumlu ders → ünite/tema → konu → test navigasyon ağacı.",
+  "rules": {
+    "sourceOfTruth": "4-sinif.json",
+    "studentLabels": "Öğrenciye teknik kazanım/beceri süreçleri gösterilmez.",
+    "stableIds": "Kaynak müfredattaki mevcut id alanları mümkün olduğunca korunur.",
+    "questionBinding": "Sorular grade, subjectId, unitId/themeId ve doğrulanabilen outcomeCode ile bağlanır; kanonik kaynakta bulunmayan topicId oluşturulmaz.",
+    "testPack": "Test 1, Test 2 gibi adlar müfredat konusu veya kazanım değildir; yalnızca soru paketidir.",
+    "mixedTest": "Karışık Test ayrı topicId veya sahte kazanım oluşturmaz.",
+    "availability": "Öğrenci arayüzünde yalnızca gerçek sorusu bulunan seçimler gösterilebilir.",
+    "supportedSubjects": "Türkçe, Matematik, Fen Bilimleri, Sosyal Bilgiler, İngilizce, Din Kültürü ve Ahlak Bilgisi.",
+    "pronunciationAssessment": "Telaffuz çıktıları ayrı öğrenci konusu olarak gösterilmez; sesli performans ölçülmedikçe çoktan seçmeli test sonucu telaffuz yeterliği olarak yorumlanmaz.",
+    "source_fidelity": "4-sinif.json",
+    "navigationIntegrity": "Kanonik kaynakta topics bulunmadığı için tüm derslerde ünite/tema → test navigasyonu kullanılır."
+  },
+  "subjects": [
+    {
+      "id": "turkce",
+      "name": "Türkçe",
+      "navigationModel": "theme-test",
+      "sectionLabel": "TEMA",
+      "units": [
+        {
+          "order": 1,
+          "id": "g4-turkce-tema-1",
+          "name": "1. Tema — Çocuk Dünyası",
+          "displayName": "1. Tema — Çocuk Dünyası"
+        },
+        {
+          "order": 2,
+          "id": "g4-turkce-tema-2",
+          "name": "2. Tema — Millî Mücadele ve Atatürk",
+          "displayName": "2. Tema — Millî Mücadele ve Atatürk"
+        },
+        {
+          "order": 3,
+          "id": "g4-turkce-tema-3",
+          "name": "3. Tema — Erdemler",
+          "displayName": "3. Tema — Erdemler"
+        },
+        {
+          "order": 4,
+          "id": "g4-turkce-tema-4",
+          "name": "4. Tema — Millî Kültürümüz",
+          "displayName": "4. Tema — Millî Kültürümüz"
+        },
+        {
+          "order": 5,
+          "id": "g4-turkce-tema-5",
+          "name": "5. Tema — Doğa ve Evren",
+          "displayName": "5. Tema — Doğa ve Evren"
+        },
+        {
+          "order": 6,
+          "id": "g4-turkce-tema-6",
+          "name": "6. Tema — Sanat",
+          "displayName": "6. Tema — Sanat"
+        },
+        {
+          "order": 7,
+          "id": "g4-turkce-tema-7",
+          "name": "7. Tema — Birey ve Toplum",
+          "displayName": "7. Tema — Birey ve Toplum"
+        },
+        {
+          "order": 8,
+          "id": "g4-turkce-tema-8",
+          "name": "8. Tema — Bilim ve Teknoloji",
+          "displayName": "8. Tema — Bilim ve Teknoloji"
+        }
+      ],
+      "crossThemeOutcomes": [
+        {
+          "code": "T.4.4.12",
+          "name": "Yazdıklarını paylaşır"
+        },
+        {
+          "code": "T.4.1.3",
+          "name": "Dinlediği/izlediği metni ana hatlarıyla anlatır"
+        },
+        {
+          "code": "T.4.4.5",
+          "name": "Hayalî ögeler barındıran kısa metin yazar"
+        }
+      ],
+      "mappingStatus": "Ada Yayınları 2026-2027 yıllık planında tema başlıkları altındaki kazanım kodlarıyla eşleştirildi; resmî program güncelliği ayrıca doğrulanmalıdır."
+    },
+    {
+      "id": "matematik",
+      "name": "Matematik",
+      "navigationModel": "theme-test",
+      "sectionLabel": "TEMA",
+      "units": [
+        {
+          "id": "g4-matematik-kitap-unite-1",
+          "name": "1. Ünite — Doğal Sayılar, Toplama ve Çıkarma",
+          "order": 1,
+          "displayName": "1. Ünite — Doğal Sayılar, Toplama ve Çıkarma"
+        },
+        {
+          "id": "g4-matematik-kitap-unite-2",
+          "name": "2. Ünite — Toplama ve Çıkarma Problemleri",
+          "order": 2,
+          "displayName": "2. Ünite — Toplama ve Çıkarma Problemleri"
+        },
+        {
+          "id": "g4-matematik-kitap-unite-3",
+          "name": "3. Ünite — Çarpma ve Bölme İşlemleri",
+          "order": 3,
+          "displayName": "3. Ünite — Çarpma ve Bölme İşlemleri"
+        },
+        {
+          "id": "g4-matematik-kitap-unite-4",
+          "name": "4. Ünite — Kesirler, Zaman ve Veri",
+          "order": 4,
+          "displayName": "4. Ünite — Kesirler, Zaman ve Veri"
+        },
+        {
+          "id": "g4-matematik-kitap-unite-5",
+          "name": "5. Ünite — Geometri ve Uzunluk Ölçme",
+          "order": 5,
+          "displayName": "5. Ünite — Geometri ve Uzunluk Ölçme"
+        },
+        {
+          "id": "g4-matematik-kitap-unite-6",
+          "name": "6. Ünite — Çevre, Alan, Kütle ve Sıvı Ölçme",
+          "order": 6,
+          "displayName": "6. Ünite — Çevre, Alan, Kütle ve Sıvı Ölçme"
+        }
+      ],
+      "mappingStatus": "Beşgen kitabının altı ünite düzenine göre kazanımlar içerik bazlı gruplandı. Matematik M.4.x kodları eski öğrenme alanı sistemindendir; kitap sayfa/etkinlik bazında tam eşleşme doğrulanmadı."
+    },
+    {
+      "id": "fen-bilimleri",
+      "name": "Fen Bilimleri",
+      "navigationModel": "theme-test",
+      "sectionLabel": "ÜNİTE",
+      "units": [
+        {
+          "order": 1,
+          "id": "g4-fen-bilimleri-1-unite",
+          "name": "1. Ünite — Yer Kabuğu ve Dünya’mızın Hareketleri",
+          "displayName": "1. Ünite — Yer Kabuğu ve Dünya’mızın Hareketleri"
+        },
+        {
+          "order": 2,
+          "id": "g4-fen-bilimleri-2-unite",
+          "name": "2. Ünite — Besinlerimiz",
+          "displayName": "2. Ünite — Besinlerimiz"
+        },
+        {
+          "order": 3,
+          "id": "g4-fen-bilimleri-3-unite",
+          "name": "3. Ünite — Kuvvetin Etkileri",
+          "displayName": "3. Ünite — Kuvvetin Etkileri"
+        },
+        {
+          "order": 4,
+          "id": "g4-fen-bilimleri-4-unite",
+          "name": "4. Ünite — Maddenin Özellikleri",
+          "displayName": "4. Ünite — Maddenin Özellikleri"
+        },
+        {
+          "order": 5,
+          "id": "g4-fen-bilimleri-5-unite",
+          "name": "5. Ünite — Aydınlatma ve Ses Teknolojileri",
+          "displayName": "5. Ünite — Aydınlatma ve Ses Teknolojileri"
+        },
+        {
+          "order": 6,
+          "id": "g4-fen-bilimleri-6-unite",
+          "name": "6. Ünite — İnsan ve Çevre",
+          "displayName": "6. Ünite — İnsan ve Çevre"
+        },
+        {
+          "order": 7,
+          "id": "g4-fen-bilimleri-7-unite",
+          "name": "7. Ünite — Basit Elektrik Devreleri",
+          "displayName": "7. Ünite — Basit Elektrik Devreleri"
+        }
+      ],
+      "mappingStatus": "Adım Adım kitabının 7 ünitesiyle başlık ve sıra uyumlu; kazanımların kitap içindeki tek tek karşılığı bağımsız doğrulanmadı."
+    },
+    {
+      "id": "sosyal-bilgiler",
+      "name": "Sosyal Bilgiler",
+      "navigationModel": "theme-test",
+      "sectionLabel": "TEMA",
+      "units": [
+        {
+          "order": 1,
+          "id": "g4-sosyal-bilgiler-ogrenme-alani-1",
+          "name": "1. Ünite — Farklıyız, Arkadaşız",
+          "displayName": "1. Ünite — Farklıyız, Arkadaşız"
+        },
+        {
+          "order": 2,
+          "id": "g4-sosyal-bilgiler-ogrenme-alani-2",
+          "name": "2. Ünite — Geçmişte Biz",
+          "displayName": "2. Ünite — Geçmişte Biz"
+        },
+        {
+          "order": 3,
+          "id": "g4-sosyal-bilgiler-ogrenme-alani-3",
+          "name": "3. Ünite — Sosyal ve Doğal Çevremiz",
+          "displayName": "3. Ünite — Sosyal ve Doğal Çevremiz"
+        },
+        {
+          "order": 4,
+          "id": "g4-sosyal-bilgiler-ogrenme-alani-4",
+          "name": "4. Ünite — Zaman İçinde Teknoloji",
+          "displayName": "4. Ünite — Zaman İçinde Teknoloji"
+        },
+        {
+          "order": 5,
+          "id": "g4-sosyal-bilgiler-ogrenme-alani-5",
+          "name": "5. Ünite — Ekonomik Faaliyetler",
+          "displayName": "5. Ünite — Ekonomik Faaliyetler"
+        },
+        {
+          "order": 6,
+          "id": "g4-sosyal-bilgiler-ogrenme-alani-6",
+          "name": "6. Ünite — Ben Bir Vatandaşım",
+          "displayName": "6. Ünite — Ben Bir Vatandaşım"
+        },
+        {
+          "order": 7,
+          "id": "g4-sosyal-bilgiler-ogrenme-alani-7",
+          "name": "7. Ünite — Dünya Ailesi",
+          "displayName": "7. Ünite — Dünya Ailesi"
+        }
+      ],
+      "mappingStatus": "Hecce kitap başlıklarıyla eşleştirme öğrenme alanı sırasına göre yapıldı; kazanımların kitap içindeki etkinlik düzeyindeki karşılığı ayrıca doğrulanmalıdır."
+    },
+    {
+      "id": "ingilizce",
+      "name": "İngilizce",
+      "navigationModel": "theme-test",
+      "sectionLabel": "ÜNİTE",
+      "units": [
+        {
+          "order": 1,
+          "id": "g4-ingilizce-1-unite-classroom-rules",
+          "name": "1. Ünite — Classroom Rules",
+          "displayName": "1. Ünite — Classroom Rules"
+        },
+        {
+          "order": 2,
+          "id": "g4-ingilizce-2-unite-nationality",
+          "name": "2. Ünite — Nationality",
+          "displayName": "2. Ünite — Nationality"
+        },
+        {
+          "order": 3,
+          "id": "g4-ingilizce-3-unite-cartoon-characters",
+          "name": "3. Ünite — Cartoon Characters",
+          "displayName": "3. Ünite — Cartoon Characters"
+        },
+        {
+          "order": 4,
+          "id": "g4-ingilizce-4-unite-free-time",
+          "name": "4. Ünite — Free Time",
+          "displayName": "4. Ünite — Free Time"
+        },
+        {
+          "order": 5,
+          "id": "g4-ingilizce-5-unite-my-day",
+          "name": "5. Ünite — My Day",
+          "displayName": "5. Ünite — My Day"
+        },
+        {
+          "order": 6,
+          "id": "g4-ingilizce-6-unite-fun-with-science",
+          "name": "6. Ünite — Fun with Science",
+          "displayName": "6. Ünite — Fun with Science"
+        },
+        {
+          "order": 7,
+          "id": "g4-ingilizce-7-unite-jobs",
+          "name": "7. Ünite — Jobs",
+          "displayName": "7. Ünite — Jobs"
+        },
+        {
+          "order": 8,
+          "id": "g4-ingilizce-8-unite-my-clothes",
+          "name": "8. Ünite — My Clothes",
+          "displayName": "8. Ünite — My Clothes"
+        },
+        {
+          "order": 9,
+          "id": "g4-ingilizce-9-unite-my-friends",
+          "name": "9. Ünite — My Friends",
+          "displayName": "9. Ünite — My Friends"
+        },
+        {
+          "order": 10,
+          "id": "g4-ingilizce-10-unite-food-and-drinks",
+          "name": "10. Ünite — Food and Drinks",
+          "displayName": "10. Ünite — Food and Drinks"
+        }
+      ]
+    },
+    {
+      "id": "din-kulturu",
+      "name": "Din Kültürü ve Ahlak Bilgisi",
+      "navigationModel": "theme-test",
+      "sectionLabel": "ÜNİTE",
+      "units": [
+        {
+          "order": 1,
+          "id": "g4-din-kulturu-1-gunluk-hayattaki-di-ni-i-fadeler",
+          "name": "1. Ünite — Günlük Hayattaki Dinî İfadeler",
+          "displayName": "1. Ünite — Günlük Hayattaki Dinî İfadeler"
+        },
+        {
+          "order": 2,
+          "id": "g4-din-kulturu-2-i-slami-taniyalim",
+          "name": "2. Ünite — İslam’ı Tanıyalım",
+          "displayName": "2. Ünite — İslam’ı Tanıyalım"
+        },
+        {
+          "order": 3,
+          "id": "g4-din-kulturu-3-guzel-ahlak",
+          "name": "3. Ünite — Güzel Ahlak",
+          "displayName": "3. Ünite — Güzel Ahlak"
+        },
+        {
+          "order": 4,
+          "id": "g4-din-kulturu-4-hz-muhammedi-taniyalim",
+          "name": "4. Ünite — Hz. Muhammed’i Tanıyalım",
+          "displayName": "4. Ünite — Hz. Muhammed’i Tanıyalım"
+        },
+        {
+          "order": 5,
+          "id": "g4-din-kulturu-5-di-n-ve-temi-zli-k",
+          "name": "5. Ünite — Din ve Temizlik",
+          "displayName": "5. Ünite — Din ve Temizlik"
+        }
+      ]
+    }
+  ],
+  "bookAlignment": {
+    "2026-2027": {
+      "turkce": "Ada Yayınları",
+      "matematik": "Beşgen Yayınları",
+      "fen-bilimleri": "Adım Adım Yayıncılık",
+      "sosyal-bilgiler": "Hecce Yayınları"
+    },
+    "verificationNote": "Ünite başlıkları ve genel kapsam eşleştirildi; tüm kazanımların kitap metinleriyle birebir doğrulandığı iddia edilmez. Türkçe kazanımları eski MEB planından geldiği için Ada temalarına atanmadı."
+  }
+}

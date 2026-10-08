@@ -1,0 +1,872 @@
+{
+  "schemaVersion": 3,
+  "datasetId": "test-arena-grade-3-student-ui-2026-2027-v3",
+  "grade": 3,
+  "gradeLabel": "3. Sınıf",
+  "sourceDatasetId": "test-arena-curriculum-grade-3-tr-2026-2027",
+  "purpose": "Test Arena öğrenci arayüzü için müfredatla uyumlu ders → ünite/tema → konu → test navigasyon ağacı.",
+  "rules": {
+    "sourceOfTruth": "Resmî/kaynak öğrenme çıktıları data/mufredat/2-sinif.json dosyasında tutulur.",
+    "studentLabels": "Öğrenciye teknik kazanım/beceri süreçleri gösterilmez.",
+    "stableIds": "Kaynak müfredattaki mevcut id alanları mümkün olduğunca korunur.",
+    "questionBinding": "Sorular grade, subjectId, unitId/themeId ve uygun olduğunda topicId/outcomeCode ile bağlanır.",
+    "testPack": "Test 1, Test 2 gibi adlar müfredat konusu veya kazanım değildir; yalnızca soru paketidir.",
+    "mixedTest": "Karışık Test ayrı topicId veya sahte kazanım oluşturmaz.",
+    "availability": "Öğrenci arayüzünde yalnızca gerçek sorusu bulunan seçimler gösterilebilir.",
+    "supportedSubjects": "Türkçe, Matematik, Hayat Bilgisi, Fen Bilimleri ve İngilizce.",
+    "pronunciationAssessment": "Telaffuz çıktıları ayrı öğrenci konusu olarak gösterilmez; sesli performans ölçülmedikçe çoktan seçmeli test sonucu telaffuz yeterliği olarak yorumlanmaz."
+  },
+  "subjects": [
+    {
+      "id": "turkce",
+      "name": "Türkçe",
+      "navigationModel": "theme-test",
+      "sectionLabel": "TEMA",
+      "units": [
+        {
+          "order": 1,
+          "id": "g3-turkce-degerleri-mi-zle-yasiyoruz",
+          "name": "Değerleri̇mi̇zle Yaşiyoruz",
+          "sourceName": "DEĞERLERİMİZLE YAŞIYORUZ",
+          "displayName": "TEMA 1 — Değerleri̇mi̇zle Yaşiyoruz",
+          "testGrouping": "theme-packs"
+        },
+        {
+          "order": 2,
+          "id": "g3-turkce-ataturk-ve-kahramanlarimiz",
+          "name": "Atatürk Ve Kahramanlarimiz",
+          "sourceName": "ATATÜRK VE KAHRAMANLARIMIZ",
+          "displayName": "TEMA 2 — Atatürk Ve Kahramanlarimiz",
+          "testGrouping": "theme-packs"
+        },
+        {
+          "order": 3,
+          "id": "g3-turkce-dogayi-taniyoruz",
+          "name": "Doğayi Taniyoruz",
+          "sourceName": "DOĞAYI TANIYORUZ",
+          "displayName": "TEMA 3 — Doğayi Taniyoruz",
+          "testGrouping": "theme-packs"
+        },
+        {
+          "order": 4,
+          "id": "g3-turkce-bi-lgi-hazi-nemi-z",
+          "name": "Bi̇lgi̇ Hazi̇nemi̇z",
+          "sourceName": "BİLGİ HAZİNEMİZ",
+          "displayName": "TEMA 4 — Bi̇lgi̇ Hazi̇nemi̇z",
+          "testGrouping": "theme-packs"
+        },
+        {
+          "order": 5,
+          "id": "g3-turkce-yetenekleri-mi-zi-kullaniyoruz",
+          "name": "Yetenekleri̇mi̇zi̇ Kullaniyoruz",
+          "sourceName": "YETENEKLERİMİZİ KULLANIYORUZ",
+          "displayName": "TEMA 5 — Yetenekleri̇mi̇zi̇ Kullaniyoruz",
+          "testGrouping": "theme-packs"
+        },
+        {
+          "order": 6,
+          "id": "g3-turkce-bi-li-m-yolculugu",
+          "name": "Bi̇li̇m Yolculuğu",
+          "sourceName": "BİLİM YOLCULUĞU",
+          "displayName": "TEMA 6 — Bi̇li̇m Yolculuğu",
+          "testGrouping": "theme-packs"
+        },
+        {
+          "order": 7,
+          "id": "g3-turkce-mi-ll-kulturumuz",
+          "name": "Mi̇llî Kültürümüz",
+          "sourceName": "MİLLÎ KÜLTÜRÜMÜZ",
+          "displayName": "TEMA 7 — Mi̇llî Kültürümüz",
+          "testGrouping": "theme-packs"
+        },
+        {
+          "order": 8,
+          "id": "g3-turkce-hak-ve-sorumluluklarimiz",
+          "name": "Hak Ve Sorumluluklarimiz",
+          "sourceName": "HAK VE SORUMLULUKLARIMIZ",
+          "displayName": "TEMA 8 — Hak Ve Sorumluluklarimiz",
+          "testGrouping": "theme-packs"
+        }
+      ]
+    },
+    {
+      "id": "matematik",
+      "name": "Matematik",
+      "navigationModel": "unit-topic-test",
+      "sectionLabel": "ÜNİTE",
+      "units": [
+        {
+          "order": 1,
+          "id": "g3-matematik-sayilar-ve-ni-celi-kler-1",
+          "name": "Sayilar Ve Ni̇celi̇kler (1)",
+          "sourceName": "SAYILAR VE NİCELİKLER (1)",
+          "displayName": "ÜNİTE 1 — Sayilar Ve Ni̇celi̇kler (1)",
+          "topics": [
+            {
+              "id": "g3-matematik-sayilar-sayilari-cozumleme",
+              "name": "Sayılar Sayıları Çözümleme",
+              "outcomeCodes": [
+                "MAT.3.1.1",
+                "MAT.3.1.2"
+              ]
+            },
+            {
+              "id": "g3-matematik-sayilari-siralama-ritmik-sayma",
+              "name": "Sayıları Sıralama Ritmik Sayma",
+              "outcomeCodes": [
+                "MAT.3.1.3",
+                "MAT.3.1.4"
+              ]
+            },
+            {
+              "id": "g3-matematik-ritmik-sayma-tek-ve-cift-sayilar",
+              "name": "Ritmik Sayma Tek ve Çift Sayılar",
+              "outcomeCodes": [
+                "MAT.3.1.5"
+              ]
+            },
+            {
+              "id": "g3-matematik-tek-ve-cift-sayilar-tek-ve-cift-sayilarin-toplami-sayi-ve-sekil-oruntuleri",
+              "name": "Tek ve Çift Sayılar Tek ve Çift Sayıların Toplamı Sayı ve Şekil Örüntüleri",
+              "outcomeCodes": [
+                "MAT.3.1.6",
+                "MAT.3.1.7"
+              ]
+            },
+            {
+              "id": "g3-matematik-sayi-ve-sekil-oruntuleri-nesne-sayisini-tahmin-etme",
+              "name": "Sayı ve Şekil Örüntüleri Nesne Sayısını Tahmin Etme",
+              "outcomeCodes": [
+                "MAT.3.1.8"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "id": "g3-matematik-sayilar-ve-ni-celi-kler-2",
+          "name": "Sayilar Ve Ni̇celi̇kler (2)",
+          "sourceName": "SAYILAR VE NİCELİKLER (2)",
+          "displayName": "ÜNİTE 2 — Sayilar Ve Ni̇celi̇kler (2)",
+          "topics": [
+            {
+              "id": "g3-matematik-nesne-sayisini-tahmin-etme-butun-yarim-ve-ceyregin-kesir-gosterimi",
+              "name": "Nesne Sayısını Tahmin Etme Bütün, Yarım ve Çeyreğin Kesir Gösterimi",
+              "outcomeCodes": [
+                "MAT.3.1.9"
+              ]
+            },
+            {
+              "id": "g3-matematik-bir-butunu-olusturan-es-parcalar",
+              "name": "Bir Bütünü Oluşturan Eş Parçalar",
+              "outcomeCodes": [
+                "MAT.3.1.10"
+              ]
+            },
+            {
+              "id": "g3-matematik-bir-butunu-olusturan-es-parcalar-bir-kesrin-payi-i-le-paydasi-arasindaki-i-liski",
+              "name": "Bir Bütünü Oluşturan Eş Parçalar Bir Kesrin Payı İle Paydası Arasındaki İlişki",
+              "outcomeCodes": [
+                "MAT.3.1.11"
+              ]
+            },
+            {
+              "id": "g3-matematik-analog-ve-dijital-saatlerde-zamani-okuma-ve-yazma-zaman-olcu-birimleri",
+              "name": "Analog ve Dijital Saatlerde Zamanı Okuma ve Yazma Zaman Ölçü Birimleri",
+              "outcomeCodes": [
+                "MAT.3.1.12",
+                "MAT.3.1.13"
+              ]
+            },
+            {
+              "id": "g3-matematik-zaman-olcu-birimleri-olaylarin-olus-surelerini-tahmin-etme",
+              "name": "Zaman Ölçü Birimleri Olayların Oluş Sürelerini Tahmin Etme",
+              "outcomeCodes": [
+                "MAT.3.1.14"
+              ]
+            },
+            {
+              "id": "g3-matematik-uzunluk-ve-kutle-olcu-birimleri-maden-ve-k-git-paralar",
+              "name": "Uzunluk ve Kütle Ölçü Birimleri Madenî ve Kâğıt Paralar",
+              "outcomeCodes": [
+                "MAT.3.1.15",
+                "MAT.3.1.16"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "id": "g3-matematik-i-slemlerden-cebi-rsel-dusunmeye",
+          "name": "İşlemlerden Cebi̇rsel Düşünmeye",
+          "sourceName": "İŞLEMLERDEN CEBİRSEL DÜŞÜNMEYE",
+          "displayName": "ÜNİTE 3 — İşlemlerden Cebi̇rsel Düşünmeye",
+          "topics": [
+            {
+              "id": "g3-matematik-toplama-ve-cikarma-i-slemlerinin-sonuclarini-tahmin-etme-ve-zihinden-i-slem",
+              "name": "Toplama ve Çıkarma İşlemlerinin Sonuçlarını Tahmin Etme ve Zihinden İşlem",
+              "outcomeCodes": [
+                "MAT.3.2.1"
+              ]
+            },
+            {
+              "id": "g3-matematik-toplama-ve-cikarma-i-slemlerini-cozumleme",
+              "name": "Toplama ve Çıkarma İşlemlerini Çözümleme",
+              "outcomeCodes": [
+                "MAT.3.2.2"
+              ]
+            },
+            {
+              "id": "g3-matematik-carpma-ve-bolme-i-slemlerinin-sonuclarini-tahmin-etme-ve-zihinden-i-slem",
+              "name": "Çarpma ve Bölme İşlemlerinin Sonuçlarını Tahmin Etme ve Zihinden İşlem",
+              "outcomeCodes": [
+                "MAT.3.2.3"
+              ]
+            },
+            {
+              "id": "g3-matematik-carpma-ve-bolme-i-slemlerini-cozumleme",
+              "name": "Çarpma ve Bölme İşlemlerini Çözümleme",
+              "outcomeCodes": [
+                "MAT.3.2.4"
+              ]
+            },
+            {
+              "id": "g3-matematik-dort-i-slemi-yonergelere-gore-yorumlama",
+              "name": "Dört İşlemi Yönergelere Göre Yorumlama",
+              "outcomeCodes": [
+                "MAT.3.2.5"
+              ]
+            },
+            {
+              "id": "g3-matematik-dort-i-slem-gerektiren-problemleri-cozme",
+              "name": "Dört İşlem Gerektiren Problemleri Çözme",
+              "outcomeCodes": [
+                "MAT.3.2.6"
+              ]
+            },
+            {
+              "id": "g3-matematik-1-2-2",
+              "name": "1 + 2+(2)*",
+              "outcomeCodes": [
+                "MAT.3.2.7"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "id": "g3-matematik-nesneleri-n-geometri-si-1",
+          "name": "Nesneleri̇n Geometri̇si̇ (1)",
+          "sourceName": "NESNELERİN GEOMETRİSİ (1)",
+          "displayName": "ÜNİTE 4 — Nesneleri̇n Geometri̇si̇ (1)",
+          "topics": [
+            {
+              "id": "g3-matematik-dort-i-slem-gerektiren-problemleri-yapilandirma-dort-i-slemde-esitlik",
+              "name": "Dört İşlem Gerektiren Problemleri Yapılandırma Dört İşlemde Eşitlik",
+              "outcomeCodes": [
+                "MAT.3.2.8"
+              ]
+            },
+            {
+              "id": "g3-matematik-dort-i-slemde-esitlik-geometrik-cisimlerin-ozellikleri",
+              "name": "Dört İşlemde Eşitlik Geometrik Cisimlerin Özellikleri",
+              "outcomeCodes": [
+                "MAT.3.3.1"
+              ]
+            },
+            {
+              "id": "g3-matematik-geometrik-cisimlerin-ozellikleri-geometrik-sekilleri-siniflandirma",
+              "name": "Geometrik Cisimlerin Özellikleri Geometrik Şekilleri Sınıflandırma",
+              "outcomeCodes": [
+                "MAT.3.3.2"
+              ]
+            },
+            {
+              "id": "g3-matematik-geometrik-sekilleri-siniflandirma-geometrik-sekiller-ve-cisimler-cizme",
+              "name": "Geometrik Şekilleri Sınıflandırma Geometrik Şekiller ve Cisimler Çizme",
+              "outcomeCodes": [
+                "MAT.3.3.3"
+              ]
+            },
+            {
+              "id": "g3-matematik-geometrik-sekillerin-cevre-uzunluklarini-tahmin-etme-sivi-miktarini-tahmin-etme",
+              "name": "Geometrik Şekillerin Çevre Uzunluklarını Tahmin Etme Sıvı Miktarını Tahmin Etme",
+              "outcomeCodes": [
+                "MAT.3.3.4",
+                "MAT.3.3.5"
+              ]
+            },
+            {
+              "id": "g3-matematik-sivi-miktarini-tahmin-etme-simetri-dogrusu",
+              "name": "Sıvı Miktarını Tahmin Etme Simetri Doğrusu",
+              "outcomeCodes": [
+                "MAT.3.3.6"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 5,
+          "id": "g3-matematik-nesneleri-n-geometri-si-2",
+          "name": "Nesneleri̇n Geometri̇si̇ (2)",
+          "sourceName": "NESNELERİN GEOMETRİSİ (2)",
+          "displayName": "ÜNİTE 5 — Nesneleri̇n Geometri̇si̇ (2)",
+          "topics": [
+            {
+              "id": "g3-matematik-simetrik-sekli-tamamlama-simetrik-sekil-olusturma",
+              "name": "Simetrik Şekli Tamamlama Simetrik Şekil Oluşturma",
+              "outcomeCodes": [
+                "MAT.3.3.7",
+                "MAT.3.3.8"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 6,
+          "id": "g3-matematik-veri-ye-dayali-arastirma",
+          "name": "Veri̇ye Dayali Araştirma",
+          "sourceName": "VERİYE DAYALI ARAŞTIRMA",
+          "displayName": "ÜNİTE 6 — Veri̇ye Dayali Araştirma",
+          "topics": [
+            {
+              "id": "g3-matematik-veriyle-calisma-ve-veriye-dayali-karar-verme",
+              "name": "Veriyle Çalışma ve Veriye Dayalı Karar Verme",
+              "outcomeCodes": [
+                "MAT.3.4.1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hayat-bilgisi",
+      "name": "Hayat Bilgisi",
+      "navigationModel": "unit-topic-test",
+      "sectionLabel": "ÜNİTE",
+      "units": [
+        {
+          "order": 1,
+          "id": "g3-hayat-bilgisi-ben-ve-okulum",
+          "name": "Ben Ve Okulum",
+          "sourceName": "BEN VE OKULUM",
+          "displayName": "ÜNİTE 1 — Ben Ve Okulum",
+          "topics": [
+            {
+              "id": "g3-hayat-bilgisi-guclu-ve-gelisime-acik-alanlar",
+              "name": "Güçlü ve Gelişime Açık Alanlar",
+              "outcomeCodes": [
+                "HB.3.1.1"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-okuldaki-hak-ve-sorumluluklar",
+              "name": "Okuldaki Hak ve Sorumluluklar",
+              "outcomeCodes": [
+                "HB.3.1.2"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-cocuk-haklari",
+              "name": "Çocuk Hakları",
+              "outcomeCodes": [
+                "HB.3.1.3"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "id": "g3-hayat-bilgisi-sagligim-ve-guvenli-gi-m",
+          "name": "Sağliğim Ve Güvenli̇ği̇m",
+          "sourceName": "SAĞLIĞIM VE GÜVENLİĞİM",
+          "displayName": "ÜNİTE 2 — Sağliğim Ve Güvenli̇ği̇m",
+          "topics": [
+            {
+              "id": "g3-hayat-bilgisi-sagligi-koruma",
+              "name": "Sağlığı Koruma",
+              "outcomeCodes": [
+                "HB.3.2.1"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-guvenligi-tehdit-eden-durumlar",
+              "name": "Güvenliği Tehdit Eden Durumlar",
+              "outcomeCodes": [
+                "HB.3.2.2"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "id": "g3-hayat-bilgisi-ai-lem-ve-toplum",
+          "name": "Ai̇lem Ve Toplum",
+          "sourceName": "AİLEM VE TOPLUM",
+          "displayName": "ÜNİTE 3 — Ai̇lem Ve Toplum",
+          "topics": [
+            {
+              "id": "g3-hayat-bilgisi-trafik-kurallari",
+              "name": "Trafik Kuralları",
+              "outcomeCodes": [
+                "HB.3.2.3"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-trafik-kurallari-aile-ve-toplum",
+              "name": "Trafik Kuralları Aile ve Toplum",
+              "outcomeCodes": [
+                "HB.3.3.1"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-yardimlasma",
+              "name": "Yardımlaşma",
+              "outcomeCodes": [
+                "HB.3.3.2"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "id": "g3-hayat-bilgisi-yasadigim-yer-ve-ulkem",
+          "name": "Yaşadiğim Yer Ve Ülkem",
+          "sourceName": "YAŞADIĞIM YER VE ÜLKEM",
+          "displayName": "ÜNİTE 4 — Yaşadiğim Yer Ve Ülkem",
+          "topics": [
+            {
+              "id": "g3-hayat-bilgisi-toplumsal-yasamda-meslekler",
+              "name": "Toplumsal Yaşamda Meslekler",
+              "outcomeCodes": [
+                "HB.3.3.3"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-toplumsal-yasamda-meslekler-tarih-mek-n-ve-dogal-guzellikler",
+              "name": "Toplumsal Yaşamda Meslekler Tarihî Mekân ve Doğal Güzellikler",
+              "outcomeCodes": [
+                "HB.3.4.1"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-ulkemizin-yonetim-sekli",
+              "name": "Ülkemizin Yönetim Şekli",
+              "outcomeCodes": [
+                "HB.3.4.2"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-mustafa-kemal-ataturk-un-basarilari-ve-kisilik-ozellikleri",
+              "name": "Mustafa Kemal Atatürk’ün Başarıları ve Kişilik Özellikleri",
+              "outcomeCodes": [
+                "HB.3.4.3"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-mill-birlik-ve-beraberlik",
+              "name": "Millî Birlik ve Beraberlik",
+              "outcomeCodes": [
+                "HB.3.4.4"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 5,
+          "id": "g3-hayat-bilgisi-doga-ve-cevre",
+          "name": "Doğa Ve Çevre",
+          "sourceName": "DOĞA VE ÇEVRE",
+          "displayName": "ÜNİTE 5 — Doğa Ve Çevre",
+          "topics": [
+            {
+              "id": "g3-hayat-bilgisi-dogadaki-varliklarin-i-nsan-yasamindaki-onemi",
+              "name": "Doğadaki Varlıkların İnsan Yaşamındaki Önemi",
+              "outcomeCodes": [
+                "HB.3.5.1"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-kroki-ve-konum",
+              "name": "Kroki ve Konum",
+              "outcomeCodes": [
+                "HB.3.5.2"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-afet-oncesi-afet-ani-ve-afet-sonrasinda-yapilmasi-gerekenler",
+              "name": "Afet Öncesi, Afet Anı ve Afet Sonrasında Yapılması Gerekenler",
+              "outcomeCodes": [
+                "HB.3.5.3"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-cevresel-surdurulebilirlik",
+              "name": "Çevresel Sürdürülebilirlik",
+              "outcomeCodes": [
+                "HB.3.5.4"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-bilimsel-gelismelerin-gunluk-yasama-etkisi",
+              "name": "Bilimsel Gelişmelerin Günlük Yaşama Etkisi",
+              "outcomeCodes": [
+                "HB.3.6.1"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-teknolojik-gelismelerin-gunluk-yasama-etkisi",
+              "name": "Teknolojik Gelişmelerin Günlük Yaşama Etkisi",
+              "outcomeCodes": [
+                "HB.3.6.2"
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-sanatcilarin-sanata-katkilari",
+              "name": "Sanatçıların Sanata Katkıları",
+              "outcomeCodes": [
+                "HB.3.6.3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fen-bilimleri",
+      "name": "Fen Bilimleri",
+      "navigationModel": "unit-topic-test",
+      "sectionLabel": "ÜNİTE",
+      "units": [
+        {
+          "order": 1,
+          "id": "g3-fen-bilimleri-bi-li-msel-kesi-f-yolculugu",
+          "name": "Bi̇li̇msel Keşi̇f Yolculuğu",
+          "sourceName": "BİLİMSEL KEŞİF YOLCULUĞU",
+          "displayName": "ÜNİTE 1 — Bi̇li̇msel Keşi̇f Yolculuğu",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-bilimsel-bilgiye-ulasma-yollari",
+              "name": "Bilimsel Bilgiye Ulaşma Yolları",
+              "outcomeCodes": [
+                "FB.3.1.1"
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-bilimsel-bilgiye-ulasma-yollari-bilim-i-nsanlarinin-ozellikleri",
+              "name": "Bilimsel Bilgiye Ulaşma Yolları Bilim İnsanlarının Özellikleri",
+              "outcomeCodes": [
+                "FB.3.1.2"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "id": "g3-fen-bilimleri-canlilar-dunyasina-yolculuk",
+          "name": "Canlilar Dünyasina Yolculuk",
+          "sourceName": "CANLILAR DÜNYASINA YOLCULUK",
+          "displayName": "ÜNİTE 2 — Canlilar Dünyasina Yolculuk",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-canlilarin-siniflandirilmasi",
+              "name": "Canlıların Sınıflandırılması",
+              "outcomeCodes": [
+                "FB.3.2.1"
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-duyu-organlarinin-i-slevleri",
+              "name": "Duyu Organlarının İşlevleri",
+              "outcomeCodes": [
+                "FB.3.2.2"
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-canlilarin-yasam-donguleri",
+              "name": "Canlıların Yaşam Döngüleri",
+              "outcomeCodes": [
+                "FB.3.2.3"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "id": "g3-fen-bilimleri-yer-bi-li-mci-ler-i-s-basinda",
+          "name": "Yer Bi̇li̇mci̇ler İş Başinda",
+          "sourceName": "YER BİLİMCİLER İŞ BAŞINDA",
+          "displayName": "ÜNİTE 3 — Yer Bi̇li̇mci̇ler İş Başinda",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-canlilarin-yasam-donguleri-kayaclar-madenler-ve-mineraller",
+              "name": "Canlıların Yaşam Döngüleri Kayaçlar, Madenler ve Mineraller",
+              "outcomeCodes": [
+                "FB.3.3.1"
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-kayaclar-madenler-ve-mineraller-fosil-olusumu",
+              "name": "Kayaçlar, Madenler ve Mineraller Fosil Oluşumu",
+              "outcomeCodes": [
+                "FB.3.3.2"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "id": "g3-fen-bilimleri-maddeyi-taniyalim-karistirip-ayiralim",
+          "name": "Maddeyi̇ Taniyalim, Kariştirip Ayiralim",
+          "sourceName": "MADDEYİ TANIYALIM, KARIŞTIRIP AYIRALIM",
+          "displayName": "ÜNİTE 4 — Maddeyi̇ Taniyalim, Kariştirip Ayiralim",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-fosil-olusumu-maddenin-kati-sivi-ve-gaz-h-li",
+              "name": "Fosil Oluşumu Maddenin Katı, Sıvı ve Gaz Hâli",
+              "outcomeCodes": [
+                "FB.3.4.1"
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-karisimlar-ve-karisimlarin-ayrilmasi",
+              "name": "Karışımlar ve Karışımların Ayrılması",
+              "outcomeCodes": [
+                "FB.3.4.2"
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-karisimlar-ve-karisimlarin-ayrilmasi-atiklarin-ayristirilmasi",
+              "name": "Karışımlar ve Karışımların Ayrılması Atıkların Ayrıştırılması",
+              "outcomeCodes": [
+                "FB.3.4.3"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 5,
+          "id": "g3-fen-bilimleri-hareketi-kesfedi-yorum",
+          "name": "Hareketi̇ Keşfedi̇yorum",
+          "sourceName": "HAREKETİ KEŞFEDİYORUM",
+          "displayName": "ÜNİTE 5 — Hareketi̇ Keşfedi̇yorum",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-atiklarin-ayristirilmasi-varliklarin-hareketleri",
+              "name": "Atıkların Ayrıştırılması Varlıkların Hareketleri",
+              "outcomeCodes": [
+                "FB.3.5.1"
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-kuvvet-ve-etkileri",
+              "name": "Kuvvet ve Etkileri",
+              "outcomeCodes": [
+                "FB.3.5.2"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 6,
+          "id": "g3-fen-bilimleri-yasamimizi-kolaylastiran-elektri-k",
+          "name": "Yaşamimizi Kolaylaştiran Elektri̇k",
+          "sourceName": "YAŞAMIMIZI KOLAYLAŞTIRAN ELEKTRİK",
+          "displayName": "ÜNİTE 6 — Yaşamimizi Kolaylaştiran Elektri̇k",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-kuvvet-ve-etkileri-elektrikli-arac-gerec",
+              "name": "Kuvvet ve Etkileri Elektrikli Araç Gereç",
+              "outcomeCodes": [
+                "FB.3.6.1"
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-elektrikli-arac-gerec-elektrikli-arac-gerecin-guvenli-kullanimi",
+              "name": "Elektrikli Araç Gereç Elektrikli Araç Gerecin Güvenli Kullanımı",
+              "outcomeCodes": [
+                "FB.3.6.2"
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-elektrigin-tasarruflu-kullanimi",
+              "name": "Elektriğin Tasarruflu Kullanımı",
+              "outcomeCodes": [
+                "FB.3.6.3"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 7,
+          "id": "g3-fen-bilimleri-topragi-taniyorum-tarimi-kesfedi-yorum",
+          "name": "Topraği Taniyorum, Tarimi Keşfedi̇yorum",
+          "sourceName": "TOPRAĞI TANIYORUM, TARIMI KEŞFEDİYORUM",
+          "displayName": "ÜNİTE 7 — Topraği Taniyorum, Tarimi Keşfedi̇yorum",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-elektrigin-tasarruflu-kullanimi-toprak-olusumu-ve-yapisi",
+              "name": "Elektriğin Tasarruflu Kullanımı Toprak Oluşumu ve Yapısı",
+              "outcomeCodes": [
+                "FB.3.7.1"
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-toprak-olusumu-ve-yapisi-bitki-yetistirme",
+              "name": "Toprak Oluşumu ve Yapısı Bitki Yetiştirme",
+              "outcomeCodes": [
+                "FB.3.7.2"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 8,
+          "id": "g3-fen-bilimleri-canlilarin-yasam-alanlarina-yolculuk",
+          "name": "Canlilarin Yaşam Alanlarina Yolculuk",
+          "sourceName": "CANLILARIN YAŞAM ALANLARINA YOLCULUK",
+          "displayName": "ÜNİTE 8 — Canlilarin Yaşam Alanlarina Yolculuk",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-bitki-yetistirme-yasam-alanlari",
+              "name": "Bitki Yetiştirme Yaşam Alanları",
+              "outcomeCodes": [
+                "FB.3.8.1"
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-yasam-alanlari-canli-cesitliligi",
+              "name": "Yaşam Alanları Canlı Çeşitliliği",
+              "outcomeCodes": [
+                "FB.3.8.2"
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-yasam-alanlarinin-korunmasinin-canli-cesitliligine-etkisi",
+              "name": "Yaşam Alanlarının Korunmasının Canlı Çeşitliliğine Etkisi",
+              "outcomeCodes": [
+                "FB.3.8.3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ingilizce",
+      "name": "İngilizce",
+      "navigationModel": "theme-test",
+      "sectionLabel": "THEME",
+      "units": [
+        {
+          "order": 1,
+          "id": "g3-ingilizce-school-life",
+          "name": "School Life",
+          "sourceName": "SCHOOL LIFE",
+          "displayName": "THEME 1 — School Life",
+          "topics": [
+            {
+              "id": "g3-ingilizce-school-life-greetings-and-introductions-at-school",
+              "name": "Greetings and introductions at school"
+            },
+            {
+              "id": "g3-ingilizce-school-life-people-and-places-at-school",
+              "name": "People and places at school"
+            },
+            {
+              "id": "g3-ingilizce-school-life-months-of-the-year",
+              "name": "Months of the year"
+            },
+            {
+              "id": "g3-ingilizce-school-life-ages-and-birthday-celebrations",
+              "name": "Ages and birthday celebrations"
+            },
+            {
+              "id": "g3-ingilizce-school-life-national-days-and-celebrations",
+              "name": "National days and celebrations"
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "id": "g3-ingilizce-classroom-life",
+          "name": "Classroom Life",
+          "sourceName": "CLASSROOM LIFE",
+          "displayName": "THEME 2 — Classroom Life",
+          "topics": [
+            {
+              "id": "g3-ingilizce-classroom-life-classroom-instructions-and-language",
+              "name": "Classroom instructions and language"
+            },
+            {
+              "id": "g3-ingilizce-classroom-life-classroom-furniture-objects-and-devices",
+              "name": "Classroom furniture, objects and devices"
+            },
+            {
+              "id": "g3-ingilizce-classroom-life-school-subjects",
+              "name": "School subjects"
+            },
+            {
+              "id": "g3-ingilizce-classroom-life-seasons-of-the-year",
+              "name": "Seasons of the year"
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "id": "g3-ingilizce-personal-life",
+          "name": "Personal Life",
+          "sourceName": "PERSONAL LIFE",
+          "displayName": "THEME 3 — Personal Life",
+          "topics": [
+            {
+              "id": "g3-ingilizce-personal-life-parts-of-the-body-and-physical-features",
+              "name": "Parts of the body and physical features"
+            },
+            {
+              "id": "g3-ingilizce-personal-life-personal-characters",
+              "name": "Personal characters"
+            },
+            {
+              "id": "g3-ingilizce-personal-life-weather-conditions",
+              "name": "Weather conditions"
+            },
+            {
+              "id": "g3-ingilizce-personal-life-clothing-according-to-seasons-and-weather-conditions",
+              "name": "Clothing according to seasons and weather conditions"
+            },
+            {
+              "id": "g3-ingilizce-personal-life-preferences-for-clothing",
+              "name": "Preferences for clothing"
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "id": "g3-ingilizce-family-life",
+          "name": "Family Life",
+          "sourceName": "FAMILY LIFE",
+          "displayName": "THEME 4 — Family Life",
+          "topics": []
+        },
+        {
+          "order": 5,
+          "id": "g3-ingilizce-homes-houses-neighbourhoods",
+          "name": "Homes & Houses & Neighbourhoods",
+          "sourceName": "HOMES & HOUSES & NEIGHBOURHOODS",
+          "displayName": "THEME 5 — Homes & Houses & Neighbourhoods",
+          "topics": []
+        },
+        {
+          "order": 6,
+          "id": "g3-ingilizce-life-in-the-city-the-world",
+          "name": "Life In The City & The World",
+          "sourceName": "LIFE IN THE CITY & THE WORLD",
+          "displayName": "THEME 6 — Life In The City & The World",
+          "topics": []
+        }
+      ]
+    }
+  ]
+}

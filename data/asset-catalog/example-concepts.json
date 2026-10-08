@@ -1,0 +1,16 @@
+[
+  {"visualId":"mother","kind":"relationship","searchTerms":["woman","woman feeding baby"]},
+  {"visualId":"father","kind":"relationship","searchTerms":["man","man feeding baby"]},
+  {"visualId":"sister","kind":"relationship","searchTerms":["girl"]},
+  {"visualId":"brother","kind":"relationship","searchTerms":["boy"]},
+  {"visualId":"grandmother","kind":"relationship","searchTerms":["old woman"]},
+  {"visualId":"grandfather","kind":"relationship","searchTerms":["old man"]},
+  "baby", "cat", "dog", "bird", "fish",
+  {"visualId":"apple","preferredAnnotation":"red apple","directMatch":true},
+  "banana",
+  {"visualId":"milk","preferredAnnotation":"glass of milk","directMatch":true},
+  {"visualId":"water","preferredAnnotation":"droplet"},
+  "bus",
+  {"visualId":"car","preferredAnnotation":"automobile","directMatch":true},
+  "teacher", "book", "pencil"
+]

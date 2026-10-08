@@ -1,0 +1,1248 @@
+{
+  "grade": 3,
+  "subjectId": "hayat-bilgisi",
+  "unitId": "g3-hayat-bilgisi-ben-ve-okulum",
+  "questionCount": 50,
+  "questions": [
+    {
+      "id": "g3-hayat-bilgisi-u1-q001",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Selin’in gelişime açık yönü hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hikâye anlatmak"
+        },
+        {
+          "id": "b",
+          "text": "Zamanını planlamak"
+        },
+        {
+          "id": "c",
+          "text": "Arkadaşlarıyla konuşmak"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Selin, arkadaşlarına hikâye anlatmayı seviyor ancak zamanını planlamakta zorlanıyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q002",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Mert’in kendisini geliştirmek için hazırladığı planlardan hangisi daha uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Her gün kısa süre problem çözüp zorlandığı soruları öğretmenine sormak"
+        },
+        {
+          "id": "b",
+          "text": "Matematik dersine katılmamak"
+        },
+        {
+          "id": "c",
+          "text": "Sadece cevap anahtarına bakmak"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Mert matematik problemlerini çözerken zorlandığını fark ediyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q003",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Hangi uygulama hem kitap okuma hakkını korur hem de sorumlulukları destekler?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kitaplığı tamamen kapatmak"
+        },
+        {
+          "id": "b",
+          "text": "Kitapları yalnızca sınıf başkanına vermek"
+        },
+        {
+          "id": "c",
+          "text": "Herkesin kullanabileceği bir ödünç alma çizelgesi oluşturmak"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Sınıf kitaplığındaki kitaplar sürekli kayboluyor. Öğrenciler bu sorunu çözmek istiyor.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q004",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Hangi davranışı uygun olur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Arkadaşının sözünü kesmek"
+        },
+        {
+          "id": "b",
+          "text": "Söz isteyip sırasını beklemek"
+        },
+        {
+          "id": "c",
+          "text": "Herkesin duyacağı şekilde bağırmak"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Bir öğrenci sınıfta söz almak istiyor.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q005",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Hangi etkinlik amaca daha uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Oyun hakkını anlatan afişler hazırlayıp okul panosunda sergilemek"
+        },
+        {
+          "id": "b",
+          "text": "Yalnızca kendi oyunlarını oynamak"
+        },
+        {
+          "id": "c",
+          "text": "Diğer öğrencilerin oyun alanına girmesini engellemek"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Bir grup öğrenci, çocukların oyun hakkını tanıtmak için çalışma yapacak.",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q006",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Ece’nin gelişimini desteklemek için hangisini yapması daha uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hiçbir sunuma katılmamak"
+        },
+        {
+          "id": "b",
+          "text": "Her zaman arkadaşlarının konuşmasını istemek"
+        },
+        {
+          "id": "c",
+          "text": "Önce küçük gruplarda konuşma denemeleri yapmak"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Ece’nin öz değerlendirmesi:\nGüçlü yönüm: Takım çalışmalarına katılmak.\nGelişime açık yönüm: Topluluk önünde konuşmak.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q007",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Hangi davranış bu hakkın korunmasına katkı sağlar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Merdivenlerde arkadaşlarını itmek"
+        },
+        {
+          "id": "b",
+          "text": "Koridorlarda dikkatli hareket etmek"
+        },
+        {
+          "id": "c",
+          "text": "Oyun alanındaki kuralları önemsememek"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Okulda herkesin güvenli bir ortamda eğitim görme hakkı vardır.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q008",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Çalışmayı geliştirmek için hangi adımı atmaları daha uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Katılımın neden az olduğunu araştırıp etkinliği yeniden planlamak"
+        },
+        {
+          "id": "b",
+          "text": "Hiçbir değişiklik yapmadan aynı etkinliği tekrarlamak"
+        },
+        {
+          "id": "c",
+          "text": "Çocuk hakları konusunu tamamen bırakmak"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Bir sınıf, çocuk haklarıyla ilgili bilgilendirme etkinliği düzenledi. Ancak etkinliğe çok az öğrenci katıldı.",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q009",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu durumda hangi davranış hak ve sorumluluklara uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Arkadaşının konuşmasını engellemek"
+        },
+        {
+          "id": "b",
+          "text": "Arkadaşını sınıftan uzaklaştırmak"
+        },
+        {
+          "id": "c",
+          "text": "Arkadaşını dinleyip kendi görüşünü saygıyla açıklamak"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Bir öğrenci, sınıf arkadaşının görüşüne katılmıyor.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q010",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Ali’nin planını daha etkili hâle getirmek için hangisini yapması gerekir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kitap okumayı tamamen bırakmak"
+        },
+        {
+          "id": "b",
+          "text": "Belirli aralıklarla okuma gelişimini değerlendirip planını düzenlemek"
+        },
+        {
+          "id": "c",
+          "text": "Yalnızca daha kalın kitaplar seçmek"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Ali, okuma hızını geliştirmek için iki hafta boyunca her gün 15 dakika kitap okudu. Ancak ilerlemesini hiç kontrol etmedi.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q011",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Bu öğrencinin gelişimine yardımcı olacak en uygun karar hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Resim yapmayı bırakmak"
+        },
+        {
+          "id": "b",
+          "text": "Hiç söz almamak"
+        },
+        {
+          "id": "c",
+          "text": "Kısa sunumlarla konuşma pratiği yapmak"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Zeynep resim yaparken başarılı ama sınıf önünde konuşurken heyecanlanıyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Kısa sunumlarla konuşma pratiği yapmak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q012",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu öğrencinin gelişimine yardımcı olacak en uygun karar hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Herkesin kendi fikrine uymasını istemek"
+        },
+        {
+          "id": "b",
+          "text": "Gruplardan uzak durmak"
+        },
+        {
+          "id": "c",
+          "text": "Arkadaşlarının önerilerini dinleme hedefi koymak"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Bora düzenli çalışıyor ama grup oyunlarında arkadaşlarını dinlemiyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Arkadaşlarının önerilerini dinleme hedefi koymak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q013",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu öğrencinin gelişimine yardımcı olacak en uygun karar hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Okuduğu öyküyü birkaç cümleyle özetlemek"
+        },
+        {
+          "id": "b",
+          "text": "Kitap okumayı bırakmak"
+        },
+        {
+          "id": "c",
+          "text": "Yalnızca kapak resmine bakmak"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Asya kitap okumayı seviyor ama okuduklarını anlatmakta zorlanıyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Okuduğu öyküyü birkaç cümleyle özetlemek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q014",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Bu öğrencinin gelişimine yardımcı olacak en uygun karar hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Günlük çalışma planı oluşturmak"
+        },
+        {
+          "id": "b",
+          "text": "Ödevleri tamamen bırakmak"
+        },
+        {
+          "id": "c",
+          "text": "Sadece spor yapmak"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Eren sporda başarılı ama ödevlerini zamanında bitiremiyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Günlük çalışma planı oluşturmak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q015",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu öğrencinin gelişimine yardımcı olacak en uygun karar hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Küçük hedeflerle yeniden denemek"
+        },
+        {
+          "id": "b",
+          "text": "Yeni işlerden kaçmak"
+        },
+        {
+          "id": "c",
+          "text": "Hatalarını gizlemek"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Nisa arkadaşlarına yardım ediyor ama hata yapınca hemen vazgeçiyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Küçük hedeflerle yeniden denemek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q016",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu öğrencinin gelişimine yardımcı olacak en uygun karar hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yalnızca ilk cümleyi okumak"
+        },
+        {
+          "id": "b",
+          "text": "Her metni daha hızlı okumak"
+        },
+        {
+          "id": "c",
+          "text": "Okuduklarını kendi cümleleriyle anlatıp kontrol etmek"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Mina hızlı okuyor ama okuduklarını bazen anlamıyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Okuduklarını kendi cümleleriyle anlatıp kontrol etmek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q017",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Bu öğrencinin gelişimine yardımcı olacak en uygun karar hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Oyunlarda sıra beklemeyi çalışmak"
+        },
+        {
+          "id": "b",
+          "text": "Oyunlara katılmamak"
+        },
+        {
+          "id": "c",
+          "text": "Hep ilk sırada olmayı istemek"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Arda güzel şarkı söylüyor ama sıra beklemekte zorlanıyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Oyunlarda sıra beklemeyi çalışmak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q018",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu öğrencinin gelişimine yardımcı olacak en uygun karar hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Arkadaşlarını suçlamak"
+        },
+        {
+          "id": "b",
+          "text": "Hiç eşya getirmemek"
+        },
+        {
+          "id": "c",
+          "text": "Eşyalarını yerleştirmek için düzen oluşturmak"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Deniz arkadaşlarıyla iyi geçiniyor ama eşyalarını sık kaybediyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Eşyalarını yerleştirmek için düzen oluşturmak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q019",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu öğrencinin gelişimine yardımcı olacak en uygun karar hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gözlem defteri tutmayı denemek"
+        },
+        {
+          "id": "b",
+          "text": "Deneylere katılmamak"
+        },
+        {
+          "id": "c",
+          "text": "Başkasının notunu aynen almak"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Sude fen etkinliklerini seviyor ama not tutmayı unutuyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Gözlem defteri tutmayı denemek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q020",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Bu öğrencinin gelişimine yardımcı olacak en uygun karar hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bulmaca çözmeyi bırakmak"
+        },
+        {
+          "id": "b",
+          "text": "Çözüm adımlarını sesli anlatma alıştırması yapmak"
+        },
+        {
+          "id": "c",
+          "text": "Soruları boş bırakmak"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Can bulmacaları çözüyor ama fikirlerini açıklarken zorlanıyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Çözüm adımlarını sesli anlatma alıştırması yapmak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q021",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu öğrencinin gelişimine yardımcı olacak en uygun karar hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yazısını bir arkadaşına okutmak ve önerileri değerlendirmek"
+        },
+        {
+          "id": "b",
+          "text": "Yalnızca kendini övmek"
+        },
+        {
+          "id": "c",
+          "text": "Yazdıklarını hiç kontrol etmemek"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Ada düzenli yazıyor ama arkadaşlarından geri bildirim almıyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Yazısını bir arkadaşına okutmak ve önerileri değerlendirmek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q022",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu öğrencinin gelişimine yardımcı olacak en uygun karar hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Takım arkadaşlarını suçlamak"
+        },
+        {
+          "id": "b",
+          "text": "Oyun öncesi kuralları okuyup uygulamak"
+        },
+        {
+          "id": "c",
+          "text": "Kuralları yok saymak"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Kaan iyi koşuyor ama takım kurallarını unutuyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Oyun öncesi kuralları okuyup uygulamak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q023",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Bu öğrencinin gelişimine yardımcı olacak en uygun karar hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bir görevi tamamlayıp sonra yenisine geçmek"
+        },
+        {
+          "id": "b",
+          "text": "Hiç plan yapmamak"
+        },
+        {
+          "id": "c",
+          "text": "Bütün görevleri aynı anda başlatmak"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Ece yaratıcı fikirler buluyor ama işi bitirmeden yenisine başlıyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Bir görevi tamamlayıp sonra yenisine geçmek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q024",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu öğrencinin gelişimine yardımcı olacak en uygun karar hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Daha yüksek sesle konuşmak"
+        },
+        {
+          "id": "b",
+          "text": "Arkadaşının konuşmasını bitirmesini beklemek"
+        },
+        {
+          "id": "c",
+          "text": "Sınıf etkinliğine katılmamak"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Mert topluluk önünde rahat konuşuyor ama dinlerken söz kesiyor.",
+      "outcomeCode": "HB.3.1.1",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Arkadaşının konuşmasını bitirmesini beklemek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q025",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Hak ve sorumluluklara uygun davranış hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yalnızca bir öğrencinin konuşması"
+        },
+        {
+          "id": "b",
+          "text": "Konuşma sırasına saygı gösterilmesi"
+        },
+        {
+          "id": "c",
+          "text": "Hiç kimsenin fikir söylememesi"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Sınıfta bir öğrenci söz almak istiyor ancak arkadaşı sürekli sözünü kesiyor.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Konuşma sırasına saygı gösterilmesi"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q026",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Hak ve sorumluluklara uygun davranış hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kitabı saklaması"
+        },
+        {
+          "id": "b",
+          "text": "Suçu başka arkadaşına atması"
+        },
+        {
+          "id": "c",
+          "text": "Kitabı onarmak için yardım isteyip daha dikkatli kullanması"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Bir öğrenci sınıf kitaplığından aldığı kitabı yıpratmış.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Kitabı onarmak için yardım isteyip daha dikkatli kullanması"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q027",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Hak ve sorumluluklara uygun davranış hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Oyun alanını sırayla ve güvenli kullanmak"
+        },
+        {
+          "id": "b",
+          "text": "Küçük sınıfları alandan uzaklaştırmak"
+        },
+        {
+          "id": "c",
+          "text": "Alanı tek bir grubun sahiplenmesi"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Okul bahçesindeki oyun alanı herkes için ayrılmış.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Oyun alanını sırayla ve güvenli kullanmak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q028",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Hak ve sorumluluklara uygun davranış hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Oyunları sadece eski arkadaşlarla oynamak"
+        },
+        {
+          "id": "b",
+          "text": "Onu oyuna davet edip katılma hakkına saygı göstermek"
+        },
+        {
+          "id": "c",
+          "text": "Onu görmezden gelmek"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Sınıfta yeni gelen öğrenciye kimse oyun teklif etmiyor.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Onu oyuna davet edip katılma hakkına saygı göstermek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q029",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Hak ve sorumluluklara uygun davranış hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sınıfı dağınık bırakmak"
+        },
+        {
+          "id": "b",
+          "text": "Malzemeleri eve götürmek"
+        },
+        {
+          "id": "c",
+          "text": "Malzemeleri yerine koymak"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Sınıf ortak malzemeleri kullanıldıktan sonra dağınık bırakılıyor.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Malzemeleri yerine koymak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q030",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Hak ve sorumluluklara uygun davranış hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kuralları kimseye söylemeden değiştirmek"
+        },
+        {
+          "id": "b",
+          "text": "Herkesin fikrini alıp ortak karar vermek"
+        },
+        {
+          "id": "c",
+          "text": "Yalnızca en hızlı konuşanı dinlemek"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Öğrenciler sınıf kurallarını değiştirmek istiyor.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Herkesin fikrini alıp ortak karar vermek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q031",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Hak ve sorumluluklara uygun davranış hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kalabalıkta oyun başlatmak"
+        },
+        {
+          "id": "b",
+          "text": "Daha hızlı koşmak"
+        },
+        {
+          "id": "c",
+          "text": "Güvenli hareket edip başkalarını da uyarmak"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Bir öğrenci koridorda koştuğu için başkaları düşme tehlikesi yaşıyor.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Güvenli hareket edip başkalarını da uyarmak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q032",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Hak ve sorumluluklara uygun davranış hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Defteri gizlemek"
+        },
+        {
+          "id": "b",
+          "text": "Arkadaşının itirazını yok saymak"
+        },
+        {
+          "id": "c",
+          "text": "İzin isteyip eşyaya özen göstermek"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Bir öğrenci arkadaşının defterini izinsiz alıyor.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: İzin isteyip eşyaya özen göstermek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q033",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Hak ve sorumluluklara uygun davranış hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Arkadaşları zorla aynı adaya yönlendirmek"
+        },
+        {
+          "id": "b",
+          "text": "Her öğrencinin tercihine saygı göstermek"
+        },
+        {
+          "id": "c",
+          "text": "Oyları başkaları adına kullanmak"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Sınıf temsilcisi seçiminde herkes oy kullanacak.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Her öğrencinin tercihine saygı göstermek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q034",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Hak ve sorumluluklara uygun davranış hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Birbirinin seçimine saygı gösterip alanı paylaşmak"
+        },
+        {
+          "id": "b",
+          "text": "Diğer oyunları yasaklamak"
+        },
+        {
+          "id": "c",
+          "text": "Sadece en kalabalık grubun oynamasına izin vermek"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Öğrenciler teneffüste farklı oyunlar oynamak istiyor.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Birbirinin seçimine saygı gösterip alanı paylaşmak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q035",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Hak ve sorumluluklara uygun davranış hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hatasıyla alay etmeden destek olmak"
+        },
+        {
+          "id": "b",
+          "text": "Hatasını herkese duyurmak"
+        },
+        {
+          "id": "c",
+          "text": "Onu etkinlikten çıkarmak"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Sınıfta bir öğrenci hata yaptığında arkadaşları gülüyor.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Hatasıyla alay etmeden destek olmak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q036",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Hak ve sorumluluklara uygun davranış hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kimsenin çalışmasını asmamak"
+        },
+        {
+          "id": "b",
+          "text": "Herkesin çalışmasına adil biçimde yer vermek"
+        },
+        {
+          "id": "c",
+          "text": "Yalnızca yakın arkadaşlarınkini asmak"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Sınıf panosuna çalışma asılacak ama yer sınırlı.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Herkesin çalışmasına adil biçimde yer vermek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q037",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Hak ve sorumluluklara uygun davranış hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Başkasının hesabına izinsiz girmek"
+        },
+        {
+          "id": "b",
+          "text": "Süreye ve kullanım kurallarına uymak"
+        },
+        {
+          "id": "c",
+          "text": "Tableti bütün gün kendinde tutmak"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Öğrenci ortak tabletleri kullanıyor.",
+      "outcomeCode": "HB.3.1.2",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Süreye ve kullanım kurallarına uymak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q038",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu amaç için en etkili eylem hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Oyun hakkı afişi hazırlayıp öğrencilere sunmak"
+        },
+        {
+          "id": "b",
+          "text": "Oyun alanını kapatmak"
+        },
+        {
+          "id": "c",
+          "text": "Konuyu hiç paylaşmamak"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Çocukların oyun hakkını anlatmak isteyen bir sınıf",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Oyun hakkı afişi hazırlayıp öğrencilere sunmak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q039",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu amaç için en etkili eylem hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sadece sınıfın kapısını süslemek"
+        },
+        {
+          "id": "b",
+          "text": "Okul araçlarını saklamak"
+        },
+        {
+          "id": "c",
+          "text": "Eğitim hakkını açıklayan bilgilendirme panosu hazırlamak"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Çocukların eğitim hakkını tanıtmak isteyen öğrenciler",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Eğitim hakkını açıklayan bilgilendirme panosu hazırlamak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q040",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu amaç için en etkili eylem hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sadece bir kişinin fikrini yazmak"
+        },
+        {
+          "id": "b",
+          "text": "Kimsenin konuşmasına izin vermemek"
+        },
+        {
+          "id": "c",
+          "text": "Öğrencilerin fikirlerini toplayıp sonuçları paylaşmak"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Çocukların görüş bildirme hakkını duyurmak isteyen grup",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Öğrencilerin fikirlerini toplayıp sonuçları paylaşmak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q041",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu amaç için en etkili eylem hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dinlenme hakkıyla ilgili kısa bilgilendirme sunumu yapmak"
+        },
+        {
+          "id": "b",
+          "text": "Dinlenmeyi gereksiz göstermek"
+        },
+        {
+          "id": "c",
+          "text": "Teneffüsleri kaldırmayı önermek"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Çocukların dinlenme hakkını tanıtmak isteyen öğrenciler",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Dinlenme hakkıyla ilgili kısa bilgilendirme sunumu yapmak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q042",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu amaç için en etkili eylem hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Öğrencilerden geri bildirim alıp panoyu geliştirmek"
+        },
+        {
+          "id": "b",
+          "text": "Aynı panoyu kimsenin görmediği yere taşımak"
+        },
+        {
+          "id": "c",
+          "text": "Çalışmayı hemen bırakmak"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Çocuk hakları panosu hazırlayan öğrenciler panonun okunmadığını fark etti.",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Öğrencilerden geri bildirim alıp panoyu geliştirmek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q043",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu amaç için en etkili eylem hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Güvenli okul davranışlarını anlatan örnekler hazırlamak"
+        },
+        {
+          "id": "b",
+          "text": "Tehlikeli oyunları özendirmek"
+        },
+        {
+          "id": "c",
+          "text": "Kuralları gizlemek"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Çocukların güvenli ortam hakkını tanıtmak isteyen grup",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Güvenli okul davranışlarını anlatan örnekler hazırlamak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q044",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu amaç için en etkili eylem hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sadece seçilmiş öğrencilere bilgi vermek"
+        },
+        {
+          "id": "b",
+          "text": "Bazı öğrencileri dışlamak"
+        },
+        {
+          "id": "c",
+          "text": "Farklı öğrencilerin katıldığı ortak bir etkinlik düzenlemek"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Çocukların eşit haklara sahip olduğunu anlatan grup",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Farklı öğrencilerin katıldığı ortak bir etkinlik düzenlemek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q045",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu amaç için en etkili eylem hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bilgileri anlaşılır yazıp arkadaşlarına dağıtmak"
+        },
+        {
+          "id": "b",
+          "text": "Broşürü kimseye göstermemek"
+        },
+        {
+          "id": "c",
+          "text": "Broşürü boş bırakmak"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Çocuk haklarını anlatan broşür hazırlayan sınıf",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Bilgileri anlaşılır yazıp arkadaşlarına dağıtmak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q046",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu amaç için en etkili eylem hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Katılmama nedenlerini öğrenip duyuruyu iyileştirmek"
+        },
+        {
+          "id": "b",
+          "text": "Katılanları suçlamak"
+        },
+        {
+          "id": "c",
+          "text": "Hiç değerlendirme yapmamak"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Çocuk hakları etkinliğine az katılım oldu.",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Katılmama nedenlerini öğrenip duyuruyu iyileştirmek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q047",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu amaç için en etkili eylem hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Uygulanabilir bir etkinlik takvimi hazırlamak"
+        },
+        {
+          "id": "b",
+          "text": "Tüm görevleri belirsiz bırakmak"
+        },
+        {
+          "id": "c",
+          "text": "Etkinliği habersiz iptal etmek"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Çocukların oyun hakkıyla ilgili kampanya başlatan sınıf",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Uygulanabilir bir etkinlik takvimi hazırlamak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q048",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu amaç için en etkili eylem hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kaynaklarını kontrol edip yaşa uygun örnekler seçmek"
+        },
+        {
+          "id": "b",
+          "text": "Doğrulanmamış bilgiler kullanmak"
+        },
+        {
+          "id": "c",
+          "text": "Yalnızca çok uzun yazılar okumak"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Çocuk haklarını tanıtmak için sunum hazırlayan ekip",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Kaynaklarını kontrol edip yaşa uygun örnekler seçmek"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q049",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu amaç için en etkili eylem hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Arkadaşlarının önerilerini toplayıp etkinlikte kullanmak"
+        },
+        {
+          "id": "b",
+          "text": "Katılımı yalnızca yetişkinlere bırakmak"
+        },
+        {
+          "id": "c",
+          "text": "Önerileri dinlememek"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Çocukların katılım hakkını tanıtmak isteyen ekip",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Arkadaşlarının önerilerini toplayıp etkinlikte kullanmak"
+    },
+    {
+      "id": "g3-hayat-bilgisi-u1-q050",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu amaç için en etkili eylem hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Etkinlikten önce ve sonra öğrencilerin bilgilerini karşılaştırmak"
+        },
+        {
+          "id": "b",
+          "text": "Hiçbir değerlendirme yapmamak"
+        },
+        {
+          "id": "c",
+          "text": "Sadece afişin rengini değerlendirmek"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Çocuk hakları çalışmasının etkisini görmek isteyen sınıf",
+      "outcomeCode": "HB.3.1.3",
+      "outcomeMappingStatus": "exact",
+      "explanation": "Doğru cevap: Etkinlikten önce ve sonra öğrencilerin bilgilerini karşılaştırmak"
+    }
+  ]
+}

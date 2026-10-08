@@ -1,0 +1,1872 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "test-arena-curriculum-grade-3-tr-2026-2027",
+  "grade": 3,
+  "academic_year": "2026-2027",
+  "language": "tr",
+  "purpose": "Test Arena soru bankası için korunacak kanonik müfredat ağacı. Kaynak plan yapısı korunur; öğrenciye gösterilecek sade konu adları ve sorular sonraki aşamada bu kimliklere bağlanır.",
+  "rules": {
+    "stable_ids": "id alanları kalıcı anahtar olarak kullanılmalı; görünen ad değişse bile id mümkün olduğunca değiştirilmemeli.",
+    "source_fidelity": "Bu dosyada kaynaklarda bulunmayan yeni kazanım üretilmemiştir.",
+    "questions": "Sorular ayrı dosyada tutulmalı ve curriculum_id/outcome_code ile bu ağaca bağlanmalıdır.",
+    "english_pronunciation_outcomes": "İngilizce yıllık planındaki ENG.2.1.P1–ENG.2.6.P1 telaffuz çıktıları kanonik tema kodlarına dahildir; yalnızca metin tabanlı çoktan seçmeli sorularla telaffuz performansı doğrudan ölçülmüş sayılmaz."
+  },
+  "sources": [
+    {
+      "subject": "Türkçe",
+      "file": "3. Sınıf 1.Türkçe Dersi Maarif Yıllık Plan (2026-2027).xlsx"
+    },
+    {
+      "subject": "Matematik",
+      "file": "3. Sınıf 2.Matematik Dersi Maarif Yıllık Plan (2026-2027).xlsx"
+    },
+    {
+      "subject": "Hayat Bilgisi",
+      "file": "3. Sınıf 3.Hayat Bilgisi Dersi Maarif Yıllık Plan (2026-2027).xlsx"
+    },
+    {
+      "subject": "Fen Bilimleri",
+      "file": "3. Sınıf 4.Fen Bilimleri Dersi Maarif Yıllık Plan (2026-2027).xlsx"
+    },
+    {
+      "subject": "İngilizce",
+      "file": "3.-Sinif-Ingilizce-Yillik-Plan-2026-2027-by-ingilizceciyiz.com_.docx"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "turkce",
+      "name": "Türkçe",
+      "structure_note": "Temalar içerik bağlamı; beceri alanları temalar arasında tekrar eder.",
+      "themes": [
+        {
+          "id": "g3-turkce-degerleri-mi-zle-yasiyoruz",
+          "name": "DEĞERLERİMİZLE YAŞIYORUZ"
+        },
+        {
+          "id": "g3-turkce-ataturk-ve-kahramanlarimiz",
+          "name": "ATATÜRK VE KAHRAMANLARIMIZ"
+        },
+        {
+          "id": "g3-turkce-dogayi-taniyoruz",
+          "name": "DOĞAYI TANIYORUZ"
+        },
+        {
+          "id": "g3-turkce-bi-lgi-hazi-nemi-z",
+          "name": "BİLGİ HAZİNEMİZ"
+        },
+        {
+          "id": "g3-turkce-yetenekleri-mi-zi-kullaniyoruz",
+          "name": "YETENEKLERİMİZİ KULLANIYORUZ"
+        },
+        {
+          "id": "g3-turkce-bi-li-m-yolculugu",
+          "name": "BİLİM YOLCULUĞU"
+        },
+        {
+          "id": "g3-turkce-mi-ll-kulturumuz",
+          "name": "MİLLÎ KÜLTÜRÜMÜZ"
+        },
+        {
+          "id": "g3-turkce-hak-ve-sorumluluklarimiz",
+          "name": "HAK VE SORUMLULUKLARIMIZ"
+        }
+      ],
+      "skill_domains": [
+        {
+          "id": "g3-turkce-dinleme-izleme",
+          "name": "Dinleme/İzleme",
+          "outcomes": [
+            {
+              "code": "T.D.2.1",
+              "text": "Dinlemeyi/izlemeyi yönetebilme"
+            },
+            {
+              "code": "T.D.2.2",
+              "text": "Dinledikleri/izledikleri ile ilgili anlam oluşturabilme"
+            },
+            {
+              "code": "T.D.2.3",
+              "text": "Dinlediklerini/izlediklerini çözümleyebilme"
+            },
+            {
+              "code": "T.D.2.5",
+              "text": "Dinleme/izleme sürecini değerlendirebilme"
+            },
+            {
+              "code": "T.D.3.1",
+              "text": "Dinlemeyi/izlemeyi yönetebilme"
+            },
+            {
+              "code": "T.D.3.2",
+              "text": "Dinledikleri/izledikleri ile ilgili anlam oluşturabilme"
+            },
+            {
+              "code": "T.D.3.3",
+              "text": "Dinlediklerini/izlediklerini çözümleyebilme"
+            },
+            {
+              "code": "T.D.3.5",
+              "text": "Dinleme/izleme sürecini değerlendirebilme"
+            },
+            {
+              "code": "T.D.3.4",
+              "text": "Dinleme/izleme sürecine etki eden durumları gözden geçirebilme"
+            }
+          ]
+        },
+        {
+          "id": "g3-turkce-konusma",
+          "name": "Konuşma",
+          "outcomes": [
+            {
+              "code": "T.K.2.1",
+              "text": "Konuşmalarını yönetebilme"
+            },
+            {
+              "code": "T.K.2.2",
+              "text": "Konuşmalarında içerik oluşturabilme"
+            },
+            {
+              "code": "T.K.2.3",
+              "text": "Konuşma kurallarını uygulayabilme"
+            },
+            {
+              "code": "T.K.2.4",
+              "text": "Konuşma sürecini değerlendirebilme"
+            },
+            {
+              "code": "T.K.3.1",
+              "text": "Konuşmalarını yönetebilme"
+            },
+            {
+              "code": "T.K.3.2",
+              "text": "Konuşmalarında içerik oluşturabilme"
+            },
+            {
+              "code": "T.K.3.3",
+              "text": "Konuşma kurallarını uygulayabilme"
+            },
+            {
+              "code": "T.K.3.5",
+              "text": "Konuşma sürecini değerlendirebilme"
+            },
+            {
+              "code": "T.K.3.4",
+              "text": "Konuşma sürecine etki eden durumları gözden geçirebilme"
+            }
+          ]
+        },
+        {
+          "id": "g3-turkce-okuma",
+          "name": "Okuma",
+          "outcomes": [
+            {
+              "code": "T.O.2.1",
+              "text": "Okuma sürecini yönetebilme"
+            },
+            {
+              "code": "T.O.2.2",
+              "text": "Okudukları ile ilgili anlam oluşturabilme"
+            },
+            {
+              "code": "T.O.2.3",
+              "text": "Okuduklarını çözümleyebilme"
+            },
+            {
+              "code": "T.O.2.4",
+              "text": "Okuma sürecine etki eden durumları gözden geçirebilme"
+            },
+            {
+              "code": "T.O.3.1",
+              "text": "Okuma sürecini yönetebilme"
+            },
+            {
+              "code": "T.O.3.2",
+              "text": "Okudukları ile ilgili anlam oluşturabilme"
+            },
+            {
+              "code": "T.O.3.3",
+              "text": "Okuduklarını çözümleyebilme"
+            },
+            {
+              "code": "T.O.3.5",
+              "text": "Okuma sürecini değerlendirebilme"
+            },
+            {
+              "code": "T.O.3.4",
+              "text": "Okuma sürecine etki eden durumları gözden geçirebilme"
+            }
+          ]
+        },
+        {
+          "id": "g3-turkce-yazma",
+          "name": "Yazma",
+          "outcomes": [
+            {
+              "code": "T.Y.2.1",
+              "text": "Yazılı anlatım becerilerini yönetebilme"
+            },
+            {
+              "code": "T.Y.2.2",
+              "text": "Yazılarında içerik oluşturabilme"
+            },
+            {
+              "code": "T.Y.2.3",
+              "text": "Yazma kurallarını uygulayabilme"
+            },
+            {
+              "code": "T.Y.3.2",
+              "text": "Yazılarında içerik oluşturabilme"
+            },
+            {
+              "code": "T.Y.3.3",
+              "text": "Yazma kurallarını uygulayabilme"
+            },
+            {
+              "code": "T.Y.3.1",
+              "text": "Yazılı anlatım becerilerini yönetebilme"
+            },
+            {
+              "code": "T.Y.3.5",
+              "text": "Yazma sürecini değerlendirebilme"
+            },
+            {
+              "code": "T.Y.3.4",
+              "text": "Yazma sürecine etki eden durumları gözden geçirebilme"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matematik",
+      "name": "Matematik",
+      "themes": [
+        {
+          "id": "g3-matematik-sayilar-ve-ni-celi-kler-1",
+          "name": "SAYILAR VE NİCELİKLER (1)",
+          "topics": [
+            {
+              "id": "g3-matematik-sayilar-sayilari-cozumleme",
+              "name": "Sayılar Sayıları Çözümleme",
+              "outcomes": [
+                {
+                  "code": "MAT.3.1.1",
+                  "text": "Niceliklerin büyüklüklerine karşılık gelen 1000’e kadar olan sayıların temsillerinden yararlanabilme"
+                },
+                {
+                  "code": "MAT.3.1.2",
+                  "text": "1000’e kadar olan sayıları çözümleyebilme a) Niceliklerin büyüklüklerinin temsillerini tanır. b) Niceliklerin büyüklüklerine uygun sayı temsillerini belirler. c) Niceliklerin büyüklüklerine karşılık gelen uygun sayıları okur ve yazar. a) Üç basamaklı sayıların basamaklarını belirler. b) Üç basamaklı sayıların basamak ve basamak değerleri arasındaki"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-sayilari-siralama-ritmik-sayma",
+              "name": "Sayıları Sıralama Ritmik Sayma",
+              "outcomes": [
+                {
+                  "code": "MAT.3.1.3",
+                  "text": "Sayıları sıralayabilme"
+                },
+                {
+                  "code": "MAT.3.1.4",
+                  "text": "Sayıları ileriye ve geriye doğru ritmik sayabilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-ritmik-sayma-tek-ve-cift-sayilar",
+              "name": "Ritmik Sayma Tek ve Çift Sayılar",
+              "outcomes": [
+                {
+                  "code": "MAT.3.1.5",
+                  "text": "Sayıları tek-çift olarak sınıflandırabilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-tek-ve-cift-sayilar-tek-ve-cift-sayilarin-toplami-sayi-ve-sekil-oruntuleri",
+              "name": "Tek ve Çift Sayılar Tek ve Çift Sayıların Toplamı Sayı ve Şekil Örüntüleri",
+              "outcomes": [
+                {
+                  "code": "MAT.3.1.6",
+                  "text": "Tek ve çift sayıların toplamlarının tek ya da çift olma durumu arasındaki ilişkiye yönelik tümevarımsal akıl yürütebilme"
+                },
+                {
+                  "code": "MAT.3.1.7",
+                  "text": "Sayı ve sayı temsiline dönüşen şekil örüntülerine dayalı çıkarım yapabilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-sayi-ve-sekil-oruntuleri-nesne-sayisini-tahmin-etme",
+              "name": "Sayı ve Şekil Örüntüleri Nesne Sayısını Tahmin Etme",
+              "outcomes": [
+                {
+                  "code": "MAT.3.1.8",
+                  "text": "Bir çokluktaki ilişkilerden yararlanarak 100’e kadar olan nesnelerin sayısını tahmin edebilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-matematik-sayilar-ve-ni-celi-kler-2",
+          "name": "SAYILAR VE NİCELİKLER (2)",
+          "topics": [
+            {
+              "id": "g3-matematik-nesne-sayisini-tahmin-etme-butun-yarim-ve-ceyregin-kesir-gosterimi",
+              "name": "Nesne Sayısını Tahmin Etme Bütün, Yarım ve Çeyreğin Kesir Gösterimi",
+              "outcomes": [
+                {
+                  "code": "MAT.3.1.9",
+                  "text": "Bütün, yarım ve çeyreğin kesirle gösterimi için modellerden yararlanabilme b) Bütün, yarım ve çeyrek modellerine uygun kesir temsillerini belirler. c) Belirlediği temsili bütün, yarım ve çeyrek modelleri için kullanır. Cumhuriyet Bayramı (29 Ekim)"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-bir-butunu-olusturan-es-parcalar",
+              "name": "Bir Bütünü Oluşturan Eş Parçalar",
+              "outcomes": [
+                {
+                  "code": "MAT.3.1.10",
+                  "text": "Bir bütünü eş parçalar oluşturacak şekilde birim kesir olarak çözümleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-bir-butunu-olusturan-es-parcalar-bir-kesrin-payi-i-le-paydasi-arasindaki-i-liski",
+              "name": "Bir Bütünü Oluşturan Eş Parçalar Bir Kesrin Payı İle Paydası Arasındaki İlişki",
+              "outcomes": [
+                {
+                  "code": "MAT.3.1.11",
+                  "text": "Bir kesrin payı ile paydası arasındaki ilişkiyi çözümleyebilme b) Bütün ile eş parçaların her biri arasındaki ilişkiyi belirler. a) Bir kesrin pay ve paydasına ait parçaları belirler. b) Bir kesrin pay ve paydasına ait parçalar arasındaki ilişkiyi belirler. Atatürk Haftası(10-16 Kasım) Dünya Çocuk Hakları Günü(20 Kasım) Afet Eğitimi Hazırlık Günü ("
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-analog-ve-dijital-saatlerde-zamani-okuma-ve-yazma-zaman-olcu-birimleri",
+              "name": "Analog ve Dijital Saatlerde Zamanı Okuma ve Yazma Zaman Ölçü Birimleri",
+              "outcomes": [
+                {
+                  "code": "MAT.3.1.12",
+                  "text": "Analog ve dijital saatlerde zamanı okuyabilme ve yazabilme"
+                },
+                {
+                  "code": "MAT.3.1.13",
+                  "text": "Zaman ölçü birimlerini çözümleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-zaman-olcu-birimleri-olaylarin-olus-surelerini-tahmin-etme",
+              "name": "Zaman Ölçü Birimleri Olayların Oluş Sürelerini Tahmin Etme",
+              "outcomes": [
+                {
+                  "code": "MAT.3.1.14",
+                  "text": "Olayların oluş sürelerini tahmin ederek yargıda bulunabilme b) Zaman ölçü birimleri arasındaki ilişkileri belirler. a) Olayların oluş sürelerini birbirleriyle ilişkilendirir. Dünya Engelliler Günü (03 Aralık)"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-uzunluk-ve-kutle-olcu-birimleri-maden-ve-k-git-paralar",
+              "name": "Uzunluk ve Kütle Ölçü Birimleri Madenî ve Kâğıt Paralar",
+              "outcomes": [
+                {
+                  "code": "MAT.3.1.15",
+                  "text": "Uzunluk ve kütle birimleri arasındaki ilişkileri kullanarak bu birimleri kendi içerisinde çözümleyebilme"
+                },
+                {
+                  "code": "MAT.3.1.16",
+                  "text": "Madenî ve kâğıt paraları değerlerine göre ilişkilendirerek yorumlayabilme b) Madenî paraları ve kâğıt paraları değerlerine göre dönüştürür. c) Paranın değerini, anlamını değiştirmeyecek şekilde yeniden ifade eder"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-matematik-i-slemlerden-cebi-rsel-dusunmeye",
+          "name": "İŞLEMLERDEN CEBİRSEL DÜŞÜNMEYE",
+          "topics": [
+            {
+              "id": "g3-matematik-toplama-ve-cikarma-i-slemlerinin-sonuclarini-tahmin-etme-ve-zihinden-i-slem",
+              "name": "Toplama ve Çıkarma İşlemlerinin Sonuçlarını Tahmin Etme ve Zihinden İşlem",
+              "outcomes": [
+                {
+                  "code": "MAT.3.2.1",
+                  "text": "Toplama ve çıkarma işlemlerinin sonuçlarını tahminde bulunarak ve zihinden işlem yaparak muhakeme edebilme c) Toplama ve çıkarma işlemine yönelik tahminî ve zihinden işlem sonuçları arasında ilişki kurar. ç) Tahminî ve zihinden işlem sonuçlarının tutarlılığını ifade eder. Enerji Tasarrufu Haftası (Ocak Ayının 2. Haftası)"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-toplama-ve-cikarma-i-slemlerini-cozumleme",
+              "name": "Toplama ve Çıkarma İşlemlerini Çözümleme",
+              "outcomes": [
+                {
+                  "code": "MAT.3.2.2",
+                  "text": "Toplama ve çıkarma işlemlerini çözümleyebilme a) Toplama ve çıkarma işlemlerinin adımlarını belirler. b) Toplama ve çıkarmanın işlem süreçlerini birbiri ile ilişkilendirir"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-carpma-ve-bolme-i-slemlerinin-sonuclarini-tahmin-etme-ve-zihinden-i-slem",
+              "name": "Çarpma ve Bölme İşlemlerinin Sonuçlarını Tahmin Etme ve Zihinden İşlem",
+              "outcomes": [
+                {
+                  "code": "MAT.3.2.3",
+                  "text": "Çarpma ve bölme işlemlerinin sonuçlarını tahminde bulunarak ve zihinden işlem yaparak muhakeme edebilme a) Çarpma ve bölme işlemlerine ilişkin bileşenleri belirler. b) Çarpma ve bölme işlemlerine ilişkin bileşenler arasındaki ilişkileri belirler. c) Çarpma ve bölme işlemine yönelik tahminî ve zihinden işlem sonuçlarını ifade eder. ç) Tahminî ve zih"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-carpma-ve-bolme-i-slemlerini-cozumleme",
+              "name": "Çarpma ve Bölme İşlemlerini Çözümleme",
+              "outcomes": [
+                {
+                  "code": "MAT.3.2.4",
+                  "text": "Çarpma ve bölme işlemlerini çözümleyebilme a) Çarpma ve bölme işlemlerinin adımlarını belirler. b) Çarpma ve bölme işlemlerini birbiri ile ilişkilendirir"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-dort-i-slemi-yonergelere-gore-yorumlama",
+              "name": "Dört İşlemi Yönergelere Göre Yorumlama",
+              "outcomes": [
+                {
+                  "code": "MAT.3.2.5",
+                  "text": "Dört işlem gerektiren durumlar için verilen yönergeleri takip ederek yorumlayabilme a) Dört işleme ait bileşenleri inceler. b) İncelediği bileşenleri işlem diline dönüştürür. c) Oluşturduğu yapıyı temsillerle yeniden ifade eder"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-dort-i-slem-gerektiren-problemleri-cozme",
+              "name": "Dört İşlem Gerektiren Problemleri Çözme",
+              "outcomes": [
+                {
+                  "code": "MAT.3.2.6",
+                  "text": "Dört işlem gerektiren günlük yaşam problemlerini çözebilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-1-2-2",
+              "name": "1 + 2+(2)*",
+              "outcomes": [
+                {
+                  "code": "MAT.3.2.7",
+                  "text": "Dört işlem gerektiren problem durumlarını yapılandırabilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-matematik-nesneleri-n-geometri-si-1",
+          "name": "NESNELERİN GEOMETRİSİ (1)",
+          "topics": [
+            {
+              "id": "g3-matematik-dort-i-slem-gerektiren-problemleri-yapilandirma-dort-i-slemde-esitlik",
+              "name": "Dört İşlem Gerektiren Problemleri Yapılandırma Dört İşlemde Eşitlik",
+              "outcomes": [
+                {
+                  "code": "MAT.3.2.8",
+                  "text": "Dört işlem bağlamında eşitliğin farklı anlamlarını yorumlayabilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-dort-i-slemde-esitlik-geometrik-cisimlerin-ozellikleri",
+              "name": "Dört İşlemde Eşitlik Geometrik Cisimlerin Özellikleri",
+              "outcomes": [
+                {
+                  "code": "MAT.3.3.1",
+                  "text": "Geometrik cisimlerin özelliklerini yorumlayabilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-geometrik-cisimlerin-ozellikleri-geometrik-sekilleri-siniflandirma",
+              "name": "Geometrik Cisimlerin Özellikleri Geometrik Şekilleri Sınıflandırma",
+              "outcomes": [
+                {
+                  "code": "MAT.3.3.2",
+                  "text": "Kenar sayılarına göre geometrik şekilleri sınıflandırabilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-geometrik-sekilleri-siniflandirma-geometrik-sekiller-ve-cisimler-cizme",
+              "name": "Geometrik Şekilleri Sınıflandırma Geometrik Şekiller ve Cisimler Çizme",
+              "outcomes": [
+                {
+                  "code": "MAT.3.3.3",
+                  "text": "Matematiksel araç ve teknolojileri kullanarak çeşitli geometrik şekilleri ve cisimleri çizebilme ç) Geometrik şekilleri kenar sayılarına göre adlandırır. a) Geometrik şekil ve cisim çizmeyi gerektiren matematiksel araç ve teknolojileri tanır. b) Geometrik şekil ve cisim çizmek için gerekli araçları ve teknolojiyi belirler. c) Belirlenen araç ve tek"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-geometrik-sekillerin-cevre-uzunluklarini-tahmin-etme-sivi-miktarini-tahmin-etme",
+              "name": "Geometrik Şekillerin Çevre Uzunluklarını Tahmin Etme Sıvı Miktarını Tahmin Etme",
+              "outcomes": [
+                {
+                  "code": "MAT.3.3.4",
+                  "text": "Standart olmayan ve standart ölçme araçları ile geometrik şekillerin çevre uzunluğunu tahmin edebilme"
+                },
+                {
+                  "code": "MAT.3.3.5",
+                  "text": "Standart sıvı ölçü birimleri cinsinden sıvı miktarını tahmin edebilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-matematik-sivi-miktarini-tahmin-etme-simetri-dogrusu",
+              "name": "Sıvı Miktarını Tahmin Etme Simetri Doğrusu",
+              "outcomes": [
+                {
+                  "code": "MAT.3.3.6",
+                  "text": "Birden fazla simetri doğrusu olan şekilleri çözümleyebilme b) Belirlenen standart sıvı ölçü birimi cinsinden sıvının miktarına ilişkin tahminde bulunur. c) Tahminini ölçüm sonuçlarıyla karşılaştırarak tahminine ilişkin yargıda bulunur. a) Kare, dikdörtgen ve dairenin birden fazla simetri doğrusu olduğunu belirler. b) Simetri doğrusuna göre oluşan p"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-matematik-nesneleri-n-geometri-si-2",
+          "name": "NESNELERİN GEOMETRİSİ (2)",
+          "topics": [
+            {
+              "id": "g3-matematik-simetrik-sekli-tamamlama-simetrik-sekil-olusturma",
+              "name": "Simetrik Şekli Tamamlama Simetrik Şekil Oluşturma",
+              "outcomes": [
+                {
+                  "code": "MAT.3.3.7",
+                  "text": "Bir parçası verilen simetrik şekli simetri doğrusuna göre yapılandırabilme"
+                },
+                {
+                  "code": "MAT.3.3.8",
+                  "text": "Yönerge ile yapılandırılan ve bir parçası verilen bir şekli tamamlayarak simetrisini oluşturmaya ilişkin kodlama stratejilerini kullanarak yargıda bulunabilme a) Bir parçası verilen simetrik şekli inceleyerek mantıksal ilişkiler ortaya koyar. b) Bir parçası verilen simetrik şekli yatay ve dikey simetri doğrusuna göre tamamlar. a) Bir parçası verile"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-matematik-veri-ye-dayali-arastirma",
+          "name": "VERİYE DAYALI ARAŞTIRMA",
+          "topics": [
+            {
+              "id": "g3-matematik-veriyle-calisma-ve-veriye-dayali-karar-verme",
+              "name": "Veriyle Çalışma ve Veriye Dayalı Karar Verme",
+              "outcomes": [
+                {
+                  "code": "MAT.3.4.1",
+                  "text": "Kategorik ve sayma ile elde edilen nicel veriye dayalı tek veri grubu ile çalışabilme ve veriye dayalı karar verebilme f) Araştırma sonuçlarını yorumlar. g) Araştırma sonuçlarını araştırma sorularına göre değerlendirir. Çevre ve İklim Değişikliği Haftası (Haziran ayının ikinci haftası)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hayat-bilgisi",
+      "name": "Hayat Bilgisi",
+      "themes": [
+        {
+          "id": "g3-hayat-bilgisi-ben-ve-okulum",
+          "name": "BEN VE OKULUM",
+          "topics": [
+            {
+              "id": "g3-hayat-bilgisi-guclu-ve-gelisime-acik-alanlar",
+              "name": "Güçlü ve Gelişime Açık Alanlar",
+              "outcomes": [
+                {
+                  "code": "HB.3.1.1",
+                  "text": "Güçlü ve gelişime açık olduğu alanlara karar verebilme a) Güçlü ve gelişime açık olduğu alanlara ilişkin karar vermeye yönelik amacını belirler. b) Güçlü ve gelişime açık olduğu alanlara ilişkin karar vermeye yönelik bilgi toplar. c) Güçlü ve gelişime açık olduğu alanlara ilişkin karar vermeye yönelik seçenekler oluşturur. Öğrenme çıktıları; öz değ"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-okuldaki-hak-ve-sorumluluklar",
+              "name": "Okuldaki Hak ve Sorumluluklar",
+              "outcomes": [
+                {
+                  "code": "HB.3.1.2",
+                  "text": "Okuldaki hak ve sorumluluklarına uygun davranabilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-cocuk-haklari",
+              "name": "Çocuk Hakları",
+              "outcomes": [
+                {
+                  "code": "HB.3.1.3",
+                  "text": "Çocuk haklarını tanıtmak için fikirlerini eyleme dönüştürebilme c) Çocuk haklarını tanıtmak için uyguladığı planı değerlendirir"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-hayat-bilgisi-sagligim-ve-guvenli-gi-m",
+          "name": "SAĞLIĞIM VE GÜVENLİĞİM",
+          "topics": [
+            {
+              "id": "g3-hayat-bilgisi-sagligi-koruma",
+              "name": "Sağlığı Koruma",
+              "outcomes": [
+                {
+                  "code": "HB.3.2.1",
+                  "text": "Sağlığını korumaya yönelik davranışlarını düzenleyebilme Öğrenme çıktıları; performans görevi, gösteri, rol oynama, yapılandırılmış röportaj, görüşme gibi teknikler ve ölçme araçları kullanılarak değerlendirilebilir. Öğrencilerden istenen afiş, broşür, özgün bir metin veya slogan yazma gibi ürünler dereceli puanlama anahtarı ile değerlendirilebilir"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-guvenligi-tehdit-eden-durumlar",
+              "name": "Güvenliği Tehdit Eden Durumlar",
+              "outcomes": [
+                {
+                  "code": "HB.3.2.2",
+                  "text": "Güvenliğini tehdit eden bir durumla karşılaştığında yapılması gerekenleri sorgulayabilme c) Güvenliğini tehdit eden bir durumla karşılaştığında yapılması gerekenler hakkında bilgi toplar. Atatürk Haftası (10-16 Kasım) Afet Eğitimi Hazırlık Günü (12 Kasım)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-hayat-bilgisi-ai-lem-ve-toplum",
+          "name": "AİLEM VE TOPLUM",
+          "topics": [
+            {
+              "id": "g3-hayat-bilgisi-trafik-kurallari",
+              "name": "Trafik Kuralları",
+              "outcomes": [
+                {
+                  "code": "HB.3.2.3",
+                  "text": "Trafik kurallarına uymanın önemine ilişkin özgün ürünler sentezleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-trafik-kurallari-aile-ve-toplum",
+              "name": "Trafik Kuralları Aile ve Toplum",
+              "outcomes": [
+                {
+                  "code": "HB.3.3.1",
+                  "text": "Aile ve toplum arasındaki ilişkiyi çözümleyebilme b) Aile ve toplum arasındaki ilişkiyi belirler"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-yardimlasma",
+              "name": "Yardımlaşma",
+              "outcomes": [
+                {
+                  "code": "HB.3.3.2",
+                  "text": "Yardıma ihtiyacı olan bireylerin yaşamını kolaylaştırmak için fikirlerini eyleme dönüştürebilme a) Yardıma ihtiyacı olan bireylerin yaşamını kolaylaştırmak için plan yapar"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-hayat-bilgisi-yasadigim-yer-ve-ulkem",
+          "name": "YAŞADIĞIM YER VE ÜLKEM",
+          "topics": [
+            {
+              "id": "g3-hayat-bilgisi-toplumsal-yasamda-meslekler",
+              "name": "Toplumsal Yaşamda Meslekler",
+              "outcomes": [
+                {
+                  "code": "HB.3.3.3",
+                  "text": "Mesleklerin toplumsal yaşamdaki önemini yorumlayabilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-toplumsal-yasamda-meslekler-tarih-mek-n-ve-dogal-guzellikler",
+              "name": "Toplumsal Yaşamda Meslekler Tarihî Mekân ve Doğal Güzellikler",
+              "outcomes": [
+                {
+                  "code": "HB.3.4.1",
+                  "text": "Yakın çevresindeki tarihî mekân ve doğal güzelliklerin korunmasının önemini fark edebilme b) Mesleklerin toplumsal yaşamdaki önemine ilişkin verilen örnekleri bağlamdan kopmadan özgün örneklere dönüştürür. c) Mesleklerin toplumsal yaşamdaki önemine ilişkin oluşturduğu özgün örnekleri kendi cümleleri ile ifade eder. AİLEM VE TOPLUM Öğrenme çıktıları"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-ulkemizin-yonetim-sekli",
+              "name": "Ülkemizin Yönetim Şekli",
+              "outcomes": [
+                {
+                  "code": "HB.3.4.2",
+                  "text": "Ülkemizin yönetim şekli ile ilgili kaynaklardan bilgi toplayabilme a) Ülkemizin yönetim şekli ile ilgili bilgi toplayacağı kaynakları belirler. b) Ülkemizin yönetim şekli ile ilgili belirlediği kaynaklardan bilgileri bulur"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-mustafa-kemal-ataturk-un-basarilari-ve-kisilik-ozellikleri",
+              "name": "Mustafa Kemal Atatürk’ün Başarıları ve Kişilik Özellikleri",
+              "outcomes": [
+                {
+                  "code": "HB.3.4.3",
+                  "text": "Mustafa Kemal Atatürk’ün kişilik özelliklerini çözümleyebilme a) Mustafa Kemal Atatürk’ün kişilik özelliklerini ve elde ettiği başarıları belirler. Yeşilay Haftası (1 Mart gününü içine alan hafta) Bilim ve Teknoloji Haftası (8-14 Mart)"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-mill-birlik-ve-beraberlik",
+              "name": "Millî Birlik ve Beraberlik",
+              "outcomes": [
+                {
+                  "code": "HB.3.4.4",
+                  "text": "Millî birlik ve beraberliğimizin ülkemize katkılarını açıklayabilme Öğrenme çıktıları; yapılandırılmış grid, performans görevi, portfolyo ve çalışma yaprağı, anı defteri kullanılarak değerlendirilebilir. Öğrencilerin hazırlayacakları metin, şiir, hikâye, broşür, poster, kavram haritası, anı defteri gibi ürünler dereceli puanlama anahtarı ile değerl"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-hayat-bilgisi-doga-ve-cevre",
+          "name": "DOĞA VE ÇEVRE",
+          "topics": [
+            {
+              "id": "g3-hayat-bilgisi-dogadaki-varliklarin-i-nsan-yasamindaki-onemi",
+              "name": "Doğadaki Varlıkların İnsan Yaşamındaki Önemi",
+              "outcomes": [
+                {
+                  "code": "HB.3.5.1",
+                  "text": "Doğadaki varlıkların insan yaşamı için önemini yorumlayabilme a) Doğadaki varlıkların insan yaşamı için önemine ilişkin verilen örnekleri inceler. b) Doğadaki varlıkların insan yaşamı için önemine ilişkin verilen örnekleri bağlamdan kopmadan özgün örneklere dönüştürür. c) Doğadaki varlıkların insan yaşamı için önemine ilişkin oluşturduğu özgün örne"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-kroki-ve-konum",
+              "name": "Kroki ve Konum",
+              "outcomes": [
+                {
+                  "code": "HB.3.5.2",
+                  "text": "Krokiyi kullanarak bulunduğu yerin konumunu algılayabilme a) Krokiyi kullanarak bulunduğu yerin konumunu belirler. b) Bulunduğu yerin konumsal görselleştirmesini yapar. c) Bulunduğu yerin konumsal özelliklerini özetler"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-afet-oncesi-afet-ani-ve-afet-sonrasinda-yapilmasi-gerekenler",
+              "name": "Afet Öncesi, Afet Anı ve Afet Sonrasında Yapılması Gerekenler",
+              "outcomes": [
+                {
+                  "code": "HB.3.5.3",
+                  "text": "Afetlere yönelik yapılması gerekenleri sınıflandırabilme c) Afetlere yönelik yapılması gerekenleri afet öncesi, afet anı ve afet sonrası olarak tasnif eder. ç) Afetlere yönelik yapılması gerekenleri afet öncesi, afet anı ve afet sonrası olarak etiketler. Emek ve Dayanışma Günü (1 Mayıs)"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-cevresel-surdurulebilirlik",
+              "name": "Çevresel Sürdürülebilirlik",
+              "outcomes": [
+                {
+                  "code": "HB.3.5.4",
+                  "text": "Çevresel sürdürülebilirliğe yönelik kaynaklardan bilgi toplayabilme c) Çevresel sürdürülebilirliğe yönelik ulaştığı kaynakların uygunluğunu açıklar. ç) Çevresel sürdürülebilirliğe yönelik kaynaklardan ulaştığı bilgileri kaydeder"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-bilimsel-gelismelerin-gunluk-yasama-etkisi",
+              "name": "Bilimsel Gelişmelerin Günlük Yaşama Etkisi",
+              "outcomes": [
+                {
+                  "code": "HB.3.6.1",
+                  "text": "Bilimsel gelişmelerin günlük yaşama etkisini yorumlayabilme a) Bilimsel gelişmelerin günlük yaşama etkisine ilişkin verilen örnekleri inceler. b) Bilimsel gelişmelerin günlük yaşama etkisine ilişkin verilen örnekleri bağlamdan kopmadan özgün örneklere dönüştürür. c) Bilimsel gelişmelerin günlük yaşama etkisine ilişkin oluşturduğu özgün örnekleri ke"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-teknolojik-gelismelerin-gunluk-yasama-etkisi",
+              "name": "Teknolojik Gelişmelerin Günlük Yaşama Etkisi",
+              "outcomes": [
+                {
+                  "code": "HB.3.6.2",
+                  "text": "Teknolojik gelişmelerin günlük yaşama etkisini çözümleyebilme a) Teknolojik gelişmelerin günlük yaşama etkisini belirler"
+                }
+              ]
+            },
+            {
+              "id": "g3-hayat-bilgisi-sanatcilarin-sanata-katkilari",
+              "name": "Sanatçıların Sanata Katkıları",
+              "outcomes": [
+                {
+                  "code": "HB.3.6.3",
+                  "text": "Sanatçıların sanata katkılarına yönelik kaynaklardan bilgi toplayabilme c) Sanatçıların sanata katkılarına yönelik ulaştığı kaynakların uygunluğunu açıklar. ç) Sanatçıların sanata katkılarına yönelik kaynaklardan ulaştığı bilgileri kaydeder"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fen-bilimleri",
+      "name": "Fen Bilimleri",
+      "themes": [
+        {
+          "id": "g3-fen-bilimleri-bi-li-msel-kesi-f-yolculugu",
+          "name": "BİLİMSEL KEŞİF YOLCULUĞU",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-bilimsel-bilgiye-ulasma-yollari",
+              "name": "Bilimsel Bilgiye Ulaşma Yolları",
+              "outcomes": [
+                {
+                  "code": "FB.3.1.1",
+                  "text": "Bilimsel bilgiye ulaşma yollarını sorgulayabilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-bilimsel-bilgiye-ulasma-yollari-bilim-i-nsanlarinin-ozellikleri",
+              "name": "Bilimsel Bilgiye Ulaşma Yolları Bilim İnsanlarının Özellikleri",
+              "outcomes": [
+                {
+                  "code": "FB.3.1.2",
+                  "text": "Bilim insanlarının özelliklerini genelleyebilme a) Bilim insanları hakkında bilgi toplar. b) Bilim insanlarının ortak özelliklerini belirler. c) Bilim insanlarının ortak olmayan özelliklerini belirler. ç) Örüntüler üzerinden bilim insanlarının özellikleri hakkında önermede bulunur"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-fen-bilimleri-canlilar-dunyasina-yolculuk",
+          "name": "CANLILAR DÜNYASINA YOLCULUK",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-canlilarin-siniflandirilmasi",
+              "name": "Canlıların Sınıflandırılması",
+              "outcomes": [
+                {
+                  "code": "FB.3.2.1",
+                  "text": "Canlıları; mikroskopla görülebilen canlılar, mantarlar, bitkiler ve hayvanlar olarak sınıflandırabilme a) Canlıların benzer ve farklı niteliklerini belirler. b) Canlıları niteliklerine göre ayırır. c) Canlıları gruplandırır. ç) Canlıları etiketler"
+                }
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-duyu-organlarinin-i-slevleri",
+              "name": "Duyu Organlarının İşlevleri",
+              "outcomes": [
+                {
+                  "code": "FB.3.2.2",
+                  "text": "Canlıların çevrelerini farklı yollarla algılamaları konusunda bilimsel çıkarım yapabilme a) Canlıların çevrelerini algılama biçimlerine ilişkin nitelikleri tanımlar. b) Duyu organlarının işlevleri ile ilgili veri toplayarak kaydeder. c) Canlıların çevrelerini farklı biçimlerde algılamalarına ilişkin verileri yorumlayarak değerlendirir"
+                }
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-canlilarin-yasam-donguleri",
+              "name": "Canlıların Yaşam Döngüleri",
+              "outcomes": [
+                {
+                  "code": "FB.3.2.3",
+                  "text": "Canlıların yaşam döngülerini açıklamada tümevarımsal akıl yürütebilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-fen-bilimleri-yer-bi-li-mci-ler-i-s-basinda",
+          "name": "YER BİLİMCİLER İŞ BAŞINDA",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-canlilarin-yasam-donguleri-kayaclar-madenler-ve-mineraller",
+              "name": "Canlıların Yaşam Döngüleri Kayaçlar, Madenler ve Mineraller",
+              "outcomes": [
+                {
+                  "code": "FB.3.3.1",
+                  "text": "Kayaçlar, madenler ve mineraller ile ilgili tümdengelimsel akıl yürütebilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-kayaclar-madenler-ve-mineraller-fosil-olusumu",
+              "name": "Kayaçlar, Madenler ve Mineraller Fosil Oluşumu",
+              "outcomes": [
+                {
+                  "code": "FB.3.3.2",
+                  "text": "Fosil oluşumu ile ilgili bilgileri sentezleyebilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-fen-bilimleri-maddeyi-taniyalim-karistirip-ayiralim",
+          "name": "MADDEYİ TANIYALIM, KARIŞTIRIP AYIRALIM",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-fosil-olusumu-maddenin-kati-sivi-ve-gaz-h-li",
+              "name": "Fosil Oluşumu Maddenin Katı, Sıvı ve Gaz Hâli",
+              "outcomes": [
+                {
+                  "code": "FB.3.4.1",
+                  "text": "Çevresindeki maddeleri hâllerine göre sınıflandırabilme a) Çevresindeki maddelerin niteliklerini tanımlar. b) Çevresindeki maddeleri niteliklerine göre ayırır. c) Çevresindeki maddeleri hâllerine göre gruplandırır. ç) Maddeleri hâllerine göre katı, sıvı ve gaz olarak etiketler"
+                }
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-karisimlar-ve-karisimlarin-ayrilmasi",
+              "name": "Karışımlar ve Karışımların Ayrılması",
+              "outcomes": [
+                {
+                  "code": "FB.3.4.2",
+                  "text": "Günlük yaşamda karşılaştığı karışımların ayrılmasında kullanılabilecek uygun yöntemleri kullanarak deney yapabilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-karisimlar-ve-karisimlarin-ayrilmasi-atiklarin-ayristirilmasi",
+              "name": "Karışımlar ve Karışımların Ayrılması Atıkların Ayrıştırılması",
+              "outcomes": [
+                {
+                  "code": "FB.3.4.3",
+                  "text": "Atıkların ayrıştırılmasına ilişkin problem çözebilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-fen-bilimleri-hareketi-kesfedi-yorum",
+          "name": "HAREKETİ KEŞFEDİYORUM",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-atiklarin-ayristirilmasi-varliklarin-hareketleri",
+              "name": "Atıkların Ayrıştırılması Varlıkların Hareketleri",
+              "outcomes": [
+                {
+                  "code": "FB.3.5.1",
+                  "text": "Varlıkların hareket durumlarını gözleme dayalı tahmin edebilme a) Varlıkların hareket durumlarına ilişkin ön gözlem ve/veya deneyimlerini ilişkilendirir. b) Varlıkların hareket durumlarına ilişkin çıkarım yapar. c) Varlıkların hareket durumlarının sonuçlarına ilişkin yargıda bulunur"
+                }
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-kuvvet-ve-etkileri",
+              "name": "Kuvvet ve Etkileri",
+              "outcomes": [
+                {
+                  "code": "FB.3.5.2",
+                  "text": "Kuvvetin varlıklar üzerindeki etkilerini bilimsel gözleme dayalı tahmin edebilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-fen-bilimleri-yasamimizi-kolaylastiran-elektri-k",
+          "name": "YAŞAMIMIZI KOLAYLAŞTIRAN ELEKTRİK",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-kuvvet-ve-etkileri-elektrikli-arac-gerec",
+              "name": "Kuvvet ve Etkileri Elektrikli Araç Gereç",
+              "outcomes": [
+                {
+                  "code": "FB.3.6.1",
+                  "text": "Bazı araç gerecin elektrikli olduğuna ilişkin bilimsel çıkarım yapabilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-elektrikli-arac-gerec-elektrikli-arac-gerecin-guvenli-kullanimi",
+              "name": "Elektrikli Araç Gereç Elektrikli Araç Gerecin Güvenli Kullanımı",
+              "outcomes": [
+                {
+                  "code": "FB.3.6.2",
+                  "text": "Elektrikli araç gerecin güvenli kullanımı ile ilgili eleştirel düşünebilme a) Farklı araç gerecin niteliklerini tanımlar. b) Elektrikli araç gereçle ilgili veri toplayarak kaydeder. c) Elektrikli araç gereçle ilgili verileri değerlendirir. a) Elektrikli araç gerecin güvenli kullanımı ile ilgili verilen bir olay/konu/problem veya durumu sorgular. b)"
+                }
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-elektrigin-tasarruflu-kullanimi",
+              "name": "Elektriğin Tasarruflu Kullanımı",
+              "outcomes": [
+                {
+                  "code": "FB.3.6.3",
+                  "text": "Elektriği tasarruflu kullanma konusunda bilimsel veriye dayalı tahmin edebilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-fen-bilimleri-topragi-taniyorum-tarimi-kesfedi-yorum",
+          "name": "TOPRAĞI TANIYORUM, TARIMI KEŞFEDİYORUM",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-elektrigin-tasarruflu-kullanimi-toprak-olusumu-ve-yapisi",
+              "name": "Elektriğin Tasarruflu Kullanımı Toprak Oluşumu ve Yapısı",
+              "outcomes": [
+                {
+                  "code": "FB.3.7.1",
+                  "text": "Toprak oluşumunu ve yapısını bilimsel olarak gözlemleyebilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-toprak-olusumu-ve-yapisi-bitki-yetistirme",
+              "name": "Toprak Oluşumu ve Yapısı Bitki Yetiştirme",
+              "outcomes": [
+                {
+                  "code": "FB.3.7.2",
+                  "text": "Bir bitkinin yetişmesi için gerekenleri genelleyebilme"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g3-fen-bilimleri-canlilarin-yasam-alanlarina-yolculuk",
+          "name": "CANLILARIN YAŞAM ALANLARINA YOLCULUK",
+          "topics": [
+            {
+              "id": "g3-fen-bilimleri-bitki-yetistirme-yasam-alanlari",
+              "name": "Bitki Yetiştirme Yaşam Alanları",
+              "outcomes": [
+                {
+                  "code": "FB.3.8.1",
+                  "text": "Canlıların yaşam alanlarının özelliklerini belirlemeye yönelik kanıt kullanabilme"
+                }
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-yasam-alanlari-canli-cesitliligi",
+              "name": "Yaşam Alanları Canlı Çeşitliliği",
+              "outcomes": [
+                {
+                  "code": "FB.3.8.2",
+                  "text": "Yaşam alanındaki canlı çeşitliliğini operasyonel olarak tanımlayabilme a) Yaşam alanının özelliklerini tanımlar. b) Yaşam alanındaki canlı çeşitliliği ile ilgili ölçüm yapar. c) Canlı çeşitliliğinin tanımını yapar"
+                }
+              ]
+            },
+            {
+              "id": "g3-fen-bilimleri-yasam-alanlarinin-korunmasinin-canli-cesitliligine-etkisi",
+              "name": "Yaşam Alanlarının Korunmasının Canlı Çeşitliliğine Etkisi",
+              "outcomes": [
+                {
+                  "code": "FB.3.8.3",
+                  "text": "Yaşam alanlarının korunması için yapılacakları sorgulayabilme a) Merak ettiği konuyu tanımlar. b) İlgili konu hakkında sorular sorar. c) İlgili konu hakkında bilgi toplar. ç) Toplanan bilgilerin doğruluğunu değerlendirir. d) Toplanan bilgiler üzerinde çıkarım yapar"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ingilizce",
+      "name": "İngilizce",
+      "themes": [
+        {
+          "id": "g3-ingilizce-school-life",
+          "name": "SCHOOL LIFE",
+          "subthemes": [
+            {
+              "id": "g3-ingilizce-school-life-greetings-and-introductions-at-school",
+              "name": "Greetings and introductions at school"
+            },
+            {
+              "id": "g3-ingilizce-school-life-people-and-places-at-school",
+              "name": "People and places at school"
+            },
+            {
+              "id": "g3-ingilizce-school-life-months-of-the-year",
+              "name": "Months of the year"
+            },
+            {
+              "id": "g3-ingilizce-school-life-ages-and-birthday-celebrations",
+              "name": "Ages and birthday celebrations"
+            },
+            {
+              "id": "g3-ingilizce-school-life-national-days-and-celebrations",
+              "name": "National days and celebrations"
+            }
+          ],
+          "outcome_codes": [
+            "ENG.3.1.L1",
+            "ENG.3.1.L2",
+            "ENG.3.1.L3",
+            "ENG.3.1.L4",
+            "ENG.3.1.P1",
+            "ENG.3.1.R1",
+            "ENG.3.1.R2",
+            "ENG.3.1.R3",
+            "ENG.3.1.R4",
+            "ENG.3.1.V1",
+            "ENG.3.1.G1",
+            "ENG.3.1.W1",
+            "ENG.3.1.W2",
+            "ENG.3.1.W3",
+            "ENG.3.1.W4",
+            "ENG.3.1.W5",
+            "ENG.3.1.W6",
+            "ENG.3.1.S1",
+            "ENG.3.1.S2",
+            "ENG.3.1.S3",
+            "ENG.3.1.S4",
+            "ENG.3.1.S5",
+            "ENG.3.1.S6"
+          ],
+          "outcomes": [
+            {
+              "code": "ENG.3.1.L1",
+              "text": "Pupils can get ready for the listening/watching-comprehension process for the current content on “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations”."
+            },
+            {
+              "code": "ENG.3.1.L2",
+              "text": "Pupils can bring information about the current content on “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” together with key details and main components while listening/watching it."
+            },
+            {
+              "code": "ENG.3.1.L3",
+              "text": "Pupils can make meaning of/derive meaning from the current content on “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” through details by listening/ watching it carefully."
+            },
+            {
+              "code": "ENG.3.1.L4",
+              "text": "Pupils can convey their knowledge, experience, thoughts, and feelings about the whole listening/watching-comprehension process in relation to the current content on “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” in a very simple way."
+            },
+            {
+              "code": "ENG.3.1.P1",
+              "text": "Pupils can select and use the target phonological elements of the current content about “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” accurately, authentically, and naturally through spontaneous selection and using it in an appropriate and effective way when ommunicating with others."
+            },
+            {
+              "code": "ENG.3.1.R1",
+              "text": "Pupils can get ready for the reading-comprehension process about the current content on “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations”."
+            },
+            {
+              "code": "ENG.3.1.R2",
+              "text": "Pupils can bring information about the current content on “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” through skimming (looking quickly at) the audiovisual elements and reading the content very quickly."
+            },
+            {
+              "code": "ENG.3.1.R3",
+              "text": "Pupils can make meaning of/derive meaning from the current content about “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” by reading it carefully."
+            },
+            {
+              "code": "ENG.3.1.R4",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the reading-comprehension process about the current content, “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” for reflection in relation to themselves or others, both individually and/or with others."
+            },
+            {
+              "code": "ENG.3.1.V1",
+              "text": "Pupils can select and use the target vocabulary of the current content about “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” accurately, authentically, spontaneously, and naturally and use it appropriately and effectively when communicating with others."
+            },
+            {
+              "code": "ENG.3.1.G1",
+              "text": "Pupils can select and use the language including target grammatical elements of the current content about “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” accurately, authentically, spontaneously, and naturally and use it appropriately and effectively when communicating with others."
+            },
+            {
+              "code": "ENG.3.1.W1",
+              "text": "Pupils can get ready for the writing-expression process about the current content on “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” in an age- and levelappropriate way."
+            },
+            {
+              "code": "ENG.3.1.W2",
+              "text": "Pupils can copy the model/example on the writing task about the current content on “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” based on the model/ example provided to practise for further writing activities."
+            },
+            {
+              "code": "ENG.3.1.W3",
+              "text": "Pupils can organise and form a content for the assigned writing task on the current content “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” based on the model/example provided."
+            },
+            {
+              "code": "ENG.3.1.W4",
+              "text": "Pupils can practise writing by constructing content for the assigned writing task on the current content “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations”."
+            },
+            {
+              "code": "ENG.3.1.W5",
+              "text": "Pupils can reorganise and use information by reconstructing it in the new written tasks about the “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” to communicate with other people."
+            },
+            {
+              "code": "ENG.3.1.W6",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the writingexpression process about the current content, “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” very simply for reflection in relation to themselves or others, both individually and/or with others."
+            },
+            {
+              "code": "ENG.3.1.S1",
+              "text": "Pupils can get ready for speaking-expression process about the current content on “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” with the help of supplementary audio-visual materials."
+            },
+            {
+              "code": "ENG.3.1.S2",
+              "text": "Pupils can imitate the model/example for producing verbal content about the current theme on “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations”."
+            },
+            {
+              "code": "ENG.3.1.S3",
+              "text": "Pupils can organise simple new verbal content on “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” by speaking accurately, efficiently, and authentically."
+            },
+            {
+              "code": "ENG.3.1.S4",
+              "text": "Pupils can form a simple new verbal content on “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” through reconstruction by speaking accurately, efficiently, and authentically."
+            },
+            {
+              "code": "ENG.3.1.S5",
+              "text": "Pupils can reorganise and use information about the current theme on “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” by reconstructing it to communicate with other people."
+            },
+            {
+              "code": "ENG.3.1.S6",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the writingexpression process about the current content, “school life with greetings and introductions at school, people and places at school, months of the year, ages and birthday celebrations; national days and celebrations” very simply for reflection in relation to themselves or others, both individually and/or with others."
+            }
+          ]
+        },
+        {
+          "id": "g3-ingilizce-classroom-life",
+          "name": "CLASSROOM LIFE",
+          "subthemes": [
+            {
+              "id": "g3-ingilizce-classroom-life-classroom-instructions-and-language",
+              "name": "Classroom instructions and language"
+            },
+            {
+              "id": "g3-ingilizce-classroom-life-classroom-furniture-objects-and-devices",
+              "name": "Classroom furniture, objects and devices"
+            },
+            {
+              "id": "g3-ingilizce-classroom-life-school-subjects",
+              "name": "School subjects"
+            },
+            {
+              "id": "g3-ingilizce-classroom-life-seasons-of-the-year",
+              "name": "Seasons of the year"
+            }
+          ],
+          "outcome_codes": [
+            "ENG.3.2.L1",
+            "ENG.3.2.L2",
+            "ENG.3.2.L3",
+            "ENG.3.2.L4",
+            "ENG.3.2.P1",
+            "ENG.3.2.R1",
+            "ENG.3.2.R2",
+            "ENG.3.2.R3",
+            "ENG.3.2.R4",
+            "ENG.3.2.V1",
+            "ENG.3.2.G1",
+            "ENG.3.2.W1",
+            "ENG.3.2.W2",
+            "ENG.3.2.W3",
+            "ENG.3.2.W4",
+            "ENG.3.2.W5",
+            "ENG.3.2.W6",
+            "ENG.3.2.S1",
+            "ENG.3.2.S2",
+            "ENG.3.2.S3",
+            "ENG.3.2.S4",
+            "ENG.3.2.S5",
+            "ENG.3.2.S6"
+          ],
+          "outcomes": [
+            {
+              "code": "ENG.3.2.L1",
+              "text": "Pupils can get ready for the listening/watching-comprehension process for the current content on “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year”."
+            },
+            {
+              "code": "ENG.3.2.L2",
+              "text": "Pupils can bring information about the current content on “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” together with key details and main components while listening/watching it."
+            },
+            {
+              "code": "ENG.3.2.L3",
+              "text": "Pupils can make meaning of/derive meaning from the current content on “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” through details by listening/watching it carefully."
+            },
+            {
+              "code": "ENG.3.2.L4",
+              "text": "Pupils can convey their knowledge, experience, thoughts, and feelings about the whole listening/watching-comprehension process in relation to the current content on “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” in a very simple way."
+            },
+            {
+              "code": "ENG.3.2.P1",
+              "text": "Pupils can select and use the target phonological elements of the current content about “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” accurately, authentically, and naturally through spontaneous selection and using it in an appropriate and effective way when communicating with others."
+            },
+            {
+              "code": "ENG.3.2.R1",
+              "text": "Pupils can get ready for the reading-comprehension process about the current content on “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year”."
+            },
+            {
+              "code": "ENG.3.2.R2",
+              "text": "Pupils can bring information about the current content on “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” through skimming (looking quickly at) the audio-visual elements and reading the content very quickly."
+            },
+            {
+              "code": "ENG.3.2.R3",
+              "text": "Pupils can make meaning of/derive meaning from the current content about “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” by reading it carefully."
+            },
+            {
+              "code": "ENG.3.2.R4",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the reading-comprehension process about the current content, “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” for reflection in relation to themselves or others, both individually and/or with others."
+            },
+            {
+              "code": "ENG.3.2.V1",
+              "text": "Pupils can select and use the target vocabulary of the current content about “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” accurately, authentically, spontaneously, and naturally and use it appropriately and effectively when communicating with others."
+            },
+            {
+              "code": "ENG.3.2.G1",
+              "text": "Pupils can select and use the language including target grammatical elements of the current content about “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” accurately, authentically, spontaneously, and naturally and use it appropriately and effectively when communicating with others."
+            },
+            {
+              "code": "ENG.3.2.W1",
+              "text": "Pupils can get ready for the writing-expression process about the current content on “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” in an age- and level-appropriate way."
+            },
+            {
+              "code": "ENG.3.2.W2",
+              "text": "Pupils can copy the model/example on the writing task about the current content on “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” based on the model/example provided to practise for further writing activities."
+            },
+            {
+              "code": "ENG.3.2.W3",
+              "text": "Pupils can organise and form a content for the assigned writing task on the current content “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” based on the model/example provided."
+            },
+            {
+              "code": "ENG.3.2.W4",
+              "text": "Pupils can practise writing by constructing content for the assigned writing task on the current content “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year”."
+            },
+            {
+              "code": "ENG.3.2.W5",
+              "text": "Pupils can reorganise and use information by reconstructing it in the new written tasks about the “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” to communicate with other people."
+            },
+            {
+              "code": "ENG.3.2.W6",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the writingexpression process about the current content, “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” very simply for reflection in relation to themselves or others, both individually and/or with others."
+            },
+            {
+              "code": "ENG.3.2.S1",
+              "text": "Pupils can get ready for speaking-expression process about the current content on “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” with the help of supplementary audio-visual materials."
+            },
+            {
+              "code": "ENG.3.2.S2",
+              "text": "Pupils can imitate the model/example for producing verbal content about the current theme on “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year”."
+            },
+            {
+              "code": "ENG.3.2.S3",
+              "text": "Pupils can organise simple new verbal content on “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” by speaking accurately, efficiently, and authentically."
+            },
+            {
+              "code": "ENG.3.2.S4",
+              "text": "Pupils can form a simple new verbal content on “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” through reconstruction by speaking accurately, efficiently, and authentically."
+            },
+            {
+              "code": "ENG.3.2.S5",
+              "text": "Pupils can reorganise and use information about the current theme on “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” by reconstructing it to communicate with other people."
+            },
+            {
+              "code": "ENG.3.2.S6",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the writingexpression process about the current content, “classroom life with classroom instructions and language; classroom furniture, objects, and devices, school subjects, seasons of the year” very simply for reflection in relation to themselves or others, both individually and/or with others."
+            }
+          ]
+        },
+        {
+          "id": "g3-ingilizce-personal-life",
+          "name": "PERSONAL LIFE",
+          "subthemes": [
+            {
+              "id": "g3-ingilizce-personal-life-parts-of-the-body-and-physical-features",
+              "name": "Parts of the body and physical features"
+            },
+            {
+              "id": "g3-ingilizce-personal-life-personal-characters",
+              "name": "Personal characters"
+            },
+            {
+              "id": "g3-ingilizce-personal-life-weather-conditions",
+              "name": "Weather conditions"
+            },
+            {
+              "id": "g3-ingilizce-personal-life-clothing-according-to-seasons-and-weather-conditions",
+              "name": "Clothing according to seasons and weather conditions"
+            },
+            {
+              "id": "g3-ingilizce-personal-life-preferences-for-clothing",
+              "name": "Preferences for clothing"
+            }
+          ],
+          "outcome_codes": [
+            "ENG.3.3.L1",
+            "ENG.3.3.L2",
+            "ENG.3.3.L3",
+            "ENG.3.3.L4",
+            "ENG.3.3.P1",
+            "ENG.3.3.R1",
+            "ENG.3.3.R2",
+            "ENG.3.3.R3",
+            "ENG.3.3.R4",
+            "ENG.3.3.V1",
+            "ENG.3.3.G1",
+            "ENG.3.3.W1",
+            "ENG.3.3.W2",
+            "ENG.3.3.W3",
+            "ENG.3.3.W4",
+            "ENG.3.3.W5",
+            "ENG.3.3.W6",
+            "ENG.3.3.S1",
+            "ENG.3.3.S2",
+            "ENG.3.3.S3",
+            "ENG.3.3.S4",
+            "ENG.3.3.S5",
+            "ENG.3.3.S6"
+          ],
+          "outcomes": [
+            {
+              "code": "ENG.3.3.L1",
+              "text": "Pupils can get ready for the listening/watching-comprehension process for the current content on “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing”."
+            },
+            {
+              "code": "ENG.3.3.L2",
+              "text": "Pupils can bring information about the current content on “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” together with key details and main components while listening/watching it."
+            },
+            {
+              "code": "ENG.3.3.L3",
+              "text": "Pupils can make meaning of/derive meaning from the current content on “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” through details by listening/watching it carefully."
+            },
+            {
+              "code": "ENG.3.3.L4",
+              "text": "Pupils can convey their knowledge, experience, thoughts, and feelings about the whole listening/watching-comprehension process in relation to the current content on “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” in a very simple way."
+            },
+            {
+              "code": "ENG.3.3.P1",
+              "text": "Pupils can select and use the target phonological elements of the current content about “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” accurately, authentically, and naturally through spontaneous selection and using it in an appropriate and effective way when communicating with others. Pupils activate their pre-existing knowledge and experiences related to the current theme and content by recalling it in herhis own language in their minds. Pupils recognise concrete and simple relationships between the previous knowledge and experience and the clues to the current content by responding to simple questions wit"
+            },
+            {
+              "code": "ENG.3.3.R1",
+              "text": "Pupils can get ready for the reading-comprehension process about the current content on “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing”."
+            },
+            {
+              "code": "ENG.3.3.R2",
+              "text": "Pupils can bring information about the current content on “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” through skimming (looking quickly at) the audio-visual elements and reading the content very quickly."
+            },
+            {
+              "code": "ENG.3.3.R3",
+              "text": "Pupils can make meaning of/derive meaning from the current content about “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” by reading it carefully."
+            },
+            {
+              "code": "ENG.3.3.R4",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the readingcomprehension process about the current content, “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” for reflection in relation to themselves or others, both individually and/or with others. Pupils make simple predictions about the current content based on the surrounding audio visual elements scattered around the classroom in relation to the current theme. Pupils comprehend the topic of the current content by listening towatching it as a whole without having intervals. Pupils recognise concretesimplebasic details and com"
+            },
+            {
+              "code": "ENG.3.3.V1",
+              "text": "Pupils can select and use the target vocabulary of the current content about “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” accurately, authentically, spontaneously, and naturally and use it appropriately and effectively when communicating with others."
+            },
+            {
+              "code": "ENG.3.3.G1",
+              "text": "Pupils can select and use the language including target grammatical elements of the current content about “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” accurately, authentically, spontaneously, and naturally and use it appropriately and effectively when communicating with others."
+            },
+            {
+              "code": "ENG.3.3.W1",
+              "text": "Pupils can get ready for the writing-expression process about the current content on “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” in an age and level-appropriate way."
+            },
+            {
+              "code": "ENG.3.3.W2",
+              "text": "Pupils can copy the model/example on the writing task about the current content on “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” based on the model/example provided to practise for further writing activities. Pupils check all initial predictions related to the current content by being aware of the commonalities between self-predictions and clues provided as visuals about the concept. Pupils locate the components of the current content within the whole by listening and watching it. Pupils make simple and basic classifications of the current content when necessary by grouping components words and other aspect"
+            },
+            {
+              "code": "ENG.3.3.W3",
+              "text": "Pupils can organise and form a content for the assigned writing task on the current content “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” based on the model/example provided."
+            },
+            {
+              "code": "ENG.3.3.W4",
+              "text": "Pupils can practise writing by constructing content for the assigned writing task on the current content “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing”."
+            },
+            {
+              "code": "ENG.3.3.W5",
+              "text": "Pupils can reorganise and use information by reconstructing it in the new written tasks about the “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” to communicate with other people."
+            },
+            {
+              "code": "ENG.3.3.W6",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the writing-expression process about the current content, “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” very simply for reflection in relation to themselves or others, both individually and/or with others."
+            },
+            {
+              "code": "ENG.3.3.S1",
+              "text": "Pupils can get ready for speaking-expression process about the current content on “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” with the help of supplementary audio-visual materials. Pupils convey their personal knowledge experiences thoughts and feelings in relation to the listeningwatching-comprehension process about the current content in a very simple way. Pupils convey their personal knowledge experiences thoughts and feelings in relation to the listeningwatching-comprehension process about the current content by sharing them with others in a very simple way. Pupils convey individually the knowledge ex"
+            },
+            {
+              "code": "ENG.3.3.S2",
+              "text": "Pupils can imitate the model/example for producing verbal content about the current theme on “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing”."
+            },
+            {
+              "code": "ENG.3.3.S3",
+              "text": "Pupils can organise simple new verbal content on “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” by speaking accurately, efficiently, and authentically."
+            },
+            {
+              "code": "ENG.3.3.S4",
+              "text": "Pupils can form a simple new verbal content on “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” through reconstruction by speaking accurately, efficiently, and authentically."
+            },
+            {
+              "code": "ENG.3.3.S5",
+              "text": "Pupils can reorganise and use information about the current theme on “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” by reconstructing it to communicate with other people."
+            },
+            {
+              "code": "ENG.3.3.S6",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the writingexpression process about the current content, “personal life with parts of the body and physical features; personal characters; weather conditions; clothing according to seasons and weather conditions; preferences for clothing” very simply for reflection in relation to themselves or others, both individually and/or with others. Pupils select simple and contextually appropriate contentinformation quickly for impromptu speaking situations and present it in a natural and authentic way with appropriate and accurate materials and appropriate to the modelsample age language level and context question-answer pointing and saying selecting and saying etc. wi"
+            }
+          ]
+        },
+        {
+          "id": "g3-ingilizce-family-life",
+          "name": "FAMILY LIFE",
+          "subthemes": [],
+          "outcome_codes": [
+            "ENG.3.4.L1",
+            "ENG.3.4.L2",
+            "ENG.3.4.L3",
+            "ENG.3.4.L4",
+            "ENG.3.4.P1",
+            "ENG.3.4.R1",
+            "ENG.3.4.R2",
+            "ENG.3.4.R3",
+            "ENG.3.4.R4",
+            "ENG.3.4.V1",
+            "ENG.3.4.G1",
+            "ENG.3.4.W1",
+            "ENG.3.4.W2",
+            "ENG.3.4.W3",
+            "ENG.3.4.W4",
+            "ENG.3.4.W5",
+            "ENG.3.4.W6",
+            "ENG.3.4.S1",
+            "ENG.3.4.S2",
+            "ENG.3.4.S3",
+            "ENG.3.4.S4",
+            "ENG.3.4.S5",
+            "ENG.3.4.S6"
+          ],
+          "outcomes": [
+            {
+              "code": "ENG.3.4.L1",
+              "text": "Pupils can get ready for the listening/watching-comprehension process for the current content on “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members”."
+            },
+            {
+              "code": "ENG.3.4.L2",
+              "text": "Pupils can bring information about the current content on “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” together with key details and main components while listening/watching it."
+            },
+            {
+              "code": "ENG.3.4.L3",
+              "text": "Pupils can make meaning of/derive meaning from the current content on “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” through details by listening/watching it carefully."
+            },
+            {
+              "code": "ENG.3.4.L4",
+              "text": "Pupils can convey their knowledge, experience, thoughts, and feelings about the whole listening/watching-comprehension process in relation to the current content on “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” in a very simple way."
+            },
+            {
+              "code": "ENG.3.4.P1",
+              "text": "Pupils can select and use the target phonological elements of the current content about “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” accurately, authentically, and naturally through spontaneous selection and using it in an appropriate and effective way when communicating with others."
+            },
+            {
+              "code": "ENG.3.4.R1",
+              "text": "Pupils can get ready for the reading-comprehension process about the current content on “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members”."
+            },
+            {
+              "code": "ENG.3.4.R2",
+              "text": "Pupils can bring information about the current content on “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” through skimming (looking quickly at) the audio-visual elements and reading the content very quickly."
+            },
+            {
+              "code": "ENG.3.4.R3",
+              "text": "Pupils can make meaning of/derive meaning from the current content about “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” by reading it carefully."
+            },
+            {
+              "code": "ENG.3.4.R4",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the reading-comprehension process about the current content, “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” for reflection in relation to themselves or others, both individually and/or with others."
+            },
+            {
+              "code": "ENG.3.4.V1",
+              "text": "Pupils can select and use the target vocabulary of the current content about “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” accurately, authentically, spontaneously, and naturally and use it appropriately and effectively when communicating with others."
+            },
+            {
+              "code": "ENG.3.4.G1",
+              "text": "Pupils can select and use the language including target grammatical elements of the current content about “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” accurately, authentically, spontaneously, and naturally and use it appropriately and effectively when communicating with others."
+            },
+            {
+              "code": "ENG.3.4.W1",
+              "text": "Pupils can get ready for the writing-expression process about the current content on “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” in an age- and level-appropriate way."
+            },
+            {
+              "code": "ENG.3.4.W2",
+              "text": "Pupils can copy the model/example on the writing task about the current content on “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” based on the model/example provided to practise for further writing activities."
+            },
+            {
+              "code": "ENG.3.4.W3",
+              "text": "Pupils can organise and form a content for the assigned writing task on the current content “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” based on the model/example provided."
+            },
+            {
+              "code": "ENG.3.4.W4",
+              "text": "Pupils can practise writing by constructing content for the assigned writing task on the current content “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members”."
+            },
+            {
+              "code": "ENG.3.4.W5",
+              "text": "Pupils can reorganise and use information by reconstructing it in the new written tasks about the “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” to communicate with other people."
+            },
+            {
+              "code": "ENG.3.4.W6",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the writingexpression process about the current content, “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” very simply for reflection in relation to themselves or others, both individually and/or with others."
+            },
+            {
+              "code": "ENG.3.4.S1",
+              "text": "Pupils can get ready for speaking-expression process about the current content on “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” with the help of supplementary audio-visual materials."
+            },
+            {
+              "code": "ENG.3.4.S2",
+              "text": "Pupils can imitate the model/example for producing verbal content about the current theme on “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members”."
+            },
+            {
+              "code": "ENG.3.4.S3",
+              "text": "Pupils can organise simple new verbal content on “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” by speaking accurately, efficiently, and authentically."
+            },
+            {
+              "code": "ENG.3.4.S4",
+              "text": "Pupils can form a simple new verbal content on “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” through reconstruction by speaking accurately, efficiently, and authentically."
+            },
+            {
+              "code": "ENG.3.4.S5",
+              "text": "Pupils can reorganise and use information about the current theme on “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” by reconstructing it to communicate with other people."
+            },
+            {
+              "code": "ENG.3.4.S6",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the writingexpression process about the current content, “family life with family members; ages of family members; daily routines and chores of family members; hobbies and abilities of family members” very simply for reflection in relation to themselves or others, both individually and/ or with others."
+            }
+          ]
+        },
+        {
+          "id": "g3-ingilizce-homes-houses-neighbourhoods",
+          "name": "HOMES & HOUSES & NEIGHBOURHOODS",
+          "subthemes": [],
+          "outcome_codes": [
+            "ENG.3.5.L1",
+            "ENG.3.5.L2",
+            "ENG.3.5.L3",
+            "ENG.3.5.L4",
+            "ENG.3.5.P1",
+            "ENG.3.5.R1",
+            "ENG.3.5.R2",
+            "ENG.3.5.R3",
+            "ENG.3.5.R4",
+            "ENG.3.5.V1",
+            "ENG.3.5.G1",
+            "ENG.3.5.W1",
+            "ENG.3.5.W2",
+            "ENG.3.5.W3",
+            "ENG.3.5.W4",
+            "ENG.3.5.W5",
+            "ENG.3.5.W6",
+            "ENG.3.5.S1",
+            "ENG.3.5.S2",
+            "ENG.3.5.S3",
+            "ENG.3.5.S4",
+            "ENG.3.5.S5",
+            "ENG.3.5.S6"
+          ],
+          "outcomes": [
+            {
+              "code": "ENG.3.5.L1",
+              "text": "Pupils can get ready for the listening/watching-comprehension process for the current content on “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm”."
+            },
+            {
+              "code": "ENG.3.5.L2",
+              "text": "Pupils can bring information about the current content on “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” together with key details and main components while listening/watching it."
+            },
+            {
+              "code": "ENG.3.5.L3",
+              "text": "Pupils can make meaning of/derive meaning from the current content on “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” through details by listening/watching it carefully."
+            },
+            {
+              "code": "ENG.3.5.L4",
+              "text": "Pupils can convey their knowledge, experience, thoughts, and feelings about the whole listening/watching-comprehension process in relation to the current content on “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” in a very simple way."
+            },
+            {
+              "code": "ENG.3.5.P1",
+              "text": "Pupils can select and use the target phonological elements of the current content about “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” accurately, authentically, and naturally through spontaneous selection and using it in an appropriate and effective way when communicating with others."
+            },
+            {
+              "code": "ENG.3.5.R1",
+              "text": "Pupils can get ready for the reading-comprehension process about the current content on “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm”."
+            },
+            {
+              "code": "ENG.3.5.R2",
+              "text": "Pupils can bring information about the current content on “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” through skimming (looking quickly at) the audio-visual elements and reading the content very quickly."
+            },
+            {
+              "code": "ENG.3.5.R3",
+              "text": "Pupils can make meaning of/derive meaning from the current content about “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” by reading it carefully."
+            },
+            {
+              "code": "ENG.3.5.R4",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the readingcomprehension process about the current content, “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” for reflection in relation to themselves or others, both individually and/or with others."
+            },
+            {
+              "code": "ENG.3.5.V1",
+              "text": "Pupils can select and use the target vocabulary of the current content about “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” accurately, authentically, spontaneously, and naturally and use it appropriately and effectively when communicating with others."
+            },
+            {
+              "code": "ENG.3.5.G1",
+              "text": "Pupils can select and use the language including target grammatical elements of the current content about “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” accurately, authentically, spontaneously, and naturally and use it appropriately and effectively when communicating with others."
+            },
+            {
+              "code": "ENG.3.5.W1",
+              "text": "Pupils can get ready for the writing-expression process about the current content on “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” in an age- and level-appropriate way."
+            },
+            {
+              "code": "ENG.3.5.W2",
+              "text": "Pupils can copy the model/example on the writing task about the current content on “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” based on the model/example provided to practise for further writing activities."
+            },
+            {
+              "code": "ENG.3.5.W3",
+              "text": "Pupils can organise and form a content for the assigned writing task on the current content “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” based on the model/example provided."
+            },
+            {
+              "code": "ENG.3.5.W4",
+              "text": "Pupils can practise writing by constructing content for the assigned writing task on the current content “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm”."
+            },
+            {
+              "code": "ENG.3.5.W5",
+              "text": "Pupils can reorganise and use information by reconstructing it in the new written tasks about the “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” to communicate with other people."
+            },
+            {
+              "code": "ENG.3.5.W6",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the writingexpression process about the current content, “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” very simply for reflection in relation to themselves or others, both individually and/or with others."
+            },
+            {
+              "code": "ENG.3.5.S1",
+              "text": "Pupils can get ready for speaking-expression process about the current content on “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” with the help of supplementary audio-visual materials."
+            },
+            {
+              "code": "ENG.3.5.S2",
+              "text": "Pupils can imitate the model/example for producing verbal content about the current theme on “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm”."
+            },
+            {
+              "code": "ENG.3.5.S3",
+              "text": "Pupils can organise simple new verbal content on “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” by speaking accurately, efficiently, and authentically."
+            },
+            {
+              "code": "ENG.3.5.S4",
+              "text": "Pupils can form a simple new verbal content on “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” through reconstruction by speaking accurately, efficiently, and authentically."
+            },
+            {
+              "code": "ENG.3.5.S5",
+              "text": "Pupils can reorganise and use information about the current theme on “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” by reconstructing it to communicate with other people."
+            },
+            {
+              "code": "ENG.3.5.S6",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the writing-expression process about the current content, “homes, houses and the neighbourhood with life in the countryside; farmhouses and farm animals; activities and chores on a farm” very simply for reflection in relation to themselves or others, both individually and/or with others."
+            }
+          ]
+        },
+        {
+          "id": "g3-ingilizce-life-in-the-city-the-world",
+          "name": "LIFE IN THE CITY & THE WORLD",
+          "subthemes": [],
+          "outcome_codes": [
+            "ENG.3.6.L1",
+            "ENG.3.6.L2",
+            "ENG.3.6.L3",
+            "ENG.3.6.L4",
+            "ENG.3.6.P1",
+            "ENG.3.6.R1",
+            "ENG.3.6.R2",
+            "ENG.3.6.R3",
+            "ENG.3.6.R4",
+            "ENG.3.6.V1",
+            "ENG.3.6.G1",
+            "ENG.3.6.W1",
+            "ENG.3.6.W2",
+            "ENG.3.6.W3",
+            "ENG.3.6.W4",
+            "ENG.3.6.W5",
+            "ENG.3.6.W6",
+            "ENG.3.6.S1",
+            "ENG.3.6.S2",
+            "ENG.3.6.S3",
+            "ENG.3.6.S4",
+            "ENG.3.6.S5",
+            "ENG.3.6.S6"
+          ],
+          "outcomes": [
+            {
+              "code": "ENG.3.6.L1",
+              "text": "Pupils can get ready for the listening/watching-comprehension process for the current content on “life in the city and the world with food items and meals, eating outside and ordering food”."
+            },
+            {
+              "code": "ENG.3.6.L2",
+              "text": "Pupils can bring information about the current content on “life in the city and the world with food items and meals, eating outside and ordering food” together with key details and main components while listening/watching it."
+            },
+            {
+              "code": "ENG.3.6.L3",
+              "text": "Pupils can make meaning of/derive meaning from the current content on “life in the city and the world with food items and meals, eating outside and ordering food” through details by listening/watching it carefully."
+            },
+            {
+              "code": "ENG.3.6.L4",
+              "text": "Pupils can convey their knowledge, experience, thoughts, and feelings about the whole listening/watching-comprehension process in relation to the current content on “life in the city and the world with food items and meals, eating outside and ordering food” in a very simple way."
+            },
+            {
+              "code": "ENG.3.6.P1",
+              "text": "Pupils can select and use the target phonological elements of the current content about “life in the city and the world with food items and meals, eating outside and ordering food” accurately, authentically, and naturally through spontaneous selection and using it in an appropriate and effective way when communicating with others."
+            },
+            {
+              "code": "ENG.3.6.R1",
+              "text": "Pupils can get ready for the reading-comprehension process about the current content on “life in the city and the world with food items and meals, eating outside and ordering food”."
+            },
+            {
+              "code": "ENG.3.6.R2",
+              "text": "Pupils can bring information about the current content on “life in the city and the world with food items and meals, eating outside and ordering food” through skimming (looking quickly at) the audio-visual elements and reading the content very quickly."
+            },
+            {
+              "code": "ENG.3.6.R3",
+              "text": "Pupils can make meaning of/derive meaning from the current content about “life in the city and the world with food items and meals, eating outside and ordering food” by reading it carefully."
+            },
+            {
+              "code": "ENG.3.6.R4",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the readingcomprehension process about the current content, “life in the city and the world with food items and meals, eating outside and ordering food” for reflection in relation to themselves or others, both individually and/or with others."
+            },
+            {
+              "code": "ENG.3.6.V1",
+              "text": "Pupils can select and use the target vocabulary of the current content about “life in the city and the world with food items and meals, eating outside and ordering food” accurately, authentically, spontaneously, and naturally and use it appropriately and effectively when communicating with others."
+            },
+            {
+              "code": "ENG.3.6.G1",
+              "text": "Pupils can select and use the language including target grammatical elements of the current content about “life in the city and the world with food items and meals, eating outside and ordering food” accurately, authentically, spontaneously, and naturally and use it appropriately and effectively when communicating with others."
+            },
+            {
+              "code": "ENG.3.6.W1",
+              "text": "Pupils can get ready for the writing-expression process about the current content on “life in the city and the world with food items and meals, eating outside and ordering food” in an ageand level-appropriate way."
+            },
+            {
+              "code": "ENG.3.6.W2",
+              "text": "Pupils can copy the model/example on the writing task about the current content on “life in the city and the world with food items and meals, eating outside and ordering food” based on the model/example provided to practise for further writing activities."
+            },
+            {
+              "code": "ENG.3.6.W3",
+              "text": "Pupils can organise and form a content for the assigned writing task on the current content “life in the city and the world with food items and meals, eating outside and ordering food” based on the model/example provided."
+            },
+            {
+              "code": "ENG.3.6.W4",
+              "text": "Pupils can practise writing by constructing content for the assigned writing task on the current content “life in the city and the world with food items and meals, eating outside and ordering food”."
+            },
+            {
+              "code": "ENG.3.6.W5",
+              "text": "Pupils can reorganise and use information by reconstructing it in the new written tasks about the “life in the city and the world with food items and meals, eating outside and ordering food” to communicate with other people."
+            },
+            {
+              "code": "ENG.3.6.W6",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the writing-expression process about the current content, “life in the city and the world with food items and meals, eating outside and ordering food” very simply for reflection in relation to themselves or others, both individually and/or with others."
+            },
+            {
+              "code": "ENG.3.6.S1",
+              "text": "Pupils can get ready for speaking-expression process about the current content on “life in the city and the world with food items and meals, eating outside and ordering food” with the help of supplementary audio-visual materials."
+            },
+            {
+              "code": "ENG.3.6.S2",
+              "text": "Pupils can imitate the model/example for producing verbal content about the current theme on “life in the city and the world with food items and meals, eating outside and ordering food”."
+            },
+            {
+              "code": "ENG.3.6.S3",
+              "text": "Pupils can organise simple new verbal content on “life in the city and the world with food items and meals, eating outside and ordering food” by speaking accurately, efficiently, and authentically."
+            },
+            {
+              "code": "ENG.3.6.S4",
+              "text": "Pupils can form a simple new verbal content on “life in the city and the world with food items and meals, eating outside and ordering food” through reconstruction by speaking accurately, efficiently, and authentically."
+            },
+            {
+              "code": "ENG.3.6.S5",
+              "text": "Pupils can reorganise and use information about the current theme on “life in the city and the world with food items and meals, eating outside and ordering food” by reconstructing it to communicate with other people."
+            },
+            {
+              "code": "ENG.3.6.S6",
+              "text": "Pupils can convey their knowledge, experiences, thoughts, and feelings related to the writing-expression process about the current content, “life in the city and the world with food items and meals, eating outside and ordering food” very simply for reflection in relation to themselves or others, both individually and/or with others."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

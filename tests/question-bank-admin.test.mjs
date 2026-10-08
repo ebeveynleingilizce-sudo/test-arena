@@ -1,0 +1,2 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {syncQuestionBank} from '../functions/lib/question-bank-admin.js';
+test('admin endpoint fails closed outside Functions emulator before auth or filesystem',async()=>{const before=process.env.FUNCTIONS_EMULATOR;process.env.FUNCTIONS_EMULATOR='false';try{await assert.rejects(syncQuestionBank.run({data:{}}),e=>e.code==='failed-precondition');}finally{if(before===undefined)delete process.env.FUNCTIONS_EMULATOR;else process.env.FUNCTIONS_EMULATOR=before;}});

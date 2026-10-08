@@ -1,0 +1,667 @@
+{
+  "schemaVersion": 3,
+  "datasetId": "test-arena-grade-2-student-ui-2026-2027-v3",
+  "grade": 2,
+  "gradeLabel": "2. Sınıf",
+  "sourceDatasetId": "test-arena-curriculum-grade-2-tr-2026-2027",
+  "purpose": "Test Arena öğrenci arayüzü için müfredatla uyumlu ders → ünite/tema → konu → test navigasyon ağacı.",
+  "rules": {
+    "sourceOfTruth": "Resmî/kaynak öğrenme çıktıları data/mufredat/2-sinif.json dosyasında tutulur.",
+    "studentLabels": "Öğrenciye teknik kazanım/beceri süreçleri gösterilmez.",
+    "stableIds": "Kaynak müfredattaki mevcut id alanları mümkün olduğunca korunur.",
+    "questionBinding": "Sorular grade, subjectId, unitId/themeId ve uygun olduğunda topicId/outcomeCode ile bağlanır.",
+    "testPack": "Test 1, Test 2 gibi adlar müfredat konusu veya kazanım değildir; yalnızca soru paketidir.",
+    "mixedTest": "Karışık Test ayrı topicId veya sahte kazanım oluşturmaz.",
+    "availability": "Öğrenci arayüzünde yalnızca gerçek sorusu bulunan seçimler gösterilebilir.",
+    "supportedSubjects": "Yalnızca Türkçe, Matematik, Hayat Bilgisi ve İngilizce.",
+    "pronunciationAssessment": "Telaffuz çıktıları ayrı öğrenci konusu olarak gösterilmez; sesli performans ölçülmedikçe çoktan seçmeli test sonucu telaffuz yeterliği olarak yorumlanmaz."
+  },
+  "subjects": [
+    {
+      "id": "turkce",
+      "name": "Türkçe",
+      "navigationModel": "theme-test",
+      "sectionLabel": "TEMA",
+      "units": [
+        {
+          "order": 1,
+          "id": "g2-turkce-degerlerimizle-variz",
+          "name": "Değerlerimizle Varız",
+          "displayName": "1. TEMA — Değerlerimizle Varız",
+          "testGrouping": "theme-packs"
+        },
+        {
+          "order": 2,
+          "id": "g2-turkce-ataturk-ve-cocuk",
+          "name": "Atatürk ve Çocuk",
+          "displayName": "2. TEMA — Atatürk ve Çocuk",
+          "testGrouping": "theme-packs"
+        },
+        {
+          "order": 3,
+          "id": "g2-turkce-dogada-neler-oluyor",
+          "name": "Doğada Neler Oluyor?",
+          "displayName": "3. TEMA — Doğada Neler Oluyor?",
+          "testGrouping": "theme-packs"
+        },
+        {
+          "order": 4,
+          "id": "g2-turkce-okuma-seruvenimiz",
+          "name": "Okuma Serüvenimiz",
+          "displayName": "4. TEMA — Okuma Serüvenimiz",
+          "testGrouping": "theme-packs"
+        },
+        {
+          "order": 5,
+          "id": "g2-turkce-yeteneklerimizi-taniyoruz",
+          "name": "Yeteneklerimizi Tanıyoruz",
+          "displayName": "5. TEMA — Yeteneklerimizi Tanıyoruz",
+          "testGrouping": "theme-packs"
+        },
+        {
+          "order": 6,
+          "id": "g2-turkce-mucit-cocuk",
+          "name": "Mucit Çocuk",
+          "displayName": "6. TEMA — Mucit Çocuk",
+          "testGrouping": "theme-packs"
+        },
+        {
+          "order": 7,
+          "id": "g2-turkce-kultur-hazinemiz",
+          "name": "Kültür Hazinemiz",
+          "displayName": "7. TEMA — Kültür Hazinemiz",
+          "testGrouping": "theme-packs"
+        },
+        {
+          "order": 8,
+          "id": "g2-turkce-haklarimizi-biliyoruz",
+          "name": "Haklarımızı Biliyoruz",
+          "displayName": "8. TEMA — Haklarımızı Biliyoruz",
+          "testGrouping": "theme-packs"
+        }
+      ]
+    },
+    {
+      "id": "matematik",
+      "name": "Matematik",
+      "navigationModel": "unit-topic-test",
+      "sectionLabel": "ÜNİTE",
+      "units": [
+        {
+          "order": 1,
+          "id": "g2-matematik-nesnelerin-geometrisi-1",
+          "name": "Nesnelerin Geometrisi",
+          "sourceName": "NESNELERİN GEOMETRİSİ (1)",
+          "displayName": "1. ÜNİTE — Nesnelerin Geometrisi",
+          "topics": [
+            {
+              "id": "g2-matematik-geometrik-cisimler",
+              "name": "Geometrik Cisimler",
+              "outcomeCodes": [
+                "MAT.2.3.1"
+              ]
+            },
+            {
+              "id": "g2-matematik-geometrik-cisim-modelleri",
+              "name": "Geometrik Cisim Modelleri",
+              "outcomeCodes": [
+                "MAT.2.3.2"
+              ]
+            },
+            {
+              "id": "g2-matematik-geometrik-sekil-modelleri",
+              "name": "Geometrik Şekil Modelleri",
+              "outcomeCodes": [
+                "MAT.2.3.3"
+              ]
+            },
+            {
+              "id": "g2-matematik-geometrik-sekil-ve-cisimlerin-bicimsel-ozellikleri",
+              "name": "Geometrik Şekil ve Cisimlerin Biçimsel Özellikleri",
+              "outcomeCodes": [
+                "MAT.2.3.4"
+              ]
+            },
+            {
+              "id": "g2-matematik-sivi-miktarini-tahmin-etme",
+              "name": "Sıvı Miktarını Tahmin Etme",
+              "outcomeCodes": [
+                "MAT.2.3.5"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "id": "g2-matematik-sayilar-ve-nicelikler-1",
+          "name": "Sayılar ve Nicelikler",
+          "sourceName": "SAYILAR VE NİCELİKLER (1)",
+          "displayName": "2. ÜNİTE — Sayılar ve Nicelikler",
+          "topics": [
+            {
+              "id": "g2-matematik-sayilar",
+              "name": "Sayılar",
+              "outcomeCodes": [
+                "MAT.2.1.1"
+              ]
+            },
+            {
+              "id": "g2-matematik-sayilari-cozumleme",
+              "name": "Sayıları Çözümleme",
+              "outcomeCodes": [
+                "MAT.2.1.2"
+              ]
+            },
+            {
+              "id": "g2-matematik-sayilari-siralama",
+              "name": "Sayıları Sıralama",
+              "outcomeCodes": [
+                "MAT.2.1.3"
+              ]
+            },
+            {
+              "id": "g2-matematik-ritmik-sayma",
+              "name": "Ritmik Sayma",
+              "outcomeCodes": [
+                "MAT.2.1.4"
+              ]
+            },
+            {
+              "id": "g2-matematik-sayi-ve-sekil-oruntuleri",
+              "name": "Sayı ve Şekil Örüntüleri",
+              "outcomeCodes": [
+                "MAT.2.1.5"
+              ]
+            },
+            {
+              "id": "g2-matematik-nesne-sayisini-tahmin-etme",
+              "name": "Nesne Sayısını Tahmin Etme",
+              "outcomeCodes": [
+                "MAT.2.1.6"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "id": "g2-matematik-islemlerden-cebirsel-dusunmeye",
+          "name": "İşlemlerden Cebirsel Düşünmeye",
+          "sourceName": "İŞLEMLERDEN CEBİRSEL DÜŞÜNMEYE",
+          "displayName": "3. ÜNİTE — İşlemlerden Cebirsel Düşünmeye",
+          "topics": [
+            {
+              "id": "g2-matematik-toplama-ve-cikarma-islemleriyle-ilgili-problemler",
+              "name": "Toplama ve Çıkarma İşlemleriyle İlgili Problemler",
+              "outcomeCodes": [
+                "MAT.2.2.1"
+              ]
+            },
+            {
+              "id": "g2-matematik-toplama-ve-cikarma-islemlerinin-sonuclarini-tahmin-etme-ve-zihinden-islem",
+              "name": "Toplama ve Çıkarma İşlemlerinin Sonuçlarını Tahmin Etme ve Zihinden İşlem",
+              "outcomeCodes": [
+                "MAT.2.2.2"
+              ]
+            },
+            {
+              "id": "g2-matematik-toplama-ve-cikarma-islemlerinin-iliskisi",
+              "name": "Toplama ve Çıkarma İşlemlerinin İlişkisi",
+              "outcomeCodes": [
+                "MAT.2.2.3"
+              ]
+            },
+            {
+              "id": "g2-matematik-carpma-ve-bolme-islemleri",
+              "name": "Çarpma ve Bölme İşlemleri",
+              "outcomeCodes": [
+                "MAT.2.2.4"
+              ]
+            },
+            {
+              "id": "g2-matematik-carpma-ve-bolme-islemlerinin-sonuclarini-tahmin-etme-ve-zihinden-islem",
+              "name": "Çarpma ve Bölme İşlemlerinin Sonuçlarını Tahmin Etme ve Zihinden İşlem",
+              "outcomeCodes": [
+                "MAT.2.2.5"
+              ]
+            },
+            {
+              "id": "g2-matematik-dort-islemde-esitlik",
+              "name": "Dört İşlemde Eşitlik",
+              "outcomeCodes": [
+                "MAT.2.2.6"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "id": "g2-matematik-sayilar-ve-nicelikler-2",
+          "name": "Sayılar ve Nicelikler",
+          "sourceName": "SAYILAR VE NİCELİKLER (2)",
+          "displayName": "4. ÜNİTE — Sayılar ve Nicelikler",
+          "topics": [
+            {
+              "id": "g2-matematik-kesirler",
+              "name": "Kesirler",
+              "outcomeCodes": [
+                "MAT.2.1.7"
+              ]
+            },
+            {
+              "id": "g2-matematik-paralarimiz",
+              "name": "Paralarımız",
+              "outcomeCodes": [
+                "MAT.2.1.8"
+              ]
+            },
+            {
+              "id": "g2-matematik-zaman-olcme",
+              "name": "Zaman Ölçme",
+              "outcomeCodes": [
+                "MAT.2.1.9"
+              ]
+            },
+            {
+              "id": "g2-matematik-uzunluk-ve-kutle-olcme-arac-ve-birimleri",
+              "name": "Uzunluk ve Kütle Ölçme Araç ve Birimleri",
+              "outcomeCodes": [
+                "MAT.2.1.10"
+              ]
+            },
+            {
+              "id": "g2-matematik-uzunluk-ve-kutle-olcmede-tahmin",
+              "name": "Uzunluk ve Kütle Ölçmede Tahmin",
+              "outcomeCodes": [
+                "MAT.2.1.11"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 5,
+          "id": "g2-matematik-nesnelerin-geometrisi-2",
+          "name": "Nesnelerin Geometrisi",
+          "sourceName": "NESNELERİN GEOMETRİSİ (2)",
+          "displayName": "5. ÜNİTE — Nesnelerin Geometrisi",
+          "topics": [
+            {
+              "id": "g2-matematik-yer-ve-yon-bulma",
+              "name": "Yer ve Yön Bulma",
+              "outcomeCodes": [
+                "MAT.2.3.6"
+              ]
+            },
+            {
+              "id": "g2-matematik-simetri",
+              "name": "Simetri",
+              "outcomeCodes": [
+                "MAT.2.3.7"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 6,
+          "id": "g2-matematik-veriye-dayali-arastirma",
+          "name": "Veriye Dayalı Araştırma",
+          "sourceName": "VERİYE DAYALI ARAŞTIRMA",
+          "displayName": "6. ÜNİTE — Veriye Dayalı Araştırma",
+          "topics": [
+            {
+              "id": "g2-matematik-veriyle-calisma-ve-veriye-dayali-karar-verme",
+              "name": "Veriyle Çalışma ve Veriye Dayalı Karar Verme",
+              "outcomeCodes": [
+                "MAT.2.4.1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hayat-bilgisi",
+      "name": "Hayat Bilgisi",
+      "navigationModel": "unit-topic-test",
+      "sectionLabel": "ÜNİTE",
+      "units": [
+        {
+          "order": 1,
+          "id": "g2-hayat-bilgisi-ben-ve-okulum",
+          "name": "Ben ve Okulum",
+          "sourceName": "BEN VE OKULUM",
+          "displayName": "1. ÜNİTE — Ben ve Okulum",
+          "topics": [
+            {
+              "id": "g2-hayat-bilgisi-zaman-yonetimi",
+              "name": "Zaman Yönetimi",
+              "outcomeCodes": [
+                "HB.2.1.1"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-iletisim-kurallari",
+              "name": "İletişim Kuralları",
+              "outcomeCodes": [
+                "HB.2.1.2"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-arkadaslik-iliskilerini-etkileyen-davranislar",
+              "name": "Arkadaşlık İlişkilerini Etkileyen Davranışlar",
+              "outcomeCodes": [
+                "HB.2.1.3"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-sinif-ici-karar-alma-surecleri",
+              "name": "Sınıf İçi Karar Alma Süreçleri",
+              "outcomeCodes": [
+                "HB.2.1.4"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "id": "g2-hayat-bilgisi-sagligim-ve-guvenligim",
+          "name": "Sağlığım ve Güvenliğim",
+          "sourceName": "SAĞLIĞIM VE GÜVENLİĞİM",
+          "displayName": "2. ÜNİTE — Sağlığım ve Güvenliğim",
+          "topics": [
+            {
+              "id": "g2-hayat-bilgisi-saglikli-buyume-ve-gelismeyi-etkileyen-aliskanliklar",
+              "name": "Sağlıklı Büyüme ve Gelişmeyi Etkileyen Alışkanlıklar",
+              "outcomeCodes": [
+                "HB.2.2.1"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-cevrim-ici-ortamlarda-kisisel-guvenlik",
+              "name": "Çevrim İçi Ortamlarda Kişisel Güvenlik",
+              "outcomeCodes": [
+                "HB.2.2.2"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-trafik-isaret-levhalari",
+              "name": "Trafik İşaret Levhaları",
+              "outcomeCodes": [
+                "HB.2.2.3"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-acil-durumlarda-iletisim",
+              "name": "Acil Durumlarda İletişim",
+              "outcomeCodes": [
+                "HB.2.2.4"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "id": "g2-hayat-bilgisi-ailem-ve-toplum",
+          "name": "Ailem ve Toplum",
+          "sourceName": "AİLEM VE TOPLUM",
+          "displayName": "3. ÜNİTE — Ailem ve Toplum",
+          "topics": [
+            {
+              "id": "g2-hayat-bilgisi-ailenin-onemi",
+              "name": "Ailenin Önemi",
+              "outcomeCodes": [
+                "HB.2.3.1"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-nezaket-ve-gorgu-kurallari",
+              "name": "Nezaket ve Görgü Kuralları",
+              "outcomeCodes": [
+                "HB.2.3.2"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-gorev-ve-sorumluluklar",
+              "name": "Görev ve Sorumluluklar",
+              "outcomeCodes": [
+                "HB.2.3.3"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "id": "g2-hayat-bilgisi-yasadigim-yer-ve-ulkem",
+          "name": "Yaşadığım Yer ve Ülkem",
+          "sourceName": "YAŞADIĞIM YER VE ÜLKEM",
+          "displayName": "4. ÜNİTE — Yaşadığım Yer ve Ülkem",
+          "topics": [
+            {
+              "id": "g2-hayat-bilgisi-tarihi-mekanlar-ve-dogal-guzellikler",
+              "name": "Tarihî Mekânlar ve Doğal Güzellikler",
+              "outcomeCodes": [
+                "HB.2.4.1"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-yasadigi-yerin-yonetim-birimleri",
+              "name": "Yaşadığı Yerin Yönetim Birimleri",
+              "outcomeCodes": [
+                "HB.2.4.2"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-mustafa-kemal-ataturkun-ogrencilik-hayati",
+              "name": "Mustafa Kemal Atatürk’ün Öğrencilik Hayatı",
+              "outcomeCodes": [
+                "HB.2.4.3"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-milli-gun-ve-bayramlarin-onemi",
+              "name": "Millî Gün ve Bayramların Önemi",
+              "outcomeCodes": [
+                "HB.2.4.4"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-dini-gun-ve-bayramlarin-onemi",
+              "name": "Dinî Gün ve Bayramların Önemi",
+              "outcomeCodes": [
+                "HB.2.4.5"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 5,
+          "id": "g2-hayat-bilgisi-doga-ve-cevre",
+          "name": "Doğa ve Çevre",
+          "sourceName": "DOĞA VE ÇEVRE",
+          "displayName": "5. ÜNİTE — Doğa ve Çevre",
+          "topics": [
+            {
+              "id": "g2-hayat-bilgisi-hava-olaylari-ve-mevsimler",
+              "name": "Hava Olayları ve Mevsimler",
+              "outcomeCodes": [
+                "HB.2.5.1"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-dogadan-yararlanarak-yon-bulma",
+              "name": "Doğadan Yararlanarak Yön Bulma",
+              "outcomeCodes": [
+                "HB.2.5.2"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-afetlere-karsi-alinacak-onlemler",
+              "name": "Afetlere Karşı Alınacak Önlemler",
+              "outcomeCodes": [
+                "HB.2.5.3"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-dogal-kaynaklari-tasarruflu-kullanma",
+              "name": "Doğal Kaynakları Tasarruflu Kullanma",
+              "outcomeCodes": [
+                "HB.2.5.4"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 6,
+          "id": "g2-hayat-bilgisi-bilim-teknoloji-ve-sanat",
+          "name": "Bilim, Teknoloji ve Sanat",
+          "sourceName": "BİLİM, TEKNOLOJİ VE SANAT",
+          "displayName": "6. ÜNİTE — Bilim, Teknoloji ve Sanat",
+          "topics": [
+            {
+              "id": "g2-hayat-bilgisi-bilim-insanlarinin-bilime-katkilari",
+              "name": "Bilim İnsanlarının Bilime Katkıları",
+              "outcomeCodes": [
+                "HB.2.6.1"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-teknolojik-urunlerin-degisim-ve-surekliligi",
+              "name": "Teknolojik Ürünlerin Değişim ve Sürekliliği",
+              "outcomeCodes": [
+                "HB.2.6.2"
+              ]
+            },
+            {
+              "id": "g2-hayat-bilgisi-sanatin-gunluk-yasamdaki-yeri",
+              "name": "Sanatın Günlük Yaşamdaki Yeri",
+              "outcomeCodes": [
+                "HB.2.6.3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ingilizce",
+      "name": "İngilizce",
+      "navigationModel": "theme-test",
+      "sectionLabel": "THEME",
+      "units": [
+        {
+          "order": 1,
+          "id": "g2-ingilizce-school-life",
+          "name": "School Life",
+          "sourceName": "SCHOOL LIFE",
+          "displayName": "THEME 1 — School Life",
+          "topics": [
+            {
+              "id": "g2-ingilizce-school-life-greetings-and-introductions-at-school",
+              "name": "Greetings and introductions at school"
+            },
+            {
+              "id": "g2-ingilizce-school-life-people-and-places-at-school",
+              "name": "People and places at school"
+            },
+            {
+              "id": "g2-ingilizce-school-life-days-of-the-week",
+              "name": "Days of the week"
+            },
+            {
+              "id": "g2-ingilizce-school-life-national-and-religious-days-and-celebrations",
+              "name": "National and religious days and celebrations"
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "id": "g2-ingilizce-classroom-life",
+          "name": "Classroom Life",
+          "sourceName": "CLASSROOM LIFE",
+          "displayName": "THEME 2 — Classroom Life",
+          "topics": [
+            {
+              "id": "g2-ingilizce-classroom-life-classroom-instructions-and-language",
+              "name": "Classroom instructions and language"
+            },
+            {
+              "id": "g2-ingilizce-classroom-life-classroom-furniture-devices-and-objects",
+              "name": "Classroom furniture, devices and objects"
+            },
+            {
+              "id": "g2-ingilizce-classroom-life-colours",
+              "name": "Colours"
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "id": "g2-ingilizce-personal-life",
+          "name": "Personal Life",
+          "sourceName": "PERSONAL LIFE",
+          "displayName": "THEME 3 — Personal Life",
+          "topics": [
+            {
+              "id": "g2-ingilizce-personal-life-parts-of-the-body-and-physical-features",
+              "name": "Parts of the body and physical features"
+            },
+            {
+              "id": "g2-ingilizce-personal-life-clothes",
+              "name": "Clothes"
+            },
+            {
+              "id": "g2-ingilizce-personal-life-days-of-the-week-ages-and-birthdays",
+              "name": "Days of the week, ages and birthdays"
+            },
+            {
+              "id": "g2-ingilizce-personal-life-weather-conditions",
+              "name": "Weather conditions"
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "id": "g2-ingilizce-family-life",
+          "name": "Family Life",
+          "sourceName": "FAMILY LIFE",
+          "displayName": "THEME 4 — Family Life",
+          "topics": [
+            {
+              "id": "g2-ingilizce-family-life-family-members-and-family-members-physical-appearances-and-physical-features",
+              "name": "Family members and family members’ physical appearances and physical features"
+            }
+          ]
+        },
+        {
+          "order": 5,
+          "id": "g2-ingilizce-homes-houses-neighbourhoods",
+          "name": "Homes & Houses & Neighbourhoods",
+          "sourceName": "HOMES & HOUSES & NEIGHBOURHOODS",
+          "displayName": "THEME 5 — Homes & Houses & Neighbourhoods",
+          "topics": [
+            {
+              "id": "g2-ingilizce-homes-houses-neighbourhoods-parts-rooms-and-furniture-in-the-house",
+              "name": "Parts, rooms and furniture in the house"
+            },
+            {
+              "id": "g2-ingilizce-homes-houses-neighbourhoods-pets-in-the-house",
+              "name": "Pets in the house"
+            }
+          ]
+        },
+        {
+          "order": 6,
+          "id": "g2-ingilizce-life-in-the-city-the-world",
+          "name": "Life in the City & the World",
+          "sourceName": "LIFE IN THE CITY & THE WORLD",
+          "displayName": "THEME 6 — Life in the City & the World",
+          "topics": [
+            {
+              "id": "g2-ingilizce-life-in-the-city-the-world-basic-food-types-items-and-meals",
+              "name": "Basic food types, items, and meals"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "test-arena",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "functions"
+  ],
+  "scripts": {
+    "question-engine:mapping-plan-local": "npm run build --workspace functions && node scripts/question-engine-mapping-plan-local.mjs",
+    "question-engine:orchestrate-local": "npm run build --workspace functions && node scripts/question-engine-orchestrate-local.mjs",
+    "question-engine:refill-local": "npm run build --workspace functions && node scripts/question-engine-refill-local.mjs",
+    "question-engine:publish-local": "npm run build --workspace functions && node scripts/question-engine-publish-local.mjs",
+    "question-engine:gemini-dry-run": "npm run build --workspace functions && node scripts/question-engine-gemini-dry-run.mjs",
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build && npm run build --workspace functions",
+    "emulators": "npm run build --workspace functions && firebase emulators:start --project demo-test-arena --only auth,firestore,functions",
+    "test": "npm run build --workspace functions && firebase emulators:exec --project demo-test-arena --only auth,firestore,functions \"npm run test:local\"",
+    "test:local": "node scripts/seed-curriculum.mjs && node scripts/seed-demo.mjs && node --test --test-concurrency=1 tests/security.test.mjs tests/quiz.test.mjs tests/arena.test.mjs tests/analytics.test.mjs tests/bulk-students.test.mjs tests/curriculum.test.mjs tests/visual-quiz.test.mjs tests/math-engine.test.mjs tests/math-unit2.test.mjs && playwright test",
+    "test:security": "node --test --test-concurrency=1 tests/security.test.mjs",
+    "test:e2e": "node scripts/seed-curriculum.mjs && node scripts/seed-demo.mjs && playwright test",
+    "test:quiz": "node --test --test-concurrency=1 tests/quiz.test.mjs",
+    "seed:curriculum": "node scripts/seed-curriculum.mjs",
+    "seed:demo": "node scripts/seed-demo.mjs"
+  },
+  "dependencies": {
+    "@fontsource/manrope": "^5.3.0",
+    "firebase": "^12.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.0.0"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.0",
+    "@playwright/test": "^1.55.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "firebase-tools": "^15.0.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.0.0"
+  }
+}

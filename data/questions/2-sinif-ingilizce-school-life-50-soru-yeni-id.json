@@ -1,0 +1,1094 @@
+{
+  "grade": 2,
+  "subjectId": "ingilizce",
+  "unitId": "g2-ingilizce-school-life",
+  "questionCount": 50,
+  "questions": [
+    {
+      "id": "g2-eng-school-life-q001-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Ece'nin uygun cevabını seç.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hello!"
+        },
+        {
+          "id": "b",
+          "text": "Goodbye!"
+        },
+        {
+          "id": "c",
+          "text": "Good night!"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Ali: Hello!\nEce: _____"
+    },
+    {
+      "id": "g2-eng-school-life-q002-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Hangisini söylemelidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Good night!"
+        },
+        {
+          "id": "b",
+          "text": "Good morning!"
+        },
+        {
+          "id": "c",
+          "text": "Goodbye!"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Ece sabah öğretmenini görüyor."
+    },
+    {
+      "id": "g2-eng-school-life-q003-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Ali'nin uygun cevabını seç.",
+      "options": [
+        {
+          "id": "a",
+          "text": "I am fine."
+        },
+        {
+          "id": "b",
+          "text": "Goodbye!"
+        },
+        {
+          "id": "c",
+          "text": "My name is Ali."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Tom: What is your name?\nAli: _____"
+    },
+    {
+      "id": "g2-eng-school-life-q004-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Mert'in uygun cevabını seç.",
+      "options": [
+        {
+          "id": "a",
+          "text": "I'm fine, thank you."
+        },
+        {
+          "id": "b",
+          "text": "My name is Mert."
+        },
+        {
+          "id": "c",
+          "text": "Good night!"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Ece: How are you?\nMert: _____"
+    },
+    {
+      "id": "g2-eng-school-life-q005",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Okuldan ayrılırken arkadaşına hangisini söylersin?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Good morning!"
+        },
+        {
+          "id": "b",
+          "text": "Goodbye!"
+        },
+        {
+          "id": "c",
+          "text": "Hello!"
+        }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "g2-eng-school-life-q006-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Hangi ifadeyi kullanırsın?",
+      "options": [
+        {
+          "id": "a",
+          "text": "How are you?"
+        },
+        {
+          "id": "b",
+          "text": "Goodbye!"
+        },
+        {
+          "id": "c",
+          "text": "What is your name?"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Yeni tanıştığın birine adını sormak istiyorsun."
+    },
+    {
+      "id": "g2-eng-school-life-q007-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Tom'un kendisini tanıtması için uygun ifadeyi seç.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hi, Ali! I'm Tom."
+        },
+        {
+          "id": "b",
+          "text": "Good night, Ali!"
+        },
+        {
+          "id": "c",
+          "text": "Goodbye, Ali!"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Ali: Hi! I'm Ali.\nTom: _____"
+    },
+    {
+      "id": "g2-eng-school-life-q008-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Mert'in uygun cevabı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Goodbye!"
+        },
+        {
+          "id": "b",
+          "text": "Nice to meet you, too!"
+        },
+        {
+          "id": "c",
+          "text": "Good night!"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Ece: Nice to meet you!\nMert: _____"
+    },
+    {
+      "id": "g2-eng-school-life-q009-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Lily kendisini nasıl hissediyor?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sad"
+        },
+        {
+          "id": "b",
+          "text": "Tired"
+        },
+        {
+          "id": "c",
+          "text": "Fine"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Hello! My name is Lily. I'm fine today."
+    },
+    {
+      "id": "g2-eng-school-life-q010-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Öğrencilerin uygun cevabını seç.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Good morning, teacher!"
+        },
+        {
+          "id": "b",
+          "text": "Goodbye, teacher!"
+        },
+        {
+          "id": "c",
+          "text": "Good night, teacher!"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Teacher: Good morning, children!\nChildren: _____"
+    },
+    {
+      "id": "g2-eng-school-life-q011-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Ece'nin cevabı soruya uygun değildir. Hangi cevap kullanılmalıdır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Goodbye!"
+        },
+        {
+          "id": "b",
+          "text": "My name is Ece."
+        },
+        {
+          "id": "c",
+          "text": "Good morning!"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Ali: What is your name?\nEce: I'm fine, thank you."
+    },
+    {
+      "id": "g2-eng-school-life-q012-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Diyaloğu uygun şekilde tamamla.",
+      "options": [
+        {
+          "id": "a",
+          "text": "My name is Ece."
+        },
+        {
+          "id": "b",
+          "text": "Goodbye, Mert!"
+        },
+        {
+          "id": "c",
+          "text": "I'm fine, thank you."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Mert: Hello, Ece! How are you?\nEce: _____"
+    },
+    {
+      "id": "g2-eng-school-life-q013",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "İlk kez tanışan iki öğrencinin konuşması hangi sırayla ilerleyebilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hello! → What's your name? → I'm Ali."
+        },
+        {
+          "id": "b",
+          "text": "Goodbye! → Good night! → Hello!"
+        },
+        {
+          "id": "c",
+          "text": "I'm fine. → Goodbye! → What's your name?"
+        }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "g2-eng-school-life-q014-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Ece ve Tom ne yapıyor?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Vedalaşıyorlar."
+        },
+        {
+          "id": "b",
+          "text": "Tanışıyorlar."
+        },
+        {
+          "id": "c",
+          "text": "İyi geceler diliyorlar."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Ece: Hello! I'm Ece.\nTom: Hi, Ece! I'm Tom. Nice to meet you!"
+    },
+    {
+      "id": "g2-eng-school-life-q015-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Ece'nin söylemesi gereken ifadeyi seç.",
+      "options": [
+        {
+          "id": "a",
+          "text": "I'm fine, thank you."
+        },
+        {
+          "id": "b",
+          "text": "Goodbye, Ali!"
+        },
+        {
+          "id": "c",
+          "text": "My name is Ece."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Ali: Good morning! What's your name?\nEce: _____\nAli: Nice to meet you, Ece!"
+    },
+    {
+      "id": "g2-eng-school-life-q016",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Okulda ders anlatan kişi için hangi İngilizce kelime kullanılır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Teacher"
+        },
+        {
+          "id": "b",
+          "text": "Pupil"
+        },
+        {
+          "id": "c",
+          "text": "Headmaster"
+        }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "g2-eng-school-life-q017",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Okulda kitap okumak için kullanılan yer hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Garden"
+        },
+        {
+          "id": "b",
+          "text": "Library"
+        },
+        {
+          "id": "c",
+          "text": "Classroom"
+        }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "g2-eng-school-life-q018",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Okulda ders yapılan yer hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Library"
+        },
+        {
+          "id": "b",
+          "text": "Garden"
+        },
+        {
+          "id": "c",
+          "text": "Classroom"
+        }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "g2-eng-school-life-q019",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Öğrenci anlamına gelen İngilizce kelime hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pupil"
+        },
+        {
+          "id": "b",
+          "text": "Teacher"
+        },
+        {
+          "id": "c",
+          "text": "Headmaster"
+        }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "g2-eng-school-life-q020",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Okul bahçesi için hangi İngilizce kelime kullanılır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Library"
+        },
+        {
+          "id": "b",
+          "text": "Garden"
+        },
+        {
+          "id": "c",
+          "text": "Classroom"
+        }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "g2-eng-school-life-q021-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Mr Brown kimdir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A pupil"
+        },
+        {
+          "id": "b",
+          "text": "A headmaster"
+        },
+        {
+          "id": "c",
+          "text": "A teacher"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "This is my teacher, Mr Brown."
+    },
+    {
+      "id": "g2-eng-school-life-q022-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Tom hangi yerdedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kütüphanede"
+        },
+        {
+          "id": "b",
+          "text": "Bahçede"
+        },
+        {
+          "id": "c",
+          "text": "Sınıfta"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "OKUL KARTI\nName: Tom\nPlace: Library"
+    },
+    {
+      "id": "g2-eng-school-life-q023-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Ece nerededir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bahçede"
+        },
+        {
+          "id": "b",
+          "text": "Sınıfta"
+        },
+        {
+          "id": "c",
+          "text": "Kütüphanede"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Ali: Where are you?\nEce: I'm in the classroom."
+    },
+    {
+      "id": "g2-eng-school-life-q024-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Kartta Lily'nin mesleği hangisi olarak belirtilmiştir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Öğrenci"
+        },
+        {
+          "id": "b",
+          "text": "Müdür"
+        },
+        {
+          "id": "c",
+          "text": "Öğretmen"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "OKUL KARTI\nName: Lily\nPerson: Teacher"
+    },
+    {
+      "id": "g2-eng-school-life-q025-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Hangi ifadeyi kullanırsın?",
+      "options": [
+        {
+          "id": "a",
+          "text": "This is my library."
+        },
+        {
+          "id": "b",
+          "text": "This is my garden."
+        },
+        {
+          "id": "c",
+          "text": "This is my classroom."
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Arkadaşına okulunun kütüphanesini tanıtıyorsun."
+    },
+    {
+      "id": "g2-eng-school-life-q026-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Ali'nin öğretmeni kimdir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ali"
+        },
+        {
+          "id": "b",
+          "text": "Mr Green"
+        },
+        {
+          "id": "c",
+          "text": "Tom"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Hello! I'm Ali. This is my school. My teacher is Mr Green."
+    },
+    {
+      "id": "g2-eng-school-life-q027-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Kütüphanede kim bulunuyor?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ali"
+        },
+        {
+          "id": "b",
+          "text": "Tom"
+        },
+        {
+          "id": "c",
+          "text": "Ece"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "OKUL NOTLARI\nAli — Classroom\nEce — Library\nTom — Garden"
+    },
+    {
+      "id": "g2-eng-school-life-q028-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Salı günü hangi yere gidiliyor?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Garden"
+        },
+        {
+          "id": "b",
+          "text": "Library"
+        },
+        {
+          "id": "c",
+          "text": "Classroom"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "OKUL PROGRAMI\nMonday — Library\nTuesday — Garden\nWednesday — Classroom"
+    },
+    {
+      "id": "g2-eng-school-life-q029-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Tom kiminle selamlaşıyor?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bir öğrenciyle"
+        },
+        {
+          "id": "b",
+          "text": "Bir öğretmenle"
+        },
+        {
+          "id": "c",
+          "text": "Bir arkadaşıyla"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Ece: This is my teacher, Mrs Brown.\nTom: Hello, Mrs Brown!"
+    },
+    {
+      "id": "g2-eng-school-life-q030",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Monday hangi gündür?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cuma"
+        },
+        {
+          "id": "b",
+          "text": "Pazar"
+        },
+        {
+          "id": "c",
+          "text": "Pazartesi"
+        }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "g2-eng-school-life-q031",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Friday hangi gündür?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cuma"
+        },
+        {
+          "id": "b",
+          "text": "Salı"
+        },
+        {
+          "id": "c",
+          "text": "Perşembe"
+        }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "g2-eng-school-life-q032-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Boşluğa hangi gün gelmelidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Thursday"
+        },
+        {
+          "id": "b",
+          "text": "Wednesday"
+        },
+        {
+          "id": "c",
+          "text": "Sunday"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Monday → Tuesday → _____"
+    },
+    {
+      "id": "g2-eng-school-life-q033-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Cumartesiden sonra hangi gün gelir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Monday"
+        },
+        {
+          "id": "b",
+          "text": "Friday"
+        },
+        {
+          "id": "c",
+          "text": "Sunday"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Saturday → _____"
+    },
+    {
+      "id": "g2-eng-school-life-q034",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Wednesday hangi gündür?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Çarşamba"
+        },
+        {
+          "id": "b",
+          "text": "Perşembe"
+        },
+        {
+          "id": "c",
+          "text": "Cumartesi"
+        }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "g2-eng-school-life-q035-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Ece'ye göre bugün hangi gündür?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tuesday"
+        },
+        {
+          "id": "b",
+          "text": "Monday"
+        },
+        {
+          "id": "c",
+          "text": "Friday"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Ali: What day is it today?\nEce: It's Monday."
+    },
+    {
+      "id": "g2-eng-school-life-q036-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Boşluğa hangi gün gelmelidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sunday"
+        },
+        {
+          "id": "b",
+          "text": "Monday"
+        },
+        {
+          "id": "c",
+          "text": "Friday"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Tuesday → Wednesday → Thursday → _____"
+    },
+    {
+      "id": "g2-eng-school-life-q037-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Programa göre bahçeye hangi gün gidiliyor?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Friday"
+        },
+        {
+          "id": "b",
+          "text": "Monday"
+        },
+        {
+          "id": "c",
+          "text": "Sunday"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "OKUL PROGRAMI\nMonday — Library\nFriday — Garden"
+    },
+    {
+      "id": "g2-eng-school-life-q038-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Cümlede boş bırakılan yere hangi gün gelmelidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tuesday"
+        },
+        {
+          "id": "b",
+          "text": "Friday"
+        },
+        {
+          "id": "c",
+          "text": "Monday"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Today is Thursday. Tomorrow is _____."
+    },
+    {
+      "id": "g2-eng-school-life-q039-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu sıralamadan sonra hangi gün gelmelidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sunday"
+        },
+        {
+          "id": "b",
+          "text": "Saturday"
+        },
+        {
+          "id": "c",
+          "text": "Friday"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Monday → Tuesday → Wednesday → Thursday"
+    },
+    {
+      "id": "g2-eng-school-life-q040-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Verilen bilgilere göre bugün hangi gündür?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wednesday"
+        },
+        {
+          "id": "b",
+          "text": "Thursday"
+        },
+        {
+          "id": "c",
+          "text": "Friday"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Today is Wednesday. Tomorrow is Thursday."
+    },
+    {
+      "id": "g2-eng-school-life-q041-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Programa göre kütüphaneye hangi gün gidiliyor?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Monday"
+        },
+        {
+          "id": "b",
+          "text": "Wednesday"
+        },
+        {
+          "id": "c",
+          "text": "Friday"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "HAFTALIK PROGRAM\nMonday — Classroom\nWednesday — Library\nFriday — Garden"
+    },
+    {
+      "id": "g2-eng-school-life-q042",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "23 Nisan Çocuk Bayramı'nın İngilizce kısa adı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Victory Day"
+        },
+        {
+          "id": "b",
+          "text": "Republic Day"
+        },
+        {
+          "id": "c",
+          "text": "Children's Day"
+        }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "g2-eng-school-life-q043",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "29 Ekim Cumhuriyet Bayramı'nın İngilizce adı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Republic Day"
+        },
+        {
+          "id": "b",
+          "text": "Victory Day"
+        },
+        {
+          "id": "c",
+          "text": "Children's Day"
+        }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "g2-eng-school-life-q044",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "30 Ağustos Zafer Bayramı'nın İngilizce adı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Children's Day"
+        },
+        {
+          "id": "b",
+          "text": "Victory Day"
+        },
+        {
+          "id": "c",
+          "text": "Republic Day"
+        }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "g2-eng-school-life-q045",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Dinî bayramda arkadaşına hangi ifadeyi söyleyebilirsin?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Good night!"
+        },
+        {
+          "id": "b",
+          "text": "Good morning!"
+        },
+        {
+          "id": "c",
+          "text": "Happy Eid!"
+        }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "g2-eng-school-life-q046-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Kartta hangi kutlama yer alıyor?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Victory Day"
+        },
+        {
+          "id": "b",
+          "text": "Republic Day"
+        },
+        {
+          "id": "c",
+          "text": "Children's Day"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "KUTLAMA KARTI\nDate: 29 October\nDay: Republic Day"
+    },
+    {
+      "id": "g2-eng-school-life-q047-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Boşluğa hangi kutlama gelmelidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eid"
+        },
+        {
+          "id": "b",
+          "text": "Children's Day"
+        },
+        {
+          "id": "c",
+          "text": "Victory Day"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "23 April — Children's Day\n29 October — Republic Day\n30 August — _____"
+    },
+    {
+      "id": "g2-eng-school-life-q048-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Arkadaşına hangi mesajı göndermesi uygundur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Happy Eid!"
+        },
+        {
+          "id": "b",
+          "text": "Happy Republic Day!"
+        },
+        {
+          "id": "c",
+          "text": "Happy Children's Day!"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Ece ailesiyle dinî bayramı kutluyor."
+    },
+    {
+      "id": "g2-eng-school-life-q049-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "30 Ağustos tarihinde hangi kutlama yapılır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Republic Day"
+        },
+        {
+          "id": "b",
+          "text": "Victory Day"
+        },
+        {
+          "id": "c",
+          "text": "Children's Day"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "OKUL KUTLAMALARI\n23 April — Children's Day\n30 August — Victory Day\n29 October — Republic Day"
+    },
+    {
+      "id": "g2-eng-school-life-q050-content-v2",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Ali kutlamanın adını yanlış söylemiştir. Hangi ifadeyi kullanmalıdır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Victory Day"
+        },
+        {
+          "id": "b",
+          "text": "Eid"
+        },
+        {
+          "id": "c",
+          "text": "Republic Day"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Ali: 29 October is Children's Day."
+    }
+  ]
+}

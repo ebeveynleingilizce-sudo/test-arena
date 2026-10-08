@@ -1,0 +1,11 @@
+{
+  "minimumUsable": 10,
+  "minimumOverrides": [],
+  "gradePolicies": {
+    "2": {"language":"tr","readingLevel":"2. sınıf, kısa ve somut ifadeler","maxQuestionLength":300,"maxOptionLength":120}
+  },
+  "bindings": [
+    {"match":{"grade":2,"subjectId":"matematik","unitId":"g2-matematik-sayilar-ve-nicelikler-1","topicId":"g2-matematik-sayilari-cozumleme","outcomeCode":"MAT.2.1.2"},"strategy":"base-ten-mcq@1","family":"BASE_TEN_TO_NUMBER"},
+    {"match":{"grade":2,"subjectId":"hayat-bilgisi","unitId":"g2-hayat-bilgisi-ben-ve-okulum","topicId":"g2-hayat-bilgisi-zaman-yonetimi","outcomeCode":"HB.2.1.1"},"strategy":"knowledge-mcq@1","family":"DAILY_PLANNING"}
+  ]
+}

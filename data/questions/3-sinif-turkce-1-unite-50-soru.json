@@ -1,0 +1,1196 @@
+{
+  "grade": 3,
+  "subjectId": "turkce",
+  "unitId": "g3-turkce-degerleri-mi-zle-yasiyoruz",
+  "questionCount": 50,
+  "questions": [
+    {
+      "id": "g3-turkce-u1-q001",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Eylül sınıf kitaplığıyla ilgili hangi sorunu fark etmiştir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kitapların çok eski olduğunu"
+        },
+        {
+          "id": "b",
+          "text": "Yeterince hikâye kitabı bulunmadığını"
+        },
+        {
+          "id": "c",
+          "text": "Öğrencilerin kitap okumayı sevmediğini"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Eylül, sınıf kitaplığında yeterince hikâye kitabı olmadığını fark etti. Arkadaşlarına evlerinde okuyup bitirdikleri kitapları sınıfa getirmeyi önerdi. Bazı öğrenciler kitaplarının zarar görebileceğini düşündü. Bunun üzerine Eylül, kitapları korumak için bir ödünç alma çizelgesi hazırlamayı teklif etti. Arkadaşları bu fikri kabul etti. Bir ay sonra sınıf kitaplığındaki kitap sayısı arttı ve öğrenciler farklı hikâyeler okumaya başladı.",
+      "outcomeMappingStatus": "theme-level-only"
+    },
+    {
+      "id": "g3-turkce-u1-q002",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bazı öğrencilerin kitap getirmekte kararsız kalmasının nedeni nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kitaplarının zarar görebileceğini düşünmeleri"
+        },
+        {
+          "id": "b",
+          "text": "Sınıf kitaplığının kapalı olması"
+        },
+        {
+          "id": "c",
+          "text": "Kitapları daha önce okumamış olmaları"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Eylül, sınıf kitaplığında yeterince hikâye kitabı olmadığını fark etti. Arkadaşlarına evlerinde okuyup bitirdikleri kitapları sınıfa getirmeyi önerdi. Bazı öğrenciler kitaplarının zarar görebileceğini düşündü. Bunun üzerine Eylül, kitapları korumak için bir ödünç alma çizelgesi hazırlamayı teklif etti. Arkadaşları bu fikri kabul etti. Bir ay sonra sınıf kitaplığındaki kitap sayısı arttı ve öğrenciler farklı hikâyeler okumaya başladı.",
+      "outcomeMappingStatus": "theme-level-only"
+    },
+    {
+      "id": "g3-turkce-u1-q003",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Eylül’ün ödünç alma çizelgesi hazırlamayı önermesi onun hangi özelliğini gösterir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sorunu görmezden geldiğini"
+        },
+        {
+          "id": "b",
+          "text": "Yalnızca kendi kitaplarını düşündüğünü"
+        },
+        {
+          "id": "c",
+          "text": "Arkadaşlarının kaygılarına çözüm aradığını"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Eylül, sınıf kitaplığında yeterince hikâye kitabı olmadığını fark etti. Arkadaşlarına evlerinde okuyup bitirdikleri kitapları sınıfa getirmeyi önerdi. Bazı öğrenciler kitaplarının zarar görebileceğini düşündü. Bunun üzerine Eylül, kitapları korumak için bir ödünç alma çizelgesi hazırlamayı teklif etti. Arkadaşları bu fikri kabul etti. Bir ay sonra sınıf kitaplığındaki kitap sayısı arttı ve öğrenciler farklı hikâyeler okumaya başladı.",
+      "outcomeMappingStatus": "theme-level-only"
+    },
+    {
+      "id": "g3-turkce-u1-q004",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Metne en uygun başlık hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eylül’ün En Sevdiği Kitap"
+        },
+        {
+          "id": "b",
+          "text": "İş Birliğiyle Büyüyen Kitaplık"
+        },
+        {
+          "id": "c",
+          "text": "Okuldaki Spor Yarışması"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Eylül, sınıf kitaplığında yeterince hikâye kitabı olmadığını fark etti. Arkadaşlarına evlerinde okuyup bitirdikleri kitapları sınıfa getirmeyi önerdi. Bazı öğrenciler kitaplarının zarar görebileceğini düşündü. Bunun üzerine Eylül, kitapları korumak için bir ödünç alma çizelgesi hazırlamayı teklif etti. Arkadaşları bu fikri kabul etti. Bir ay sonra sınıf kitaplığındaki kitap sayısı arttı ve öğrenciler farklı hikâyeler okumaya başladı.",
+      "outcomeMappingStatus": "theme-level-only"
+    },
+    {
+      "id": "g3-turkce-u1-q005",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Bu cümledeki “teselli etmek” ifadesinin anlamı hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Üzüntüsünü azaltmaya çalışmak"
+        },
+        {
+          "id": "b",
+          "text": "Birini yarışmaya çağırmak"
+        },
+        {
+          "id": "c",
+          "text": "Birinden yardım istemek"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Mert, arkadaşının üzüldüğünü görünce onu teselli etti.",
+      "outcomeMappingStatus": "theme-level-only"
+    },
+    {
+      "id": "g3-turkce-u1-q006",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Aşağıdaki cümlelerden hangisinde bir olayın nedeni açıklanmıştır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sınıfımızda yeni bir etkinlik başladı."
+        },
+        {
+          "id": "b",
+          "text": "Bahçeye üç fidan dikildi."
+        },
+        {
+          "id": "c",
+          "text": "Arkadaşım hastalandığı için onu ziyarete gittik."
+        }
+      ],
+      "correctOptionId": "c",
+      "outcomeMappingStatus": "theme-level-only"
+    },
+    {
+      "id": "g3-turkce-u1-q007",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu cümleden sonra hangisi gelirse yazının anlam bütünlüğü korunur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Geçen yıl yeni bir bisiklet aldım."
+        },
+        {
+          "id": "b",
+          "text": "Örneğin hasta olduğumuzda bizi arayıp nasıl olduğumuzu sorarlar."
+        },
+        {
+          "id": "c",
+          "text": "En sevdiğim mevsim yazdır."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Bir öğrenci, “Arkadaşlık” konulu yazısına şu cümleyle başlamıştır: İyi arkadaşlar zor zamanlarda birbirlerine destek olur.",
+      "outcomeMappingStatus": "theme-level-only"
+    },
+    {
+      "id": "g3-turkce-u1-q008",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Aşağıdaki cümlelerden hangisinde özel adların yazımı doğrudur?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ayşe ve Mehmet okul kitaplığına gittiler."
+        },
+        {
+          "id": "b",
+          "text": "ayşe ve Mehmet okul kitaplığına gittiler."
+        },
+        {
+          "id": "c",
+          "text": "Ayşe ve mehmet okul kitaplığına gittiler."
+        }
+      ],
+      "correctOptionId": "a",
+      "outcomeMappingStatus": "theme-level-only"
+    },
+    {
+      "id": "g3-turkce-u1-q009",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Afişin vermek istediği mesaj hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Çevreyi yalnızca görevliler temizlemelidir."
+        },
+        {
+          "id": "b",
+          "text": "Temizlik yalnızca okulda önemlidir."
+        },
+        {
+          "id": "c",
+          "text": "Çevreyi korumak herkesin görevidir."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Öğrenciler okul bahçesini temizledikten sonra şu afişi hazırlamıştır: “Temiz bir çevre, hepimizin sorumluluğudur.”",
+      "outcomeMappingStatus": "theme-level-only"
+    },
+    {
+      "id": "g3-turkce-u1-q010",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Bu metnin sonuna hangisi eklenirse ana düşünce güçlenir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ali’nin çantası kırmızıydı."
+        },
+        {
+          "id": "b",
+          "text": "Küçük yardımlar arkadaşlık bağlarını güçlendirir."
+        },
+        {
+          "id": "c",
+          "text": "O gün hava oldukça sıcaktı."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Ali, arkadaşının yere düşen defterlerini topladı. Arkadaşı ona teşekkür etti. Ali de yardım etmekten mutlu olduğunu söyledi.",
+      "outcomeMappingStatus": "theme-level-only"
+    },
+    {
+      "id": "g3-turkce-u1-q011",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Öğrenciler çiçek dikmeden önce ne yaptı?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bahçeyi kapattı."
+        },
+        {
+          "id": "b",
+          "text": "Belediyeden izin aldı."
+        },
+        {
+          "id": "c",
+          "text": "Çiçekleri sattı."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Mahalle Bahçesi\nSınıfımız mahalledeki boş alana çiçek dikmek istedi. Önce belediyeden izin aldık. Sonra görevleri paylaştık. Bir grup toprağı hazırlarken başka bir grup fideleri getirdi. Bir ay sonra bahçe rengârenk oldu.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Belediyeden izin aldı."
+    },
+    {
+      "id": "g3-turkce-u1-q012",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Çalışmanın başarılı olmasını sağlayan davranış hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Birbirlerini beklememeleri"
+        },
+        {
+          "id": "b",
+          "text": "Görev paylaşımı yapmaları"
+        },
+        {
+          "id": "c",
+          "text": "Hiç plan yapmamaları"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Mahalle Bahçesi\nSınıfımız mahalledeki boş alana çiçek dikmek istedi. Önce belediyeden izin aldık. Sonra görevleri paylaştık. Bir grup toprağı hazırlarken başka bir grup fideleri getirdi. Bir ay sonra bahçe rengârenk oldu.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Görev paylaşımı yapmaları"
+    },
+    {
+      "id": "g3-turkce-u1-q013",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Metne en uygun başlık hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yeni Bir Yarışma"
+        },
+        {
+          "id": "b",
+          "text": "Kış Tatili"
+        },
+        {
+          "id": "c",
+          "text": "Mahalle Bahçesi"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Sınıfımız mahalledeki boş alana çiçek dikmek istedi. Önce belediyeden izin aldık. Sonra görevleri paylaştık. Bir grup toprağı hazırlarken başka bir grup fideleri getirdi. Bir ay sonra bahçe rengârenk oldu.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Mahalle Bahçesi"
+    },
+    {
+      "id": "g3-turkce-u1-q014",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Metnin sonunda hangi durum anlatılmaktadır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bir ay sonra bahçe rengârenk oldu."
+        },
+        {
+          "id": "b",
+          "text": "Anlatılan olaylar hiç yaşanmamıştır."
+        },
+        {
+          "id": "c",
+          "text": "Öğrenciler hiçbir şey yapmadan eve dönmüştür."
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Sınıfımız mahalledeki boş alana çiçek dikmek istedi. Önce belediyeden izin aldık. Sonra görevleri paylaştık. Bir grup toprağı hazırlarken başka bir grup fideleri getirdi. Bir ay sonra bahçe rengârenk oldu.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Metnin son cümlesi: Bir ay sonra bahçe rengârenk oldu."
+    },
+    {
+      "id": "g3-turkce-u1-q015",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Duru eldiveni kime teslim etti?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Komşusuna"
+        },
+        {
+          "id": "b",
+          "text": "Nöbetçi öğretmene"
+        },
+        {
+          "id": "c",
+          "text": "Okul servisindeki şoföre"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Kayıp Eldiven\nDuru okul çıkışında bankın altında bir eldiven buldu. Eldivenin sahibini öğrenmek için nöbetçi öğretmene teslim etti. Ertesi gün eldivenini arayan arkadaşının mutlu olduğunu gördü.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Nöbetçi öğretmene"
+    },
+    {
+      "id": "g3-turkce-u1-q016",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Duru’nun davranışını en iyi anlatan özellik hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bencillik"
+        },
+        {
+          "id": "b",
+          "text": "Dürüstlük"
+        },
+        {
+          "id": "c",
+          "text": "Dikkatsizlik"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Kayıp Eldiven\nDuru okul çıkışında bankın altında bir eldiven buldu. Eldivenin sahibini öğrenmek için nöbetçi öğretmene teslim etti. Ertesi gün eldivenini arayan arkadaşının mutlu olduğunu gördü.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Dürüstlük"
+    },
+    {
+      "id": "g3-turkce-u1-q017",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Metne en uygun başlık hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kayıp Eldiven"
+        },
+        {
+          "id": "b",
+          "text": "Kış Tatili"
+        },
+        {
+          "id": "c",
+          "text": "Yeni Bir Yarışma"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Duru okul çıkışında bankın altında bir eldiven buldu. Eldivenin sahibini öğrenmek için nöbetçi öğretmene teslim etti. Ertesi gün eldivenini arayan arkadaşının mutlu olduğunu gördü.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Kayıp Eldiven"
+    },
+    {
+      "id": "g3-turkce-u1-q018",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Metnin sonunda hangi durum anlatılmaktadır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ertesi gün eldivenini arayan arkadaşının mutlu olduğunu gördü."
+        },
+        {
+          "id": "b",
+          "text": "Öğrenciler hiçbir şey yapmadan eve dönmüştür."
+        },
+        {
+          "id": "c",
+          "text": "Anlatılan olaylar hiç yaşanmamıştır."
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Duru okul çıkışında bankın altında bir eldiven buldu. Eldivenin sahibini öğrenmek için nöbetçi öğretmene teslim etti. Ertesi gün eldivenini arayan arkadaşının mutlu olduğunu gördü.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Metnin son cümlesi: Ertesi gün eldivenini arayan arkadaşının mutlu olduğunu gördü."
+    },
+    {
+      "id": "g3-turkce-u1-q019",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Ali neden sesini alçalttı?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dışarı çıkmak istediği için"
+        },
+        {
+          "id": "b",
+          "text": "Diğer öğrencilerin dikkatini dağıttığını fark ettiği için"
+        },
+        {
+          "id": "c",
+          "text": "Kitabı bittiği için"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Sessiz Kütüphane\nKütüphanede kitap okuyan öğrenciler vardı. Ali yüksek sesle konuşunca birkaç kişi dikkatini toplayamadı. Ali bunu fark etti ve sesini alçalttı. Sonra kitap okumaya devam etti.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Diğer öğrencilerin dikkatini dağıttığını fark ettiği için"
+    },
+    {
+      "id": "g3-turkce-u1-q020",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Metindeki olayın sonunda ne değişti?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kitaplar kaldırıldı."
+        },
+        {
+          "id": "b",
+          "text": "Herkes kütüphaneden ayrıldı."
+        },
+        {
+          "id": "c",
+          "text": "Ali başkalarını rahatsız etmeden okumaya devam etti."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Sessiz Kütüphane\nKütüphanede kitap okuyan öğrenciler vardı. Ali yüksek sesle konuşunca birkaç kişi dikkatini toplayamadı. Ali bunu fark etti ve sesini alçalttı. Sonra kitap okumaya devam etti.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Ali başkalarını rahatsız etmeden okumaya devam etti."
+    },
+    {
+      "id": "g3-turkce-u1-q021",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Metne en uygun başlık hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yeni Bir Yarışma"
+        },
+        {
+          "id": "b",
+          "text": "Sessiz Kütüphane"
+        },
+        {
+          "id": "c",
+          "text": "Kış Tatili"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Kütüphanede kitap okuyan öğrenciler vardı. Ali yüksek sesle konuşunca birkaç kişi dikkatini toplayamadı. Ali bunu fark etti ve sesini alçalttı. Sonra kitap okumaya devam etti.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Sessiz Kütüphane"
+    },
+    {
+      "id": "g3-turkce-u1-q022",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Metnin sonunda hangi durum anlatılmaktadır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Anlatılan olaylar hiç yaşanmamıştır."
+        },
+        {
+          "id": "b",
+          "text": "Öğrenciler hiçbir şey yapmadan eve dönmüştür."
+        },
+        {
+          "id": "c",
+          "text": "Sonra kitap okumaya devam etti."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Kütüphanede kitap okuyan öğrenciler vardı. Ali yüksek sesle konuşunca birkaç kişi dikkatini toplayamadı. Ali bunu fark etti ve sesini alçalttı. Sonra kitap okumaya devam etti.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Metnin son cümlesi: Sonra kitap okumaya devam etti."
+    },
+    {
+      "id": "g3-turkce-u1-q023",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Mina neden teşekkür kartı hazırladı?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Arkadaşları ona ders notları gönderdiği için"
+        },
+        {
+          "id": "b",
+          "text": "Yeni bir oyun kazandığı için"
+        },
+        {
+          "id": "c",
+          "text": "Tatile gideceği için"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Küçük Bir Teşekkür\nMina hastalandığı günlerde arkadaşlarının gönderdiği ders notları sayesinde konuları takip etti. Okula döndüğünde onlara küçük teşekkür kartları hazırladı. Kartlarda her arkadaşına ayrı bir cümle yazdı.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Arkadaşları ona ders notları gönderdiği için"
+    },
+    {
+      "id": "g3-turkce-u1-q024",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Mina’nın davranışı hangi düşünceyi destekler?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yardımlaşma karşılıklı değer görmeyi sağlar."
+        },
+        {
+          "id": "b",
+          "text": "Yardım edenler unutulmalıdır."
+        },
+        {
+          "id": "c",
+          "text": "Arkadaşlık yalnızca oyun oynamaktır."
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Küçük Bir Teşekkür\nMina hastalandığı günlerde arkadaşlarının gönderdiği ders notları sayesinde konuları takip etti. Okula döndüğünde onlara küçük teşekkür kartları hazırladı. Kartlarda her arkadaşına ayrı bir cümle yazdı.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Yardımlaşma karşılıklı değer görmeyi sağlar."
+    },
+    {
+      "id": "g3-turkce-u1-q025",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Metne en uygun başlık hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Küçük Bir Teşekkür"
+        },
+        {
+          "id": "b",
+          "text": "Yeni Bir Yarışma"
+        },
+        {
+          "id": "c",
+          "text": "Kış Tatili"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Mina hastalandığı günlerde arkadaşlarının gönderdiği ders notları sayesinde konuları takip etti. Okula döndüğünde onlara küçük teşekkür kartları hazırladı. Kartlarda her arkadaşına ayrı bir cümle yazdı.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Küçük Bir Teşekkür"
+    },
+    {
+      "id": "g3-turkce-u1-q026",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Metnin sonunda hangi durum anlatılmaktadır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Anlatılan olaylar hiç yaşanmamıştır."
+        },
+        {
+          "id": "b",
+          "text": "Kartlarda her arkadaşına ayrı bir cümle yazdı."
+        },
+        {
+          "id": "c",
+          "text": "Öğrenciler hiçbir şey yapmadan eve dönmüştür."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Mina hastalandığı günlerde arkadaşlarının gönderdiği ders notları sayesinde konuları takip etti. Okula döndüğünde onlara küçük teşekkür kartları hazırladı. Kartlarda her arkadaşına ayrı bir cümle yazdı.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Metnin son cümlesi: Kartlarda her arkadaşına ayrı bir cümle yazdı."
+    },
+    {
+      "id": "g3-turkce-u1-q027",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Öğrenciler kırılan dalı görünce ne yaptı?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dalları çekiştirdi."
+        },
+        {
+          "id": "b",
+          "text": "Ağaca tırmandı."
+        },
+        {
+          "id": "c",
+          "text": "Okul yönetimine haber verdi."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Yaşlı Çınar\nOkulun bahçesindeki çınar ağacı yazın öğrencilere gölge veriyordu. Bir gün dallarından biri kırıldı. Öğrenciler ağacın zarar görmemesi için durumu okul yönetimine bildirdi. Uzmanlar ağacı kontrol etti.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Okul yönetimine haber verdi."
+    },
+    {
+      "id": "g3-turkce-u1-q028",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Öğrencilerin davranışı neden yerindedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bahçeyi izinsiz değiştirdiler."
+        },
+        {
+          "id": "b",
+          "text": "Ağacı görmezden geldiler."
+        },
+        {
+          "id": "c",
+          "text": "Sorunu ilgili kişilere bildirerek güvenliği önemsediler."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Yaşlı Çınar\nOkulun bahçesindeki çınar ağacı yazın öğrencilere gölge veriyordu. Bir gün dallarından biri kırıldı. Öğrenciler ağacın zarar görmemesi için durumu okul yönetimine bildirdi. Uzmanlar ağacı kontrol etti.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Sorunu ilgili kişilere bildirerek güvenliği önemsediler."
+    },
+    {
+      "id": "g3-turkce-u1-q029",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Metne en uygun başlık hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yeni Bir Yarışma"
+        },
+        {
+          "id": "b",
+          "text": "Kış Tatili"
+        },
+        {
+          "id": "c",
+          "text": "Yaşlı Çınar"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Okulun bahçesindeki çınar ağacı yazın öğrencilere gölge veriyordu. Bir gün dallarından biri kırıldı. Öğrenciler ağacın zarar görmemesi için durumu okul yönetimine bildirdi. Uzmanlar ağacı kontrol etti.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Yaşlı Çınar"
+    },
+    {
+      "id": "g3-turkce-u1-q030",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Metnin sonunda hangi durum anlatılmaktadır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Öğrenciler hiçbir şey yapmadan eve dönmüştür."
+        },
+        {
+          "id": "b",
+          "text": "Uzmanlar ağacı kontrol etti."
+        },
+        {
+          "id": "c",
+          "text": "Anlatılan olaylar hiç yaşanmamıştır."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Okulun bahçesindeki çınar ağacı yazın öğrencilere gölge veriyordu. Bir gün dallarından biri kırıldı. Öğrenciler ağacın zarar görmemesi için durumu okul yönetimine bildirdi. Uzmanlar ağacı kontrol etti.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Metnin son cümlesi: Uzmanlar ağacı kontrol etti."
+    },
+    {
+      "id": "g3-turkce-u1-q031",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Baran başlangıçta nasıl hissediyor olabilir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Her şeyi biliyor"
+        },
+        {
+          "id": "b",
+          "text": "Çekingen"
+        },
+        {
+          "id": "c",
+          "text": "Öfkeli ve saldırgan"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Yeni Öğrenci\nSınıfa yeni gelen Baran teneffüste tek başına duruyordu. Elif onu oyunlarına çağırdı. Baran önce çekinse de sonra arkadaşlarıyla birlikte oynadı. Gün sonunda kendini daha rahat hissetti.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Çekingen"
+    },
+    {
+      "id": "g3-turkce-u1-q032",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Elif’in davranışının sonucu nedir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Elif okula gelmedi."
+        },
+        {
+          "id": "b",
+          "text": "Baran kendini sınıfta daha rahat hissetti."
+        },
+        {
+          "id": "c",
+          "text": "Oyun sona erdi."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Yeni Öğrenci\nSınıfa yeni gelen Baran teneffüste tek başına duruyordu. Elif onu oyunlarına çağırdı. Baran önce çekinse de sonra arkadaşlarıyla birlikte oynadı. Gün sonunda kendini daha rahat hissetti.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Baran kendini sınıfta daha rahat hissetti."
+    },
+    {
+      "id": "g3-turkce-u1-q033",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Metne en uygun başlık hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kış Tatili"
+        },
+        {
+          "id": "b",
+          "text": "Yeni Bir Yarışma"
+        },
+        {
+          "id": "c",
+          "text": "Yeni Öğrenci"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Sınıfa yeni gelen Baran teneffüste tek başına duruyordu. Elif onu oyunlarına çağırdı. Baran önce çekinse de sonra arkadaşlarıyla birlikte oynadı. Gün sonunda kendini daha rahat hissetti.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Yeni Öğrenci"
+    },
+    {
+      "id": "g3-turkce-u1-q034",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Metnin sonunda hangi durum anlatılmaktadır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Öğrenciler hiçbir şey yapmadan eve dönmüştür."
+        },
+        {
+          "id": "b",
+          "text": "Gün sonunda kendini daha rahat hissetti."
+        },
+        {
+          "id": "c",
+          "text": "Anlatılan olaylar hiç yaşanmamıştır."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Sınıfa yeni gelen Baran teneffüste tek başına duruyordu. Elif onu oyunlarına çağırdı. Baran önce çekinse de sonra arkadaşlarıyla birlikte oynadı. Gün sonunda kendini daha rahat hissetti.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Metnin son cümlesi: Gün sonunda kendini daha rahat hissetti."
+    },
+    {
+      "id": "g3-turkce-u1-q035",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Efe boya işini bitirince ne yaptı?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Boyayı sakladı."
+        },
+        {
+          "id": "b",
+          "text": "Boyayı çöpe attı."
+        },
+        {
+          "id": "c",
+          "text": "Boyayı temizleyip geri verdi."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Paylaşılan Boyalar\nResim dersinde Efe’nin mavi boyası bitmişti. Yanındaki arkadaşı ona kendi boyasını verdi. Efe resmini tamamlayınca boyayı temizleyip geri verdi. İkisi de çalışmalarını bitirdi.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Boyayı temizleyip geri verdi."
+    },
+    {
+      "id": "g3-turkce-u1-q036",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Bu metnin ana düşüncesi hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eşyaları geri vermek gereksizdir."
+        },
+        {
+          "id": "b",
+          "text": "Paylaşırken başkasının eşyasına özen göstermeliyiz."
+        },
+        {
+          "id": "c",
+          "text": "Resim yapmak yalnızca tek başına olur."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Paylaşılan Boyalar\nResim dersinde Efe’nin mavi boyası bitmişti. Yanındaki arkadaşı ona kendi boyasını verdi. Efe resmini tamamlayınca boyayı temizleyip geri verdi. İkisi de çalışmalarını bitirdi.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Paylaşırken başkasının eşyasına özen göstermeliyiz."
+    },
+    {
+      "id": "g3-turkce-u1-q037",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Metne en uygun başlık hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yeni Bir Yarışma"
+        },
+        {
+          "id": "b",
+          "text": "Kış Tatili"
+        },
+        {
+          "id": "c",
+          "text": "Paylaşılan Boyalar"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Resim dersinde Efe’nin mavi boyası bitmişti. Yanındaki arkadaşı ona kendi boyasını verdi. Efe resmini tamamlayınca boyayı temizleyip geri verdi. İkisi de çalışmalarını bitirdi.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Paylaşılan Boyalar"
+    },
+    {
+      "id": "g3-turkce-u1-q038",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Metnin sonunda hangi durum anlatılmaktadır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Öğrenciler hiçbir şey yapmadan eve dönmüştür."
+        },
+        {
+          "id": "b",
+          "text": "İkisi de çalışmalarını bitirdi."
+        },
+        {
+          "id": "c",
+          "text": "Anlatılan olaylar hiç yaşanmamıştır."
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Resim dersinde Efe’nin mavi boyası bitmişti. Yanındaki arkadaşı ona kendi boyasını verdi. Efe resmini tamamlayınca boyayı temizleyip geri verdi. İkisi de çalışmalarını bitirdi.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Metnin son cümlesi: İkisi de çalışmalarını bitirdi."
+    },
+    {
+      "id": "g3-turkce-u1-q039",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Selim önce hangi işi yaptı?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bahçede oyun oynadı."
+        },
+        {
+          "id": "b",
+          "text": "Eve gitti."
+        },
+        {
+          "id": "c",
+          "text": "Kitapları düzenledi."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Söz Verilen Gün\nSınıf başkanı Selim, cuma günü kitapları düzenlemeye yardım edeceğine söz verdi. O gün hava güzel olduğu için bahçede oynamak istedi. Ancak önce verdiği sözü tuttu, sonra arkadaşlarıyla oynadı.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Kitapları düzenledi."
+    },
+    {
+      "id": "g3-turkce-u1-q040",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Selim’in davranışı hangi değeri gösterir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sorumluluk"
+        },
+        {
+          "id": "b",
+          "text": "Sabırsızlık"
+        },
+        {
+          "id": "c",
+          "text": "İlgisizlik"
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Söz Verilen Gün\nSınıf başkanı Selim, cuma günü kitapları düzenlemeye yardım edeceğine söz verdi. O gün hava güzel olduğu için bahçede oynamak istedi. Ancak önce verdiği sözü tuttu, sonra arkadaşlarıyla oynadı.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Sorumluluk"
+    },
+    {
+      "id": "g3-turkce-u1-q041",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Metne en uygun başlık hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kış Tatili"
+        },
+        {
+          "id": "b",
+          "text": "Yeni Bir Yarışma"
+        },
+        {
+          "id": "c",
+          "text": "Söz Verilen Gün"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Sınıf başkanı Selim, cuma günü kitapları düzenlemeye yardım edeceğine söz verdi. O gün hava güzel olduğu için bahçede oynamak istedi. Ancak önce verdiği sözü tuttu, sonra arkadaşlarıyla oynadı.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Söz Verilen Gün"
+    },
+    {
+      "id": "g3-turkce-u1-q042",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Metnin sonunda hangi durum anlatılmaktadır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ancak önce verdiği sözü tuttu, sonra arkadaşlarıyla oynadı."
+        },
+        {
+          "id": "b",
+          "text": "Anlatılan olaylar hiç yaşanmamıştır."
+        },
+        {
+          "id": "c",
+          "text": "Öğrenciler hiçbir şey yapmadan eve dönmüştür."
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Sınıf başkanı Selim, cuma günü kitapları düzenlemeye yardım edeceğine söz verdi. O gün hava güzel olduğu için bahçede oynamak istedi. Ancak önce verdiği sözü tuttu, sonra arkadaşlarıyla oynadı.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Metnin son cümlesi: Ancak önce verdiği sözü tuttu, sonra arkadaşlarıyla oynadı."
+    },
+    {
+      "id": "g3-turkce-u1-q043",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "İpek hangi soruna çözüm buldu?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kutunun kaybolmasına"
+        },
+        {
+          "id": "b",
+          "text": "Kutunun ne için kullanıldığının bilinmemesine"
+        },
+        {
+          "id": "c",
+          "text": "Okulda kâğıt bulunmamasına"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Geri Dönüşüm Kutusu\nOkulda kâğıtlar için ayrı bir kutu kondu. Başlangıçta bazı öğrenciler kutunun amacını bilmiyordu. İpek, kısa bir bilgilendirme yazısı hazırlayıp kutunun yanına astı. Bir hafta sonra kutu daha doğru kullanılmaya başlandı.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Kutunun ne için kullanıldığının bilinmemesine"
+    },
+    {
+      "id": "g3-turkce-u1-q044",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Metindeki değişimin nedeni hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Okulun kapanması"
+        },
+        {
+          "id": "b",
+          "text": "Kutunun renginin değişmesi"
+        },
+        {
+          "id": "c",
+          "text": "Açıklayıcı bilgilendirme yazısının asılması"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Geri Dönüşüm Kutusu\nOkulda kâğıtlar için ayrı bir kutu kondu. Başlangıçta bazı öğrenciler kutunun amacını bilmiyordu. İpek, kısa bir bilgilendirme yazısı hazırlayıp kutunun yanına astı. Bir hafta sonra kutu daha doğru kullanılmaya başlandı.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Açıklayıcı bilgilendirme yazısının asılması"
+    },
+    {
+      "id": "g3-turkce-u1-q045",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Metne en uygun başlık hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kış Tatili"
+        },
+        {
+          "id": "b",
+          "text": "Yeni Bir Yarışma"
+        },
+        {
+          "id": "c",
+          "text": "Geri Dönüşüm Kutusu"
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Okulda kâğıtlar için ayrı bir kutu kondu. Başlangıçta bazı öğrenciler kutunun amacını bilmiyordu. İpek, kısa bir bilgilendirme yazısı hazırlayıp kutunun yanına astı. Bir hafta sonra kutu daha doğru kullanılmaya başlandı.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Geri Dönüşüm Kutusu"
+    },
+    {
+      "id": "g3-turkce-u1-q046",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Metnin sonunda hangi durum anlatılmaktadır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bir hafta sonra kutu daha doğru kullanılmaya başlandı."
+        },
+        {
+          "id": "b",
+          "text": "Anlatılan olaylar hiç yaşanmamıştır."
+        },
+        {
+          "id": "c",
+          "text": "Öğrenciler hiçbir şey yapmadan eve dönmüştür."
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Okulda kâğıtlar için ayrı bir kutu kondu. Başlangıçta bazı öğrenciler kutunun amacını bilmiyordu. İpek, kısa bir bilgilendirme yazısı hazırlayıp kutunun yanına astı. Bir hafta sonra kutu daha doğru kullanılmaya başlandı.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Metnin son cümlesi: Bir hafta sonra kutu daha doğru kullanılmaya başlandı."
+    },
+    {
+      "id": "g3-turkce-u1-q047",
+      "type": "multiple-choice",
+      "difficulty": "easy",
+      "question": "Öğrenciler gösteri için nasıl hazırlandı?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yalnızca bir kişi çalışarak"
+        },
+        {
+          "id": "b",
+          "text": "Farklı görevleri paylaşarak"
+        },
+        {
+          "id": "c",
+          "text": "Hiç prova yapmadan"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Birlikte Hazırlık\nÖğrenciler 23 Nisan gösterisi için hazırlık yapıyordu. Bazıları şarkı söylüyor, bazıları dekorları hazırlıyordu. Görevler tamamlanınca herkes prova için toplandı. Gösteri günü herkesin emeği fark edildi.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Farklı görevleri paylaşarak"
+    },
+    {
+      "id": "g3-turkce-u1-q048",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Metnin ana düşüncesi hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ortak emek güzel sonuçlar doğurabilir."
+        },
+        {
+          "id": "b",
+          "text": "Hazırlık yapmak gereksizdir."
+        },
+        {
+          "id": "c",
+          "text": "Görev paylaşımı işleri zorlaştırır."
+        }
+      ],
+      "correctOptionId": "a",
+      "content": "Birlikte Hazırlık\nÖğrenciler 23 Nisan gösterisi için hazırlık yapıyordu. Bazıları şarkı söylüyor, bazıları dekorları hazırlıyordu. Görevler tamamlanınca herkes prova için toplandı. Gösteri günü herkesin emeği fark edildi.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Ortak emek güzel sonuçlar doğurabilir."
+    },
+    {
+      "id": "g3-turkce-u1-q049",
+      "type": "multiple-choice",
+      "difficulty": "medium",
+      "question": "Metne en uygun başlık hangisidir?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yeni Bir Yarışma"
+        },
+        {
+          "id": "b",
+          "text": "Birlikte Hazırlık"
+        },
+        {
+          "id": "c",
+          "text": "Kış Tatili"
+        }
+      ],
+      "correctOptionId": "b",
+      "content": "Öğrenciler 23 Nisan gösterisi için hazırlık yapıyordu. Bazıları şarkı söylüyor, bazıları dekorları hazırlıyordu. Görevler tamamlanınca herkes prova için toplandı. Gösteri günü herkesin emeği fark edildi.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Doğru cevap: Birlikte Hazırlık"
+    },
+    {
+      "id": "g3-turkce-u1-q050",
+      "type": "multiple-choice",
+      "difficulty": "hard",
+      "question": "Metnin sonunda hangi durum anlatılmaktadır?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Anlatılan olaylar hiç yaşanmamıştır."
+        },
+        {
+          "id": "b",
+          "text": "Öğrenciler hiçbir şey yapmadan eve dönmüştür."
+        },
+        {
+          "id": "c",
+          "text": "Gösteri günü herkesin emeği fark edildi."
+        }
+      ],
+      "correctOptionId": "c",
+      "content": "Öğrenciler 23 Nisan gösterisi için hazırlık yapıyordu. Bazıları şarkı söylüyor, bazıları dekorları hazırlıyordu. Görevler tamamlanınca herkes prova için toplandı. Gösteri günü herkesin emeği fark edildi.",
+      "outcomeMappingStatus": "theme-level-only",
+      "explanation": "Metnin son cümlesi: Gösteri günü herkesin emeği fark edildi."
+    }
+  ]
+}
