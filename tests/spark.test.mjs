@@ -18,6 +18,7 @@ import {chromium} from '@playwright/test';
 import {mkdir} from 'node:fs/promises';
 import {registerTeacherSharingTests} from './teacher-sharing-cases.mjs';
 import {registerQuestionBankTests} from './question-bank-cases.mjs';
+import {registerGrade9ExperienceTests} from './grade9-experience-cases.mjs';
 const projectId='demo-test-arena-spark-prototype';
 if(process.env.GCLOUD_PROJECT!==projectId||process.env.FIRESTORE_EMULATOR_HOST!=='127.0.0.1:8180'||process.env.FIREBASE_AUTH_EMULATOR_HOST!=='127.0.0.1:9199')throw Error('Isolated emulators required');
 setLogLevel('silent');
@@ -264,3 +265,4 @@ test('20-second duel gives immediate verified XP; leaving uses current points an
  await assertFails(setDoc(ref(ca,`teachers/st/students/${a.studentId}/quizzes/forged-active-xp`),{templateId:pack.templateId,classId:cls.classId,duelId:repeat,resolved:0,correct:0,wrong:0,blank:0,lastQuestionId:'',status:'active',startedAt:serverTimestamp(),completedAt:null}));
 });
 registerQuestionBankTests(()=>({ta,tb,call,client,ensureTeacher,pack,records,adminAuth:adminAuth(admin),adminDb:adminFirestore(admin)}));
+registerGrade9ExperienceTests(()=>({ta,tb,call,client,adminDb:adminFirestore(admin)}));

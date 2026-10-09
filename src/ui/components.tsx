@@ -23,6 +23,7 @@ export function errorMessage(error: unknown) {
   if (/invalid-credential|user-not-found|wrong-password/.test(code)) return 'E-posta veya şifre hatalı.';
   if (code.includes('email-already-in-use')) return 'Bu e-posta zaten kayıtlı. Giriş yapmayı dene.';
   if (code.includes('weak-password')) return 'Şifren en az 6 karakter olmalı.';
+  if (code === 'resource-exhausted' || code === 'firestore/resource-exhausted') return 'Veritabanı kullanım kotası aşıldı. Sorular şu anda yüklenemiyor; kotanın yenilenmesi gerekiyor.';
   if (code.includes('resource-exhausted')) return 'Çok fazla deneme. Bir dakika sonra yeniden dene.';
   if (code.includes('unauthenticated')) return 'Kod geçersiz veya yenilenmiş. Öğretmeninden güncel kodu iste.';
   if (code.includes('popup-closed-by-user')) return 'Google giriş penceresi kapatıldı.';
