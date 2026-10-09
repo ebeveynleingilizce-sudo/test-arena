@@ -48,3 +48,12 @@ testleri 4/4 geçti. Yayın öncesinde birim/görünüm/PWA testleri 19/19 ve ka
 sınıf emülatör/mobil/masaüstü testleri 4/4 geçti. Canlı mobil/masaüstü öğretmen
 girişinde konsol hatası yok; girişsiz Firestore erişimi reddediliyor. Git commit,
 push veya branch oluşturulmadı; GitHub Pages bu yayında güncellenmedi.
+
+## Sınıf erişimi düzeltmesi ve iki origin'in eşitlenmesi
+
+Önceki yayın eski GitHub Pages PWA origin'ini güncellemediği için eski istemci
+ile yeni kurallar çakışıyordu. `CLASS-ACCESS-FIX.md` inceleme ve test sonucunu
+açıklar. Kullanıcı commit ve main'e push için açık izin verdi. Mevcut uzak main'in
+viewport ve davranış raporlama commit'leri korunarak değişiklikler birleştirildi.
+Firebase Hosting/kurallar yayını ve main push'unun tetiklediği GitHub Pages yayını
+birlikte doğrulanır. Canlı veriye migration/import/silme uygulanmaz.

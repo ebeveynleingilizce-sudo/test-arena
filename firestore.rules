@@ -2,7 +2,7 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     // Separate full-quiz experiment; no per-question pre-completion award route.
-    function teacher(t) { return request.auth != null && request.auth.uid == t
+    function teacher(t) { return request.auth != null && request.auth.uid == t && !exists(/databases/$(database)/documents/studentBindings/$(t))
       && get(/databases/$(database)/documents/roles/$(t)).data.role == 'teacher'; }
     function pupil(t,s) {
       let b = get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data;
