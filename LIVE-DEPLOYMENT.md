@@ -57,3 +57,15 @@ açıklar. Kullanıcı commit ve main'e push için açık izin verdi. Mevcut uza
 viewport ve davranış raporlama commit'leri korunarak değişiklikler birleştirildi.
 Firebase Hosting/kurallar yayını ve main push'unun tetiklediği GitHub Pages yayını
 birlikte doğrulanır. Canlı veriye migration/import/silme uygulanmaz.
+
+## Öğretmen davet arayüzü
+
+Davet oluşturma, kopyalama, iptal ve kodla katılım yalnız Sınıflarım'a taşındı.
+Yeni kodlar seçilen en fazla beş sınıf için atomik üyelik açar; mevcut tek sınıflı
+davetler geriye uyumludur. Seçilmeyen sınıfa erişim, kısmi katılım yazması,
+davet tekrar kullanımı, iptal ve tam yönetim kontrolleri test edildi.
+Sabit üretim test paketiyle mevcut öğrenci/XP/quiz/Arena ve paylaşım testleri
+24/24; PWA/viewport/ortam/kademe testleri 14/14 geçti. Mobil/masaüstü gerçek
+checkbox seçimi, kod kopyalama ve katılımda console hatası veya yatay taşma yok.
+Yayın yalnız uygulama ve güvenlik kurallarını günceller; canlı sınıf/öğrenci/XP
+verileri için migration veya sıfırlama yapılmaz.

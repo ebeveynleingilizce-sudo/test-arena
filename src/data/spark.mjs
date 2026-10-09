@@ -161,7 +161,7 @@ async function answer(ctx,p,data){
 }
 const duelStarts=new Map();
 export async function sparkCall(name,data,ctx){
-  if(['createClass','deleteClass','permanentlyDeleteClass','updateClass','createStudent','bulkCreateStudents','rotateStudentCode','removeStudent','updateStudent','teacherAnalytics','listTeacherClasses','inviteTeacher','acceptTeacherInvitation','revokeTeacherInvitation','removeClassTeacher','transferClassOwnership','adjustStudentReward','saveClassActivity'].includes(name)){
+  if(['createClass','deleteClass','permanentlyDeleteClass','updateClass','createStudent','bulkCreateStudents','rotateStudentCode','removeStudent','updateStudent','teacherAnalytics','listTeacherClasses','inviteTeacher','inviteTeacherClasses','acceptTeacherInvitation','revokeTeacherInvitation','removeClassTeacher','transferClassOwnership','adjustStudentReward','saveClassActivity'].includes(name)){
     await teacher(ctx);const {sharedTeacherCall}=await import('./teacher-sharing.mjs');return sharedTeacherCall(ctx,name,data||{});
   }
   if(name==='studentLogin'){

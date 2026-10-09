@@ -4,7 +4,9 @@ Sınıf sahibi ve davetle katılan öğretmenler aynı sınıf, öğrenci, kısa
 
 ## Kullanım
 
-Sınıflarım ekranındaki **Öğretmen daveti** alanından kodla katılın. Bir sınıfın **Sınıf yönetimi** bölümünde öğretmen davet edin, erişimi kaldırın, etkinlikleri yönetin ve işlem geçmişini inceleyin. Öğrenci satırındaki **XP / yıldız** düğmesi, gerekçeli verme ve geri alma işlemlerini kaydeder.
+Öğretmen davet işlemleri yalnız **Sınıflarım** ekranındadır. **Öğretmen Davet Et** ile kendi sınıflarınızdan bir veya birkaçını seçip **Davet Kodu Oluştur** düğmesine basın; oluşan kodu kopyalayın. **Davet Kodu ile Sınıfa Katıl** ayrı bir akıştır. Katılım sonrasında seçilen sınıflar bu listede görünür. Bekleyen davetler aynı bölümden iptal edilir. Ana panelde ve sınıf detayında davet alanı bulunmaz.
+
+Bir kod en fazla beş sınıfı kapsar; Firestore işlem ve güvenlik kuralı okuma sınırları içinde tüm üyelikler tek atomik işlemle açılır. Daha fazla sınıf için ayrı kod oluşturulur. Kod, bir öğretmen tarafından kullanılabilir. Eski tek sınıflı kodlar çalışmaya devam eder. Sınıf yönetimi bölümünde mevcut öğretmen erişimini kaldırabilir, etkinlikleri yönetebilir ve işlem geçmişini inceleyebilirsiniz. Öğrenci satırındaki **XP / yıldız** düğmesi, gerekçeli verme ve geri alma işlemlerini kaydeder.
 
 Kurucu ve davetle katılan aktif öğretmenler öğrenci ekleyebilir, ad/kademe/grup düzenleyebilir, kaldırabilir, kısa kod yenileyebilir, test/gelişim verilerini görebilir, sınıf bilgilerini değiştirebilir ve öğretmen davet edebilir. Sınıf silme ve sahiplik devri dahil tam yönetim yetkileri sınıf bazında uygulanır. Sınıfı oluşturan öğretmenin erişimi sahiplik devrinde de korunur; kurucu üyelikten çıkarılamaz. Kalıcı silmenin sınıf adıyla açık onay şartı korunur.
 

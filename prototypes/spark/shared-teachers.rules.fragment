@@ -16,7 +16,7 @@
     function joinInvite(t,c,u,hash) {
       let v = get(/databases/$(database)/documents/teacherInvitations/$(hash)).data;
       let after = getAfter(/databases/$(database)/documents/teacherInvitations/$(hash)).data;
-      return authTeacher() && u == request.auth.uid && v.storageUid == t && v.classId == c
+      return authTeacher() && u == request.auth.uid && v.storageUid == t && c in v.get('classIds',[v.classId])
         && v.revoked == false && v.consumedBy == '' && request.time < v.createdAt + duration.value(24,'h')
         && after.consumedBy == u && after.consumedAt == request.time && classActive(t,c);
     }
@@ -101,9 +101,10 @@
     }
     match /teacherInvitations/{hash} {
       allow get: if authTeacher();
-      allow list: if classReader(resource.data.storageUid,resource.data.classId);
+      allow list: if (authTeacher() && resource.data.createdBy == request.auth.uid) || classReader(resource.data.storageUid,resource.data.classId);
       allow create: if classManager(request.resource.data.storageUid,request.resource.data.classId) && hash.matches('[a-f0-9]{64}')
-        && request.resource.data.keys().hasOnly(['storageUid','classId','createdBy','createdAt','consumedBy','consumedAt','revoked','lastActionId'])
+        && request.resource.data.keys().hasOnly(['storageUid','classId','classIds','createdBy','createdAt','consumedBy','consumedAt','revoked','lastActionId'])
+        && (!('classIds' in request.resource.data) || validInviteClasses(request.resource.data))
         && request.resource.data.createdBy == request.auth.uid && request.resource.data.createdAt == request.time
         && request.resource.data.consumedBy == '' && request.resource.data.consumedAt == null && request.resource.data.revoked == false
         && audited(request.resource.data.storageUid,request.resource.data.classId,request.resource.data.lastActionId,'teacherInvited',hash);
@@ -111,12 +112,35 @@
         && resource.data.revoked == false && resource.data.consumedBy == '' && request.time < resource.data.createdAt + duration.value(24,'h')
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['consumedBy','consumedAt'])
         && request.resource.data.consumedBy == request.auth.uid && request.resource.data.consumedAt == request.time
+        && resource.data.createdBy != request.auth.uid && joinedInviteClasses(resource.data,hash)
         && getAfter(/databases/$(database)/documents/teachers/$(resource.data.storageUid)/classes/$(resource.data.classId)/teacherMembers/$(request.auth.uid)).data.invitationId == hash
         && audited(resource.data.storageUid,resource.data.classId,getAfter(/databases/$(database)/documents/teachers/$(resource.data.storageUid)/classes/$(resource.data.classId)/teacherMembers/$(request.auth.uid)).data.lastActionId,'teacherJoined',request.auth.uid);
       allow update: if classManager(resource.data.storageUid,resource.data.classId)
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['revoked','lastActionId']) && request.resource.data.revoked == true
         && audited(resource.data.storageUid,resource.data.classId,request.resource.data.lastActionId,'invitationRevoked',hash);
       allow delete: if deletingClass(resource.data.storageUid,resource.data.classId);
+    }
+    function validInviteClasses(v) {
+      let ids = v.classIds;
+      return v.storageUid == request.auth.uid && ids is list && ids.size() >= 1 && ids.size() <= 5
+        && ids.toSet().size() == ids.size() && ids[0] == v.classId
+        && classData(v.storageUid,ids[0]).get('status','active') != 'deleting'
+        && (ids.size() < 2 || classData(v.storageUid,ids[1]).get('status','active') != 'deleting')
+        && (ids.size() < 3 || classData(v.storageUid,ids[2]).get('status','active') != 'deleting')
+        && (ids.size() < 4 || classData(v.storageUid,ids[3]).get('status','active') != 'deleting')
+        && (ids.size() < 5 || classData(v.storageUid,ids[4]).get('status','active') != 'deleting');
+    }
+    function joinedInviteMember(t,c,hash) {
+      let m = getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/teacherMembers/$(request.auth.uid)).data;
+      return m.status == 'active' && m.invitationId == hash;
+    }
+    function joinedInviteClasses(v,hash) {
+      let ids = v.get('classIds',[v.classId]);
+      return joinedInviteMember(v.storageUid,ids[0],hash)
+        && (ids.size() < 2 || joinedInviteMember(v.storageUid,ids[1],hash))
+        && (ids.size() < 3 || joinedInviteMember(v.storageUid,ids[2],hash))
+        && (ids.size() < 4 || joinedInviteMember(v.storageUid,ids[3],hash))
+        && (ids.size() < 5 || joinedInviteMember(v.storageUid,ids[4],hash));
     }
     match /teachers/{t}/students/{s} {
       allow list: if teacher(t);

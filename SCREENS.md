@@ -265,6 +265,8 @@ gösterilebilir.
 
 Sınıf Oluştur bulunmalıdır.
 
+Öğretmen davet işlemleri yalnız bu ekranda bulunur: **Öğretmen Davet Et** ve **Davet Kodu ile Sınıfa Katıl** iki ayrı işlemdir. Davet oluştururken kendi sınıflarından en fazla beşi çoklu seçimle belirlenir; **Davet Kodu Oluştur**, kod kopyalama ve bekleyen davetleri iptal etme bulunur. Kodla katılan öğretmen yalnız seçilen sınıflarda tam yönetim yetkisi kazanır; bu sınıflar Sınıflarım listesine eklenir. Ana panelde ve sınıf detayında davet oluşturma/katılma alanı gösterilmez.
+
 Sınıf oluşturma ve düzenlemede Tek Sınıf / Karma Sınıf seçimi bulunur. Karma Sınıf için 1–12 arasından en az iki kademe seçilir. Öğrenci eklerken karma grubun kademeleri arasından öğrencinin kendi kademesi atanır. Toplu eklemede listeye uygulanacak kademe açıkça seçilir.
 
 Öğrenci listesi, grup genel bakışı ve konu analizi kademe filtresini destekler. Grup seçiminden çıkarılan kademelerdeki mevcut öğrenciler korunur; yeni atama için kademe tekrar seçilmelidir.

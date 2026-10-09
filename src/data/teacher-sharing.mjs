@@ -90,8 +90,25 @@ export async function sharedTeacherCall(ctx,name,data={}){
  if(name==='removeStudent'){const s=id(data.studentId),p=await profile(ctx,t,s),b=writeBatch(ctx.db),eventId=log(ctx,b,t,p.classId,'studentRemoved',s);b.update(r(ctx,studentPath(t,s)),{status:'removed',credentialVersion:p.credentialVersion+1,lastActionId:eventId});b.delete(r(ctx,`${classPath(t,p.classId)}/classMembers/${s}`));b.delete(r(ctx,`${classPath(t,p.classId)}/leaderboard/${s}`));await b.commit();return {};}
  if(name==='teacherAnalytics'){const {sparkAnalytics}=await import('./spark-analytics.mjs');const at=await now(ctx),period=arenaPeriod(new Date(at)),classes=await accessibleClasses(ctx);return sparkAnalytics(ctx,t,data,{...period,serverNow:at},classes);}
  if(name==='listTeacherClasses')return accessibleClasses(ctx);
+ if(name==='inviteTeacherClasses'){
+  const classIds=data.classIds;
+  if(!Array.isArray(classIds)||!classIds.length||classIds.length>5||new Set(classIds).size!==classIds.length)throw Error('Bir davet için 1–5 farklı sınıf seç.');
+  classIds.forEach(id);for(const c of classIds)await classInfo(ctx,uid,c);
+  const code=Array.from(crypto.getRandomValues(new Uint8Array(24)),b=>alphabet[b&31]).join(''),hash=await inviteHash(code),b=writeBatch(ctx.db),eventId=log(ctx,b,uid,classIds[0],'teacherInvited',hash,{classIds});
+  b.set(r(ctx,`teacherInvitations/${hash}`),{storageUid:uid,classId:classIds[0],classIds,createdBy:uid,createdAt:serverTimestamp(),consumedBy:'',consumedAt:null,revoked:false,lastActionId:eventId});await b.commit();return {code,invitationId:hash};
+ }
  if(name==='acceptTeacherInvitation'){
-  const hash=await inviteHash(data.code);return runTransaction(ctx.db,async tx=>{const invRef=r(ctx,`teacherInvitations/${hash}`),snapshot=await tx.get(invRef);if(!snapshot.exists())throw Error('Davet bulunamadı.');const inv=snapshot.data(),ct=inv.storageUid,c=inv.classId;if(inv.revoked||inv.consumedBy||inv.createdAt.toMillis()+86400000<Date.now())throw Error('Davet kullanılmış veya süresi dolmuş.');const member=await tx.get(r(ctx,`${classPath(ct,c)}/teacherMembers/${uid}`));if(member.exists()&&member.data().status==='active')throw Error('Bu sınıfta zaten yetkilisin.');const eventId=log(ctx,tx,ct,c,'teacherJoined',uid,{invitationId:hash});tx.update(invRef,{consumedBy:uid,consumedAt:serverTimestamp()});tx.set(r(ctx,`${classPath(ct,c)}/teacherMembers/${uid}`),{uid,email:ctx.auth.currentUser.email||'',status:'active',lastActionId:eventId,invitationId:hash});tx.set(r(ctx,`teacherClassAccess/${uid}/classes/${accessKey(ct,c)}`),{storageUid:ct,classId:c});return {classId:c,storageUid:ct};});
+  const hash=await inviteHash(data.code);return runTransaction(ctx.db,async tx=>{
+   const invRef=r(ctx,`teacherInvitations/${hash}`),snapshot=await tx.get(invRef);if(!snapshot.exists())throw Error('Davet bulunamadı.');
+   const inv=snapshot.data(),ct=inv.storageUid,classIds=inv.classIds||[inv.classId];
+   if(inv.createdBy===uid)throw Error('Kendi oluşturduğun davete katılamazsın.');
+   if(inv.revoked||inv.consumedBy||inv.createdAt.toMillis()+86400000<Date.now())throw Error('Davet kullanılmış veya süresi dolmuş.');
+   const members=await Promise.all(classIds.map(c=>tx.get(r(ctx,`${classPath(ct,c)}/teacherMembers/${uid}`))));
+   if(members.every(m=>m.exists()&&m.data().status==='active'))throw Error('Bu sınıflarda zaten yetkilisin.');
+   tx.update(invRef,{consumedBy:uid,consumedAt:serverTimestamp()});
+   for(const c of classIds){const eventId=log(ctx,tx,ct,c,'teacherJoined',uid,{invitationId:hash});tx.set(r(ctx,`${classPath(ct,c)}/teacherMembers/${uid}`),{uid,email:ctx.auth.currentUser.email||'',status:'active',lastActionId:eventId,invitationId:hash});tx.set(r(ctx,`teacherClassAccess/${uid}/classes/${accessKey(ct,c)}`),{storageUid:ct,classId:c});}
+   return {classId:inv.classId,classIds,storageUid:ct};
+  });
  }
  const c=id(data.classId);if(name==='deleteClass'){
   const current=await getDocFromServer(r(ctx,classPath(t,c)));if(!current.exists())return {classId:c};const cls=current.data();
