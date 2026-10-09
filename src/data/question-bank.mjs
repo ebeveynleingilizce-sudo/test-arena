@@ -1,10 +1,10 @@
-import {collection,doc,getDocFromServer,getDocs,query,where,writeBatch,runTransaction,serverTimestamp} from 'firebase/firestore';
+import {collection,doc,documentId,getDocFromServer,getDocs,query,where,writeBatch,runTransaction,serverTimestamp} from 'firebase/firestore';
 import {bankProjection,normalizeBankRecord,importBankRecords,reportTypes,reportStatuses} from '../../shared/question-bank.mjs';
 import {readServerTime} from './server-clock.mjs';
 const ref=(ctx,path)=>doc(ctx.db,path),uid=ctx=>ctx.auth.currentUser.uid;
 const safeId=v=>{if(typeof v!=='string'||!/^[-A-Za-z0-9_]{1,128}$/.test(v))throw Error('Geçersiz soru kimliği.');return v;};
 export async function bankPermissions(ctx){const role=(await getDocFromServer(ref(ctx,`roles/${uid(ctx)}`))).data(),token=await ctx.auth.currentUser.getIdTokenResult();return {canManage:role?.questionBankAdmin===true||role?.admin===true||token.claims.questionBankAdmin===true||token.claims.admin===true||(ctx.emulator&&ctx.auth.currentUser.email==='demo.ogretmen@testarena.local')};}
-async function records(ctx,grade){const list=await getDocs(query(collection(ctx.db,'questions'),where('gradeLevel','==',grade))),out=[];for(let i=0;i<list.docs.length;i+=16)out.push(...await Promise.all(list.docs.slice(i,i+16).map(async d=>({question:d.data(),answer:(await getDocFromServer(ref(ctx,`privateQuestionAnswers/${d.id}`))).data()||null}))));return out;}
+async function records(ctx,grade){const list=await getDocs(query(collection(ctx.db,'questions'),where('gradeLevel','==',grade))),groups=[],answers=new Map();for(let i=0;i<list.docs.length;i+=30)groups.push(list.docs.slice(i,i+30).map(d=>d.id));for(let i=0;i<groups.length;i+=4){const batches=await Promise.all(groups.slice(i,i+4).map(ids=>getDocs(query(collection(ctx.db,'privateQuestionAnswers'),where(documentId(),'in',ids)))));for(const batch of batches)for(const d of batch.docs)answers.set(d.id,d.data());}return list.docs.map(d=>({question:d.data(),answer:answers.get(d.id)||null}));}
 async function tree(ctx,grade){const value=(await getDocFromServer(ref(ctx,`curricula/${grade}`))).data();if(!value)throw Error('Bu kademede henüz soru bankası yok.');return value;}
 async function publish(ctx,input){
  if(!(await bankPermissions(ctx)).canManage)throw Error('Soru bankası yönetim yetkisi gerekli.');
@@ -36,6 +36,7 @@ async function publish(ctx,input){
  }finally{await runTransaction(ctx.db,async tx=>{const v=(await tx.get(stateRef)).data();if(v?.lockId===token)tx.set(stateRef,{revision:v.revision,lockId:'',lockedBy:'',lockedAt:null});});}
 }
 export async function questionBankCall(ctx,name,data){
+ if(name==='teacherBankPermissions')return bankPermissions(ctx);
  if(name==='teacherQuestionBank'){const grade=Number(data.grade);return {permissions:await bankPermissions(ctx),curriculum:(await getDocFromServer(ref(ctx,`curricula/${grade}`))).data()||null,records:await records(ctx,grade)};}
  if(name==='getBankQuestion'){const id=safeId(data.questionId);return {question:(await getDocFromServer(ref(ctx,`questions/${id}`))).data(),answer:(await getDocFromServer(ref(ctx,`privateQuestionAnswers/${id}`))).data()};}
  if(name==='manageQuestionBank')return publish(ctx,data);

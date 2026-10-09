@@ -6,7 +6,7 @@
     }
     function expiredDuel(d) { return d.status in ['declined','expired','completed']
       || (d.status == 'pending' && request.time >= d.createdAt + duration.value(60,'s'))
-      || (d.status == 'active' && request.time >= d.acceptedAt + duration.value(310,'s')); }
+      || (d.status == 'active' && request.time >= d.acceptedAt + duration.value(10 + d.get('roundSeconds',30) * 10,'s')); }
     function duelPlayer(t,c,s,g) {
       let p = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data;
       return p.status == 'active' && p.classId == c && gradeAllowed(t,s,g)
@@ -28,7 +28,8 @@
     match /teachers/{t}/classes/{c}/duels/{d} {
       allow read: if ownClass(t,c) || teacher(t);
       allow create: if ownClass(t,c) && pupil(t,request.resource.data.from)
-        && request.resource.data.keys().hasOnly(['participants','from','to','templateId','status','createdAt','acceptedAt'])
+        && request.resource.data.keys().hasOnly(['participants','from','to','templateId','roundSeconds','status','createdAt','acceptedAt'])
+        && request.resource.data.get('roundSeconds',30) in [20,30]
         && request.resource.data.participants == [request.resource.data.from,request.resource.data.to]
         && request.resource.data.from != request.resource.data.to
         && request.resource.data.status == 'pending' && request.resource.data.createdAt == request.time && request.resource.data.acceptedAt == null
@@ -48,8 +49,17 @@
         && get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.studentId in resource.data.participants
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
         && ((resource.data.status == 'pending' && request.time >= resource.data.createdAt + duration.value(60,'s') && request.resource.data.status == 'expired')
-          || (resource.data.status == 'active' && request.time >= resource.data.acceptedAt + duration.value(310,'s') && request.resource.data.status == 'completed')
+          || (resource.data.status == 'active' && request.time >= resource.data.acceptedAt + duration.value(10 + resource.data.get('roundSeconds',30) * 10,'s') && request.resource.data.status == 'completed')
           || (resource.data.status in ['completed','expired'] && request.resource.data == resource.data));
+      allow update: if ownClass(t,c) && resource.data.status == 'active'
+        && get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.studentId in resource.data.participants
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','endedAt','endReason','leftBy'])
+        && request.resource.data.status == 'completed' && request.resource.data.endedAt == request.time
+        && ((request.resource.data.endReason == 'timeout' && request.resource.data.leftBy == ''
+             && request.time >= resource.data.acceptedAt + duration.value(10 + resource.data.get('roundSeconds',30) * 10,'s'))
+          || (request.resource.data.endReason == 'left' && pupil(t,request.resource.data.leftBy) && request.resource.data.leftBy in resource.data.participants)
+          || (request.resource.data.endReason == 'disconnected' && request.resource.data.leftBy in resource.data.participants
+             && get(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/presence/$(request.resource.data.leftBy)).data.at <= request.time - duration.value(15,'s')));
       match /answers/{a} {
         allow read: if ownClass(t,c) || teacher(t);
         allow create: if ownClass(t,c) && pupil(t,request.resource.data.studentId)
@@ -64,10 +74,34 @@
       let sid = d + '-' + v.studentId;
       let submission = get(/databases/$(database)/documents/teachers/$(t)/students/$(v.studentId)/quizzes/$(sid)/submissions/$(q)).data;
       let result = get(/databases/$(database)/documents/teachers/$(t)/students/$(v.studentId)/quizzes/$(sid)/results/$(q)).data;
-      let start = game.acceptedAt + duration.value(10 + v.index * 30,'s');
+      let start = game.acceptedAt + duration.value(10 + v.index * game.get('roundSeconds',30),'s');
       return v.keys().hasOnly(['studentId','index','isCorrect','submittedAt'])
         && v.index is int && v.index >= 0 && v.index < 10 && a == v.studentId + '-' + string(v.index)
         && game.status in ['active','completed'] && session(t,v.studentId,sid).templateId == game.templateId
         && v.isCorrect == result.isCorrect && v.submittedAt == submission.submittedAt
-        && submission.submittedAt >= start && submission.submittedAt < start + duration.value(30,'s');
+        && submission.submittedAt >= start && submission.submittedAt < start + duration.value(game.get('roundSeconds',30),'s')
+        && submission.submittedAt <= game.get('endedAt',request.time);
+    }
+    function duelQuiz(t,s,id,v) {
+      let d = duel(t,v.classId,v.duelId);
+      return id == v.duelId + '-' + s && s in d.participants && v.templateId == d.templateId && d.status in ['active','completed'];
+    }
+    function awardSession(t,s,id,q,w) {
+      let v = session(t,s,id);
+      let result = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)/results/$(q)).data;
+      let week = get(/databases/$(database)/documents/arenaWeeks/$(w)).data;
+      return v.get('duelId','') != ''
+        ? duelQuiz(t,s,id,v) && result.gradedAt >= week.startsAt && result.gradedAt < week.endsAt
+        : v.status == 'completed' && completedInWeek(t,s,id,w);
+    }
+    function duelSubmission(t,s,id,q,choice) {
+      let v = session(t,s,id);
+      return v.get('duelId','') == '' || choice == '' || timedDuelQuestion(t,s,id,q,v);
+    }
+    function timedDuelQuestion(t,s,id,q,v) {
+      let d = duel(t,v.classId,v.duelId);
+      let ids = template(v.templateId).questionIds;
+      let n = q == ids[0] ? 0 : q == ids[1] ? 1 : q == ids[2] ? 2 : q == ids[3] ? 3 : q == ids[4] ? 4 : q == ids[5] ? 5 : q == ids[6] ? 6 : q == ids[7] ? 7 : q == ids[8] ? 8 : 9;
+      let start = d.acceptedAt + duration.value(10 + n * d.get('roundSeconds',30),'s');
+      return d.status == 'active' && q in ids && request.time >= start && request.time < start + duration.value(d.get('roundSeconds',30),'s');
     }

@@ -146,6 +146,10 @@ rules=sharedTeacherRules(rules);
 rules=rules.replace('    match /{document=**}',()=>readFileSync(new URL('../prototypes/spark/question-bank.rules.fragment',import.meta.url),'utf8')+'\n    match /{document=**}');
 // Completed/in-progress sessions retain their immutable pack after a bank edit.
 rules=rules.replace("test.status == 'active' && pack.active == true && q in pack.questionIds","test.status == 'active' && q in pack.questionIds");
+rules=rules.replace("['templateId','classId','resolved','correct','wrong','blank','lastQuestionId','status','startedAt','completedAt']","['templateId','classId','duelId','resolved','correct','wrong','blank','lastQuestionId','status','startedAt','completedAt']");
+rules=rules.replace("&& request.resource.data.resolved == 0 && request.resource.data.correct == 0","&& (request.resource.data.get('duelId','') == '' || duelQuiz(t,s,id,request.resource.data))\n          && request.resource.data.resolved == 0 && request.resource.data.correct == 0");
+rules=rules.replace(/completedInWeek\(t,s,request.resource.data.testSessionId,request.resource.data.weekKey\)\s+&& session\(t,s,request.resource.data.testSessionId\).status == 'completed'/,"awardSession(t,s,request.resource.data.testSessionId,q,request.resource.data.weekKey)");
+rules=rules.replace("&& knownQuestion(t,s,id,q)","&& knownQuestion(t,s,id,q) && duelSubmission(t,s,id,q,request.resource.data.selectedChoiceId)");
 export const sparkRules=rules;
 if(process.argv.includes('--write')){
   const archive=new URL('../prototypes/legacy-functions/',import.meta.url);mkdirSync(archive,{recursive:true});

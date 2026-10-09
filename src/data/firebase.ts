@@ -15,6 +15,10 @@ if (environment.emulator) {
   connectFirestoreEmulator(db, '127.0.0.1', environment.ports.firestore);
 }
 export const persistenceReady = setPersistence(auth, browserLocalPersistence);
+const pendingReads=new Map<string,Promise<unknown>>(),sharedReads=new Set(['quizCatalog','getTestSession','startDuelTest','teacherQuestionBank','teacherBankPermissions','getBankQuestion']);
 export async function call<T>(name: string, data: unknown): Promise<T> {
-  return await sparkCall(name, data, {auth, db, app, emulator:environment.emulator,testPorts:environment.ports}) as T;
+  const work=()=>sparkCall(name,data,{auth,db,app,emulator:environment.emulator,testPorts:environment.ports});
+  if(!sharedReads.has(name))return await work() as T;
+  const key=JSON.stringify([auth.currentUser?.uid,name,data]);if(pendingReads.has(key))return await pendingReads.get(key) as T;
+  const promise=work().finally(()=>pendingReads.delete(key));pendingReads.set(key,promise);return await promise as T;
 }

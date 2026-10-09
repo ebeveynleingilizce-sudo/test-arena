@@ -12,7 +12,7 @@ import {preparedBankFixture} from './prepared-bank-fixture.mjs';
 import {prepareSparkStore} from '../scripts/prepare-spark-store.mjs';
 import {sparkCall,ensureTeacher} from '../src/data/spark.mjs';
 import {sparkRules} from '../scripts/spark-rules.mjs';
-import {heartbeat,invite,respond,publishAnswer,duelScore,closeExpired} from '../src/data/duel.mjs';
+import {heartbeat,invite,respond,publishAnswer,duelScore,closeExpired,endDuel,duelEnd,duelRoundSeconds} from '../src/data/duel.mjs';
 import {spawn} from 'node:child_process';
 import {chromium} from '@playwright/test';
 import {mkdir} from 'node:fs/promises';
@@ -172,7 +172,7 @@ test('duel invite, rejection, locking, common questions and verified scores pres
  const ad=adminFirestore(admin),gameRef=ad.doc(`${path}/duels/${did}`);
  // Advance the server fixture to each round without waiting five minutes.
  for(let i=0;i<10;i++){
-  await gameRef.update({acceptedAt:new Date(Date.now()-10000-i*30000)});
+  await gameRef.update({acceptedAt:new Date(Date.now()-10000-i*20000)});
   const q=qa.questions[i],key=records.find(r=>r.question.questionId===q.questionId).answer.correctOptionId;
   await call(ca,'submitAnswer',{testSessionId:qa.testSessionId,questionId:q.questionId,selectedChoiceId:key});
   await call(cb,'submitAnswer',{testSessionId:qb.testSessionId,questionId:q.questionId,selectedChoiceId:q.choices.find(c=>c.choiceId!==key).choiceId});
@@ -238,7 +238,8 @@ test('real student browser navigation, quiz and Arena at phone/desktop sizes wit
    for(const p of [page,peer]){await p.locator('.answer-choices button').first().click();await p.getByRole('button',{name:'Cevabı gönder',exact:true}).click();await p.getByText('Cevabın kilitlendi.',{exact:false}).waitFor();assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}
    await page.screenshot({path:`test-results/spark-browser/duel-${width}.png`,fullPage:true});
    const games=await adminFirestore(admin).collection(`teachers/st/classes/${cls.classId}/duels`).where('from','==',browserStudent.studentId).get();assert.equal(games.size,1);
-   await games.docs[0].ref.update({acceptedAt:new Date(Date.now()-311000)});
+   if(width===360){await peer.getByRole('link',{name:'← Arena',exact:true}).click();await peer.waitForURL('**/ogrenci/arena');await page.locator('.duel-result').waitFor();assert.equal((await games.docs[0].ref.get()).data().endReason,'left');await peer.goto(`${baseUrl}/ogrenci/duello`);await peer.getByRole('button',{name:'Sonucu gör',exact:true}).first().click();}
+   else await games.docs[0].ref.update({acceptedAt:new Date(Date.now()-211000)});
    for(const p of [page,peer])await p.locator('.duel-result').waitFor();
    assert.deepEqual(errors,[]);assert.deepEqual(peerErrors,[]);assert.deepEqual(functions,[]);await peer.close();await page.close();
   }
@@ -247,4 +248,19 @@ test('real student browser navigation, quiz and Arena at phone/desktop sizes wit
 
 
 registerTeacherSharingTests(()=>({ta,tb,call,client,ensureTeacher,pack,records,adminAuth:adminAuth(admin),adminDb:adminFirestore(admin)}));
+test('20-second duel gives immediate verified XP; leaving uses current points and denies forged disconnects',async()=>{
+ const ad=adminFirestore(admin),a=await call(ta,'createStudent',{classId:cls.classId,firstName:'Yeni Arena',lastName:'A',gradeLevel:2}),b=await call(ta,'createStudent',{classId:cls.classId,firstName:'Yeni Arena',lastName:'B',gradeLevel:2}),ca=await client('new-duel-a'),cb=await client('new-duel-b');await call(ca,'studentLogin',{code:a.code});await call(cb,'studentLogin',{code:b.code});
+ const pa=(await getDocFromServer(ref(ca,`teachers/st/students/${a.studentId}`))).data(),pb=(await getDocFromServer(ref(cb,`teachers/st/students/${b.studentId}`))).data(),path=`teachers/st/classes/${cls.classId}`;
+ await heartbeat(ca.db,pa);await heartbeat(cb.db,pb);const did=await invite(ca.db,pa,b.studentId,pack.templateId);await respond(cb.db,pb,did,true);const gameRef=ad.doc(`${path}/duels/${did}`);await gameRef.update({acceptedAt:new Date(Date.now()-10000)});let game={...(await gameRef.get()).data(),id:did};assert.equal(duelRoundSeconds(game),20);assert.equal(duelEnd(game)-game.acceptedAt.toMillis(),210000);
+ await assertFails(updateDoc(ref(ca,`${path}/duels/${did}`),{status:'completed',endedAt:serverTimestamp(),endReason:'left',leftBy:b.studentId}));await assertFails(updateDoc(ref(ca,`${path}/duels/${did}`),{status:'completed',endedAt:serverTimestamp(),endReason:'disconnected',leftBy:b.studentId}));await assertFails(updateDoc(ref(ca,`${path}/duels/${did}`),{status:'completed',endedAt:serverTimestamp(),endReason:'timeout',leftBy:''}));
+ const [qa,qb]=await Promise.all([call(ca,'startDuelTest',{duelId:did}),call(cb,'startDuelTest',{duelId:did})]),q=qa.questions[0],key=records.find(r=>r.question.questionId===q.questionId).answer.correctOptionId;
+ await assert.rejects(call(ca,'submitAnswer',{testSessionId:qa.testSessionId,questionId:qa.questions[1].questionId,selectedChoiceId:qa.questions[1].choices[0].choiceId}));
+ const good=await call(ca,'submitAnswer',{testSessionId:qa.testSessionId,questionId:q.questionId,selectedChoiceId:key});assert.equal(good.answer.earnedXP,1);assert.equal(good.totalXP,1);assert.equal(good.test.status,'active');const wrong=await call(cb,'submitAnswer',{testSessionId:qb.testSessionId,questionId:q.questionId,selectedChoiceId:q.choices.find(c=>c.choiceId!==key).choiceId});assert.equal(wrong.totalXP,0);
+ await publishAnswer(ca.db,pa,game,0);await publishAnswer(cb.db,pb,game,0);await endDuel(ca.db,pa,did);game={...(await gameRef.get()).data(),id:did};assert.equal(game.status,'completed');assert.equal(game.leftBy,a.studentId);const scores=(await ad.collection(`${path}/duels/${did}/answers`).get()).docs.map(d=>d.data());assert(duelScore(game,scores,a.studentId)>duelScore(game,scores,b.studentId));
+ await assert.rejects(call(cb,'submitAnswer',{testSessionId:qb.testSessionId,questionId:qb.questions[1].questionId,selectedChoiceId:qb.questions[1].choices[0].choiceId}));
+ await call(ca,'finishTest',{testSessionId:qa.testSessionId});await call(ca,'finishTest',{testSessionId:qa.testSessionId});assert.equal((await ad.doc(`teachers/st/students/${a.studentId}/learning/summary`).get()).data().totalXP,1);
+ await heartbeat(ca.db,pa);await heartbeat(cb.db,pb);const repeat=await invite(ca.db,pa,b.studentId,pack.templateId);await respond(cb.db,pb,repeat,true);await ad.doc(`${path}/duels/${repeat}`).update({acceptedAt:new Date(Date.now()-10000)});const retake=await call(ca,'startDuelTest',{duelId:repeat});assert.equal((await call(ca,'submitAnswer',{testSessionId:retake.testSessionId,questionId:q.questionId,selectedChoiceId:key})).answer.earnedXP,0);
+ await ad.doc(`${path}/presence/${b.studentId}`).set({at:new Date(Date.now()-16000)});const stale={...(await ad.doc(`${path}/duels/${repeat}`).get()).data(),id:repeat};await closeExpired(ca.db,pa,[stale],Date.now(),[{studentId:b.studentId,at:{toMillis:()=>Date.now()-16000}}]);assert.equal((await ad.doc(`${path}/duels/${repeat}`).get()).data().endReason,'disconnected');
+ await assertFails(setDoc(ref(ca,`teachers/st/students/${a.studentId}/quizzes/forged-active-xp`),{templateId:pack.templateId,classId:cls.classId,duelId:repeat,resolved:0,correct:0,wrong:0,blank:0,lastQuestionId:'',status:'active',startedAt:serverTimestamp(),completedAt:null}));
+});
 registerQuestionBankTests(()=>({ta,tb,call,client,ensureTeacher,pack,records,adminAuth:adminAuth(admin),adminDb:adminFirestore(admin)}));

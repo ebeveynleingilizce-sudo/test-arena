@@ -1,9 +1,10 @@
 import {initializeApp,deleteApp} from 'firebase/app';
 import {getAuth,connectAuthEmulator,createUserWithEmailAndPassword,signInWithEmailAndPassword,setPersistence,inMemoryPersistence,signOut} from 'firebase/auth';
-import {getFirestore,connectFirestoreEmulator,doc,collection,getDoc,getDocFromServer,getDocs,getDocsFromServer,query,where,setDoc,updateDoc,writeBatch,runTransaction,serverTimestamp} from 'firebase/firestore';
+import {getFirestore,connectFirestoreEmulator,doc,collection,documentId,getDoc,getDocFromServer,getDocs,getDocsFromServer,query,where,setDoc,updateDoc,writeBatch,runTransaction,serverTimestamp} from 'firebase/firestore';
 import {arenaPeriod} from '../../shared/arena-period.mjs';
 import {contentGrades} from '../../shared/class-grades.mjs';
 import {readServerTime} from './server-clock.mjs';
+import {readQuizTemplate} from './quiz-template.mjs';
 const alphabet='23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
 const code=()=>Array.from(crypto.getRandomValues(new Uint8Array(6)),b=>alphabet[b&31]).join('');
 const base=(t,s)=>`teachers/${t}/students/${s}`;
@@ -97,8 +98,8 @@ async function quizDTO(ctx,p,testId){
     if(legacy.exists())return {...legacy.data(),startedAt:timestamp(legacy.data().startedAt),completedAt:timestamp(legacy.data().completedAt),legacyReadOnly:true};
     throw Error('Test bulunamadı.');
   }
-  const d=session.data(),template=(await getDocFromServer(ref(ctx.db,`quizTemplates/${d.templateId}`))).data();
-  const [results,awards]=await Promise.all([getDocs(collection(ctx.db,`${path}/results`)),getDocs(collection(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions`))]);
+  const d=session.data();
+  const [template,results,awards]=await Promise.all([readQuizTemplate(ctx.db,d.templateId,ctx.auth.currentUser.uid),getDocs(collection(ctx.db,`${path}/results`)),getDocs(query(collection(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions`),where('testSessionId','==',testId)))]);
   const t=template;
   return {testSessionId:testId,gradeLevel:t.gradeLevel,subject:t.subject,subjectName:t.subjectName,unitId:t.unitId,unitName:t.unitName,topic:t.topic,topicName:t.topicName,packId:t.packId,packName:t.packName,contentBank:'curriculum',questionCount:t.questionIds.length,questions:t.questions.map(q=>({questionId:q.questionId,questionText:q.questionText,choices:q.choices,...(q.content?{content:q.content}:{}),...(q.visual?{visual:q.visual}:{}),...(q.visualPlacement?{visualPlacement:q.visualPlacement}:{})})),answeredQuestionIds:results.docs.map(r=>r.id),correctCount:d.correct,wrongCount:d.wrong,blankCount:d.blank,earnedXP:awards.docs.filter(a=>a.data().testSessionId===testId).reduce((n,a)=>n+a.data().xp,0),status:d.status,startedAt:timestamp(d.startedAt),completedAt:timestamp(d.completedAt)};
 }
@@ -144,10 +145,12 @@ async function award(ctx,p,testId,q,weekKey,currentWeek){
   });}catch(e){if(!['permission-denied','aborted'].includes(e.code))throw e;if((await getDocFromServer(award)).exists())return 0;if(retry===2)throw e;}
 }
 async function settle(ctx,p,testId){
-  const path=quizPath(p.teacherUid,p.studentId,testId),session=(await getDocFromServer(ref(ctx.db,path))).data();if(session.status!=='completed')return;
-  const week=arenaPeriod(session.completedAt.toDate()).weekKey,current=(await serverPeriod(ctx)).weekKey;
+  const path=quizPath(p.teacherUid,p.studentId,testId),session=(await getDocFromServer(ref(ctx.db,path))).data();if(session.status!=='completed'&&!session.duelId)return;
   const results=await getDocs(collection(ctx.db,`${path}/results`));
-  for(const r of results.docs)if(r.data().isCorrect)await award(ctx,p,testId,r.id,week,current);
+  const correct=results.docs.filter(r=>r.data().isCorrect);if(!correct.length)return;
+  const awards=await getDocs(query(collection(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions`),where(documentId(),'in',correct.map(r=>r.id)))),owned=new Set(awards.docs.map(a=>a.id)),pending=correct.filter(r=>!owned.has(r.id));if(!pending.length)return;
+  const current=(await serverPeriod(ctx)).weekKey;
+  for(const r of pending){const at=session.duelId?r.data().gradedAt:session.completedAt;await award(ctx,p,testId,r.id,arenaPeriod(at.toDate()).weekKey,current);}
 }
 async function answer(ctx,p,data){
   const testId=id(data.testSessionId),q=id(data.questionId),choice=String(data.selectedChoiceId);
@@ -161,7 +164,7 @@ async function answer(ctx,p,data){
 }
 const duelStarts=new Map();
 export async function sparkCall(name,data,ctx){
-  if(['teacherQuestionBank','getBankQuestion','manageQuestionBank','questionReports','updateQuestionReport'].includes(name)){
+  if(['teacherQuestionBank','teacherBankPermissions','getBankQuestion','manageQuestionBank','questionReports','updateQuestionReport'].includes(name)){
     await teacher(ctx);const {questionBankCall}=await import('./question-bank.mjs');return questionBankCall(ctx,name,data||{});
   }
   if(name==='reportQuestion'){if(!ctx.auth.currentUser)throw Error('Giriş gerekli.');const {questionBankCall}=await import('./question-bank.mjs');return questionBankCall(ctx,name,data||{});}
@@ -229,7 +232,7 @@ export async function sparkCall(name,data,ctx){
     const duelId=id(data.duelId),duel=(await getDocFromServer(ref(ctx.db,`teachers/${p.teacherUid}/classes/${p.classId}/duels/${duelId}`))).data();
     if(!duel||!['active','completed'].includes(duel.status)||!duel.participants.includes(p.studentId))throw Error('Aktif düello bulunamadı.');
     const testId=`${duelId}-${p.studentId}`,path=quizPath(p.teacherUid,p.studentId,testId);
-    await runTransaction(ctx.db,async tx=>{const quiz=ref(ctx.db,path);if(!(await tx.get(quiz)).exists())tx.set(quiz,{templateId:duel.templateId,classId:p.classId,resolved:0,correct:0,wrong:0,blank:0,lastQuestionId:'',status:'active',startedAt:serverTimestamp(),completedAt:null});});
+    await runTransaction(ctx.db,async tx=>{const quiz=ref(ctx.db,path);if(!(await tx.get(quiz)).exists())tx.set(quiz,{templateId:duel.templateId,classId:p.classId,duelId,resolved:0,correct:0,wrong:0,blank:0,lastQuestionId:'',status:'active',startedAt:serverTimestamp(),completedAt:null});});
     return quizDTO(ctx,p,testId);
     })();duelStarts.set(key,work);try{return await work;}finally{duelStarts.delete(key);}
   }

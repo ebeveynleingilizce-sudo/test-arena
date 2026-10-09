@@ -11,7 +11,7 @@ type RecordRow={question:any;answer:any};
 type Bank={permissions:{canManage:boolean};curriculum:any;records:RecordRow[]};
 export function QuestionBankNav(){
  const {user}=useSession(),[manager,setManager]=useState(false);
- useEffect(()=>{let alive=true;if(user)void call<Bank>('teacherQuestionBank',{grade:1}).then(v=>{if(alive)setManager(v.permissions.canManage);}).catch(()=>{if(alive)setManager(false);});return()=>{alive=false;};},[user?.uid]);
+ useEffect(()=>{let alive=true;if(user)void call<{canManage:boolean}>('teacherBankPermissions',{}).then(v=>{if(alive)setManager(v.canManage);}).catch(()=>{if(alive)setManager(false);});return()=>{alive=false;};},[user?.uid]);
  return <>{manager&&<Link to="/ogretmen/soru-hatalari">Soru Hata Bildirimleri</Link>}</>;
 }
 function QuestionBody({row,selected,onPick,reveal}:{row:RecordRow;selected?:string;onPick?:(id:string)=>void;reveal:boolean}){
