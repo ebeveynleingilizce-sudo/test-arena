@@ -2,13 +2,13 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     // Separate full-quiz experiment; no per-question pre-completion award route.
-    function teacher(t) { return request.auth != null && request.auth.uid == t && !exists(/databases/$(database)/documents/studentBindings/$(t))
+    function teacher(t) { return request.auth != null && request.auth.uid == t
       && get(/databases/$(database)/documents/roles/$(t)).data.role == 'teacher'; }
     function pupil(t,s) {
       let b = get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data;
       let p = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data;
       return request.auth != null && b.teacherUid == t && b.studentId == s
-        && p.status == 'active' && b.version == p.credentialVersion;
+        && p.status == 'active' && b.version == p.credentialVersion && classActive(t,p.classId);
     }
     function ownClass(t,c) {
       let b = get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data;
@@ -17,7 +17,8 @@ service cloud.firestore {
     }
     function gradeAllowed(t,s,g) {
       let p = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data;
-      return g == p.gradeLevel || (p.gradeLevel > 2 && g == p.gradeLevel - 1);
+      let cls = get(/databases/$(database)/documents/teachers/$(t)/classes/$(p.classId)).data;
+      return g == p.gradeLevel || (cls.get('classMode','single') != 'mixed' && p.gradeLevel > 2 && g == p.gradeLevel - 1);
     }
     function session(t,s,id) {
       return get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)).data;
@@ -67,9 +68,9 @@ service cloud.firestore {
                         get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.studentId,resource.data.gradeLevel))); }
     match /arenaWeeks/{w} { allow read: if request.auth != null; }
     match /teachers/{t}/students/{s} {
-      allow get: if teacher(t) || pupil(t,s);
+      allow get: if studentReader(t,s) || pupil(t,s);
       match /quizzes/{id} {
-        allow read: if teacher(t) || pupil(t,s);
+        allow read: if studentReader(t,s) || pupil(t,s);
         allow create: if pupil(t,s)
           && request.resource.data.keys().hasOnly(['templateId','classId','resolved','correct','wrong','blank','lastQuestionId','status','startedAt','completedAt'])
           && template(request.resource.data.templateId).active == true && template(request.resource.data.templateId).questionIds.size() >= 1 && template(request.resource.data.templateId).questionIds.size() <= 10
@@ -91,7 +92,7 @@ service cloud.firestore {
           && request.resource.data.status == (request.resource.data.resolved == template(resource.data.templateId).questionIds.size() ? 'completed' : 'active')
           && request.resource.data.completedAt == (request.resource.data.resolved == template(resource.data.templateId).questionIds.size() ? request.time : null);
         match /submissions/{q} {
-          allow read: if teacher(t) || pupil(t,s);
+          allow read: if studentReader(t,s) || pupil(t,s);
           allow create: if pupil(t,s) && knownQuestion(t,s,id,q)
             && request.resource.data.keys().hasOnly(['selectedChoiceId','submittedAt'])
             && request.resource.data.submittedAt == request.time
@@ -99,7 +100,7 @@ service cloud.firestore {
                 template(session(t,s,id).templateId).choiceIdsByQuestionId[q]);
         }
         match /results/{q} {
-          allow read: if teacher(t) || pupil(t,s);
+          allow read: if studentReader(t,s) || pupil(t,s);
           allow create: if pupil(t,s) && knownQuestion(t,s,id,q)
             && request.resource.data.keys().hasOnly(['isCorrect','skipped','gradedAt'])
             && request.resource.data.isCorrect is bool && request.resource.data.skipped is bool
@@ -112,7 +113,7 @@ service cloud.firestore {
         }
       }
       match /awardedQuestions/{q} {
-        allow read: if teacher(t) || pupil(t,s);
+        allow read: if studentReader(t,s) || pupil(t,s);
         allow create: if pupil(t,s)
           && request.resource.data.keys().hasOnly(['testSessionId','weekKey','xp','awardedAt'])
           && request.resource.data.xp == 1 && request.resource.data.awardedAt == request.time
@@ -127,14 +128,14 @@ service cloud.firestore {
           && getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId)/leaderboard/$(s)).data.lastAwardQuestionId == q;
       }
       match /learning/{id} {
-        allow read: if teacher(t) || pupil(t,s);
+        allow read: if studentReader(t,s) || pupil(t,s);
         allow update: if id == 'summary' && pupil(t,s)
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['totalXP','academicXP','lastAwardQuestionId'])
           && newAward(t,s,request.resource.data.lastAwardQuestionId)
-          && request.resource.data.totalXP == resource.data.totalXP + 1 && request.resource.data.academicXP == request.resource.data.totalXP;
+          && request.resource.data.totalXP == resource.data.totalXP + 1 && request.resource.data.academicXP == resource.data.get('academicXP',resource.data.totalXP) + 1;
       }
       match /academicWeeks/{w} {
-        allow read: if teacher(t) || pupil(t,s);
+        allow read: if studentReader(t,s) || pupil(t,s);
         allow create, update: if pupil(t,s)
           && request.resource.data.keys().hasOnly(['academicXP','lastAwardQuestionId'])
           && newAward(t,s,request.resource.data.lastAwardQuestionId)
@@ -143,14 +144,14 @@ service cloud.firestore {
       }
     }
     match /teachers/{t}/classes/{c}/leaderboard/{s} {
-      allow read: if teacher(t) || ownClass(t,c);
+      allow read: if classReader(t,c) || ownClass(t,c);
       allow update: if pupil(t,s) && ownClass(t,c)
         && request.resource.data.keys().hasOnly(['studentId','classId','displayName','academicXP','weeklyAcademicXP','weekKey','lastAwardQuestionId'])
         && request.resource.data.studentId == s && request.resource.data.classId == c
         && request.resource.data.displayName == get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.firstName + ' ' + get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.lastName
         && newAward(t,s,request.resource.data.lastAwardQuestionId)
         && inWeek(request.resource.data.weekKey)
-        && request.resource.data.academicXP == getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.totalXP
+        && request.resource.data.academicXP == getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.academicXP
         && request.resource.data.weeklyAcademicXP == (existsAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/academicWeeks/$(request.resource.data.weekKey))
           ? getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/academicWeeks/$(request.resource.data.weekKey)).data.academicXP : 0);
     }
@@ -164,49 +165,26 @@ service cloud.firestore {
         && b.teacherUid == t && b.studentId == s && b.version == v;
     }
     match /teachers/{t}/classes/{c} {
-      allow read: if teacher(t);
-      allow create: if teacher(t) && request.resource.data.keys().hasOnly(['classId','className','defaultGradeLevel'])
-        && request.resource.data.classId == c && request.resource.data.className is string && request.resource.data.className.size() > 0 && request.resource.data.className.size() <= 60 && request.resource.data.defaultGradeLevel >= 2
-        && request.resource.data.defaultGradeLevel <= 12;
+      allow read: if classReader(t,c);
+      allow create: if false;
     }
     match /teachers/{t}/students/{s} {
-      allow create: if teacher(t)
-        && request.resource.data.keys().hasOnly(['teacherUid','studentId','classId','className','firstName','lastName','gradeLevel','status','credentialVersion'])
-        && request.resource.data.teacherUid == t && request.resource.data.studentId == s
-        && exists(/databases/$(database)/documents/teachers/$(t)/classes/$(request.resource.data.classId))
-        && request.resource.data.firstName is string && request.resource.data.firstName.size() > 0 && request.resource.data.firstName.size() <= 40
-        && request.resource.data.lastName is string && request.resource.data.lastName.size() <= 40
-        && request.resource.data.className == get(/databases/$(database)/documents/teachers/$(t)/classes/$(request.resource.data.classId)).data.className
-        && request.resource.data.gradeLevel >= 2 && request.resource.data.gradeLevel <= 12
-        && request.resource.data.status == 'pending' && request.resource.data.credentialVersion == 0;
-      allow update: if teacher(t)
-        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','credentialVersion','authUid'])
-        && request.resource.data.status == 'active'
-        && request.resource.data.credentialVersion == resource.data.credentialVersion + 1
-        && activation(t,s,request.resource.data.authUid,request.resource.data.credentialVersion);
+      allow create: if false;
+      allow update: if false;
       match /learning/{id} {
-        allow create: if id == 'summary' && teacher(t)
-          && get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.status == 'pending'
-          && request.resource.data == {'totalXP':0,'academicXP':0,'lastAwardQuestionId':'','answeredCount':0,'correctCount':0,'wrongCount':0};
+        allow create: if false;
       }
     }
     match /teachers/{t}/classes/{c}/leaderboard/{s} {
-      allow create: if teacher(t)
-        && get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.status == 'pending'
-        && get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId == c
-        && request.resource.data == {'studentId':s,'classId':c,'displayName':get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.firstName + ' ' + get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.lastName,'academicXP':0,'weeklyAcademicXP':0,'weekKey':'','lastAwardQuestionId':''};
+      allow create: if false;
     }
     // Permanent reservations: changed email/deleted Auth user cannot recycle a code.
     match /codeTickets/{code} {
-      allow get: if teacher(resource.data.teacherUid);
-      allow create: if code.matches('^[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{6}$')
-        && teacher(request.resource.data.teacherUid)
-        && request.resource.data.keys().hasOnly(['teacherUid','studentId','version','email'])
-        && request.resource.data.email == code.lower() + '@students.testarena.invalid'
-        && request.resource.data.version == get(/databases/$(database)/documents/teachers/$(request.resource.data.teacherUid)/students/$(request.resource.data.studentId)).data.credentialVersion + 1;
+      allow get: if studentReader(resource.data.teacherUid,resource.data.studentId);
+      allow create: if false;
     }
     match /enrollmentProofs/{uid} {
-      allow get: if request.auth != null && (request.auth.uid == uid || teacher(resource.data.teacherUid));
+      allow get: if request.auth != null && (request.auth.uid == uid || studentReader(resource.data.teacherUid,resource.data.studentId));
       allow create: if request.auth != null && request.auth.uid == uid
         && request.resource.data.keys().hasOnly(['teacherUid','studentId','version','code'])
         && ticket(request.resource.data.code).teacherUid == request.resource.data.teacherUid
@@ -215,40 +193,32 @@ service cloud.firestore {
         && request.auth.token.email == ticket(request.resource.data.code).email;
     }
     match /studentBindings/{uid} {
-      allow create: if teacher(request.resource.data.teacherUid)
-        && request.resource.data.keys().hasOnly(['teacherUid','studentId','version'])
-        && proof(uid).teacherUid == request.resource.data.teacherUid
-        && proof(uid).studentId == request.resource.data.studentId && proof(uid).version == request.resource.data.version
-        && getAfter(/databases/$(database)/documents/teachers/$(request.resource.data.teacherUid)/students/$(request.resource.data.studentId)).data.authUid == uid
-        && getAfter(/databases/$(database)/documents/teachers/$(request.resource.data.teacherUid)/students/$(request.resource.data.studentId)).data.credentialVersion == request.resource.data.version;
+      allow create: if false;
     }
     match /roles/{uid} {
-      allow create: if request.resource.data == {'role':'student'} && teacher(proof(uid).teacherUid)
-        && getAfter(/databases/$(database)/documents/studentBindings/$(uid)).data.studentId == proof(uid).studentId;
+      allow create: if false;
     }
 
+
+    // A short teacher-owned lock closes the enrollment/delete race. Expired locks are retryable.
+    function classAcceptsStudents(t,c) {
+      let cls = getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(c));
+      return cls.data.get('deletionToken','') == ''
+        || cls.data.deletionStartedAt < request.time - duration.value(60,'s');
+    }
+    match /teachers/{t}/classes/{c} {
+      allow update: if false;
+      allow delete: if false;
+    }
 
     match /teachers/{t}/classes/{c}/classMembers/{s} {
-      allow read: if teacher(t);
-      allow create, update: if teacher(t) && request.resource.data == {'studentId':s}
-        && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId == c
-        && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.status == 'active';
-      allow delete: if teacher(t) && (getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId != c
-        || getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.status == 'removed');
+      allow read: if classReader(t,c);
+      allow create, update: if false;
+      allow delete: if false;
     }
     match /teachers/{t}/classes/{c}/leaderboard/{s} {
-      allow create, update: if teacher(t)
-        && get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId == c
-        && get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.status == 'active'
-        && request.resource.data.keys().hasOnly(['studentId','classId','displayName','academicXP','weeklyAcademicXP','weekKey','lastAwardQuestionId'])
-        && request.resource.data.studentId == s && request.resource.data.classId == c
-        && request.resource.data.displayName == get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.firstName + ' ' + get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.lastName
-        && request.resource.data.lastAwardQuestionId == get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.lastAwardQuestionId
-        && request.resource.data.academicXP == get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.totalXP
-        && inWeek(request.resource.data.weekKey)
-        && request.resource.data.weeklyAcademicXP == (exists(/databases/$(database)/documents/teachers/$(t)/students/$(s)/academicWeeks/$(request.resource.data.weekKey)) ? get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/academicWeeks/$(request.resource.data.weekKey)).data.academicXP : 0);
-      allow delete: if teacher(t) && (getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId != c
-        || getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.status == 'removed');
+      allow create, update: if false;
+      allow delete: if false;
     }
     match /roles/{uid} {
       allow create: if request.auth != null && request.auth.uid == uid
@@ -271,17 +241,11 @@ service cloud.firestore {
                            get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data.studentId,int(g))));
     }
     match /teachers/{t}/students/{s} {
-      allow list: if teacher(t);
-      allow update: if teacher(t)
-        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['classId','className','gradeLevel'])
-        && request.resource.data.gradeLevel >= 2 && request.resource.data.gradeLevel <= 12
-        && request.resource.data.className == get(/databases/$(database)/documents/teachers/$(t)/classes/$(request.resource.data.classId)).data.className;
-      allow update: if teacher(t)
-        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','credentialVersion'])
-        && resource.data.status == 'active' && request.resource.data.status == 'removed'
-        && request.resource.data.credentialVersion == resource.data.credentialVersion + 1;
+      allow list: if classReader(t,resource.data.classId);
+      allow update: if false;
+      allow update: if false;
       match /answerReceipts/{r} {
-        allow read: if teacher(t) || pupil(t,s);
+        allow read: if studentReader(t,s) || pupil(t,s);
         allow create: if pupil(t,s)
           && request.resource.data.keys().hasOnly(['sessionId','templateId','questionId'])
           && r == request.resource.data.templateId + ':' + request.resource.data.questionId
@@ -299,20 +263,16 @@ service cloud.firestore {
           && request.resource.data.correctCount == resource.data.correctCount + (getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(request.resource.data.lastResultSessionId)/results/$(request.resource.data.lastResultQuestionId)).data.isCorrect ? 1 : 0)
           && request.resource.data.wrongCount == request.resource.data.answeredCount - request.resource.data.correctCount;
       }
-      match /analytics/{id} { allow read: if teacher(t); }
-      match /analyticsDimensions/{id} { allow read: if teacher(t); }
+      match /analytics/{id} { allow read: if studentReader(t,s); }
+      match /analyticsDimensions/{id} { allow read: if studentReader(t,s); }
       match /testSessions/{id} {
-        allow read: if teacher(t) || pupil(t,s);
-        match /answers/{q} { allow read: if teacher(t) || pupil(t,s); }
+        allow read: if studentReader(t,s) || pupil(t,s);
+        match /answers/{q} { allow read: if studentReader(t,s) || pupil(t,s); }
       }
     }
     match /teachers/{t}/studentCodes/{s} {
-      allow read: if teacher(t);
-      allow create, update: if teacher(t)
-        && request.resource.data.keys().hasOnly(['code','credentialVersion'])
-        && ticket(request.resource.data.code).teacherUid == t && ticket(request.resource.data.code).studentId == s
-        && ticket(request.resource.data.code).version == request.resource.data.credentialVersion
-        && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.credentialVersion == request.resource.data.credentialVersion;
+      allow read: if studentReader(t,s);
+      allow create, update: if false;
     }
     function receiptFor(t,s,q,pack) { let rid = pack + ':' + q; return get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/answerReceipts/$(rid)).data; }
     match /privateQuizKeys/{pack}/answers/{q} {
@@ -353,7 +313,7 @@ service cloud.firestore {
         && s in getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/duels/$(request.resource.data.duelId)).data.participants;
     }
     match /teachers/{t}/classes/{c}/duels/{d} {
-      allow read: if ownClass(t,c) || teacher(t);
+      allow read: if ownClass(t,c) || classReader(t,c);
       allow create: if ownClass(t,c) && pupil(t,request.resource.data.from)
         && request.resource.data.keys().hasOnly(['participants','from','to','templateId','status','createdAt','acceptedAt'])
         && request.resource.data.participants == [request.resource.data.from,request.resource.data.to]
@@ -378,7 +338,7 @@ service cloud.firestore {
           || (resource.data.status == 'active' && request.time >= resource.data.acceptedAt + duration.value(310,'s') && request.resource.data.status == 'completed')
           || (resource.data.status in ['completed','expired'] && request.resource.data == resource.data));
       match /answers/{a} {
-        allow read: if ownClass(t,c) || teacher(t);
+        allow read: if ownClass(t,c) || classReader(t,c);
         allow create: if ownClass(t,c) && pupil(t,request.resource.data.studentId)
           && request.resource.data.studentId in duel(t,c,d).participants
           && validDuelAnswer(t,c,d,a);
@@ -420,7 +380,7 @@ service cloud.firestore {
         && v.updatedAt == request.time;
     }
     match /teachers/{t}/students/{s}/quizzes/{id}/behavior/{slot} {
-      allow read: if teacher(t) || pupil(t,s);
+      allow read: if studentReader(t,s) || pupil(t,s);
       allow create, update: if pupil(t,s) && slot.matches('[0-7]')
         && exists(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id))
         && (session(t,s,id).status == 'active' || request.time < session(t,s,id).completedAt + duration.value(1,'h'))
@@ -435,6 +395,237 @@ service cloud.firestore {
             && request.resource.data.hiddenMs >= resource.data.hiddenMs
             && request.resource.data.exitCount >= resource.data.exitCount));
     }
+
+    function authTeacher() { return request.auth != null && teacher(request.auth.uid); }
+    function classData(t,c) { return get(/databases/$(database)/documents/teachers/$(t)/classes/$(c)).data; }
+    function classActive(t,c) { return exists(/databases/$(database)/documents/teachers/$(t)/classes/$(c)) && classData(t,c).get('status','active') != 'deleting'; }
+    function classAuthority(t,c,cls) { return cls.get('ownerUid',t) == request.auth.uid || cls.get('createdBy',t) == request.auth.uid
+      || (exists(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/teacherMembers/$(request.auth.uid))
+        && get(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/teacherMembers/$(request.auth.uid)).data.status == 'active'); }
+    function classPrincipal(t,c) { return authTeacher() && classAuthority(t,c,classData(t,c)); }
+    function classManager(t,c) { let cls = classData(t,c); return authTeacher() && cls.get('status','active') != 'deleting' && classAuthority(t,c,cls); }
+    function classReader(t,c) { return classPrincipal(t,c); }
+    function studentReader(t,s) { let c = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId; return classReader(t,c) || (authTeacher() && !exists(/databases/$(database)/documents/teachers/$(t)/classes/$(c)) && exists(/databases/$(database)/documents/deletedClassArchives/$(t + '~' + c)) && get(/databases/$(database)/documents/deletedClassArchives/$(t + '~' + c)).data.ownerUid == request.auth.uid); }
+    function deletingClass(t,c) { return classPrincipal(t,c) && classData(t,c).status == 'deleting'; }
+    function auditData(t,c,a) { return getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/audit/$(a)).data; }
+    function audited(t,c,a,op,target) { let v = auditData(t,c,a); return v.actorUid == request.auth.uid && v.at == request.time && v.operation == op && v.targetId == target
+      && !exists(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/audit/$(a)); }
+    function profileAudit(t,s,op) { let p = getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data; return audited(t,p.classId,p.lastActionId,op,s); }
+    function joinInvite(t,c,u,hash) {
+      let v = get(/databases/$(database)/documents/teacherInvitations/$(hash)).data;
+      let after = getAfter(/databases/$(database)/documents/teacherInvitations/$(hash)).data;
+      return authTeacher() && u == request.auth.uid && v.storageUid == t && v.classId == c
+        && v.revoked == false && v.consumedBy == '' && request.time < v.createdAt + duration.value(24,'h')
+        && after.consumedBy == u && after.consumedAt == request.time && classActive(t,c);
+    }
+    function auditBackref(t,c,a,v) {
+      return ((v.operation in ['classCreated','classUpdated','ownershipTransferred','classDeletionStarted','classDeletionCancelled']) && v.targetId == c && getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(c)).data.lastActionId == a)
+        || ((v.operation in ['studentCreated','studentUpdated','studentRemoved','studentCodeRotated']) && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(v.targetId)).data.lastActionId == a)
+        || ((v.operation in ['studentInitialized','rewardAdjusted']) && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(v.targetId)/learning/summary).data.lastActionId == a)
+        || (v.operation == 'codeReserved' && getAfter(/databases/$(database)/documents/codeTickets/$(v.changes.code)).data.lastActionId == a)
+        || ((v.operation in ['teacherInvited','invitationRevoked']) && getAfter(/databases/$(database)/documents/teacherInvitations/$(v.targetId)).data.lastActionId == a)
+        || ((v.operation in ['teacherJoined','teacherRemoved']) && getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/teacherMembers/$(v.targetId)).data.lastActionId == a)
+        || (v.operation == 'activitySaved' && getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/activities/$(v.targetId)).data.lastActionId == a);
+    }
+    match /teachers/{t}/classes/{c}/audit/{a} {
+      allow read: if classReader(t,c) || (authTeacher() && !exists(/databases/$(database)/documents/teachers/$(t)/classes/$(c)) && get(/databases/$(database)/documents/deletedClassArchives/$(t + '~' + c)).data.ownerUid == request.auth.uid);
+      allow create: if authTeacher() && request.resource.data.keys().hasOnly(['actorUid','actorEmail','operation','targetId','changes','at'])
+        && request.resource.data.actorUid == request.auth.uid && request.resource.data.actorEmail == request.auth.token.email
+        && request.resource.data.at == request.time && request.resource.data.changes is map
+        && (classReader(t,c) || (request.resource.data.operation == 'classCreated' && request.auth.uid == t)
+          || (request.resource.data.operation == 'teacherJoined' && joinInvite(t,c,request.auth.uid,request.resource.data.changes.invitationId)))
+        && auditBackref(t,c,a,request.resource.data);
+    }
+    match /teachers/{t}/classes/{c} {
+      // The storage namespace is immutable and belongs to the original creator.
+      // This also permits discovery of legacy classes without an access-index row.
+      allow list: if teacher(t);
+      allow get: if ownClass(t,c) || classReader(t,c);
+      allow get: if authTeacher() && request.auth.uid == t && !exists(/databases/$(database)/documents/teachers/$(t)/classes/$(c));
+      allow create: if authTeacher() && request.auth.uid == t && !exists(/databases/$(database)/documents/deletedClassArchives/$(t + '~' + c))
+        && request.resource.data.keys().hasOnly(['classId','className','defaultGradeLevel','classMode','gradeLevels','ownerUid','createdBy','status','lastActionId'])
+        && request.resource.data.classId == c && request.resource.data.ownerUid == t && request.resource.data.createdBy == t && request.resource.data.status == 'active'
+        && validClass(request.resource.data) && audited(t,c,request.resource.data.lastActionId,'classCreated',c);
+      allow update: if classManager(t,c) && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['className','defaultGradeLevel','classMode','gradeLevels','lastActionId'])
+        && validClass(request.resource.data) && audited(t,c,request.resource.data.lastActionId,'classUpdated',c);
+      allow update: if classManager(t,c)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['ownerUid','lastActionId'])
+        && get(/databases/$(database)/documents/teachers/$(t)/classes/$(c)/teacherMembers/$(request.resource.data.ownerUid)).data.status == 'active'
+        && audited(t,c,request.resource.data.lastActionId,'ownershipTransferred',c);
+      allow update: if classManager(t,c)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','lastActionId','deletionToken']) && request.resource.data.status == 'deleting'
+        && audited(t,c,request.resource.data.lastActionId,'classDeletionStarted',c);
+      allow update: if deletingClass(t,c) && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','lastActionId','deletionToken']) && request.resource.data.status == 'active' && request.resource.data.deletionToken == ''
+        && audited(t,c,request.resource.data.lastActionId,'classDeletionCancelled',c);
+      allow delete: if deletingClass(t,c) && get(/databases/$(database)/documents/deletedClassArchives/$(t + '~' + c)).data.ownerUid == request.auth.uid;
+    }
+    function validClass(v) {
+      return v.className is string && v.className.size() > 0 && v.className.size() <= 60
+        && v.defaultGradeLevel is int && v.defaultGradeLevel >= 1 && v.defaultGradeLevel <= 12
+        && ((!('classMode' in v) && !('gradeLevels' in v) && v.defaultGradeLevel >= 2)
+          || (v.classMode in ['single','mixed'] && v.gradeLevels is list && v.gradeLevels.size() <= 12
+            && v.gradeLevels.toSet().size() == v.gradeLevels.size() && v.gradeLevels.hasOnly([1,2,3,4,5,6,7,8,9,10,11,12])
+            && v.defaultGradeLevel in v.gradeLevels
+            && ((v.classMode == 'mixed' && v.gradeLevels.size() >= 2)
+              || (v.classMode == 'single' && v.defaultGradeLevel >= 2 && v.gradeLevels == [v.defaultGradeLevel]))));
+    }
+    function studentGradeFits(t,v) {
+      let cls = classData(t,v.classId);
+      return cls.get('classMode','single') != 'mixed' ? v.gradeLevel >= 2 : v.gradeLevel in cls.gradeLevels;
+    }
+    match /teacherClassAccess/{u}/classes/{key} {
+      allow delete: if authTeacher() && !exists(/databases/$(database)/documents/teacherClassAccess/$(u)/classes/$(key));
+      allow read: if authTeacher() && u == request.auth.uid;
+      allow create, update: if authTeacher() && u == request.auth.uid
+        && request.resource.data.keys().hasOnly(['storageUid','classId']) && key == request.resource.data.storageUid + '~' + request.resource.data.classId
+        && (getAfter(/databases/$(database)/documents/teachers/$(request.resource.data.storageUid)/classes/$(request.resource.data.classId)).data.get('ownerUid',request.resource.data.storageUid) == u
+          || getAfter(/databases/$(database)/documents/teachers/$(request.resource.data.storageUid)/classes/$(request.resource.data.classId)).data.get('createdBy',request.resource.data.storageUid) == u
+          || getAfter(/databases/$(database)/documents/teachers/$(request.resource.data.storageUid)/classes/$(request.resource.data.classId)/teacherMembers/$(u)).data.status == 'active');
+      allow delete: if deletingClass(resource.data.storageUid,resource.data.classId)
+        || (classManager(resource.data.storageUid,resource.data.classId)
+          && getAfter(/databases/$(database)/documents/teachers/$(resource.data.storageUid)/classes/$(resource.data.classId)/teacherMembers/$(u)).data.status == 'revoked');
+    }
+    match /teachers/{t}/classes/{c}/teacherMembers/{u} {
+      allow get: if authTeacher() && u == request.auth.uid;
+      allow read: if classReader(t,c);
+      allow create, update: if authTeacher() && u == request.auth.uid && request.resource.data.uid == u && request.resource.data.email == request.auth.token.email
+        && request.resource.data.keys().hasOnly(['uid','email','status','lastActionId','invitationId']) && request.resource.data.status == 'active'
+        && ((getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(c)).data.ownerUid == u && audited(t,c,request.resource.data.lastActionId,'classCreated',c))
+          || (joinInvite(t,c,u,request.resource.data.invitationId) && audited(t,c,request.resource.data.lastActionId,'teacherJoined',u)));
+      allow update: if classManager(t,c) && u != classData(t,c).get('ownerUid',t) && u != classData(t,c).get('createdBy',t)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','lastActionId']) && request.resource.data.status == 'revoked'
+        && audited(t,c,request.resource.data.lastActionId,'teacherRemoved',u);
+      allow delete: if deletingClass(t,c);
+    }
+    match /teacherInvitations/{hash} {
+      allow get: if authTeacher();
+      allow list: if classReader(resource.data.storageUid,resource.data.classId);
+      allow create: if classManager(request.resource.data.storageUid,request.resource.data.classId) && hash.matches('[a-f0-9]{64}')
+        && request.resource.data.keys().hasOnly(['storageUid','classId','createdBy','createdAt','consumedBy','consumedAt','revoked','lastActionId'])
+        && request.resource.data.createdBy == request.auth.uid && request.resource.data.createdAt == request.time
+        && request.resource.data.consumedBy == '' && request.resource.data.consumedAt == null && request.resource.data.revoked == false
+        && audited(request.resource.data.storageUid,request.resource.data.classId,request.resource.data.lastActionId,'teacherInvited',hash);
+      allow update: if authTeacher() && classActive(resource.data.storageUid,resource.data.classId)
+        && resource.data.revoked == false && resource.data.consumedBy == '' && request.time < resource.data.createdAt + duration.value(24,'h')
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['consumedBy','consumedAt'])
+        && request.resource.data.consumedBy == request.auth.uid && request.resource.data.consumedAt == request.time
+        && getAfter(/databases/$(database)/documents/teachers/$(resource.data.storageUid)/classes/$(resource.data.classId)/teacherMembers/$(request.auth.uid)).data.invitationId == hash
+        && audited(resource.data.storageUid,resource.data.classId,getAfter(/databases/$(database)/documents/teachers/$(resource.data.storageUid)/classes/$(resource.data.classId)/teacherMembers/$(request.auth.uid)).data.lastActionId,'teacherJoined',request.auth.uid);
+      allow update: if classManager(resource.data.storageUid,resource.data.classId)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['revoked','lastActionId']) && request.resource.data.revoked == true
+        && audited(resource.data.storageUid,resource.data.classId,request.resource.data.lastActionId,'invitationRevoked',hash);
+      allow delete: if deletingClass(resource.data.storageUid,resource.data.classId);
+    }
+    match /teachers/{t}/students/{s} {
+      allow list: if teacher(t);
+      // A missing profile contains no class data; enrollment checks it before creation.
+      allow get: if authTeacher() && !exists(/databases/$(database)/documents/teachers/$(t)/students/$(s));
+      allow create: if classManager(t,request.resource.data.classId) && classAcceptsStudents(t,request.resource.data.classId) && validStudent(request.resource.data) && studentGradeFits(t,request.resource.data)
+        && request.resource.data.keys().hasOnly(['teacherUid','studentId','classId','className','firstName','lastName','gradeLevel','status','credentialVersion','lastActionId'])
+        && request.resource.data.teacherUid == t && request.resource.data.studentId == s && request.resource.data.status == 'pending' && request.resource.data.credentialVersion == 0
+        && request.resource.data.className == classData(t,request.resource.data.classId).className
+        && audited(t,request.resource.data.classId,request.resource.data.lastActionId,'studentCreated',s);
+      allow update: if classManager(t,resource.data.classId) && classAcceptsStudents(t,resource.data.classId) && validStudent(request.resource.data)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','credentialVersion','authUid','lastActionId'])
+        && request.resource.data.status == 'active' && resource.data.status in ['pending','active'] && request.resource.data.credentialVersion == resource.data.credentialVersion + 1
+        && activation(t,s,request.resource.data.authUid,request.resource.data.credentialVersion)
+        && audited(t,resource.data.classId,request.resource.data.lastActionId,'studentCodeRotated',s);
+      allow update: if classManager(t,resource.data.classId) && classManager(t,request.resource.data.classId) && classAcceptsStudents(t,request.resource.data.classId) && validStudent(request.resource.data)
+        && ((request.resource.data.classId == resource.data.classId && request.resource.data.gradeLevel == resource.data.gradeLevel) || studentGradeFits(t,request.resource.data))
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['classId','className','gradeLevel','firstName','lastName','lastActionId'])
+        && request.resource.data.className == classData(t,request.resource.data.classId).className
+        && audited(t,resource.data.classId,request.resource.data.lastActionId,'studentUpdated',s);
+      allow update: if classManager(t,resource.data.classId) && resource.data.status == 'active'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','credentialVersion','lastActionId'])
+        && request.resource.data.status == 'removed' && request.resource.data.credentialVersion == resource.data.credentialVersion + 1
+        && audited(t,resource.data.classId,request.resource.data.lastActionId,'studentRemoved',s);
+      allow delete: if deletingClass(t,resource.data.classId);
+      match /{path=**} { allow read, delete: if deletingClass(t,get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId); }
+      match /learning/{key} {
+        allow create: if key == 'summary' && classManager(t,get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId)
+          && request.resource.data.keys().hasOnly(['totalXP','academicXP','lastAwardQuestionId','answeredCount','correctCount','wrongCount','lastActionId'])
+          && request.resource.data.totalXP == 0 && request.resource.data.academicXP == 0 && request.resource.data.answeredCount == 0 && request.resource.data.correctCount == 0 && request.resource.data.wrongCount == 0 && request.resource.data.lastAwardQuestionId == ''
+          && audited(t,get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId,request.resource.data.lastActionId,'studentInitialized',s);
+        allow update: if key == 'summary' && classManager(t,get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId)
+          && get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.status == 'active'
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['totalXP','teacherXP','stars','lastActionId'])
+          && validReward(t,s,request.resource.data.lastActionId);
+      }
+    }
+    function validStudent(v) { return v.firstName is string && v.firstName.size() > 0 && v.firstName.size() <= 40 && v.lastName is string && v.lastName.size() <= 40 && v.gradeLevel is int && v.gradeLevel >= 1 && v.gradeLevel <= 12; }
+    function validReward(t,s,a) {
+      let c = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId;
+      let event = auditData(t,c,a);
+      let v = request.resource.data;
+      let amount = event.changes.amount;
+      return audited(t,c,a,'rewardAdjusted',s) && amount is int && amount != 0 && amount >= -10000 && amount <= 10000 && event.changes.reason is string && event.changes.reason.size() > 0 && event.changes.reason.size() <= 300
+        && ((event.changes.kind == 'xp' && v.get('teacherXP',0) == resource.data.get('teacherXP',0) + amount && v.get('stars',0) == resource.data.get('stars',0)
+          && v.totalXP == resource.data.get('academicXP',resource.data.totalXP) + v.teacherXP && v.totalXP >= 0)
+          || (event.changes.kind == 'stars' && v.get('stars',0) == resource.data.get('stars',0) + amount && v.stars >= 0 && v.get('teacherXP',0) == resource.data.get('teacherXP',0) && v.totalXP == resource.data.totalXP));
+    }
+    match /teachers/{t}/classes/{c}/classMembers/{s} {
+      allow create, update: if classManager(t,c) && request.resource.data.keys().hasOnly(['studentId','lastActionId']) && request.resource.data.studentId == s
+        && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId == c && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.status == 'active'
+        && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.lastActionId == request.resource.data.lastActionId
+        && auditData(t,c,request.resource.data.lastActionId).at == request.time;
+      allow delete: if deletingClass(t,c) || (classManager(t,c) && (getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.status == 'removed' || getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId != c)
+        && auditData(t,c,getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.lastActionId).at == request.time);
+    }
+    match /teachers/{t}/classes/{c}/leaderboard/{s} {
+      allow create, update: if classManager(t,c) && validTeacherRow(t,c,s);
+      allow delete: if deletingClass(t,c) || (classManager(t,c) && (getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.status == 'removed' || getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId != c)
+        && auditData(t,c,getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.lastActionId).at == request.time);
+    }
+    function validTeacherRow(t,c,s) {
+      let p = getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data;
+      let total = getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data;
+      let v = request.resource.data;
+      return v.keys().hasOnly(['studentId','classId','displayName','academicXP','weeklyAcademicXP','weekKey','lastAwardQuestionId','lastActionId'])
+        && v.studentId == s && v.classId == c && p.classId == c && v.displayName == p.firstName + ' ' + p.lastName
+        && v.academicXP == total.get('academicXP',total.totalXP) && v.lastAwardQuestionId == total.lastAwardQuestionId
+        && ((p.status == 'pending' && v.weeklyAcademicXP == 0 && v.weekKey == '' && audited(t,c,v.lastActionId,'studentInitialized',s))
+          || (p.status == 'active' && p.lastActionId == v.lastActionId && auditData(t,c,v.lastActionId).at == request.time
+            && inWeek(v.weekKey) && v.weeklyAcademicXP == (exists(/databases/$(database)/documents/teachers/$(t)/students/$(s)/academicWeeks/$(v.weekKey)) ? get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/academicWeeks/$(v.weekKey)).data.academicXP : 0)));
+    }
+    match /codeTickets/{code} {
+      allow create: if code.matches('^[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{6}$') && studentReader(request.resource.data.teacherUid,request.resource.data.studentId)
+        && request.resource.data.keys().hasOnly(['teacherUid','studentId','version','email','lastActionId']) && request.resource.data.email == code.lower() + '@students.testarena.invalid'
+        && request.resource.data.version == get(/databases/$(database)/documents/teachers/$(request.resource.data.teacherUid)/students/$(request.resource.data.studentId)).data.credentialVersion + 1
+        && audited(request.resource.data.teacherUid,get(/databases/$(database)/documents/teachers/$(request.resource.data.teacherUid)/students/$(request.resource.data.studentId)).data.classId,request.resource.data.lastActionId,'codeReserved',request.resource.data.studentId);
+    }
+    match /studentBindings/{uid} {
+      allow delete: if authTeacher() && !exists(/databases/$(database)/documents/studentBindings/$(uid));
+      allow create: if studentReader(request.resource.data.teacherUid,request.resource.data.studentId)
+        && request.resource.data.keys().hasOnly(['teacherUid','studentId','version']) && proof(uid).teacherUid == request.resource.data.teacherUid && proof(uid).studentId == request.resource.data.studentId && proof(uid).version == request.resource.data.version
+        && getAfter(/databases/$(database)/documents/teachers/$(request.resource.data.teacherUid)/students/$(request.resource.data.studentId)).data.authUid == uid
+        && getAfter(/databases/$(database)/documents/teachers/$(request.resource.data.teacherUid)/students/$(request.resource.data.studentId)).data.credentialVersion == request.resource.data.version
+        && profileAudit(request.resource.data.teacherUid,request.resource.data.studentId,'studentCodeRotated');
+      allow delete: if deletingClass(resource.data.teacherUid,get(/databases/$(database)/documents/teachers/$(resource.data.teacherUid)/students/$(resource.data.studentId)).data.classId);
+    }
+    match /roles/{uid} { allow create: if request.resource.data == {'role':'student'} && studentReader(proof(uid).teacherUid,proof(uid).studentId)
+      && getAfter(/databases/$(database)/documents/studentBindings/$(uid)).data.studentId == proof(uid).studentId && profileAudit(proof(uid).teacherUid,proof(uid).studentId,'studentCodeRotated'); }
+    match /teachers/{t}/studentCodes/{s} {
+      allow delete: if authTeacher() && !exists(/databases/$(database)/documents/teachers/$(t)/studentCodes/$(s));
+      allow create, update: if studentReader(t,s) && request.resource.data.keys().hasOnly(['code','credentialVersion','lastActionId'])
+        && ticket(request.resource.data.code).teacherUid == t && ticket(request.resource.data.code).studentId == s && ticket(request.resource.data.code).version == request.resource.data.credentialVersion
+        && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.credentialVersion == request.resource.data.credentialVersion && profileAudit(t,s,'studentCodeRotated');
+      allow delete: if deletingClass(t,get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.classId);
+    }
+    match /teachers/{t}/classes/{c}/activities/{a} {
+      allow read: if classReader(t,c);
+      allow create, update: if classManager(t,c) && request.resource.data.keys().hasOnly(['title','status','updatedAt','lastActionId'])
+        && request.resource.data.title is string && request.resource.data.title.size() > 0 && request.resource.data.title.size() <= 100
+        && request.resource.data.status in ['planned','active','completed','cancelled'] && request.resource.data.updatedAt == request.time
+        && audited(t,c,request.resource.data.lastActionId,'activitySaved',a);
+    }
+    match /deletedClassArchives/{key} {
+      allow get: if authTeacher() && resource.data.ownerUid == request.auth.uid;
+      allow create, update: if request.resource.data.keys().hasOnly(['storageUid','classId','ownerUid','at']) && request.resource.data.ownerUid == request.auth.uid && request.resource.data.at == request.time
+        && key == request.resource.data.storageUid + '~' + request.resource.data.classId && classPrincipal(request.resource.data.storageUid,request.resource.data.classId)
+        && getAfter(/databases/$(database)/documents/teachers/$(request.resource.data.storageUid)/classes/$(request.resource.data.classId)).data.status == 'deleting';
+    }
+    match /teachers/{t}/classes/{c}/{collectionName}/{d} { allow read: if classReader(t,c); allow delete: if collectionName != 'audit' && deletingClass(t,c); }
+    match /teachers/{t}/classes/{c}/duels/{d}/answers/{a} { allow delete: if deletingClass(t,c); }
 
     match /{document=**} { allow read, write: if false; }
   }

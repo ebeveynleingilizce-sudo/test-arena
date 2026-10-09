@@ -8,6 +8,7 @@ import {getFirestore} from 'firebase-admin/firestore';
 import {prepareQuestionBank,loadCurriculumBank} from './curriculum-bank.mjs';
 import {publishPackageImages} from './package-images.mjs';
 import {prepareSparkStore} from './prepare-spark-store.mjs';
+import {backfillLegacyClassAccess} from './legacy-class-access.mjs';
 const project=fileURLToPath(new URL('../',import.meta.url));
 const defaultFolder=join(project,'data/questions');
 const state=join(project,'.firebase/question-bank-sync');
@@ -79,6 +80,7 @@ export async function importQuestionFolder({folder=defaultFolder,log=console.log
    if(!old.exists||!isDeepStrictEqual(old.data(),tree))tx.set(ref,tree);
   });
  }
+ await backfillLegacyClassAccess(db);
  await prepareSparkStore(db);
  report.totalActive=(await db.collection('questions').where('status','==','published').get()).size;report.completedAt=new Date().toISOString();
  log(`Question bank sync: files scanned ${report.scanned}; valid banks ${report.validBanks}; new questions ${report.imported}; unchanged ${report.unchanged}; removed questions ${report.removedQuestions}; removed private answers ${report.removedAnswers}; conflicts ${report.conflicts}; errors ${report.failed}.`);

@@ -125,4 +125,6 @@
 }
 @media(max-width:599px){.analytics-filters{flex-direction:column}.analytics-filters label{flex:auto;width:100%}}
 
+.class-card-entry{min-width:0;border:1px solid var(--line);border-radius:16px;background:#fffaf2}.class-card-entry .class-card{border:0;background:transparent;margin:0}.class-delete-button{margin:0 20px 16px}.class-delete-confirm-actions{display:flex;gap:12px;flex-wrap:wrap}.class-management-actions .danger-text{color:#b43b32}
+.class-card-entry .class-delete-button{color:#b43b32}.class-card-entry .class-card:focus-visible{outline-offset:-3px}.class-card-entry:hover{border-color:#eb9b35}
 @media(max-width:599px){.dashboard>.sidebar>nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.dashboard>.sidebar>nav>a{min-width:0;overflow-wrap:anywhere}}

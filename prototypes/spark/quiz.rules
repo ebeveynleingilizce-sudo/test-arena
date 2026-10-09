@@ -17,7 +17,8 @@ service cloud.firestore {
     }
     function gradeAllowed(t,s,g) {
       let p = get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data;
-      return g == p.gradeLevel || (p.gradeLevel > 2 && g == p.gradeLevel - 1);
+      let cls = get(/databases/$(database)/documents/teachers/$(t)/classes/$(p.classId)).data;
+      return g == p.gradeLevel || (cls.get('classMode','single') != 'mixed' && p.gradeLevel > 2 && g == p.gradeLevel - 1);
     }
     function session(t,s,id) {
       return get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)).data;

@@ -6,7 +6,8 @@ export function firebaseEnvironment(env: Record<string, string | boolean | undef
   if (emulator) {
     if (!local) throw new Error('Emulator bağlantısı yalnız localhost üzerinde kullanılabilir.');
     const test = env.VITE_SPARK_TEST === 'true';
-    const projectId = test ? 'demo-test-arena-spark-prototype' : 'demo-test-arena';
+    const projectId = test ? String(env.VITE_TEST_PROJECT_ID || 'demo-test-arena-spark-prototype') : 'demo-test-arena';
+    if (!/^demo-[a-z0-9-]+$/.test(projectId)) throw new Error('Test emulatorü yalnız demo projesi kullanabilir.');
     const testPort=(key:string,fallback:number)=>{const port=Number(env[key]??fallback);if(!Number.isInteger(port)||port<1024||port>65535)throw Error('Geçersiz test emulator portu.');return port;};
     return {emulator, config:{projectId,apiKey:'demo-emulator-key',authDomain:`${projectId}.firebaseapp.com`},siteKey:'',ports:{auth:test?testPort('VITE_TEST_AUTH_PORT',9199):9099,firestore:test?testPort('VITE_TEST_FIRESTORE_PORT',8180):8080}};
   }

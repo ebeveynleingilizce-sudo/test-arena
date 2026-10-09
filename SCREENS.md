@@ -265,6 +265,10 @@ gösterilebilir.
 
 Sınıf Oluştur bulunmalıdır.
 
+Sınıf oluşturma ve düzenlemede Tek Sınıf / Karma Sınıf seçimi bulunur. Karma Sınıf için 1–12 arasından en az iki kademe seçilir. Öğrenci eklerken karma grubun kademeleri arasından öğrencinin kendi kademesi atanır. Toplu eklemede listeye uygulanacak kademe açıkça seçilir.
+
+Öğrenci listesi, grup genel bakışı ve konu analizi kademe filtresini destekler. Grup seçiminden çıkarılan kademelerdeki mevcut öğrenciler korunur; yeni atama için kademe tekrar seçilmelidir.
+
 ---
 
 ## 17 — Öğrenci Ekleme

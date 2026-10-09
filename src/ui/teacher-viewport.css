@@ -1,0 +1,21 @@
+/* A rejected svh declaration used to collapse the teacher shell on Chromium <108.
+   Keep the compatibility value and let supported browsers track the live viewport.
+   Minimum height preserves document scrolling and grid content growth. */
+.dashboard,
+.teacher-auth,
+.teacher-auth .auth-content {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+@media (min-width: 1000px) {
+  .teacher-auth .auth-story {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  .dashboard > .sidebar {
+    height: 100vh;
+    height: 100dvh;
+    /* Short windows / zoom must not make the sign-out action unreachable. */
+    overflow-y: auto;
+  }
+}

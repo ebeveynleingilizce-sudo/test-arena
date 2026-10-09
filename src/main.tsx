@@ -26,6 +26,7 @@ import './ui/polish.css';
 import './ui/desktop.css';
 import './ui/teacher-analytics.css';
 import './ui/pwa.css';
+import './ui/teacher-viewport.css';
 import { PwaUpdates } from './ui/PwaUpdates';
 function App() {
   const { role, loading } = useSession();

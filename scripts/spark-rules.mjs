@@ -1,4 +1,5 @@
 import {readFileSync,writeFileSync,mkdirSync,existsSync} from 'node:fs';
+import {sharedTeacherRules} from './shared-teacher-rules.mjs';
 const quiz=readFileSync(new URL('../prototypes/spark/quiz.rules',import.meta.url),'utf8');
 let rules=quiz.replace("request.auth.uid == t\n      &&", "request.auth.uid == t && !exists(/databases/$(database)/documents/studentBindings/$(t))\n      &&");
 rules=rules.replace("test.status == 'active' && q in pack.questionIds","test.status == 'active' && pack.active == true && q in pack.questionIds");
@@ -19,9 +20,26 @@ identity=identity.replace("['className','defaultGradeLevel']","['classId','class
 identity=identity.replace("request.resource.data.className is string","request.resource.data.classId == c && request.resource.data.className is string && request.resource.data.className.size() > 0 && request.resource.data.className.size() <= 60");
 identity=identity.replace("['teacherUid','studentId','classId','gradeLevel','status','credentialVersion']","['teacherUid','studentId','classId','className','firstName','lastName','gradeLevel','status','credentialVersion']");
 identity=identity.replace("&& request.resource.data.gradeLevel >= 2", "&& request.resource.data.firstName is string && request.resource.data.firstName.size() > 0 && request.resource.data.firstName.size() <= 40\n        && request.resource.data.lastName is string && request.resource.data.lastName.size() <= 40\n        && request.resource.data.className == get(/databases/$(database)/documents/teachers/$(t)/classes/$(request.resource.data.classId)).data.className\n        && request.resource.data.gradeLevel >= 2");
+identity=identity.replace("&& exists(/databases/$(database)/documents/teachers/$(t)/classes/$(request.resource.data.classId))", "&& exists(/databases/$(database)/documents/teachers/$(t)/classes/$(request.resource.data.classId)) && classAcceptsStudents(t,request.resource.data.classId)");
+identity=identity.replace("&& activation(t,s,request.resource.data.authUid,request.resource.data.credentialVersion)", "&& classAcceptsStudents(t,resource.data.classId) && activation(t,s,request.resource.data.authUid,request.resource.data.credentialVersion)");
 identity=identity.replace("{'totalXP':0,'academicXP':0,'lastAwardQuestionId':''}","{'totalXP':0,'academicXP':0,'lastAwardQuestionId':'','answeredCount':0,'correctCount':0,'wrongCount':0}");
 identity=identity.replace("{'studentId':s,'classId':c,'academicXP':0,'weeklyAcademicXP':0,'weekKey':'','lastAwardQuestionId':''}","{'studentId':s,'classId':c,'displayName':get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.firstName + ' ' + get(/databases/$(database)/documents/teachers/$(t)/students/$(s)).data.lastName,'academicXP':0,'weeklyAcademicXP':0,'weekKey':'','lastAwardQuestionId':''}");
 const extra=`
+    // A short teacher-owned lock closes the enrollment/delete race. Expired locks are retryable.
+    function classAcceptsStudents(t,c) {
+      let cls = getAfter(/databases/$(database)/documents/teachers/$(t)/classes/$(c));
+      return cls.data.get('deletionToken','') == ''
+        || cls.data.deletionStartedAt < request.time - duration.value(60,'s');
+    }
+    match /teachers/{t}/classes/{c} {
+      allow update: if teacher(t)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['deletionToken','deletionStartedAt'])
+        && request.resource.data.deletionToken is string
+        && request.resource.data.deletionStartedAt == request.time;
+      allow delete: if teacher(t) && resource.data.get('deletionToken','') != ''
+        && resource.data.deletionStartedAt > request.time - duration.value(60,'s');
+    }
+
     match /teachers/{t}/classes/{c}/classMembers/{s} {
       allow read: if teacher(t);
       allow create, update: if teacher(t) && request.resource.data == {'studentId':s}
@@ -68,6 +86,7 @@ const extra=`
       allow list: if teacher(t);
       allow update: if teacher(t)
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['classId','className','gradeLevel'])
+        && classAcceptsStudents(t,request.resource.data.classId)
         && request.resource.data.gradeLevel >= 2 && request.resource.data.gradeLevel <= 12
         && request.resource.data.className == get(/databases/$(database)/documents/teachers/$(t)/classes/$(request.resource.data.classId)).data.className;
       allow update: if teacher(t)
@@ -122,6 +141,7 @@ const extra=`
 const duels=readFileSync(new URL('../prototypes/spark/duel.rules.fragment',import.meta.url),'utf8');
 const behavior=readFileSync(new URL('../prototypes/spark/behavior.rules.fragment',import.meta.url),'utf8');
 rules=rules.replace('    match /{document=**}',()=>identity+'\n'+extra+'\n'+duels+'\n'+behavior+'\n    match /{document=**}');
+rules=sharedTeacherRules(rules);
 export const sparkRules=rules;
 if(process.argv.includes('--write')){
   const archive=new URL('../prototypes/legacy-functions/',import.meta.url);mkdirSync(archive,{recursive:true});

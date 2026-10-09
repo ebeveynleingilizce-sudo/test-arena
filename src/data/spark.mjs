@@ -1,7 +1,9 @@
 import {initializeApp,deleteApp} from 'firebase/app';
 import {getAuth,connectAuthEmulator,createUserWithEmailAndPassword,signInWithEmailAndPassword,setPersistence,inMemoryPersistence,signOut} from 'firebase/auth';
-import {getFirestore,connectFirestoreEmulator,doc,collection,getDoc,getDocFromServer,getDocs,setDoc,updateDoc,writeBatch,runTransaction,serverTimestamp} from 'firebase/firestore';
+import {getFirestore,connectFirestoreEmulator,doc,collection,getDoc,getDocFromServer,getDocs,getDocsFromServer,query,where,setDoc,updateDoc,writeBatch,runTransaction,serverTimestamp} from 'firebase/firestore';
 import {arenaPeriod} from '../../shared/arena-period.mjs';
+import {contentGrades} from '../../shared/class-grades.mjs';
+import {readServerTime} from './server-clock.mjs';
 const alphabet='23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
 const code=()=>Array.from(crypto.getRandomValues(new Uint8Array(6)),b=>alphabet[b&31]).join('');
 const base=(t,s)=>`teachers/${t}/students/${s}`;
@@ -26,9 +28,7 @@ async function identity(ctx){
   return p;
 }
 async function serverPeriod(ctx){
-  const uid=ctx.auth.currentUser?.uid;if(!uid)throw Error('Giriş gerekli.');
-  await setDoc(ref(ctx.db,`clockSamples/${uid}`),{at:serverTimestamp()});
-  const at=(await getDocFromServer(ref(ctx.db,`clockSamples/${uid}`))).data().at.toMillis();
+  const at=await readServerTime(ctx);
   return {...arenaPeriod(new Date(at)),serverNow:at};
 }
 async function enrollment(ctx,work){
@@ -79,7 +79,8 @@ async function createStudent(ctx,t,data,studentId=crypto.randomUUID()){
   await batch.commit();return rotate(ctx,t,studentId);
 }
 async function catalog(ctx,p){
-  const allowedGrades=p.gradeLevel===2?[2]:[p.gradeLevel-1,p.gradeLevel];
+  const cls=(await getDocFromServer(ref(ctx.db,`teachers/${p.teacherUid}/classes/${p.classId}`))).data();
+  const allowedGrades=contentGrades(p.gradeLevel,cls);
   const trees=await Promise.all(allowedGrades.map(g=>getDocFromServer(ref(ctx.db,`sparkCatalog/${g}`))));
   return {allowedGrades,curricula:trees.filter(d=>d.exists()).map(d=>d.data()),entries:[],fixture:false};
 }
@@ -137,7 +138,7 @@ async function award(ctx,p,testId,q,weekKey,currentWeek){
     const [old,total,week,profile,display]=await Promise.all([tx.get(award),tx.get(summary),tx.get(weekly),tx.get(ref(ctx.db,b)),weekKey===currentWeek?Promise.resolve(null):tx.get(ref(ctx.db,`${b}/academicWeeks/${currentWeek}`))]);
     if(old.exists())return 0;const academicXP=(total.data().academicXP??total.data().totalXP)+1,weeklyXP=(week.data()?.academicXP||0)+1,s=profile.data();
     tx.set(award,{testSessionId:testId,weekKey,xp:1,awardedAt:serverTimestamp()});
-    tx.update(summary,{totalXP:academicXP,academicXP,lastAwardQuestionId:q});
+    tx.update(summary,{totalXP:academicXP+(total.data().teacherXP||0),academicXP,lastAwardQuestionId:q});
     tx.set(weekly,{academicXP:weeklyXP,lastAwardQuestionId:q});
     tx.set(ref(ctx.db,`teachers/${p.teacherUid}/classes/${s.classId}/leaderboard/${p.studentId}`),{studentId:p.studentId,classId:s.classId,displayName:`${s.firstName} ${s.lastName}`,academicXP,weeklyAcademicXP:weekKey===currentWeek?weeklyXP:display?.data()?.academicXP||0,weekKey:currentWeek,lastAwardQuestionId:q});return 1;
   });}catch(e){if(!['permission-denied','aborted'].includes(e.code))throw e;if((await getDocFromServer(award)).exists())return 0;if(retry===2)throw e;}
@@ -160,6 +161,9 @@ async function answer(ctx,p,data){
 }
 const duelStarts=new Map();
 export async function sparkCall(name,data,ctx){
+  if(['createClass','deleteClass','permanentlyDeleteClass','updateClass','createStudent','bulkCreateStudents','rotateStudentCode','removeStudent','updateStudent','teacherAnalytics','listTeacherClasses','inviteTeacher','acceptTeacherInvitation','revokeTeacherInvitation','removeClassTeacher','transferClassOwnership','adjustStudentReward','saveClassActivity'].includes(name)){
+    await teacher(ctx);const {sharedTeacherCall}=await import('./teacher-sharing.mjs');return sharedTeacherCall(ctx,name,data||{});
+  }
   if(name==='studentLogin'){
     const c=codeCredentials(data.code);await signInWithEmailAndPassword(ctx.auth,c.email,c.password);
     try{await identity(ctx);return {userUid:ctx.auth.currentUser.uid};}catch(e){await signOut(ctx.auth);throw e;}
@@ -169,9 +173,27 @@ export async function sparkCall(name,data,ctx){
     const response=await fetch('/__local/question-bank-sync',{method:'POST',headers:{Authorization:`Bearer ${await ctx.auth.currentUser.getIdToken()}`,'Content-Type':'application/json'},body:'{}'});
     if(!response.ok)throw Error('Local admin güncellemesi başarısız.');return response.json();
   }
-  if(['createClass','createStudent','bulkCreateStudents','rotateStudentCode','removeStudent','updateStudent','teacherAnalytics'].includes(name)){
+  if(['createClass','deleteClass','createStudent','bulkCreateStudents','rotateStudentCode','removeStudent','updateStudent','teacherAnalytics'].includes(name)){
     const t=await teacher(ctx);
     if(name==='createClass'){const classId=crypto.randomUUID(),className=clean(data.className,60),defaultGradeLevel=Number(data.defaultGradeLevel);await setDoc(ref(ctx.db,`teachers/${t}/classes/${classId}`),{classId,className,defaultGradeLevel});return {classId};}
+    if(name==='deleteClass'){
+      const classId=id(data.classId),classRef=ref(ctx.db,`teachers/${t}/classes/${classId}`),token=crypto.randomUUID();
+      // Freeze enrollment while checking the authoritative roster, including pending registrations.
+      const locked=await runTransaction(ctx.db,async tx=>{
+        const current=await tx.get(classRef);if(!current.exists())return false;
+        const c=current.data();if(c.deletionToken&&Date.now()-c.deletionStartedAt?.toMillis()<60000)throw Object.assign(Error('Sınıf silme işlemi sürüyor. Bir dakika sonra yeniden dene.'),{code:'class-delete-busy'});
+        tx.update(classRef,{deletionToken:token,deletionStartedAt:serverTimestamp()});return true;
+      });
+      if(!locked)return {classId};
+      try{
+        const roster=await getDocsFromServer(query(collection(ctx.db,`teachers/${t}/students`),where('classId','==',classId)));
+        if(roster.docs.some(d=>d.data().status!=='removed'))throw Object.assign(Error('Sınıfta öğrenci var. Önce öğrencileri başka bir sınıfa taşı veya kaldır.'),{code:'class-not-empty'});
+        await runTransaction(ctx.db,async tx=>{const current=await tx.get(classRef);if(!current.exists())return;if(current.data().deletionToken!==token)throw Object.assign(Error('Sınıf silme işlemi değişti. Yeniden dene.'),{code:'class-delete-busy'});tx.delete(classRef);});
+        return {classId};
+      }finally{
+        await runTransaction(ctx.db,async tx=>{const current=await tx.get(classRef);if(current.exists()&&current.data().deletionToken===token)tx.update(classRef,{deletionToken:'',deletionStartedAt:serverTimestamp()});});
+      }
+    }
     if(name==='createStudent')return createStudent(ctx,t,data);
     if(name==='bulkCreateStudents'){
       const requestId=id(data.requestId),classId=id(data.classId),names=data.names;if(!Array.isArray(names)||!names.length||names.length>50)throw Error('1–50 öğrenci gerekli.');
@@ -191,7 +213,9 @@ export async function sparkCall(name,data,ctx){
     const {sparkAnalytics}=await import('./spark-analytics.mjs');return sparkAnalytics(ctx,t,data,await serverPeriod(ctx));
   }
   const p=await identity(ctx);
-  if(name==='recordQuizBehavior'){const {saveQuizBehavior}=await import('./quiz-behavior.mjs');return saveQuizBehavior(ctx,p,data);}
+  if(name==='recordQuizBehavior'){
+    const {saveQuizBehavior}=await import('./quiz-behavior.mjs');return saveQuizBehavior(ctx,p,data);
+  }
   if(name==='prepareArena')return {...await serverPeriod(ctx),classId:p.classId,className:p.className};
   if(name==='quizCatalog')return catalog(ctx,p);
   if(name==='startDuelTest'){

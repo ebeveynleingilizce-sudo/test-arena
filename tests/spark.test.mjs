@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {initializeTestEnvironment,assertFails,assertSucceeds} from '@firebase/rules-unit-testing';
 import {initializeApp,deleteApp} from 'firebase/app';
 import {getAuth,connectAuthEmulator,signInWithEmailAndPassword,updatePassword} from 'firebase/auth';
-import {getFirestore,connectFirestoreEmulator,doc,getDocFromServer,getDocs,collection,setDoc,updateDoc,writeBatch,serverTimestamp,setLogLevel} from 'firebase/firestore';
+import {getFirestore,connectFirestoreEmulator,doc,getDocFromServer,getDocs,collection,deleteDoc,setDoc,updateDoc,writeBatch,serverTimestamp,setLogLevel} from 'firebase/firestore';
 import {initializeApp as adminApp,deleteApp as deleteAdminApp} from 'firebase-admin/app';
 import {getAuth as adminAuth} from 'firebase-admin/auth';
 import {getFirestore as adminFirestore} from 'firebase-admin/firestore';
@@ -16,6 +16,7 @@ import {heartbeat,invite,respond,publishAnswer,duelScore,closeExpired} from '../
 import {spawn} from 'node:child_process';
 import {chromium} from '@playwright/test';
 import {mkdir} from 'node:fs/promises';
+import {registerTeacherSharingTests} from './teacher-sharing-cases.mjs';
 const projectId='demo-test-arena-spark-prototype';
 if(process.env.GCLOUD_PROJECT!==projectId||process.env.FIRESTORE_EMULATOR_HOST!=='127.0.0.1:8180'||process.env.FIREBASE_AUTH_EMULATOR_HOST!=='127.0.0.1:9199')throw Error('Isolated emulators required');
 setLogLevel('silent');
@@ -45,6 +46,30 @@ test('catalog projection and real test selection return public questions without
  quiz=await call(sa,'startTest',{grade:2,subjectId:subject.id,unitId:unit.id,...(topic?{topicId:topic.id}:{}),packId:pack.id});assert.equal(quiz.questions.length,10);
  for(const q of quiz.questions)for(const f of ['correctOptionId','explanation','answer'])assert(!(f in q));
  records=quiz.questions.map(q=>records.find(r=>r.question.questionId===q.questionId));assert(records.every(Boolean));
+});
+test('behavior summaries are bounded, isolated and cannot authorize XP or answer access',async()=>{
+ const snapshot={visibleMs:1200,hiddenMs:500,exitCount:1,questionMs:[1200,...Array(9).fill(0)],questionChanges:[1,...Array(9).fill(0)]};
+ const saved=await call(sa,'recordQuizBehavior',{testSessionId:quiz.testSessionId,streamId:'security-test-stream',snapshot});assert.equal(saved.slot,'0');
+ const path=`${root()}/quizzes/${quiz.testSessionId}/behavior/0`,current=(await getDocFromServer(ref(sa,path))).data();assert.equal(current.revision,1);
+ await assertSucceeds(getDocFromServer(ref(ta,path)));await assertFails(getDocFromServer(ref(tb,path)));await assertFails(getDocFromServer(ref(sb,path)));
+ await assertFails(getDocFromServer(doc(env.unauthenticatedContext().firestore(),path)));
+ await assertFails(setDoc(ref(sb,path),{...current,revision:2,updatedAt:serverTimestamp()}));
+ await assertFails(setDoc(ref(sa,path),{...current,revision:2,updatedAt:serverTimestamp(),totalXP:999}));
+ await assertFails(setDoc(ref(sa,path),{...current,revision:2,visibleMs:-1,updatedAt:serverTimestamp()}));
+ await assertFails(setDoc(ref(sa,path),{...current,revision:2,questionChanges:[1],updatedAt:serverTimestamp()}));
+ await assertFails(setDoc(ref(sa,path),{...current,revision:2,updatedAt:new Date(0)}));
+ await assertFails(setDoc(ref(sa,path),{...current,revision:4,updatedAt:serverTimestamp()}));
+ await assertFails(setDoc(ref(sa,path),{...current,revision:2,streamId:'replacement',updatedAt:serverTimestamp()}));
+ await assertFails(setDoc(ref(sa,path.replace(/\/0$/,'/8')),{...current,revision:1,startedAt:serverTimestamp(),updatedAt:serverTimestamp()}));
+ await assertFails(deleteDoc(ref(sa,path)));await assertFails(deleteDoc(ref(ta,path)));
+ await call(sa,'recordQuizBehavior',{testSessionId:quiz.testSessionId,streamId:'security-test-stream',slot:'0',snapshot:{...snapshot,visibleMs:1500}});
+ const data=(await getDocFromServer(ref(sa,path))).data();assert.equal(data.revision,2);
+ await adminFirestore(admin).doc(path.replace(/\/0$/,'/7')).set({...data,startedAt:data.startedAt.toDate(),updatedAt:data.updatedAt.toDate(),revision:120,streamId:'limit-stream'});
+ await assert.rejects(call(sa,'recordQuizBehavior',{testSessionId:quiz.testSessionId,streamId:'limit-stream',slot:'7',snapshot}));
+ assert.equal((await getDocFromServer(ref(sa,`${root()}/learning/summary`))).data().totalXP,0);
+ await assertFails(getDocFromServer(ref(sa,`privateQuizKeys/${pack.templateId}/answers/${records[0].question.questionId}`)));
+ const report=await call(ta,'teacherAnalytics',{studentId:student.studentId});const history=report.testHistory.find(t=>t.testSessionId===quiz.testSessionId);assert(history.reported);assert.equal(history.exitCount,2);assert.equal(history.serverDurationMs,null);assert.equal(history.accuracyChange,null);
+ const other=await call(tb,'teacherAnalytics',{studentId:student.studentId});assert.equal(other.testHistory.length,0);
 });
 test('private answers and feedback are denied before a locked submission; no global code listing',async()=>{
  for(const c of [sa,sb,tb])await assertFails(getDocFromServer(ref(c,`privateQuestionAnswers/${records[0].question.questionId}`)));
@@ -92,6 +117,37 @@ test('missing current-grade catalog does not block access to the allowed previou
  const s=await call(ta,'createStudent',{classId:cls.classId,firstName:'Üst',lastName:'Kademe',gradeLevel:3}),c=await client('missing-grade');await call(c,'studentLogin',{code:s.code});
  const result=await call(c,'quizCatalog');assert.deepEqual(result.allowedGrades,[2,3]);assert.deepEqual(result.curricula.map(c=>c.grade),[2]);await assertFails(getDocFromServer(ref(c,'sparkCatalog/5')));
 });
+test('class deletion protects active/pending pupils, preserves history and isolates teachers',async()=>{
+ const empty=await call(ta,'createClass',{className:'Silinecek boş sınıf',defaultGradeLevel:2});
+ await call(tb,'deleteClass',{classId:empty.classId});
+ assert.equal((await getDocFromServer(ref(ta,`teachers/st/classes/${empty.classId}`))).exists(),true);
+ await assertFails(deleteDoc(ref(tb,`teachers/st/classes/${empty.classId}`)));
+ await assert.rejects(call(sa,'deleteClass',{classId:empty.classId}));
+ await assertFails(deleteDoc(ref(sa,`teachers/st/classes/${empty.classId}`)));
+ const pendingRef=adminFirestore(admin).doc(`teachers/st/students/delete-pending`);
+ await pendingRef.set({studentId:'delete-pending',teacherUid:'st',classId:empty.classId,status:'pending'});
+ await assert.rejects(call(ta,'deleteClass',{classId:empty.classId}),e=>e.code==='class-not-empty');
+ assert.equal((await getDocFromServer(ref(ta,`teachers/st/classes/${empty.classId}`))).data().deletionToken,'');
+ await pendingRef.delete();
+ const studentBefore=(await getDocFromServer(ref(ta,root()))).data();
+ await assert.rejects(call(ta,'deleteClass',{classId:cls.classId}),e=>e.code==='class-not-empty');
+ assert.deepEqual((await getDocFromServer(ref(ta,root()))).data(),studentBefore);
+ const moved=await call(ta,'createClass',{className:'Taşıma testi',defaultGradeLevel:2});
+ await call(ta,'updateStudent',{studentId:otherStudent.studentId,classId:moved.classId,gradeLevel:2});
+ await assert.rejects(call(ta,'deleteClass',{classId:moved.classId}),e=>e.code==='class-not-empty');
+ // New enrollment and transfers are rejected while the class is frozen for deletion.
+ await assertFails(updateDoc(ref(ta,`teachers/st/classes/${empty.classId}`),{deletionToken:'test-lock',deletionStartedAt:serverTimestamp()}));
+ await adminFirestore(admin).doc(`teachers/st/classes/${empty.classId}`).update({deletionToken:'test-lock',deletionStartedAt:new Date()});
+ await assert.rejects(call(ta,'createStudent',{classId:empty.classId,firstName:'Kilit',lastName:'Test',gradeLevel:2}));
+ await assert.rejects(call(ta,'updateStudent',{studentId:otherStudent.studentId,classId:empty.classId,gradeLevel:2}));
+ await adminFirestore(admin).doc(`teachers/st/classes/${empty.classId}`).update({deletionToken:'',deletionStartedAt:new Date()});
+ await call(ta,'updateStudent',{studentId:otherStudent.studentId,classId:cls.classId,gradeLevel:2});
+ await call(ta,'deleteClass',{classId:moved.classId});assert.equal((await getDocFromServer(ref(ta,`teachers/st/classes/${moved.classId}`))).exists(),false);
+ const ad=adminFirestore(admin);await ad.doc(`teachers/st/students/deleted-class-history`).set({studentId:'deleted-class-history',teacherUid:'st',classId:empty.classId,status:'removed'});await ad.doc('teachers/st/students/deleted-class-history/learning/summary').set({totalXP:7});
+ await call(ta,'deleteClass',{classId:empty.classId});await call(ta,'deleteClass',{classId:empty.classId});
+ assert.equal((await getDocFromServer(ref(ta,`teachers/st/classes/${empty.classId}`))).exists(),false);
+ assert.equal((await ad.doc('teachers/st/students/deleted-class-history/learning/summary').get()).data().totalXP,7);
+});
 test('duel invite, rejection, locking, common questions and verified scores preserve XP rules',async()=>{
  const a=await call(ta,'createStudent',{classId:cls.classId,firstName:'Düello',lastName:'A',gradeLevel:2}),b=await call(ta,'createStudent',{classId:cls.classId,firstName:'Düello',lastName:'B',gradeLevel:2});
  const ca=await client('duel-a'),cb=await client('duel-b');await call(ca,'studentLogin',{code:a.code});await call(cb,'studentLogin',{code:b.code});
@@ -131,16 +187,17 @@ test('duel invite, rejection, locking, common questions and verified scores pres
  assert.equal(duelScore({acceptedAt:{toMillis:()=>0}},[{studentId:'s',isCorrect:true,index:0,submittedAt:{toMillis:()=>15000}},{studentId:'s',isCorrect:false,index:1,submittedAt:{toMillis:()=>40000}}],'s'),1250);
 });
 test('real student browser navigation, quiz and Arena at phone/desktop sizes without Functions',async()=>{
- const vite=spawn(process.execPath,['node_modules/vite/bin/vite.js','--host','127.0.0.1','--port','5174'],{env:{...process.env,VITE_SPARK_TEST:'true',VITE_USE_EMULATORS:'true',VITE_TEST_AUTH_PORT:'9199',VITE_TEST_FIRESTORE_PORT:'8180'},windowsHide:true,stdio:'ignore'});
+ const baseUrl=process.env.SPARK_BROWSER_URL||'http://127.0.0.1:5174';
+ const vite=process.env.SPARK_BROWSER_URL?null:spawn(process.execPath,['node_modules/vite/bin/vite.js','--host','127.0.0.1','--port','5174'],{env:{...process.env,VITE_SPARK_TEST:'true',VITE_USE_EMULATORS:'true',VITE_TEST_AUTH_PORT:'9199',VITE_TEST_FIRESTORE_PORT:'8180'},windowsHide:true,stdio:'ignore'});
  let browser;
  try{
-  for(let i=0;i<80;i++){try{if((await fetch('http://127.0.0.1:5174/')).ok)break;}catch{}await new Promise(r=>setTimeout(r,250));}
-  browser=await chromium.launch();await mkdir('test-results/spark-browser',{recursive:true});
+  for(let i=0;i<80;i++){try{if((await fetch(baseUrl)).ok)break;}catch{}await new Promise(r=>setTimeout(r,250));}
+  browser=await chromium.launch({args:['--no-proxy-server']});await mkdir('test-results/spark-browser',{recursive:true});
   for(const [width,height] of [[360,800],[1366,900]]){
    const browserStudent=await call(ta,'createStudent',{classId:cls.classId,firstName:'Tarayıcı',lastName:String(width),gradeLevel:2});
    const page=await browser.newPage({viewport:{width,height}}),errors=[],functions=[];
    page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});page.on('request',r=>{if(/:5001|cloudfunctions.net/.test(r.url()))functions.push(r.url());});
-   await page.goto('http://127.0.0.1:5174/ogrenci-giris');await page.getByLabel('Öğrenci kısa kodu').fill(browserStudent.code);await page.getByRole('button',{name:'Giriş yap',exact:true}).click();await page.waitForURL('**/ogrenci');
+   await page.goto(baseUrl+'/ogrenci-giris');await page.getByLabel('Öğrenci kısa kodu').fill(browserStudent.code);await page.getByRole('button',{name:'Giriş yap',exact:true}).click();await page.waitForURL('**/ogrenci');
    await page.getByRole('link',{name:/Soru Çöz/}).first().click();
    await page.locator('.selection-list button').filter({hasText:'Matematik'}).click();await page.locator('.selection-list button').first().click();
    if(await page.getByRole('heading',{name:'Konunu seç'}).isVisible())await page.locator('.selection-list button').filter({hasText:'10 soru'}).first().click();
@@ -148,15 +205,28 @@ test('real student browser navigation, quiz and Arena at phone/desktop sizes wit
    const choices=page.locator('[data-choice-id]');await choices.first().waitFor();assert.equal(await choices.count(),records[0].question.choices.length);
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
    await page.screenshot({path:`test-results/spark-browser/quiz-${width}.png`,fullPage:true});
+   await choices.first().click();await choices.nth(1).click();
+   await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,value:true});document.dispatchEvent(new Event('visibilitychange'));});
+   await new Promise(r=>setTimeout(r,300));
+   await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,value:false});document.dispatchEvent(new Event('visibilitychange'));delete document.hidden;});
    await choices.first().click();await page.getByRole('button',{name:'Cevabı kontrol et',exact:true}).click();await page.locator('.answer-feedback').waitFor();
    await page.getByRole('button',{name:'Devam →',exact:true}).click();await page.locator('.quiz-question-navigation').waitFor();
-   await page.goto('http://127.0.0.1:5174/ogrenci/arena');await page.locator('.arena-heading').waitFor();await page.locator('.arena-list').waitFor();
+   await page.goto(baseUrl+'/ogrenci/arena');await page.locator('.arena-heading').waitFor();await page.locator('.arena-list').waitFor();
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.deepEqual(errors,[]);assert.deepEqual(functions,[]);
+   const observations=adminFirestore(admin).collection(`teachers/st/students/${browserStudent.studentId}/quizzes`);let observation;
+   for(let attempt=0;attempt<20;attempt++){const tests=await observations.get();const rows=await tests.docs[0].ref.collection('behavior').get();observation=rows.docs[0]?.data();if(observation?.questionChanges.reduce((a,b)=>a+b,0)===2)break;await new Promise(r=>setTimeout(r,250));}
+   assert.equal(observation.exitCount,1);assert(observation.hiddenMs>=200);assert.equal(observation.questionChanges.reduce((a,b)=>a+b,0),2);
+   const teacherPage=await browser.newPage({viewport:{width,height}}),teacherErrors=[];teacherPage.on('pageerror',e=>teacherErrors.push(e.message));teacherPage.on('console',m=>{if(m.type()==='error')teacherErrors.push(m.text());});
+   await teacherPage.goto(baseUrl+'/ogretmen-giris');await teacherPage.getByLabel('E-posta',{exact:true}).fill('st@fixture.invalid');await teacherPage.getByLabel('Şifre',{exact:true}).fill('teacher-fixture-only');await teacherPage.getByRole('button',{name:'Giriş yap',exact:true}).click();await teacherPage.waitForURL('**/ogretmen');
+   await teacherPage.goto(`${baseUrl}/ogretmen/ogrenciler/${browserStudent.studentId}`);await teacherPage.locator('.behavior-history article').waitFor();await teacherPage.getByText('Soru bazında süreler',{exact:true}).first().click();
+   await teacherPage.screenshot({path:`test-results/spark-browser/behavior-report-${width}.png`,fullPage:true});
+   const teacherOverflow=await teacherPage.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,elements:[...document.querySelectorAll('body *')].filter(e=>e.getBoundingClientRect().right>innerWidth+1).map(e=>({tag:e.tagName,cls:e.className,width:e.getBoundingClientRect().width,text:e.textContent.slice(0,80)})).slice(-20)}));
+   assert(teacherOverflow.scroll<=width,JSON.stringify(teacherOverflow));assert.deepEqual(teacherErrors,[]);await teacherPage.close();
    const rival=await call(ta,'createStudent',{classId:cls.classId,firstName:'Rakip',lastName:String(width),gradeLevel:2});
    const peer=await browser.newPage({viewport:{width,height}}),peerErrors=[];
    peer.on('pageerror',e=>peerErrors.push(e.message));peer.on('console',m=>{if(m.type()==='error')peerErrors.push(m.text());});
-   await peer.goto('http://127.0.0.1:5174/ogrenci-giris');await peer.getByLabel('Öğrenci kısa kodu').fill(rival.code);await peer.getByRole('button',{name:'Giriş yap',exact:true}).click();await peer.waitForURL('**/ogrenci');
-   await page.getByRole('link',{name:/Düello/}).click();await peer.goto('http://127.0.0.1:5174/ogrenci/duello');
+   await peer.goto(baseUrl+'/ogrenci-giris');await peer.getByLabel('Öğrenci kısa kodu').fill(rival.code);await peer.getByRole('button',{name:'Giriş yap',exact:true}).click();await peer.waitForURL('**/ogrenci');
+   await page.getByRole('link',{name:/Düello/}).click();await peer.goto(baseUrl+'/ogrenci/duello');
    const row=page.locator('.duel-rivals li').filter({hasText:`Rakip ${width}`});await row.getByRole('button',{name:'Davet et'}).click();
    await peer.getByRole('button',{name:'Kabul et'}).click();
    try{await page.getByText('Soru 1 / 10',{exact:true}).waitFor();await peer.getByText('Soru 1 / 10',{exact:true}).waitFor();}catch(e){
@@ -170,6 +240,8 @@ test('real student browser navigation, quiz and Arena at phone/desktop sizes wit
    for(const p of [page,peer])await p.locator('.duel-result').waitFor();
    assert.deepEqual(errors,[]);assert.deepEqual(peerErrors,[]);assert.deepEqual(functions,[]);await peer.close();await page.close();
   }
- }finally{await browser?.close();vite.kill();}
+ }finally{await browser?.close();vite?.kill();}
 });
 
+
+registerTeacherSharingTests(()=>({ta,tb,call,client,ensureTeacher,pack,records,adminAuth:adminAuth(admin),adminDb:adminFirestore(admin)}));

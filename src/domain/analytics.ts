@@ -1,10 +1,11 @@
 export interface Counts { solved: number; correct: number; wrong: number }
 export type Period = 'overall' | 'weekly';
 export interface Performance { overall: Counts; weekly: Counts; academicXP: number; weeklyAcademicXP: number }
-export interface AnalyticsStudent extends Performance { studentId: string; displayName: string; classId: string; className: string; gradeLevel: number; overallRank: number; weeklyRank: number; signals: string[]; lastAnswerAt: number | null }
-export interface AnalyticsClass extends Performance { classId: string; className: string; defaultGradeLevel: number; studentCount: number }
+export interface AnalyticsStudent extends Performance { storageUid?:string; studentId: string; displayName: string; classId: string; className: string; gradeLevel: number; overallRank: number; weeklyRank: number; signals: string[]; lastAnswerAt: number | null }
+export interface AnalyticsClass extends Performance { storageUid?:string; classId: string; className: string; defaultGradeLevel: number; classMode?:string; gradeLevels?:number[]; studentCount: number }
 export interface Dimension { kind: 'subject' | 'topic' | 'unit'; unitId?: string; unitName?: string; gradeLevel: number; subject: string; subjectName: string; topic?: string; topicName?: string; overall: Counts; weekly: Counts }
-export interface AnalyticsReport { testHistory?: BehaviorHistory[]; weekKey: string; serverNow: number; classes: AnalyticsClass[]; students: AnalyticsStudent[]; totals: Performance & { classCount: number; studentCount: number }; dimensions: Dimension[] }
+export interface BehaviorHistory {testSessionId:string;gradeLevel:number;subjectName:string;unitName:string;packName:string;status:string;startedAt:number|null;questionCount:number;correct:number;wrong:number;blank:number;serverDurationMs:number|null;visibleMs:number;hiddenMs:number;exitCount:number;changeCount:number;streamCount:number;reported:boolean;previousTestCount:number;accuracyChange:number|null;questions:{questionId:string;number:number;visibleMs:number|null;changes:number|null;submittedAfterStartMs:number|null}[]}
+export interface AnalyticsReport { testHistory?:BehaviorHistory[];weekKey: string; serverNow: number; classes: AnalyticsClass[]; students: AnalyticsStudent[]; totals: Performance & { classCount: number; studentCount: number }; dimensions: Dimension[] }
 export const percent = (counts: Counts) => counts.solved ? `%${Math.round(counts.correct / counts.solved * 100)}` : 'Henüz veri yok';
 export const number = (value: number) => value.toLocaleString('tr-TR');
 export function sortStudents(students: AnalyticsStudent[], sort: string, period: Period) {
@@ -20,5 +21,3 @@ export function sortStudents(students: AnalyticsStudent[], sort: string, period:
     return order || a.displayName.localeCompare(b.displayName, 'tr') || a.studentId.localeCompare(b.studentId);
   });
 }
-
-export interface BehaviorHistory {testSessionId:string;gradeLevel:number;subjectName:string;unitName:string;packName:string;status:string;startedAt:number|null;questionCount:number;correct:number;wrong:number;blank:number;serverDurationMs:number|null;visibleMs:number;hiddenMs:number;exitCount:number;changeCount:number;streamCount:number;reported:boolean;previousTestCount:number;accuracyChange:number|null;questions:{questionId:string;number:number;visibleMs:number|null;changes:number|null;submittedAfterStartMs:number|null}[]}

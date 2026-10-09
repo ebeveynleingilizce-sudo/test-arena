@@ -108,6 +108,12 @@ Kademe öğrencinin hangi soru içeriklerine erişebileceğini belirler.
 
 Kademe öğretmen tarafından belirlenir.
 
+## Karma Sınıf
+
+Öğretmen tek sınıf seçimini koruyabilir veya Karma Sınıf ile 1–12 arasından en az iki kademe seçebilir. Öğrenciler aynı grupta yönetilir ve yarışır; her öğrencinin `gradeLevel` değeri ayrı tutulur.
+
+Karma grupta öğrenciler yalnız kendi kademelerinin ders, ünite ve testlerine erişir. Aşağıdaki kendi/önceki kademe kuralı tek sınıflı ve eski gruplarda korunur. Grup kademelerini düzenlemek mevcut öğrenci kademelerini veya geçmiş sonuçları değiştirmez.
+
 ---
 
 # İçerik Erişim Kuralı
@@ -232,6 +238,10 @@ Mehmet'i geçmene 46 XP kaldı.
 ---
 
 # Öğretmen Paneli
+
+Sınıfı oluşturan öğretmenin tam yönetim erişimi sahiplik devrinde de korunur.
+Davetle katılan aktif öğretmenler aynı sınıfta tam yönetim yetkisine sahiptir.
+Yetkisiz hesaplar ve erişimi kaldırılmış davetliler sınıf verilerini yönetemez.
 
 Öğretmen:
 
