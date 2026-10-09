@@ -1,0 +1,73 @@
+    function bankManager() {
+      let role = get(/databases/$(database)/documents/roles/$(request.auth.uid)).data;
+      return authTeacher() && (role.get('questionBankAdmin',false) == true || role.get('admin',false) == true
+        || request.auth.token.get('questionBankAdmin',false) == true || request.auth.token.get('admin',false) == true
+        || (request.auth.token.email == 'demo.ogretmen@testarena.local' && request.auth.token.get('aud','').matches('demo-.*')));
+    }
+    function bankEditing() {
+      let state = get(/databases/$(database)/documents/questionBankState/live).data;
+      return bankManager() && state.lockedBy == request.auth.uid && state.lockId != ''
+        && request.time < state.lockedAt + duration.value(10,'m');
+    }
+    function bankChoice(v) { return v.keys().hasOnly(['choiceId','text','visual']) && v.choiceId is string && v.choiceId.size() <= 128; }
+    function bankQuestion(q,v) {
+      return v.keys().hasOnly(['questionId','gradeLevel','grade','subject','subjectId','subjectName','unitId','unitName','topic','topicId','topicName','themeId','skillId','questionText','content','choices','visual','visualPlacement','type','difficulty','status','isDemo','sourceDatasetId','bankRevision','bankActionId'])
+        && v.questionId == q && v.gradeLevel is int && v.gradeLevel >= 1 && v.gradeLevel <= 12
+        && v.subject is string && v.unitId is string && v.questionText is string && v.questionText.size() > 0 && v.questionText.size() <= 6000
+        && v.status in ['published','archived'] && v.isDemo == false
+        && v.choices is list && v.choices.size() >= 3 && v.choices.size() <= 4
+        && bankChoice(v.choices[0]) && bankChoice(v.choices[1]) && bankChoice(v.choices[2]) && (v.choices.size() < 4 || bankChoice(v.choices[3]))
+        && v.bankRevision is int && v.bankRevision > 0;
+    }
+    function bankAudit(a) { let v = getAfter(/databases/$(database)/documents/questionBankAudit/$(a)).data; return v.actorUid == request.auth.uid && v.at == request.time; }
+    function bankAnswer(v) {
+      return v.keys().hasOnly(['correctChoiceId','correctOptionId','explanation','outcomeMappingStatus','outcomeCode','outcomeId','candidateOutcomeCodes'])
+        && v.correctOptionId is string && v.correctChoiceId == v.correctOptionId && v.explanation is string && v.explanation.size() <= 6000;
+    }
+    match /curricula/{g} { allow read: if authTeacher(); }
+    match /questions/{q} {
+      allow read: if authTeacher();
+      allow create: if bankEditing() && bankQuestion(q,request.resource.data) && bankAudit(request.resource.data.bankActionId);
+      allow update: if bankEditing() && bankQuestion(q,request.resource.data) && request.resource.data.gradeLevel == resource.data.gradeLevel
+        && request.resource.data.bankRevision == resource.data.get('bankRevision',0) + 1 && bankAudit(request.resource.data.bankActionId);
+    }
+    match /privateQuestionAnswers/{q} { allow read: if authTeacher(); allow create, update: if bankEditing() && bankAnswer(request.resource.data); }
+    match /questionBankState/{id} { allow read: if bankManager(); allow create, update: if id == 'live' && bankManager() && request.resource.data.keys().hasOnly(['revision','lockId','lockedBy','lockedAt']); }
+    match /questionBankAudit/{id} { allow read: if bankManager(); allow create: if bankEditing() && request.resource.data.actorUid == request.auth.uid && request.resource.data.at == request.time; }
+    match /questionBankRevisions/{id}/records/{q} { allow read: if bankManager(); allow create: if bankEditing() && request.resource.data.at == request.time; }
+    match /quizTemplates/{id} {
+      allow list: if authTeacher();
+      allow create: if bankEditing() && request.resource.data.keys().hasOnly(['active','gradeLevel','subject','subjectName','unitId','unitName','topic','topicName','packId','packName','questionIds','choiceIdsByQuestionId','questions'])
+        && request.resource.data.active == false && request.resource.data.questionIds.size() >= 1 && request.resource.data.questionIds.size() <= 10;
+      allow update: if bankEditing() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['active']) && request.resource.data.active is bool;
+    }
+    match /privateQuizKeys/{pack}/answers/{q} {
+      allow create: if bankEditing() && bankAnswer(request.resource.data)
+        && q in getAfter(/databases/$(database)/documents/quizTemplates/$(pack)).data.questionIds
+        && request.resource.data.correctOptionId in getAfter(/databases/$(database)/documents/quizTemplates/$(pack)).data.choiceIdsByQuestionId[q];
+    }
+    match /sparkCatalog/{g} { allow create, update: if bankEditing() && request.resource.data.grade == int(g); }
+    function reportSource(v) { return v.reporterRole == 'teacher'
+      ? get(/databases/$(database)/documents/questions/$(v.questionId)).data
+      : get(/databases/$(database)/documents/quizTemplates/$(v.templateId)).data; }
+    function pupilReport(v) {
+      let b = get(/databases/$(database)/documents/studentBindings/$(request.auth.uid)).data;
+      let test = get(/databases/$(database)/documents/teachers/$(b.teacherUid)/students/$(b.studentId)/quizzes/$(v.testSessionId)).data;
+      return pupil(b.teacherUid,b.studentId) && test.templateId == v.templateId && v.questionId in template(v.templateId).questionIds;
+    }
+    match /questionReports/{id} {
+      allow get: if bankManager() || (request.auth != null && resource.data.reporterUid == request.auth.uid);
+      allow list: if bankManager();
+      allow create: if request.auth != null && request.resource.data.keys().hasOnly(['questionId','gradeLevel','subject','subjectName','unitId','unitName','type','description','reporterUid','reporterRole','testSessionId','templateId','status','createdAt','updatedAt','updatedBy'])
+        && request.resource.data.reporterUid == request.auth.uid && request.resource.data.createdAt == request.time && request.resource.data.updatedAt == request.time
+        && request.resource.data.status == 'pending' && request.resource.data.updatedBy == ''
+        && request.resource.data.type in ['Yanlış cevap anahtarı','Hatalı veya eksik soru','Müfredat / kazanım uyumsuzluğu','Birden fazla doğru cevap','Doğru cevap bulunmuyor','Yazım / dil bilgisi hatası','Anlaşılmayan soru','Görsel hatası','Diğer']
+        && request.resource.data.description is string && request.resource.data.description.size() <= 2000
+        && ((request.resource.data.reporterRole == 'teacher' && authTeacher() && request.resource.data.templateId == '' && request.resource.data.testSessionId == '')
+          || (request.resource.data.reporterRole == 'student' && pupilReport(request.resource.data)))
+        && request.resource.data.gradeLevel == reportSource(request.resource.data).gradeLevel
+        && request.resource.data.subject == reportSource(request.resource.data).subject && request.resource.data.subjectName == reportSource(request.resource.data).subjectName
+        && request.resource.data.unitId == reportSource(request.resource.data).get('unitId','') && request.resource.data.unitName == reportSource(request.resource.data).get('unitName','');
+      allow update: if bankManager() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','updatedAt','updatedBy'])
+        && request.resource.data.status in ['pending','reviewing','fixed','rejected'] && request.resource.data.updatedAt == request.time && request.resource.data.updatedBy == request.auth.uid;
+    }

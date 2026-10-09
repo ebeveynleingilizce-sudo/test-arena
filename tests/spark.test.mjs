@@ -17,6 +17,7 @@ import {spawn} from 'node:child_process';
 import {chromium} from '@playwright/test';
 import {mkdir} from 'node:fs/promises';
 import {registerTeacherSharingTests} from './teacher-sharing-cases.mjs';
+import {registerQuestionBankTests} from './question-bank-cases.mjs';
 const projectId='demo-test-arena-spark-prototype';
 if(process.env.GCLOUD_PROJECT!==projectId||process.env.FIRESTORE_EMULATOR_HOST!=='127.0.0.1:8180'||process.env.FIREBASE_AUTH_EMULATOR_HOST!=='127.0.0.1:9199')throw Error('Isolated emulators required');
 setLogLevel('silent');
@@ -72,7 +73,8 @@ test('behavior summaries are bounded, isolated and cannot authorize XP or answer
  const other=await call(tb,'teacherAnalytics',{studentId:student.studentId});assert.equal(other.testHistory.length,0);
 });
 test('private answers and feedback are denied before a locked submission; no global code listing',async()=>{
- for(const c of [sa,sb,tb])await assertFails(getDocFromServer(ref(c,`privateQuestionAnswers/${records[0].question.questionId}`)));
+ for(const c of [sa,sb])await assertFails(getDocFromServer(ref(c,`privateQuestionAnswers/${records[0].question.questionId}`)));
+ for(const c of [ta,tb])await assertSucceeds(getDocFromServer(ref(c,`privateQuestionAnswers/${records[0].question.questionId}`)));
  for(const c of [sa,sb])await assertFails(getDocFromServer(ref(c,`privateQuizKeys/${pack.templateId}/answers/${records[0].question.questionId}`)));
  for(const c of [ta,tb])await assertSucceeds(getDocFromServer(ref(c,`privateQuizKeys/${pack.templateId}/answers/${records[0].question.questionId}`)));
  await assertFails(getDocs(collection(sa.db,'codeTickets')));await assertFails(getDocs(collection(sa.db,'studentBindings')));
@@ -245,3 +247,4 @@ test('real student browser navigation, quiz and Arena at phone/desktop sizes wit
 
 
 registerTeacherSharingTests(()=>({ta,tb,call,client,ensureTeacher,pack,records,adminAuth:adminAuth(admin),adminDb:adminFirestore(admin)}));
+registerQuestionBankTests(()=>({ta,tb,call,client,ensureTeacher,pack,records,adminAuth:adminAuth(admin),adminDb:adminFirestore(admin)}));

@@ -5,7 +5,8 @@ let rules=quiz.replace("request.auth.uid == t\n      &&", "request.auth.uid == t
 rules=rules.replace("test.status == 'active' && q in pack.questionIds","test.status == 'active' && pack.active == true && q in pack.questionIds");
 rules=rules.replace("&& template(request.resource.data.templateId).questionIds.size() == 10","&& template(request.resource.data.templateId).active == true && template(request.resource.data.templateId).questionIds.size() == 10");
 rules=rules.replace("get(/databases/$(database)/documents/questions/$(q)).data.choiceIds","template(session(t,s,id).templateId).choiceIdsByQuestionId[q]");
-rules=rules.replace("&& session(t,s,request.resource.data.testSessionId).status == 'completed'","&& session(t,s,request.resource.data.testSessionId).status == 'completed' && template(session(t,s,request.resource.data.testSessionId).templateId).active == true");
+// A retired pack remains valid for sessions created while it was active.
+// Settlement still requires a completed, correctly graded, owned session.
 rules=rules.replace("&& getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)).data.resolved == session(t,s,id).resolved + 1;",
  "&& getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)).data.resolved == session(t,s,id).resolved + 1\n            && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.lastResultSessionId == id\n            && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.lastResultQuestionId == q\n            && getAfter(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.answeredCount == get(/databases/$(database)/documents/teachers/$(t)/students/$(s)/learning/summary).data.answeredCount + (request.resource.data.skipped ? 0 : 1);");
 rules=rules.replace("template(request.resource.data.templateId).questionIds.size() == 10","template(request.resource.data.templateId).questionIds.size() >= 1 && template(request.resource.data.templateId).questionIds.size() <= 10");
@@ -142,6 +143,9 @@ const duels=readFileSync(new URL('../prototypes/spark/duel.rules.fragment',impor
 const behavior=readFileSync(new URL('../prototypes/spark/behavior.rules.fragment',import.meta.url),'utf8');
 rules=rules.replace('    match /{document=**}',()=>identity+'\n'+extra+'\n'+duels+'\n'+behavior+'\n    match /{document=**}');
 rules=sharedTeacherRules(rules);
+rules=rules.replace('    match /{document=**}',()=>readFileSync(new URL('../prototypes/spark/question-bank.rules.fragment',import.meta.url),'utf8')+'\n    match /{document=**}');
+// Completed/in-progress sessions retain their immutable pack after a bank edit.
+rules=rules.replace("test.status == 'active' && pack.active == true && q in pack.questionIds","test.status == 'active' && q in pack.questionIds");
 export const sparkRules=rules;
 if(process.argv.includes('--write')){
   const archive=new URL('../prototypes/legacy-functions/',import.meta.url);mkdirSync(archive,{recursive:true});

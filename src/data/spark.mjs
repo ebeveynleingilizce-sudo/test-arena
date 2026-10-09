@@ -161,6 +161,10 @@ async function answer(ctx,p,data){
 }
 const duelStarts=new Map();
 export async function sparkCall(name,data,ctx){
+  if(['teacherQuestionBank','getBankQuestion','manageQuestionBank','questionReports','updateQuestionReport'].includes(name)){
+    await teacher(ctx);const {questionBankCall}=await import('./question-bank.mjs');return questionBankCall(ctx,name,data||{});
+  }
+  if(name==='reportQuestion'){if(!ctx.auth.currentUser)throw Error('Giriş gerekli.');const {questionBankCall}=await import('./question-bank.mjs');return questionBankCall(ctx,name,data||{});}
   if(['createClass','deleteClass','permanentlyDeleteClass','updateClass','createStudent','bulkCreateStudents','rotateStudentCode','removeStudent','updateStudent','teacherAnalytics','listTeacherClasses','inviteTeacher','inviteTeacherClasses','acceptTeacherInvitation','revokeTeacherInvitation','removeClassTeacher','transferClassOwnership','adjustStudentReward','saveClassActivity'].includes(name)){
     await teacher(ctx);const {sharedTeacherCall}=await import('./teacher-sharing.mjs');return sharedTeacherCall(ctx,name,data||{});
   }
