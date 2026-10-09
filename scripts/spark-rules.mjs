@@ -120,7 +120,8 @@ const extra=`
     }
 `;
 const duels=readFileSync(new URL('../prototypes/spark/duel.rules.fragment',import.meta.url),'utf8');
-rules=rules.replace('    match /{document=**}',()=>identity+'\n'+extra+'\n'+duels+'\n    match /{document=**}');
+const behavior=readFileSync(new URL('../prototypes/spark/behavior.rules.fragment',import.meta.url),'utf8');
+rules=rules.replace('    match /{document=**}',()=>identity+'\n'+extra+'\n'+duels+'\n'+behavior+'\n    match /{document=**}');
 export const sparkRules=rules;
 if(process.argv.includes('--write')){
   const archive=new URL('../prototypes/legacy-functions/',import.meta.url);mkdirSync(archive,{recursive:true});

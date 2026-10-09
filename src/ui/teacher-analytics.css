@@ -124,3 +124,5 @@
  .roster .student-row{padding-block:12px}
 }
 @media(max-width:599px){.analytics-filters{flex-direction:column}.analytics-filters label{flex:auto;width:100%}}
+
+@media(max-width:599px){.dashboard>.sidebar>nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.dashboard>.sidebar>nav>a{min-width:0;overflow-wrap:anywhere}}

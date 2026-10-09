@@ -191,6 +191,7 @@ export async function sparkCall(name,data,ctx){
     const {sparkAnalytics}=await import('./spark-analytics.mjs');return sparkAnalytics(ctx,t,data,await serverPeriod(ctx));
   }
   const p=await identity(ctx);
+  if(name==='recordQuizBehavior'){const {saveQuizBehavior}=await import('./quiz-behavior.mjs');return saveQuizBehavior(ctx,p,data);}
   if(name==='prepareArena')return {...await serverPeriod(ctx),classId:p.classId,className:p.className};
   if(name==='quizCatalog')return catalog(ctx,p);
   if(name==='startDuelTest'){

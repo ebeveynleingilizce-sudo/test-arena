@@ -1,0 +1,36 @@
+    // Browser-reported observations: isolated and bounded; never used by XP rules.
+    function behaviorNumber(n,max) { return n is int && n >= 0 && n <= max; }
+    function behaviorList(v,max) {
+      return v is list && v.size() == 10
+        && behaviorNumber(v[0],max) && behaviorNumber(v[1],max)
+        && behaviorNumber(v[2],max) && behaviorNumber(v[3],max)
+        && behaviorNumber(v[4],max) && behaviorNumber(v[5],max)
+        && behaviorNumber(v[6],max) && behaviorNumber(v[7],max)
+        && behaviorNumber(v[8],max) && behaviorNumber(v[9],max);
+    }
+    function behaviorValid(v) {
+      return v.keys().hasOnly(['streamId','revision','startedAt','updatedAt','visibleMs','hiddenMs','exitCount','questionMs','questionChanges'])
+        && v.streamId is string && v.streamId.matches('[-A-Za-z0-9_]{1,64}')
+        && behaviorNumber(v.revision,120) && v.revision >= 1
+        && behaviorNumber(v.visibleMs,86400000) && behaviorNumber(v.hiddenMs,86400000)
+        && v.visibleMs + v.hiddenMs <= 86400000
+        && behaviorNumber(v.exitCount,10000)
+        && behaviorList(v.questionMs,86400000) && behaviorList(v.questionChanges,10000)
+        && v.updatedAt == request.time;
+    }
+    match /teachers/{t}/students/{s}/quizzes/{id}/behavior/{slot} {
+      allow read: if teacher(t) || pupil(t,s);
+      allow create, update: if pupil(t,s) && slot.matches('[0-7]')
+        && exists(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id))
+        && (session(t,s,id).status == 'active' || request.time < session(t,s,id).completedAt + duration.value(1,'h'))
+        && behaviorValid(request.resource.data)
+        && ((!exists(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)/behavior/$(slot))
+            && request.resource.data.revision == 1 && request.resource.data.startedAt == request.time)
+          || (exists(/databases/$(database)/documents/teachers/$(t)/students/$(s)/quizzes/$(id)/behavior/$(slot))
+            && request.resource.data.streamId == resource.data.streamId
+            && request.resource.data.startedAt == resource.data.startedAt
+            && request.resource.data.revision == resource.data.revision + 1
+            && request.resource.data.visibleMs >= resource.data.visibleMs
+            && request.resource.data.hiddenMs >= resource.data.hiddenMs
+            && request.resource.data.exitCount >= resource.data.exitCount));
+    }

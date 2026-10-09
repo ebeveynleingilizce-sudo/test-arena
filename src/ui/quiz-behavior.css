@@ -1,0 +1,7 @@
+.behavior-history article{padding:18px 0;border-bottom:1px solid var(--border,#e4d8c7)}
+.behavior-history h3{font-size:16px;overflow-wrap:anywhere}.behavior-history p{overflow-wrap:anywhere}
+.behavior-history dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.behavior-history dl div{min-width:0}.behavior-history dt{font-size:12px;color:#6d7380}.behavior-history dd{margin:3px 0;font-weight:700}
+.behavior-history summary{cursor:pointer;font-weight:700;padding:12px 0}.behavior-history ol{list-style:none;padding:0}.behavior-history li{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid #e4d8c7;font-size:13px}.behavior-history li strong{flex:0 0 55px}.behavior-history li span{min-width:0;overflow-wrap:anywhere}
+.behavior-observation{border-left:3px solid #ffad52;padding:8px 12px;background:#fff3df;font-size:13px}
+@media(min-width:1000px){.behavior-history dl{grid-template-columns:repeat(3,minmax(0,1fr))}}
