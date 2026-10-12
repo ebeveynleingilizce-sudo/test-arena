@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, getDocsFromServer, onSnapshot } from 'firebase/firestore';
 import { useSession } from './Session';
 import { call, db } from '../data/firebase';
 import type { ArenaPeriod, ArenaRow } from '../domain/arena';
 import { errorMessage } from '../ui/components';
 
-export function useArena() {
+export function useArena(live = true) {
   const { user, student } = useSession();
   const key = student ? `${user?.uid}:${student.teacherUid}:${student.classId}:${student.credentialVersion}` : '';
   const [state, setState] = useState<{ key: string; period?: ArenaPeriod; rows?: ArenaRow[]; error?: string }>({ key: '' });
@@ -22,7 +22,11 @@ export function useArena() {
         expiresAt = Date.now() + delay;
         setState(previous => ({ ...previous, key, period, error: undefined }));
         clearTimeout(timer); timer = setTimeout(() => void prepare(), delay);
-        if (!stop) stop = onSnapshot(collection(db, 'teachers', student!.teacherUid, 'classes', student!.classId, 'leaderboard'), { includeMetadataChanges: true }, snapshot => {
+        const leaderboard = collection(db, 'teachers', student!.teacherUid, 'classes', student!.classId, 'leaderboard');
+        if (!live) {
+          const snapshot = await getDocsFromServer(leaderboard);
+          if (alive) setState(previous => ({ ...previous, key, rows: snapshot.docs.map(d => d.data() as ArenaRow), error: undefined }));
+        } else if (!stop) stop = onSnapshot(leaderboard, { includeMetadataChanges: true }, snapshot => {
           if (!alive || snapshot.metadata.fromCache) return;
           setState(previous => ({ ...previous, key, rows: snapshot.docs.map(d => d.data() as ArenaRow), error: undefined }));
         }, e => { if (alive) setState({ key, error: errorMessage(e) }); });
@@ -31,6 +35,6 @@ export function useArena() {
     const visible = () => { if (document.visibilityState === 'visible' && Date.now() >= expiresAt) void prepare(); };
     document.addEventListener('visibilitychange', visible); void prepare();
     return () => { alive = false; clearTimeout(timer); stop?.(); document.removeEventListener('visibilitychange', visible); };
-  }, [key]);
+  }, [key, live]);
   return state.key === key ? state : { key };
 }

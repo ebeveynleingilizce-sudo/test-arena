@@ -1,4 +1,4 @@
-import {collection,doc,documentId,getDocFromServer,getDocs,query,where,writeBatch,runTransaction,serverTimestamp} from 'firebase/firestore';
+import {collection,doc,documentId,getDocFromServer,getDocs,query,where,orderBy,startAfter,limit,writeBatch,runTransaction,serverTimestamp} from 'firebase/firestore';
 import {bankProjection,normalizeBankRecord,importBankRecords,reportTypes,reportStatuses} from '../../shared/question-bank.mjs';
 import {readServerTime} from './server-clock.mjs';
 const ref=(ctx,path)=>doc(ctx.db,path),uid=ctx=>ctx.auth.currentUser.uid;
@@ -37,7 +37,20 @@ async function publish(ctx,input){
 }
 export async function questionBankCall(ctx,name,data){
  if(name==='teacherBankPermissions')return bankPermissions(ctx);
- if(name==='teacherQuestionBank'){const grade=Number(data.grade);return {permissions:await bankPermissions(ctx),curriculum:(await getDocFromServer(ref(ctx,`curricula/${grade}`))).data()||null,records:await records(ctx,grade)};}
+ if(name==='teacherQuestionBank'){
+  const grade=Number(data.grade),permissions=await bankPermissions(ctx),curriculum=(await getDocFromServer(ref(ctx,`curricula/${grade}`))).data()||null;
+  if(!data.pageSize)return {permissions,curriculum,records:await records(ctx,grade)};
+  const size=Math.min(50,Math.max(1,Number(data.pageSize)||50));
+  const catalog=data.subject?null:(await getDocFromServer(ref(ctx,`sparkCatalog/${grade}`))).data();
+  const subject=data.subject||catalog?.subjects?.find(s=>s.units.some(u=>u.count>0))?.id||curriculum?.subjects?.[0]?.id;
+  if(!subject)return {permissions,curriculum,records:[],cursor:null};
+  const clauses=[where('gradeLevel','==',grade),where('subject','==',subject),where('status','==','published')];
+  if(data.unit)clauses.push(where('unitId','==',data.unit));
+  clauses.push(orderBy(documentId()));if(data.cursor)clauses.push(startAfter(safeId(data.cursor)));
+  const snapshot=await getDocs(query(collection(ctx.db,'questions'),...clauses,limit(size+1))),docs=snapshot.docs.slice(0,size),answers=new Map();
+  for(let i=0;i<docs.length;i+=30){const batch=await getDocs(query(collection(ctx.db,'privateQuestionAnswers'),where(documentId(),'in',docs.slice(i,i+30).map(d=>d.id))));for(const d of batch.docs)answers.set(d.id,d.data());}
+  return {permissions,curriculum,records:docs.map(d=>({question:d.data(),answer:answers.get(d.id)||null})),cursor:snapshot.size>size?docs.at(-1).id:null};
+ }
  if(name==='getBankQuestion'){const id=safeId(data.questionId);return {question:(await getDocFromServer(ref(ctx,`questions/${id}`))).data(),answer:(await getDocFromServer(ref(ctx,`privateQuestionAnswers/${id}`))).data()};}
  if(name==='manageQuestionBank')return publish(ctx,data);
  if(name==='questionReports')return (await getDocs(collection(ctx.db,'questionReports'))).docs.map(d=>({id:d.id,...d.data()}));

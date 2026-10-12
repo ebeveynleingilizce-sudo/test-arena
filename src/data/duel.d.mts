@@ -9,7 +9,8 @@ export function endDuel(db:Firestore,p:Student,id:string,reason?:'timeout'|'left
 export function duelStart(d:Duel):number;
 export function duelEnd(d:Duel):number;
 export function duelScore(d:Duel,a:DuelAnswer[],s:string):number;
-export function watchLobby(db:Firestore,p:Student,next:(s:{presence:Presence[];duels:Duel[];busyDuels:Duel[]})=>void,error:(e:unknown)=>void):()=>void;
+export function watchLobby(db:Firestore,p:Student,next:(s:{presence:Presence[];duels:Duel[];busyDuels:Duel[]})=>void,error:(e:unknown)=>void,options?:{includeRivals?:boolean}):()=>void;
+export function watchRivals(db:Firestore,p:Student,next:(s:{presence:Presence[];busyDuels:Duel[]})=>void,error:(e:unknown)=>void,options?:{presenceStudentId?:string;includeBusy?:boolean}):()=>void;
 export function watchAnswers(db:Firestore,p:Student,id:string,next:(a:DuelAnswer[])=>void,error:(e:unknown)=>void):()=>void;
 export function heartbeat(db:Firestore,p:Student):Promise<void>;
 export function closeExpired(db:Firestore,p:Student,duels:Duel[],now:number,presence?:Presence[]):Promise<void>;

@@ -5,6 +5,7 @@ import {arenaPeriod} from '../../shared/arena-period.mjs';
 import {contentGrades} from '../../shared/class-grades.mjs';
 import {readServerTime} from './server-clock.mjs';
 import {readQuizTemplate} from './quiz-template.mjs';
+import {clearReportCache} from './report-cache.mjs';
 const alphabet='23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
 const code=()=>Array.from(crypto.getRandomValues(new Uint8Array(6)),b=>alphabet[b&31]).join('');
 const base=(t,s)=>`teachers/${t}/students/${s}`;
@@ -91,7 +92,8 @@ async function refreshRow(ctx,t,s){
   await setDoc(ref(ctx.db,`teachers/${t}/classes/${p.classId}/leaderboard/${s}`),{studentId:s,classId:p.classId,displayName:`${p.firstName} ${p.lastName}`,academicXP:summary.data().totalXP,weeklyAcademicXP:week.data()?.academicXP||0,weekKey:period.weekKey,lastAwardQuestionId:summary.data().lastAwardQuestionId});
 }
 const timestamp=v=>typeof v?.toMillis==='function'?v.toMillis():null;
-async function quizDTO(ctx,p,testId){
+const resultStores=new WeakMap();
+async function quizDTO(ctx,p,testId,committedQuestion){
   const path=quizPath(p.teacherUid,p.studentId,testId),session=await getDocFromServer(ref(ctx.db,path));
   if(!session.exists()){
     const legacy=await getDocFromServer(ref(ctx.db,`${base(p.teacherUid,p.studentId)}/testSessions/${testId}`));
@@ -99,9 +101,15 @@ async function quizDTO(ctx,p,testId){
     throw Error('Test bulunamadı.');
   }
   const d=session.data();
-  const [template,results,awards]=await Promise.all([readQuizTemplate(ctx.db,d.templateId,ctx.auth.currentUser.uid),getDocs(collection(ctx.db,`${path}/results`)),getDocs(query(collection(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions`),where('testSessionId','==',testId)))]);
+  let store=resultStores.get(ctx.db);if(!store){store=new Map();resultStores.set(ctx.db,store);}
+  const cacheKey=ctx.auth.currentUser.uid+':'+path,cached=store.get(cacheKey);
+  let ids=cached?.templateId===d.templateId?cached.ids:undefined;
+  if(ids&&committedQuestion&&!ids.includes(committedQuestion)&&ids.length+1===d.resolved)ids=[...ids,committedQuestion];
+  if(!ids||ids.length!==d.resolved)ids=(await getDocs(collection(ctx.db,`${path}/results`))).docs.map(r=>r.id);
+  store.set(cacheKey,{templateId:d.templateId,ids});if(store.size>32)store.delete(store.keys().next().value);
+  const [template,awards]=await Promise.all([readQuizTemplate(ctx.db,d.templateId,ctx.auth.currentUser.uid),d.status==='active'&&!d.duelId?Promise.resolve({docs:[]}):getDocs(query(collection(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions`),where('testSessionId','==',testId)))]);
   const t=template;
-  return {testSessionId:testId,gradeLevel:t.gradeLevel,subject:t.subject,subjectName:t.subjectName,unitId:t.unitId,unitName:t.unitName,topic:t.topic,topicName:t.topicName,packId:t.packId,packName:t.packName,contentBank:'curriculum',questionCount:t.questionIds.length,questions:t.questions.map(q=>({questionId:q.questionId,questionText:q.questionText,choices:q.choices,...(q.content?{content:q.content}:{}),...(q.visual?{visual:q.visual}:{}),...(q.visualPlacement?{visualPlacement:q.visualPlacement}:{})})),answeredQuestionIds:results.docs.map(r=>r.id),correctCount:d.correct,wrongCount:d.wrong,blankCount:d.blank,earnedXP:awards.docs.filter(a=>a.data().testSessionId===testId).reduce((n,a)=>n+a.data().xp,0),status:d.status,startedAt:timestamp(d.startedAt),completedAt:timestamp(d.completedAt)};
+  return {testSessionId:testId,gradeLevel:t.gradeLevel,subject:t.subject,subjectName:t.subjectName,unitId:t.unitId,unitName:t.unitName,topic:t.topic,topicName:t.topicName,packId:t.packId,packName:t.packName,contentBank:'curriculum',questionCount:t.questionIds.length,questions:t.questions.map(q=>({questionId:q.questionId,questionText:q.questionText,choices:q.choices,...(q.content?{content:q.content}:{}),...(q.visual?{visual:q.visual}:{}),...(q.visualPlacement?{visualPlacement:q.visualPlacement}:{})})),answeredQuestionIds:ids,correctCount:d.correct,wrongCount:d.wrong,blankCount:d.blank,earnedXP:awards.docs.filter(a=>a.data().testSessionId===testId).reduce((n,a)=>n+a.data().xp,0),status:d.status,startedAt:timestamp(d.startedAt),completedAt:timestamp(d.completedAt)};
 }
 async function submit(ctx,p,testId,q,choice){
   const path=quizPath(p.teacherUid,p.studentId,testId),submission=ref(ctx.db,`${path}/submissions/${q}`);
@@ -156,8 +164,8 @@ async function answer(ctx,p,data){
   const testId=id(data.testSessionId),q=id(data.questionId),choice=String(data.selectedChoiceId);
   const before=await getDocFromServer(ref(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions/${q}`));
   await submit(ctx,p,testId,q,choice);const result=await grade(ctx,p,testId,q);await settle(ctx,p,testId);
-  const test=await quizDTO(ctx,p,testId),session=(await getDocFromServer(ref(ctx.db,quizPath(p.teacherUid,p.studentId,testId)))).data();
-  const key=(await getDocFromServer(ref(ctx.db,`privateQuizKeys/${session.templateId}/answers/${q}`))).data();
+  const test=await quizDTO(ctx,p,testId,q);
+  const key=(await getDocFromServer(ref(ctx.db,`privateQuizKeys/${(await getDocFromServer(ref(ctx.db,quizPath(p.teacherUid,p.studentId,testId)))).data().templateId}/answers/${q}`))).data();
   const awarded=(await getDocFromServer(ref(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions/${q}`))).exists();
   const summary=(await getDocFromServer(ref(ctx.db,`${base(p.teacherUid,p.studentId)}/learning/summary`))).data();
   return {answer:{questionId:q,selectedChoiceId:choice,isCorrect:result.isCorrect,earnedXP:!before.exists()&&awarded?1:0,pendingXP:result.isCorrect&&!awarded&&test.status==='active',correctChoiceId:key.correctOptionId,explanation:key.explanation||''},test,totalXP:summary.totalXP};
@@ -168,8 +176,10 @@ export async function sparkCall(name,data,ctx){
     await teacher(ctx);const {questionBankCall}=await import('./question-bank.mjs');return questionBankCall(ctx,name,data||{});
   }
   if(name==='reportQuestion'){if(!ctx.auth.currentUser)throw Error('Giriş gerekli.');const {questionBankCall}=await import('./question-bank.mjs');return questionBankCall(ctx,name,data||{});}
-  if(['createClass','deleteClass','permanentlyDeleteClass','updateClass','createStudent','bulkCreateStudents','rotateStudentCode','removeStudent','updateStudent','teacherAnalytics','listTeacherClasses','inviteTeacher','inviteTeacherClasses','acceptTeacherInvitation','revokeTeacherInvitation','removeClassTeacher','transferClassOwnership','adjustStudentReward','saveClassActivity'].includes(name)){
-    await teacher(ctx);const {sharedTeacherCall}=await import('./teacher-sharing.mjs');return sharedTeacherCall(ctx,name,data||{});
+  if(['createClass','deleteClass','permanentlyDeleteClass','updateClass','createStudent','bulkCreateStudents','rotateStudentCode','removeStudent','updateStudent','teacherAnalytics','teacherTestHistory','listTeacherClasses','inviteTeacher','inviteTeacherClasses','acceptTeacherInvitation','revokeTeacherInvitation','removeClassTeacher','transferClassOwnership','adjustStudentReward','saveClassActivity'].includes(name)){
+    await teacher(ctx);const {sharedTeacherCall}=await import('./teacher-sharing.mjs');
+    if(['teacherAnalytics','teacherTestHistory','listTeacherClasses'].includes(name))return sharedTeacherCall(ctx,name,data||{});
+    clearReportCache(ctx.db);try{return await sharedTeacherCall(ctx,name,data||{});}finally{clearReportCache(ctx.db);}
   }
   if(name==='studentLogin'){
     const c=codeCredentials(data.code);await signInWithEmailAndPassword(ctx.auth,c.email,c.password);
@@ -243,7 +253,7 @@ export async function sparkCall(name,data,ctx){
     const testId=crypto.randomUUID();await setDoc(ref(ctx.db,quizPath(p.teacherUid,p.studentId,testId)),{templateId:pack.templateId,classId:p.classId,resolved:0,correct:0,wrong:0,blank:0,lastQuestionId:'',status:'active',startedAt:serverTimestamp(),completedAt:null});return quizDTO(ctx,p,testId);
   }
   if(name==='getTestSession'){const testId=id(data.testSessionId),session=await getDocFromServer(ref(ctx.db,quizPath(p.teacherUid,p.studentId,testId)));if(session.exists())await settle(ctx,p,testId);return quizDTO(ctx,p,testId);}
-  if(name==='submitAnswer')return answer(ctx,p,data);
+  if(name==='submitAnswer'){clearReportCache(ctx.db);return answer(ctx,p,data);}
   if(name==='finishTest'){
     const testId=id(data.testSessionId),quiz=await quizDTO(ctx,p,testId);if(quiz.legacyReadOnly)throw Error('Eski test geçmişi salt okunurdur. Yeni test seç.');
     for(const q of quiz.questions)if(!quiz.answeredQuestionIds.includes(q.questionId)){await submit(ctx,p,testId,q.questionId,'');await grade(ctx,p,testId,q.questionId);}

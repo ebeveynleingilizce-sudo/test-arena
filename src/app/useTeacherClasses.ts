@@ -3,41 +3,49 @@ import {collection,doc,onSnapshot,query,where,type Unsubscribe} from 'firebase/f
 import {db} from '../data/firebase';
 import {errorMessage} from '../ui/components';
 import type {ArenaClass,Student} from '../domain/models';
-export function useTeacherClasses(uid?:string){
- const [state,setState]=useState({classes:[] as ArenaClass[],students:[] as Student[],codes:{} as Record<string,string>,error:''});
+
+export function useTeacherClasses(uid?:string,scope:{classId?:string;storageUid?:string;codes?:boolean}={}){
+ const [metadata,setMetadata]=useState({classes:[] as ArenaClass[],error:''});
+ const [roster,setRoster]=useState({key:'',students:[] as Student[],codes:{} as Record<string,string>,error:'',loading:false});
  useEffect(()=>{
-  setState({classes:[],students:[],codes:{},error:''});if(!uid)return;
-  type Group={cls?:ArenaClass;students:Student[];codes:Record<string,string>;stops:Unsubscribe[];codeStops:Map<string,Unsubscribe>;error:string};
-  let live=true,indexError='',ownedError='';
-  const groups=new Map<string,Group>(),owned=new Map<string,{storageUid:string;classId:string}>(),links=new Map<string,{storageUid:string;classId:string}>();
-  const emit=()=>{if(live)setState({classes:[...groups.values()].flatMap(g=>g.cls?[g.cls]:[]),students:[...groups.values()].flatMap(g=>g.students),codes:Object.assign({},...[...groups.values()].map(g=>g.codes)),error:ownedError||indexError||[...groups.values()].find(g=>g.error)?.error||''});};
-  const clear=(key:string)=>{const g=groups.get(key);if(g){g.stops.forEach(s=>s());g.codeStops.forEach(s=>s());groups.delete(key);}};
+  setMetadata({classes:[],error:''});if(!uid)return;
+  let alive=true,ownedError='',linksError='';
+  const owned=new Map<string,ArenaClass>(),links=new Map<string,{storageUid:string;classId:string}>(),shared=new Map<string,{cls?:ArenaClass;stop:Unsubscribe}>();
+  const emit=()=>{if(alive)setMetadata({classes:[...owned.values(),...[...shared.values()].flatMap(g=>g.cls?[g.cls]:[])],error:ownedError||linksError});};
   const sync=()=>{
-   const refs=new Map([...links,...owned]);for(const key of groups.keys())if(!refs.has(key))clear(key);
-   for(const [key,{storageUid,classId}]of refs){if(groups.has(key))continue;
-    const g:Group={students:[],codes:{},stops:[],codeStops:new Map(),error:''};groups.set(key,g);
-    const current=()=>live&&groups.get(key)===g;
-    g.stops.push(onSnapshot(doc(db,'teachers',storageUid,'classes',classId),{includeMetadataChanges:true},s=>{
-     if(!current()||s.metadata.fromCache)return;
-     if(!s.exists()){clear(key);emit();return;}g.cls={...s.data(),classId,storageUid} as ArenaClass;emit();
-    },e=>{if(!current())return;clear(key);if(e.code!=='permission-denied')indexError=errorMessage(e);emit();}));
-    g.stops.push(onSnapshot(query(collection(db,'teachers',storageUid,'students'),where('classId','==',classId),where('status','==','active')),{includeMetadataChanges:true},s=>{
-     if(!current()||s.metadata.fromCache)return;g.error='';g.students=s.docs.map(d=>d.data() as Student);const students=new Set(s.docs.map(d=>d.id));
-     for(const [studentId,stopCode]of g.codeStops)if(!students.has(studentId)){stopCode();g.codeStops.delete(studentId);delete g.codes[storageUid+'~'+studentId];}
-     for(const d of s.docs)if(!g.codeStops.has(d.id)){const codeKey=storageUid+'~'+d.id;g.codeStops.set(d.id,onSnapshot(doc(db,'teachers',storageUid,'studentCodes',d.id),{includeMetadataChanges:true},v=>{if(!current()||v.metadata.fromCache)return;g.codes[codeKey]=v.data()?.code||'';emit();},e=>{if(!current())return;delete g.codes[codeKey];g.error='Kısa kodlar yüklenemedi. '+errorMessage(e);emit();}));}emit();
-    },e=>{
-     if(!current())return;g.students=[];g.codes={};g.codeStops.forEach(s=>s());g.codeStops.clear();
-     // A child query error must not erase the independently authorized class.
-     g.error='Sınıf öğrencileri yüklenemedi. '+errorMessage(e);emit();
-    }));
+   for(const [key,g]of shared)if(!links.has(key)||owned.has(key)){g.stop();shared.delete(key);}
+   for(const [key,v]of links)if(!owned.has(key)&&!shared.has(key)){
+    const group:{cls?:ArenaClass;stop:Unsubscribe}={stop:()=>{}};shared.set(key,group);
+    group.stop=onSnapshot(doc(db,'teachers',v.storageUid,'classes',v.classId),{includeMetadataChanges:true},s=>{
+     if(!alive||shared.get(key)!==group||s.metadata.fromCache)return;
+     group.cls=s.exists()?{...s.data(),classId:v.classId,storageUid:v.storageUid} as ArenaClass:undefined;emit();
+    },e=>{if(!alive||shared.get(key)!==group)return;group.cls=undefined;if(e.code!=='permission-denied')linksError=errorMessage(e);emit();});
    }emit();
   };
-  const stopOwned=onSnapshot(collection(db,'teachers',uid,'classes'),{includeMetadataChanges:true},snap=>{
-   if(!live||snap.metadata.fromCache)return;ownedError='';owned.clear();for(const d of snap.docs)owned.set(uid+'~'+d.id,{storageUid:uid,classId:d.id});sync();
-  },e=>{if(!live)return;ownedError='Oluşturduğun sınıflar yüklenemedi. '+errorMessage(e);emit();});
-  const stopLinks=onSnapshot(collection(db,'teacherClassAccess',uid,'classes'),{includeMetadataChanges:true},snap=>{
-   if(!live||snap.metadata.fromCache)return;indexError='';links.clear();for(const d of snap.docs){const v=d.data();if(typeof v.storageUid==='string'&&typeof v.classId==='string')links.set(v.storageUid+'~'+v.classId,{storageUid:v.storageUid,classId:v.classId});}sync();
-  },e=>{if(!live)return;indexError='Paylaşılan sınıflar yüklenemedi. '+errorMessage(e);emit();});
-  return()=>{live=false;stopOwned();stopLinks();for(const key of groups.keys())clear(key);};
- },[uid]);return state;
+  const stopOwned=onSnapshot(collection(db,'teachers',uid,'classes'),{includeMetadataChanges:true},s=>{
+   if(!alive||s.metadata.fromCache)return;ownedError='';owned.clear();for(const d of s.docs)owned.set(uid+'~'+d.id,{...d.data(),classId:d.id,storageUid:uid} as ArenaClass);sync();
+  },e=>{if(alive){ownedError=errorMessage(e);emit();}});
+  const stopLinks=onSnapshot(collection(db,'teacherClassAccess',uid,'classes'),{includeMetadataChanges:true},s=>{
+   if(!alive||s.metadata.fromCache)return;linksError='';links.clear();for(const d of s.docs){const v=d.data();if(typeof v.storageUid==='string'&&typeof v.classId==='string')links.set(v.storageUid+'~'+v.classId,v as {storageUid:string;classId:string});}sync();
+  },e=>{if(alive){linksError=errorMessage(e);emit();}});
+  return()=>{alive=false;stopOwned();stopLinks();shared.forEach(g=>g.stop());};
+ },[uid]);
+ const cls=metadata.classes.find(c=>c.classId===scope.classId&&(!scope.storageUid||c.storageUid===scope.storageUid));
+ const storageUid=cls?.storageUid,classId=cls?.classId;
+ const key=uid&&storageUid&&classId?`${uid}:${storageUid}:${classId}:${!!scope.codes}`:'';
+ useEffect(()=>{
+  setRoster({key,students:[],codes:{},error:'',loading:!!key});if(!key||!storageUid||!classId)return;
+  let alive=true;const codeStops=new Map<string,Unsubscribe>(),codes:Record<string,string>={};
+  const stop=onSnapshot(query(collection(db,'teachers',storageUid,'students'),where('classId','==',classId),where('status','==','active')),{includeMetadataChanges:true},s=>{
+   if(!alive||s.metadata.fromCache)return;const ids=new Set(s.docs.map(d=>d.id));
+   for(const [id,unsubscribe]of codeStops)if(!ids.has(id)){unsubscribe();codeStops.delete(id);delete codes[storageUid+'~'+id];}
+   setRoster({key,students:s.docs.map(d=>d.data() as Student),codes:{...codes},error:'',loading:false});
+   if(scope.codes)for(const d of s.docs)if(!codeStops.has(d.id))codeStops.set(d.id,onSnapshot(doc(db,'teachers',storageUid,'studentCodes',d.id),{includeMetadataChanges:true},v=>{
+    if(!alive||v.metadata.fromCache)return;codes[storageUid+'~'+d.id]=v.data()?.code||'';setRoster(previous=>previous.key===key?{...previous,codes:{...codes}}:previous);
+   },e=>{if(alive){delete codes[storageUid+'~'+d.id];setRoster(previous=>({...previous,codes:{...codes},error:'Kısa kodlar yüklenemedi. '+errorMessage(e)}));}}));
+  },e=>{if(alive){codeStops.forEach(s=>s());codeStops.clear();setRoster({key,students:[],codes:{},loading:false,error:'Sınıf öğrencileri yüklenemedi. '+errorMessage(e)});}});
+  return()=>{alive=false;stop();codeStops.forEach(s=>s());};
+ },[key,storageUid,classId]);
+ const current=roster.key===key?roster:{students:[],codes:{} as Record<string,string>,error:'',loading:!!key};
+ return {classes:metadata.classes,students:current.students,codes:current.codes,error:metadata.error||current.error,studentsLoading:!!scope.classId&&(!cls||current.loading)};
 }

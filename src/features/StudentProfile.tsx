@@ -9,7 +9,7 @@ import { rankArena, arenaPosition } from '../domain/arena';
 import { StudentLayout } from '../ui/StudentLayout';
 import { xpNumber } from './Arena';
 export function StudentProfile() {
-  const { role, student } = useSession(), arena = useArena(), navigate = useNavigate();
+  const { role, student } = useSession(), arena = useArena(false), navigate = useNavigate();
   const [summary, setSummary] = useState<{ answeredCount: number; correctCount: number }>(), [error, setError] = useState(false);
   useEffect(() => { setSummary(undefined); setError(false); if (!student) return; return onSnapshot(doc(db, 'teachers', student.teacherUid, 'students', student.studentId, 'learning', 'summary'), { includeMetadataChanges: true }, s => { if (!s.metadata.fromCache) setSummary({ answeredCount: s.data()?.answeredCount || 0, correctCount: s.data()?.correctCount || 0 }); }, () => setError(true)); }, [student?.studentId, student?.teacherUid]);
   if (role !== 'student' || !student) return <Navigate to="/ogrenci-giris" replace/>;

@@ -1,6 +1,9 @@
 // Canonical identifiers are explicit metadata, never derived from question IDs.
 const ensure = (condition, message) => { if (!condition) throw Error(message); };
-const identifier = value => typeof value === 'string' && /^[A-Za-z0-9_-]{1,128}$/.test(value);
+// Preserve published canonical IDs, including Turkish lowercase İ (i + U+0307).
+// Exact source membership remains mandatory; never strip marks or rewrite IDs.
+export const curriculumIdentifier = value => typeof value === 'string' && value.length <= 128 && /^[\p{L}\p{N}_-][\p{L}\p{N}\p{M}_-]*$/u.test(value);
+const identifier = curriculumIdentifier;
 const children = (node, keys) => keys.flatMap(key => node[key] || []);
 export const canonicalUnits = subject => {
   const units = children(subject, ['units', 'themes']);

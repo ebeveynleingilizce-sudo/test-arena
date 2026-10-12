@@ -4,8 +4,8 @@ import type {ArenaQuestion} from '../domain/classroom.mjs';
 export interface ClassroomCatalog {grade:number;subjects:ClassroomSubject[]}
 interface Pack {id:string;name:string;templateId?:string;count:number}
 interface ClassroomSubject extends Omit<CurriculumSubject,'units'> {units:(Omit<CurriculumSubject['units'][number],'packs'|'topics'> & {packs:Pack[];topics:{id:string;name:string;packs:Pack[]}[]})[]}
-export async function classroomCatalog(db:Firestore){
- const snapshots=await Promise.all(Array.from({length:11},(_,i)=>getDocFromServer(doc(db,'sparkCatalog',String(i+2)))));
+export async function classroomCatalog(db:Firestore,grade:number){
+ const snapshots=[await getDocFromServer(doc(db,'sparkCatalog',String(grade)))];
  return snapshots.filter(s=>s.exists()).map(s=>s.data() as ClassroomCatalog);
 }
 export async function classroomQuestions(db:Firestore,unit:ClassroomSubject['units'][number],packId:string){

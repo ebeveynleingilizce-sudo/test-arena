@@ -13,7 +13,7 @@
     "question-engine:publish-local": "npm run build --workspace functions && node scripts/question-engine-publish-local.mjs",
     "question-engine:gemini-dry-run": "npm run build --workspace functions && node scripts/question-engine-gemini-dry-run.mjs",
     "dev": "vite --host 127.0.0.1",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/build-public-question-packs.mjs",
     "emulators": "firebase emulators:start --project demo-test-arena --only auth,firestore",
     "test:spark": "firebase emulators:exec --config prototypes/spark/firebase.json --project demo-test-arena-spark-prototype --only auth,firestore \"node --test --test-concurrency=1 tests/spark.test.mjs\"",
     "test": "npm run test:spark",
@@ -27,6 +27,7 @@
   "dependencies": {
     "@fontsource/manrope": "^5.3.0",
     "firebase": "^12.0.0",
+    "pdfmake": "^0.2.20",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.0.0"
@@ -34,6 +35,7 @@
   "devDependencies": {
     "@firebase/rules-unit-testing": "^5.0.0",
     "@playwright/test": "^1.55.0",
+    "@types/pdfmake": "^0.2.12",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^5.0.0",

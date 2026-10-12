@@ -18,6 +18,7 @@ export function AuthLayout({ children, eyebrow, title, className = '' }: { child
 }
 export function errorMessage(error: unknown) {
   const code = (error as { code?: string }).code || '';
+  if (code === 'report-timeout') return 'Performans raporu zamanında yüklenemedi. Bağlantını kontrol edip yeniden dene.';
   if (code === 'class-not-empty') return 'Sınıfta öğrenci var. Önce öğrencileri başka bir sınıfa taşı veya kaldır.';
   if (code === 'class-delete-busy') return 'Sınıf silme işlemi sürüyor. Bir dakika sonra yeniden dene.';
   if (/invalid-credential|user-not-found|wrong-password/.test(code)) return 'E-posta veya şifre hatalı.';

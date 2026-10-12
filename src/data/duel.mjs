@@ -1,16 +1,26 @@
 import {collection,doc,getDocFromServer,onSnapshot,query,where,runTransaction,setDoc,updateDoc,serverTimestamp} from 'firebase/firestore';
 const root=p=>`teachers/${p.teacherUid}/classes/${p.classId}`;
 import {readQuizTemplate} from './quiz-template.mjs';
+import {measuredListener} from './read-measurement.mjs';
 export const roundSeconds=20;
 export const duelRoundSeconds=d=>d.roundSeconds===20?20:30;
 export const duelStart=d=>d.acceptedAt?.toMillis()+10000;
 export const duelEnd=d=>d.endedAt?.toMillis()??duelStart(d)+duelRoundSeconds(d)*10000;
 export function duelScore(d,answers,s){const seconds=duelRoundSeconds(d),start=duelStart(d),end=duelEnd(d);return answers.filter(a=>a.studentId===s&&a.isCorrect&&a.submittedAt.toMillis()>=start+a.index*seconds*1000&&a.submittedAt.toMillis()<start+(a.index+1)*seconds*1000&&a.submittedAt.toMillis()<=end).reduce((n,a)=>n+1000+Math.max(0,300-Math.floor((a.submittedAt.toMillis()-start-a.index*seconds*1000)/1000)*10),0);}
-export function watchLobby(db,p,next,error){
+export function watchLobby(db,p,next,error,{includeRivals=true}={}){
  const path=root(p),state={presence:[],duels:[],busyDuels:[]};const emit=()=>next({...state});
- const stops=[onSnapshot(collection(db,`${path}/presence`),s=>{state.presence=s.docs.map(d=>({...d.data(),studentId:d.id}));emit();},error),
- onSnapshot(query(collection(db,`${path}/duels`),where('participants','array-contains',p.studentId)),s=>{state.duels=s.docs.map(d=>({...d.data(),id:d.id}));emit();},error),
- onSnapshot(query(collection(db,`${path}/duels`),where('status','in',['pending','active'])),s=>{state.busyDuels=s.docs.map(d=>({...d.data(),id:d.id}));emit();},error)];return()=>stops.forEach(s=>s());
+ const stops=[onSnapshot(query(collection(db,`${path}/duels`),where('participants','array-contains',p.studentId)),s=>{state.duels=s.docs.map(d=>({...d.data(),id:d.id}));emit();},error)];
+ if(includeRivals)stops.push(watchRivals(db,p,s=>{Object.assign(state,s);emit();},error));
+ return()=>stops.forEach(s=>s());
+}
+// Presence heartbeats fan out to every subscriber. Only the rival screen needs
+// the class-wide streams; personal invitations stay subscribed everywhere.
+export function watchRivals(db,p,next,error,{presenceStudentId,includeBusy=true}={}){
+ const path=root(p),state={presence:[],busyDuels:[]};let alive=true;const emit=()=>{if(alive)next({...state});};
+ const target=presenceStudentId?doc(db,`${path}/presence/${presenceStudentId}`):collection(db,`${path}/presence`);
+ const stops=[measuredListener(db,presenceStudentId?`${path}/presence/${presenceStudentId}`:`${path}/presence`,observe=>onSnapshot(target,s=>{observe(s);if(!alive)return;state.presence=presenceStudentId?(s.exists()?[{...s.data(),studentId:s.id}]:[]):s.docs.map(d=>({...d.data(),studentId:d.id}));emit();},error))];
+ if(includeBusy)stops.push(measuredListener(db,`${path}/duels:busy`,observe=>onSnapshot(query(collection(db,`${path}/duels`),where('status','in',['pending','active'])),s=>{observe(s);if(!alive)return;state.busyDuels=s.docs.map(d=>({...d.data(),id:d.id}));emit();},error)));
+ return()=>{alive=false;stops.forEach(s=>s());};
 }
 export function watchAnswers(db,p,id,next,error){return onSnapshot(collection(db,`${root(p)}/duels/${id}/answers`),s=>next(s.docs.map(d=>d.data())),error);}
 export async function heartbeat(db,p){await setDoc(doc(db,`${root(p)}/presence/${p.studentId}`),{at:serverTimestamp()});}

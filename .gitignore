@@ -18,6 +18,9 @@ functions/.secret.local
 tools/runtime/
 *.log
 artifacts/
+.release/
+output/
+tmp/
 vendor/openmoji/*.zip
 *.key
 *.pem

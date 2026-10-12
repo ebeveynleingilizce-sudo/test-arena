@@ -1,4 +1,4 @@
-import { InstallApp } from '../ui/InstallApp';
+
 import { useState, type FormEvent } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
@@ -8,7 +8,7 @@ import { AuthLayout, Brand, Star, Icon, errorMessage } from '../ui/components';
 
 export function RoleSelection() {
   const { notice } = useSession();
-  return <main className="landing"><header><Brand/><span className="landing-label">BİLGİ. CESARET. BAŞARI.</span></header><section className="landing-main"><div className="landing-copy"><span className="eyebrow">SENİN SINIFIN. SENİN ARENAN.</span><h1>Çöz.<br/>XP kazan.<br/><em>Zirveye çık.</em></h1><p>Bilgini güçlendir, sınıfınla birlikte yüksel.<br/>Bir sonraki adım senin.</p>{notice && <p role="status" className="landing-notice">{notice}</p>}<div className="role-actions"><Link to="/ogrenci-giris" className="button primary">Öğrenci Girişi <Icon kind="arrow"/></Link><Link to="/ogretmen-giris" className="button outline">Öğretmen Girişi <Icon kind="person"/></Link></div><InstallApp/><small>Öğrenciler için öğretmeninden aldığın kısa kod yeterli.</small></div><div className="landing-art" aria-hidden="true"><div className="arena-ring"/><div className="arena-ring inner"/><Star className="hero-star"/><span className="art-label">BİLGİNLE<br/><b>YÜKSEL.</b></span><div className="podium"><i/><i/><i/></div><div className="art-spark spark-one">✦</div><div className="art-spark spark-two">✦</div></div></section><footer><span>TEST ARENA</span><span>Her doğru, yeni bir adım.</span></footer></main>;
+  return <main className="landing"><header><Brand/><span className="landing-label">BİLGİ. CESARET. BAŞARI.</span></header><section className="landing-main"><div className="landing-copy"><span className="eyebrow">SENİN SINIFIN. SENİN ARENAN.</span><h1>Çöz.<br/>XP kazan.<br/><em>Zirveye çık.</em></h1><p>Bilgini güçlendir, sınıfınla birlikte yüksel.<br/>Bir sonraki adım senin.</p>{notice && <p role="status" className="landing-notice">{notice}</p>}<div className="role-actions"><Link to="/ogrenci-giris" className="button primary">Öğrenci Girişi <Icon kind="arrow"/></Link><Link to="/ogretmen-giris" className="button outline">Öğretmen Girişi <Icon kind="person"/></Link></div><small>Öğrenciler için öğretmeninden aldığın kısa kod yeterli.</small></div><div className="landing-art" aria-hidden="true"><div className="arena-ring"/><div className="arena-ring inner"/><Star className="hero-star"/><span className="art-label">BİLGİNLE<br/><b>YÜKSEL.</b></span><div className="podium"><i/><i/><i/></div><div className="art-spark spark-one">✦</div><div className="art-spark spark-two">✦</div></div></section><footer><span>TEST ARENA</span><span>Her doğru, yeni bir adım.</span></footer></main>;
 }
 export function TeacherLogin() {
   const { role } = useSession();
@@ -34,3 +34,4 @@ export function StudentLogin() {
   }
   return <AuthLayout eyebrow="ARENA SENİ BEKLİYOR" title="Hazır mısın?"><p>Öğretmeninin verdiği altı karakterli kısa kodla giriş yap.</p><form onSubmit={login}><label>Öğrenci kısa kodu<input className="code-input" name="code" value={code} onChange={e => setCode(e.target.value.toUpperCase())} maxLength={6} minLength={6} autoCapitalize="characters" autoComplete="off" spellCheck={false} placeholder="K7M4Q9" required/></label><p role="alert" className="error-message">{error}</p><button className="button primary" disabled={busy}>{busy ? 'Kod doğrulanıyor…' : 'Giriş yap'} <Icon kind="arrow"/></button></form><p className="code-help">Kodunu bilmiyor musun?<br/>Öğretmeninden kısa kodunu iste.</p></AuthLayout>;
 }
+

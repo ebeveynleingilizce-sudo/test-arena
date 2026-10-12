@@ -1,7 +1,8 @@
-import {useRef, useState, useSyncExternalStore} from 'react';
+import {useEffect, useRef, useState, useSyncExternalStore} from 'react';
 import {installSnapshot, subscribeInstall, requestInstall, installInstructions} from '../app/pwa';
 export function InstallApp() {
   const state = useSyncExternalStore(subscribeInstall, installSnapshot);
+  useEffect(() => {document.body.classList.toggle('has-install-dock', !state.installed); return () => document.body.classList.remove('has-install-dock');}, [state.installed]);
   const dialog = useRef<HTMLDialogElement>(null);
   const [busy, setBusy] = useState(false), [error, setError] = useState('');
   const instructions = installInstructions();

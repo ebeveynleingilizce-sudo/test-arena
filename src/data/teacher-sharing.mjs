@@ -5,6 +5,8 @@ import {arenaPeriod} from '../../shared/arena-period.mjs';
 import {codeCredentials} from './spark.mjs';
 import {classGradeConfig,studentGrade} from '../../shared/class-grades.mjs';
 import {readServerTime} from './server-clock.mjs';
+import {cachedReport,clearStudentOverviewCache} from './report-cache.mjs';
+import {abortableReport} from './report-request.mjs';
 const text=(v,n=128)=>{if(typeof v!=='string'||!v.trim()||v.trim().length>n)throw Error('Geçersiz değer.');return v.trim();};
 const id=v=>{const s=text(v);if(!/^[-A-Za-z0-9_]{1,128}$/.test(s))throw Error('Geçersiz kimlik.');return s;};
 const grade=v=>{const n=Number(v);if(!Number.isInteger(n)||n<2||n>12)throw Error('Kademe 2–12 arasında olmalı.');return n;};
@@ -82,13 +84,25 @@ async function permanentlyDelete(ctx,t,c){
 }
 export async function sharedTeacherCall(ctx,name,data={}){
  const uid=actor(ctx),t=data.storageUid?id(data.storageUid):uid;
+ if(name==='teacherTestHistory'){const {testHistoryPage}=await import('./test-history.mjs');return testHistoryPage(ctx,data);}
  if(name==='createClass'){const c=crypto.randomUUID(),className=text(data.className,60),config=classGradeConfig(data),b=writeBatch(ctx.db),eventId=log(ctx,b,uid,c,'classCreated',c,{className,...config});b.set(r(ctx,classPath(uid,c)),{classId:c,className,...config,ownerUid:uid,createdBy:uid,status:'active',lastActionId:eventId});b.set(r(ctx,`teacherClassAccess/${uid}/classes/${accessKey(uid,c)}`),{storageUid:uid,classId:c});b.set(r(ctx,`${classPath(uid,c)}/teacherMembers/${uid}`),{uid,email:ctx.auth.currentUser.email||'',status:'active',lastActionId:eventId});await b.commit();return {classId:c,storageUid:uid};}
  if(name==='createStudent')return addStudent(ctx,t,data);
  if(name==='bulkCreateStudents'){const req=id(data.requestId),c=id(data.classId);if(!Array.isArray(data.names)||!data.names.length||data.names.length>50)throw Error('1–50 öğrenci gerekli.');const results=[];for(const [i,n]of data.names.entries())try{const name=text(n,80),parts=name.split(/\s+/),lastName=parts.length>1?parts.pop():'',firstName=parts.join(' ');results.push({name,...await addStudent(ctx,t,{classId:c,firstName,lastName,gradeLevel:data.gradeLevel},`${req}-${i}`)});}catch(e){results.push({name:String(n),error:e.message});}return {results};}
  if(name==='rotateStudentCode')return rotate(ctx,t,id(data.studentId));
  if(name==='updateStudent')return updateStudent(ctx,t,data);
  if(name==='removeStudent'){const s=id(data.studentId),p=await profile(ctx,t,s),b=writeBatch(ctx.db),eventId=log(ctx,b,t,p.classId,'studentRemoved',s);b.update(r(ctx,studentPath(t,s)),{status:'removed',credentialVersion:p.credentialVersion+1,lastActionId:eventId});b.delete(r(ctx,`${classPath(t,p.classId)}/classMembers/${s}`));b.delete(r(ctx,`${classPath(t,p.classId)}/leaderboard/${s}`));await b.commit();return {};}
- if(name==='teacherAnalytics'){const {sparkAnalytics}=await import('./spark-analytics.mjs');const at=await now(ctx),period=arenaPeriod(new Date(at)),classes=await accessibleClasses(ctx);return sparkAnalytics(ctx,t,data,{...period,serverNow:at},classes);}
+ if(name==='teacherAnalytics'){
+  const {sparkAnalytics}=await import('./spark-analytics.mjs');ctx.signal?.throwIfAborted();const at=await now(ctx);ctx.signal?.throwIfAborted();const period=arenaPeriod(new Date(at));
+  const scope=data.studentId&&!data.classId?{...data,classId:(await profile(ctx,t,id(data.studentId))).classId}:data;
+  // A scoped report needs fresh permission for exactly this class, rather than
+  // rediscovering every owned/shared class before it can start.
+  const classes=scope.classId&&scope.storageUid?[{...await classInfo(ctx,t,id(scope.classId),true),classId:scope.classId,storageUid:t}]:await accessibleClasses(ctx);ctx.signal?.throwIfAborted();
+  if(scope.classId&&!classes.some(c=>c.classId===scope.classId&&(!scope.storageUid||c.storageUid===scope.storageUid)))throw Error('Sınıf erişimi sona erdi.');
+  if(data.refreshToken>0)clearStudentOverviewCache(ctx.db);
+  const work=()=>abortableReport(ctx.signal,()=>sparkAnalytics(ctx,t,scope,{...period,serverNow:at},classes));
+  // Cache only explicit UI reports. Always validate current class access first.
+  return data.cacheKey===undefined?work():cachedReport(ctx.db,uid,[scope,period.weekKey,classes.map(c=>[c.storageUid,c.classId,c.lastActionId])],work);
+ }
  if(name==='listTeacherClasses')return accessibleClasses(ctx);
  if(name==='inviteTeacherClasses'){
   const classIds=data.classIds;

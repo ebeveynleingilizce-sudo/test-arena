@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import { parsePresentation, resolveStimulus } from '../functions/visuals/contract.mjs';
 import { normalizeV3Visual } from './v3-visuals.mjs';
-import { resolveCanonicalScope, canonicalUnits, canonicalTopics } from './canonical-scope.mjs';
+import { resolveCanonicalScope, canonicalUnits, canonicalTopics, curriculumIdentifier } from './canonical-scope.mjs';
 import { packageVisual } from './package-images.mjs';
 
 const dataRoot = fileURLToPath(new URL('../data/', import.meta.url));
@@ -92,10 +92,12 @@ export function loadCurriculumBank(root = dataRoot, {records: suppliedRecords, g
     ensure(source && ['theme-test','unit-topic-test','theme-topic-test'].includes(s.navigationModel), 'V2 ders modeli geçersiz.');
     const units = s.units.map(u => {
       const sourceUnit = canonicalUnits(source).find(x => x.id === u.id);
-      ensure(sourceUnit && identifier(u.id), 'V2 ünite kanonik kaynakta yok: ' + u.id);
+      ensure(sourceUnit, 'V2 ünite kanonik kaynakta yok: ' + u.id);
+      ensure(curriculumIdentifier(u.id), 'V2 ünite kimliği geçersiz: ' + u.id);
       const topics = (u.topics || []).map(t => {
         const sourceTopic = canonicalTopics(sourceUnit).find(x => x.id === t.id);
-        ensure(sourceTopic && identifier(t.id), 'V2 konu kaynakta yok: ' + t.id);
+        ensure(sourceTopic, 'V2 konu kaynakta yok: ' + t.id);
+        ensure(curriculumIdentifier(t.id), 'V2 konu kimliği geçersiz: ' + t.id);
         for (const code of t.outcomeCodes || []) resolveCanonicalScope(canonical,{grade:ui.grade,subjectId:s.id,unitId:u.id,topicId:t.id,outcomeCode:code});
         // Unit 2's approved source owns new packs. Old pilot documents/history stay immutable.
         const questionIds = records.filter(r => r.question.grade === ui.grade && r.question.subjectId === s.id && r.question.unitId === u.id && r.question.topicId === t.id &&
@@ -117,13 +119,14 @@ export function loadCurriculumBank(root = dataRoot, {records: suppliedRecords, g
 
 // Prepared files use the same presentation whitelist and public/private adapter.
 // Nothing from the bank is spread into a public document.
-export function prepareQuestionBank(bank, root = dataRoot, {packageDirectory} = {}) {
+export function prepareQuestionBank(bank, root = dataRoot, {packageDirectory,curriculumContext} = {}) {
   const schema=read(join(root,'soru-bankasi/SCHEMA.json')).questionContract;
   ensure(bank && Number.isInteger(bank.grade) && bank.grade>=2 && bank.grade<=12 && identifier(bank.subjectId),'Geçersiz banka kademe/ders bilgisi.');
   ensure(Array.isArray(bank.questions) && bank.questions.length>0 && bank.questions.length<=200,'Banka 1–200 soru içermelidir.');
   ensure(bank.questionCount===undefined || bank.questionCount===bank.questions.length,'questionCount soru sayısıyla uyuşmuyor.');
-  const canonical=read(join(root,`mufredat/${bank.grade}-sinif.json`));
-  const navigation=loadCurriculumBank(root,{records:[],grade:bank.grade}).curricula[0];
+  const canonical=curriculumContext?.canonical ?? read(join(root,`mufredat/${bank.grade}-sinif.json`));
+  const navigation=curriculumContext?.navigation ?? loadCurriculumBank(root,{records:[],grade:bank.grade}).curricula[0];
+  ensure(canonical.grade===bank.grade && navigation.grade===bank.grade,'Müfredat bağlamı kademe uyuşmazlığı.');
   const subject=navigation.subjects.find(s=>s.id===bank.subjectId);
   ensure(subject,'Ders navigasyonda bulunamadı.');
   const metadata=['unitId','topicId','skillId','outcomeCode','outcomeId'];
@@ -153,7 +156,10 @@ export function prepareQuestionBank(bank, root = dataRoot, {packageDirectory} = 
     if(resolved.outcome)ensure(q.outcomeMappingStatus!=='theme-level-only',`Kazanım eşleme durumu geçersiz: ${q.id}`);
     else ensure(q.outcomeMappingStatus===undefined||q.outcomeMappingStatus==='theme-level-only',`Kazanım eşleme durumu geçersiz: ${q.id}`);
     ensure(Array.isArray(q.candidateOutcomeCodes||[])&&(q.candidateOutcomeCodes||[]).every(code=>resolved.unit.outcome_codes?.includes(code)),`Aday kazanım kaynakta yok: ${q.id}`);
-    const presentation=parsePresentation(q.question,q.options.map(o=>({choiceId:o.id,text:o.text,visual:visual(o.visual)})),resolveStimulus(visual(q.visual),q.stimulusId,stimuli),q.visualPlacement,q.content);
+    // An empty optional passage in grade-9 packages means no passage.
+    // Keep nonempty content and question text in their existing separate fields.
+    const emptyContent=bank.grade===9&&typeof q.content==='string'&&!q.content.trim();
+    const presentation=parsePresentation(q.question,q.options.map(o=>({choiceId:o.id,text:o.text,visual:visual(o.visual)})),resolveStimulus(visual(q.visual),q.stimulusId,stimuli),q.visualPlacement,emptyContent?undefined:q.content);
     records.push({question:{questionId:q.id,gradeLevel:bank.grade,grade:bank.grade,subject:subject.id,subjectId:subject.id,subjectName:subject.name,
       unitId:unit.id,unitName:unit.name,...(q.themeId?{themeId:q.themeId}:{}),
       // Legacy topic fields are runtime grouping keys; unit.id fallback is NOT a skill mapping.

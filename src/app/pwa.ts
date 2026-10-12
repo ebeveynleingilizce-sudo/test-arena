@@ -1,16 +1,21 @@
 export type InstallPrompt = Event & {prompt(): Promise<void>; userChoice: Promise<{outcome: 'accepted' | 'dismissed'}>};
 type InstallState = {installed: boolean; prompt?: InstallPrompt};
 const display = window.matchMedia('(display-mode: standalone)');
-let state: InstallState = {installed: display.matches || !!(navigator as Navigator & {standalone?: boolean}).standalone};
+const installedKey = 'test-arena-installed';
+function rememberedInstall() {try {return localStorage.getItem(installedKey) === 'true';} catch {return false;}}
+function markInstalled() {try {localStorage.setItem(installedKey, 'true');} catch {} state = {installed: true}; notify();}
+let state: InstallState = {installed: display.matches || !!(navigator as Navigator & {standalone?: boolean}).standalone || rememberedInstall()};
+if (state.installed) {try {localStorage.setItem(installedKey, 'true');} catch {}}
 const listeners = new Set<() => void>();
 const notify = () => listeners.forEach(listener => listener());
 export const installSnapshot = () => state;
 export function subscribeInstall(listener: () => void) {listeners.add(listener); return () => {listeners.delete(listener);};}
 window.addEventListener('beforeinstallprompt', event => {
-  event.preventDefault(); if (!state.installed) {state = {...state, prompt: event as InstallPrompt}; notify();}
+  event.preventDefault(); if (!display.matches && !(navigator as Navigator & {standalone?: boolean}).standalone) {try {localStorage.removeItem(installedKey);} catch {} state = {installed:false, prompt: event as InstallPrompt}; notify();}
 });
-window.addEventListener('appinstalled', () => {state = {installed: true}; notify();});
-display.addEventListener('change', () => {state = {...state, installed: display.matches || !!(navigator as Navigator & {standalone?: boolean}).standalone}; notify();});
+window.addEventListener('appinstalled', markInstalled);
+window.addEventListener('storage', event => {if(event.key === installedKey && event.newValue === 'true') markInstalled();});
+display.addEventListener('change', () => {if(display.matches || (navigator as Navigator & {standalone?: boolean}).standalone) markInstalled();});
 export async function requestInstall() {
   const prompt = state.prompt; if (!prompt) return;
   state = {...state, prompt: undefined}; notify();
