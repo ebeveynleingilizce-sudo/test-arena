@@ -93,14 +93,14 @@ async function refreshRow(ctx,t,s){
 }
 const timestamp=v=>typeof v?.toMillis==='function'?v.toMillis():null;
 const resultStores=new WeakMap();
-async function quizDTO(ctx,p,testId,committedQuestion){
-  const path=quizPath(p.teacherUid,p.studentId,testId),session=await getDocFromServer(ref(ctx.db,path));
-  if(!session.exists()){
+async function quizDTO(ctx,p,testId,committedQuestion,committedSession){
+  const path=quizPath(p.teacherUid,p.studentId,testId),session=committedSession?null:await getDocFromServer(ref(ctx.db,path));
+  if(session&&!session.exists()){
     const legacy=await getDocFromServer(ref(ctx.db,`${base(p.teacherUid,p.studentId)}/testSessions/${testId}`));
     if(legacy.exists())return {...legacy.data(),startedAt:timestamp(legacy.data().startedAt),completedAt:timestamp(legacy.data().completedAt),legacyReadOnly:true};
     throw Error('Test bulunamadı.');
   }
-  const d=session.data();
+  const d=committedSession||session.data();
   let store=resultStores.get(ctx.db);if(!store){store=new Map();resultStores.set(ctx.db,store);}
   const cacheKey=ctx.auth.currentUser.uid+':'+path,cached=store.get(cacheKey);
   let ids=cached?.templateId===d.templateId?cached.ids:undefined;
@@ -118,11 +118,14 @@ async function submit(ctx,p,testId,q,choice){
   if(!old.exists())batch.set(submission,{selectedChoiceId:choice,submittedAt:serverTimestamp()});
   if(!exists.exists())batch.set(receipt,{sessionId:testId,templateId:session.templateId,questionId:q});
   await batch.commit();
+  // Submission writes are create-only. After commit this exact choice cannot
+  // change; the transaction below still rereads result/session/summary.
+  return {submitted:old.exists()?old.data():{selectedChoiceId:choice},session};
 }
-async function grade(ctx,p,testId,q){
+async function grade(ctx,p,testId,q,locked){
   const path=quizPath(p.teacherUid,p.studentId,testId),result=ref(ctx.db,`${path}/results/${q}`);
-  const submitted=(await getDocFromServer(ref(ctx.db,`${path}/submissions/${q}`))).data(),skipped=submitted.selectedChoiceId==='';
-  const current=(await getDocFromServer(ref(ctx.db,path))).data();
+  const submitted=locked?.submitted||(await getDocFromServer(ref(ctx.db,`${path}/submissions/${q}`))).data(),skipped=submitted.selectedChoiceId==='';
+  const current=locked?.session||(await getDocFromServer(ref(ctx.db,path))).data();
   const answer=skipped?null:(await getDocFromServer(ref(ctx.db,`privateQuizKeys/${current.templateId}/answers/${q}`))).data();
   // The key becomes readable only AFTER an immutable answer is committed.
   // Rules independently recompute correctness; this boolean grants no authority.
@@ -130,13 +133,18 @@ async function grade(ctx,p,testId,q){
   for(let retry=0;retry<3;retry++){
     try{return await runTransaction(ctx.db,async tx=>{
       const session=ref(ctx.db,path),summary=ref(ctx.db,`${base(p.teacherUid,p.studentId)}/learning/summary`);
-      const [old,test,total]=await Promise.all([tx.get(result),tx.get(session),tx.get(summary)]);if(old.exists())return old.data();
+      const [old,test,total]=await Promise.all([tx.get(result),tx.get(session),tx.get(summary)]);
+      if(old.exists())return {result:old.data(),session:test.data(),summary:total.data(),answerKey:answer};
       const d=test.data(),t=(await tx.get(ref(ctx.db,`quizTemplates/${d.templateId}`))).data(),resolved=d.resolved+1,finished=resolved===t.questionIds.length;
       tx.set(result,{isCorrect,skipped,gradedAt:serverTimestamp()});
       tx.update(session,{resolved,correct:d.correct+Number(isCorrect),wrong:d.wrong+Number(!isCorrect&&!skipped),blank:d.blank+Number(skipped),lastQuestionId:q,status:finished?'completed':'active',completedAt:finished?serverTimestamp():null});
       const a=total.data(),answeredCount=a.answeredCount+Number(!skipped),correctCount=a.correctCount+Number(isCorrect);
       tx.update(summary,{answeredCount,correctCount,wrongCount:answeredCount-correctCount,lastResultSessionId:testId,lastResultQuestionId:q});
-      return {isCorrect,skipped};
+      return {result:{isCorrect,skipped},answerKey:answer,
+        // CompletedAt is a server timestamp; completion and duel paths keep
+        // their fresh server reads, including settlement/recovery.
+        session:finished?undefined:{...d,resolved,correct:d.correct+Number(isCorrect),wrong:d.wrong+Number(!isCorrect&&!skipped),blank:d.blank+Number(skipped),lastQuestionId:q},
+        summary:{...a,answeredCount,correctCount,wrongCount:answeredCount-correctCount}};
     });}catch(e){if(!['permission-denied','aborted'].includes(e.code))throw e;}
   }throw Error('Yanıt güvenli biçimde doğrulanamadı.');
 }
@@ -152,8 +160,8 @@ async function award(ctx,p,testId,q,weekKey,currentWeek){
     tx.set(ref(ctx.db,`teachers/${p.teacherUid}/classes/${s.classId}/leaderboard/${p.studentId}`),{studentId:p.studentId,classId:s.classId,displayName:`${s.firstName} ${s.lastName}`,academicXP,weeklyAcademicXP:weekKey===currentWeek?weeklyXP:display?.data()?.academicXP||0,weekKey:currentWeek,lastAwardQuestionId:q});return 1;
   });}catch(e){if(!['permission-denied','aborted'].includes(e.code))throw e;if((await getDocFromServer(award)).exists())return 0;if(retry===2)throw e;}
 }
-async function settle(ctx,p,testId){
-  const path=quizPath(p.teacherUid,p.studentId,testId),session=(await getDocFromServer(ref(ctx.db,path))).data();if(session.status!=='completed'&&!session.duelId)return;
+async function settle(ctx,p,testId,committedSession){
+  const path=quizPath(p.teacherUid,p.studentId,testId),session=committedSession||(await getDocFromServer(ref(ctx.db,path))).data();if(session.status!=='completed'&&!session.duelId)return;
   const results=await getDocs(collection(ctx.db,`${path}/results`));
   const correct=results.docs.filter(r=>r.data().isCorrect);if(!correct.length)return;
   const awards=await getDocs(query(collection(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions`),where(documentId(),'in',correct.map(r=>r.id)))),owned=new Set(awards.docs.map(a=>a.id)),pending=correct.filter(r=>!owned.has(r.id));if(!pending.length)return;
@@ -163,11 +171,15 @@ async function settle(ctx,p,testId){
 async function answer(ctx,p,data){
   const testId=id(data.testSessionId),q=id(data.questionId),choice=String(data.selectedChoiceId);
   const before=await getDocFromServer(ref(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions/${q}`));
-  await submit(ctx,p,testId,q,choice);const result=await grade(ctx,p,testId,q);await settle(ctx,p,testId);
-  const test=await quizDTO(ctx,p,testId,q);
-  const key=(await getDocFromServer(ref(ctx.db,`privateQuizKeys/${(await getDocFromServer(ref(ctx.db,quizPath(p.teacherUid,p.studentId,testId)))).data().templateId}/answers/${q}`))).data();
+  const locked=await submit(ctx,p,testId,q,choice),graded=await grade(ctx,p,testId,q,locked),result=graded.result;
+  const normalSession=graded.session?.status==='active'&&!graded.session.duelId?graded.session:undefined;
+  await settle(ctx,p,testId,normalSession);
+  const test=await quizDTO(ctx,p,testId,q,normalSession);
+  // The private key was read only after the immutable submission committed.
+  // A blank did not need it for grading but still needs the existing feedback.
+  const key=graded.answerKey||(await getDocFromServer(ref(ctx.db,`privateQuizKeys/${locked.session.templateId}/answers/${q}`))).data();
   const awarded=(await getDocFromServer(ref(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions/${q}`))).exists();
-  const summary=(await getDocFromServer(ref(ctx.db,`${base(p.teacherUid,p.studentId)}/learning/summary`))).data();
+  const summary=normalSession?graded.summary:(await getDocFromServer(ref(ctx.db,`${base(p.teacherUid,p.studentId)}/learning/summary`))).data();
   return {answer:{questionId:q,selectedChoiceId:choice,isCorrect:result.isCorrect,earnedXP:!before.exists()&&awarded?1:0,pendingXP:result.isCorrect&&!awarded&&test.status==='active',correctChoiceId:key.correctOptionId,explanation:key.explanation||''},test,totalXP:summary.totalXP};
 }
 const duelStarts=new Map();

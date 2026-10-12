@@ -43,17 +43,22 @@ export async function questionBankCall(ctx,name,data){
   const size=Math.min(50,Math.max(1,Number(data.pageSize)||50));
   const catalog=data.subject?null:(await getDocFromServer(ref(ctx,`sparkCatalog/${grade}`))).data();
   const subject=data.subject||catalog?.subjects?.find(s=>s.units.some(u=>u.count>0))?.id||curriculum?.subjects?.[0]?.id;
-  if(!subject)return {permissions,curriculum,records:[],cursor:null};
+  if(!subject)return {permissions,curriculum,subject:'',records:[],cursor:null};
   const clauses=[where('gradeLevel','==',grade),where('subject','==',subject),where('status','==','published')];
   if(data.unit)clauses.push(where('unitId','==',data.unit));
   clauses.push(orderBy(documentId()));if(data.cursor)clauses.push(startAfter(safeId(data.cursor)));
   const snapshot=await getDocs(query(collection(ctx.db,'questions'),...clauses,limit(size+1))),docs=snapshot.docs.slice(0,size),answers=new Map();
   for(let i=0;i<docs.length;i+=30){const batch=await getDocs(query(collection(ctx.db,'privateQuestionAnswers'),where(documentId(),'in',docs.slice(i,i+30).map(d=>d.id))));for(const d of batch.docs)answers.set(d.id,d.data());}
-  return {permissions,curriculum,records:docs.map(d=>({question:d.data(),answer:answers.get(d.id)||null})),cursor:snapshot.size>size?docs.at(-1).id:null};
+  return {permissions,curriculum,subject,records:docs.map(d=>({question:d.data(),answer:answers.get(d.id)||null})),cursor:snapshot.size>size?docs.at(-1).id:null};
  }
  if(name==='getBankQuestion'){const id=safeId(data.questionId);return {question:(await getDocFromServer(ref(ctx,`questions/${id}`))).data(),answer:(await getDocFromServer(ref(ctx,`privateQuestionAnswers/${id}`))).data()};}
  if(name==='manageQuestionBank')return publish(ctx,data);
- if(name==='questionReports')return (await getDocs(collection(ctx.db,'questionReports'))).docs.map(d=>({id:d.id,...d.data()}));
+ if(name==='questionReports'){
+  const clauses=[];if(data.status&&data.status!=='all'){if(!reportStatuses[data.status])throw Error('Geçersiz durum.');clauses.push(where('status','==',data.status));}
+  clauses.push(orderBy(documentId()));if(data.cursor)clauses.push(startAfter(safeId(data.cursor)));
+  const snapshot=await getDocs(query(collection(ctx.db,'questionReports'),...clauses,limit(51))),docs=snapshot.docs.slice(0,50);
+  return {rows:docs.map(d=>({id:d.id,...d.data()})),cursor:snapshot.size>50?docs.at(-1).id:null};
+ }
  if(name==='updateQuestionReport'){if(!reportStatuses[data.status])throw Error('Geçersiz durum.');const b=writeBatch(ctx.db);b.update(ref(ctx,`questionReports/${safeId(data.reportId)}`),{status:data.status,updatedAt:serverTimestamp(),updatedBy:uid(ctx)});await b.commit();return {};}
  if(name==='reportQuestion'){
   if(!reportTypes.includes(data.type)||typeof data.description!=='string'||data.description.length>2000)throw Error('Bildirim türü veya açıklama geçersiz.');
