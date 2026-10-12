@@ -30,12 +30,13 @@ export async function sparkAnalytics(ctx,t,filter,period,accessible){
   const p=profile.data(),root=`teachers/${p.teacherUid}/students/${profile.id}`;
   const selected=(!filter.classId||p.classId===filter.classId)&&(!filter.studentId||p.studentId===filter.studentId)&&gradeMatches(p);
   const details=selected&&filter.includeDimensions!==false;
-  const [old,learning,weekly,oldDims]=await Promise.all([read(()=>getDocFromServer(doc(ctx.db,`${root}/analytics/summary`))),read(()=>getDocFromServer(doc(ctx.db,`${root}/learning/summary`))),read(()=>getDocFromServer(doc(ctx.db,`${root}/academicWeeks/${period.weekKey}`))),details?read(()=>getDocs(dimensionQuery(`${root}/analyticsDimensions`))):Promise.resolve({docs:[]})]);
+  const rankingOnly=filter.studentDetailsOnly===true&&filter.studentId&&!selected;
+  const [old,learning,weekly,oldDims]=await Promise.all([rankingOnly?Promise.resolve({data:()=>undefined}):read(()=>getDocFromServer(doc(ctx.db,`${root}/analytics/summary`))),read(()=>getDocFromServer(doc(ctx.db,`${root}/learning/summary`))),read(()=>getDocFromServer(doc(ctx.db,`${root}/academicWeeks/${period.weekKey}`))),details?read(()=>getDocs(dimensionQuery(`${root}/analyticsDimensions`))):Promise.resolve({docs:[]})]);
   const legacy=old.data(),student={storageUid:p.teacherUid,studentId:p.studentId,displayName:`${p.firstName} ${p.lastName}`.trim(),classId:p.classId,className:p.className,gradeLevel:p.gradeLevel,overall:legacy?.overall||zero(),weekly:legacy?.weekKey===period.weekKey?legacy.weekly:zero(),academicXP:learning.data()?.academicXP??learning.data()?.totalXP??0,weeklyAcademicXP:weekly.data()?.academicXP||0,lastAnswerAt:legacy?.lastAnswerAt||null,overallRank:0,weeklyRank:0,signals:[]};
   const merge=(key,d)=>{const old=dimensions.get(key)||{...d,overall:zero(),weekly:zero()};dimensions.set(key,{...old,overall:add(old.overall,d.overall),weekly:add(old.weekly,d.weekly)});};
   // XP ranks still use every class member. Unselected peers need no history or
   // dimensions in a selected-student / grade report.
-  if(!gradeMatches(p))return student;
+  if(!gradeMatches(p)||rankingOnly)return student;
   // Production activation is explicit and must accompany the approved backend,
   // rules and historical coverage rollout. A Hosting-only release stays safe.
   const projectionEnabled=ctx.emulator===true||import.meta.env?.VITE_NATIVE_PERFORMANCE==='true';
@@ -118,7 +119,7 @@ export async function sparkAnalytics(ctx,t,filter,period,accessible){
  }));
  const grouped=classes.docs.map(c=>{const all=students.filter(s=>s.classId===c.id&&s.storageUid===c.data().storageUid);rank(all,'academicXP','overallRank');rank(all,'weeklyAcademicXP','weeklyRank');const group=all.filter(gradeMatches);
   const volumes=group.map(s=>s.weekly.solved).sort((a,b)=>a-b),median=volumes.length?(volumes[Math.floor((volumes.length-1)/2)]+volumes[Math.floor(volumes.length/2)])/2:0;
-  for(const s of group){if(s.overall.solved>=20&&s.overall.correct/s.overall.solved<.6)s.signals.push('En az 20 cevapta başarı %60 altında.');if(s.overall.solved>=20&&s.lastAnswerAt&&period.serverNow-s.lastAnswerAt>=7*86400000)s.signals.push('Son kabul edilen cevap en az 7 gün önce.');const p=roster.docs.find(p=>p.id===s.studentId&&p.data().teacherUid===s.storageUid).data(),created=at(p.createdAt);if(!overallOnly&&group.length>=3&&median>=10&&period.serverNow-period.startsAt>=3*86400000&&created!==null&&period.serverNow-created>=3*86400000&&s.weekly.solved<median/4)s.signals.push(`Bu hafta ${s.weekly.solved} soru; sınıfın ortanca değeri ${median}.`);}
+  for(const s of group){if(s.overall.solved>=20&&s.overall.correct/s.overall.solved<.6)s.signals.push('En az 20 cevapta başarı %60 altında.');if(s.overall.solved>=20&&s.lastAnswerAt&&period.serverNow-s.lastAnswerAt>=7*86400000)s.signals.push('Son kabul edilen cevap en az 7 gün önce.');const p=roster.docs.find(p=>p.id===s.studentId&&p.data().teacherUid===s.storageUid).data(),created=at(p.createdAt);if(!overallOnly&&!(filter.studentDetailsOnly&&filter.studentId)&&group.length>=3&&median>=10&&period.serverNow-period.startsAt>=3*86400000&&created!==null&&period.serverNow-created>=3*86400000&&s.weekly.solved<median/4)s.signals.push(`Bu hafta ${s.weekly.solved} soru; sınıfın ortanca değeri ${median}.`);}
   return {...c.data(),studentCount:group.length,overall:group.reduce((a,s)=>add(a,s.overall),zero()),weekly:group.reduce((a,s)=>add(a,s.weekly),zero()),academicXP:group.reduce((n,s)=>n+s.academicXP,0),weeklyAcademicXP:group.reduce((n,s)=>n+s.weeklyAcademicXP,0)};
  });
  const selected=students.filter(s=>(!filter.classId||s.classId===filter.classId)&&(!filter.studentId||s.studentId===filter.studentId)&&gradeMatches(s)),selectedClasses=grouped.filter(c=>!filter.classId||c.classId===filter.classId);

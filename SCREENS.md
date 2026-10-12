@@ -320,9 +320,9 @@ Kısa kod yeterlidir.
 
 ## 19 — Öğrenci Detayı
 
-Performans verileri ekran açılışında otomatik okunmaz. Öğretmen dönem ve bölüm seçimini tamamlayıp **Raporu göster** düğmesine basar. Seçim değiştiğinde yeni rapor tekrar düğmeyle yüklenir; eski kapsamın sayıları yeni kapsamın sonucu olarak gösterilmez. Test geçmişi ilgili bölümde istek üzerine sayfalanır.
+Öğrenci adına tıklandığında seçilen öğrencinin genel, haftalık, ders, ünite ve konu analizi tek seferde otomatik yüklenir. Genel görünümde tüm analiz bölümleri birlikte gösterilir. Öğrenci detayındaki dönem, ders, ünite ve sekme değişimleri hazır veri üzerinde uygulanır; tekrar Raporu göster düğmesi gerektirmez ve yeni analiz sorgusu başlatmaz. Test geçmişi ilgili bölümde istek üzerine sayfalanır. Sınıf genel raporunun butonla yüklenmesi korunur.
 
-Hazır genel/ders/konu raporunda **PDF indir** bulunur. Dosya ekrandaki hazır rapor verisinden tarayıcıda oluşturulur; yeni Firestore sorgusu açılmaz. Seçilen dönem, kapsam, filtreler ve rapor zamanı dosyada yer alır. Seçim değiştiğinde yeni rapor hazırlanana kadar PDF düğmesi gösterilmez. Test geçmişi ayrı sayfalı akıştır; bu PDF dışa aktarımına dahil değildir.
+Hazır raporda **PDF indir** bulunur. Öğrenci PDF'si sekmeden bağımsız olarak tüm ders, ünite ve konu istatistiklerini genel ve haftalık ayrı tablolar halinde içerir; ekranın yerel filtresi PDF'yi daraltmaz. Dosya hazır veriden tarayıcıda oluşturulur; yeni Firestore sorgusu açılmaz. Raporda öğrenci kimliği, kapsam ve hazırlama zamanı yer alır. Test geçmişi ayrı sayfalı akıştır; bu PDF dışa aktarımına dahil değildir.
 
 Göster:
 
