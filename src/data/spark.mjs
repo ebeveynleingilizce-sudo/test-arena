@@ -4,6 +4,7 @@ import {getFirestore,connectFirestoreEmulator,doc,collection,documentId,getDoc,g
 import {arenaPeriod} from '../../shared/arena-period.mjs';
 import {contentGrades} from '../../shared/class-grades.mjs';
 import {readServerTime} from './server-clock.mjs';
+import {clearArenaRows} from './arena-row-cache.mjs';
 import {readQuizTemplate} from './quiz-template.mjs';
 import {clearReportCache} from './report-cache.mjs';
 const alphabet='23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
@@ -80,11 +81,16 @@ async function createStudent(ctx,t,data,studentId=crypto.randomUUID()){
   if(!arena.exists())batch.set(row,{studentId,classId,displayName:`${firstName} ${lastName}`,academicXP:0,weeklyAcademicXP:0,weekKey:'',lastAwardQuestionId:''});
   await batch.commit();return rotate(ctx,t,studentId);
 }
-async function catalog(ctx,p){
+const catalogStores=new WeakMap();
+async function catalog(ctx,p,force=false){
   const cls=(await getDocFromServer(ref(ctx.db,`teachers/${p.teacherUid}/classes/${p.classId}`))).data();
   const allowedGrades=contentGrades(p.gradeLevel,cls);
+  let entries=catalogStores.get(ctx.db);if(!entries){entries=new Map();catalogStores.set(ctx.db,entries);}
+  const key=JSON.stringify([ctx.auth.currentUser.uid,p.teacherUid,p.studentId,p.classId,p.credentialVersion,p.gradeLevel,allowedGrades,cls]);
+  const old=entries.get(key);if(!force&&old&&Date.now()-old.at<60000)return structuredClone(old.value);
   const trees=await Promise.all(allowedGrades.map(g=>getDocFromServer(ref(ctx.db,`sparkCatalog/${g}`))));
-  return {allowedGrades,curricula:trees.filter(d=>d.exists()).map(d=>d.data()),entries:[],fixture:false};
+  const value={allowedGrades,curricula:trees.filter(d=>d.exists()).map(d=>d.data()),entries:[],fixture:false};
+  entries.set(key,{at:Date.now(),value:structuredClone(value)});if(entries.size>16)entries.delete(entries.keys().next().value);return value;
 }
 async function refreshRow(ctx,t,s){
   const p=(await getDocFromServer(ref(ctx.db,base(t,s)))).data(),period=await serverPeriod(ctx);
@@ -93,7 +99,7 @@ async function refreshRow(ctx,t,s){
 }
 const timestamp=v=>typeof v?.toMillis==='function'?v.toMillis():null;
 const resultStores=new WeakMap();
-async function quizDTO(ctx,p,testId,committedQuestion,committedSession){
+async function quizDTO(ctx,p,testId,committedQuestion,committedSession,committedAwards,committedResultIds){
   const path=quizPath(p.teacherUid,p.studentId,testId),session=committedSession?null:await getDocFromServer(ref(ctx.db,path));
   if(session&&!session.exists()){
     const legacy=await getDocFromServer(ref(ctx.db,`${base(p.teacherUid,p.studentId)}/testSessions/${testId}`));
@@ -103,11 +109,11 @@ async function quizDTO(ctx,p,testId,committedQuestion,committedSession){
   const d=committedSession||session.data();
   let store=resultStores.get(ctx.db);if(!store){store=new Map();resultStores.set(ctx.db,store);}
   const cacheKey=ctx.auth.currentUser.uid+':'+path,cached=store.get(cacheKey);
-  let ids=cached?.templateId===d.templateId?cached.ids:undefined;
+  let ids=committedResultIds?.length===d.resolved?committedResultIds:cached?.templateId===d.templateId?cached.ids:undefined;
   if(ids&&committedQuestion&&!ids.includes(committedQuestion)&&ids.length+1===d.resolved)ids=[...ids,committedQuestion];
   if(!ids||ids.length!==d.resolved)ids=(await getDocs(collection(ctx.db,`${path}/results`))).docs.map(r=>r.id);
   store.set(cacheKey,{templateId:d.templateId,ids});if(store.size>32)store.delete(store.keys().next().value);
-  const [template,awards]=await Promise.all([readQuizTemplate(ctx.db,d.templateId,ctx.auth.currentUser.uid),d.status==='active'&&!d.duelId?Promise.resolve({docs:[]}):getDocs(query(collection(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions`),where('testSessionId','==',testId)))]);
+  const [template,awards]=await Promise.all([readQuizTemplate(ctx.db,d.templateId,ctx.auth.currentUser.uid),committedAwards?Promise.resolve(committedAwards):d.status==='active'&&!d.duelId?Promise.resolve({docs:[]}):getDocs(query(collection(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions`),where('testSessionId','==',testId)))]);
   const t=template;
   return {testSessionId:testId,gradeLevel:t.gradeLevel,subject:t.subject,subjectName:t.subjectName,unitId:t.unitId,unitName:t.unitName,topic:t.topic,topicName:t.topicName,packId:t.packId,packName:t.packName,contentBank:'curriculum',questionCount:t.questionIds.length,questions:t.questions.map(q=>({questionId:q.questionId,questionText:q.questionText,choices:q.choices,...(q.content?{content:q.content}:{}),...(q.visual?{visual:q.visual}:{}),...(q.visualPlacement?{visualPlacement:q.visualPlacement}:{})})),answeredQuestionIds:ids,correctCount:d.correct,wrongCount:d.wrong,blankCount:d.blank,earnedXP:awards.docs.filter(a=>a.data().testSessionId===testId).reduce((n,a)=>n+a.data().xp,0),status:d.status,startedAt:timestamp(d.startedAt),completedAt:timestamp(d.completedAt)};
 }
@@ -153,28 +159,47 @@ async function award(ctx,p,testId,q,weekKey,currentWeek){
   for(let retry=0;retry<3;retry++)try{return await runTransaction(ctx.db,async tx=>{
     const summary=ref(ctx.db,`${b}/learning/summary`),weekly=ref(ctx.db,`${b}/academicWeeks/${weekKey}`);
     const [old,total,week,profile,display]=await Promise.all([tx.get(award),tx.get(summary),tx.get(weekly),tx.get(ref(ctx.db,b)),weekKey===currentWeek?Promise.resolve(null):tx.get(ref(ctx.db,`${b}/academicWeeks/${currentWeek}`))]);
-    if(old.exists())return 0;const academicXP=(total.data().academicXP??total.data().totalXP)+1,weeklyXP=(week.data()?.academicXP||0)+1,s=profile.data();
+    if(old.exists())return old.data();const academicXP=(total.data().academicXP??total.data().totalXP)+1,weeklyXP=(week.data()?.academicXP||0)+1,s=profile.data();
     tx.set(award,{testSessionId:testId,weekKey,xp:1,awardedAt:serverTimestamp()});
     tx.update(summary,{totalXP:academicXP+(total.data().teacherXP||0),academicXP,lastAwardQuestionId:q});
     tx.set(weekly,{academicXP:weeklyXP,lastAwardQuestionId:q});
-    tx.set(ref(ctx.db,`teachers/${p.teacherUid}/classes/${s.classId}/leaderboard/${p.studentId}`),{studentId:p.studentId,classId:s.classId,displayName:`${s.firstName} ${s.lastName}`,academicXP,weeklyAcademicXP:weekKey===currentWeek?weeklyXP:display?.data()?.academicXP||0,weekKey:currentWeek,lastAwardQuestionId:q});return 1;
-  });}catch(e){if(!['permission-denied','aborted'].includes(e.code))throw e;if((await getDocFromServer(award)).exists())return 0;if(retry===2)throw e;}
+    tx.set(ref(ctx.db,`teachers/${p.teacherUid}/classes/${s.classId}/leaderboard/${p.studentId}`),{studentId:p.studentId,classId:s.classId,displayName:`${s.firstName} ${s.lastName}`,academicXP,weeklyAcademicXP:weekKey===currentWeek?weeklyXP:display?.data()?.academicXP||0,weekKey:currentWeek,lastAwardQuestionId:q});return {testSessionId:testId,weekKey,xp:1};
+  });}catch(e){if(!['permission-denied','aborted'].includes(e.code))throw e;const saved=await getDocFromServer(award);if(saved.exists())return saved.data();if(retry===2)throw e;}
+}
+// Only positive completion proofs are retained. They grant no XP or authority:
+// every call still validates identity and reads the current session from Rules.
+// Lost/partial commits never mark a proof. No mutable counters are cached.
+const settlementProofs=new WeakMap();
+function settlementProof(ctx,p,testId,session){
+ let entries=settlementProofs.get(ctx.db);if(!entries){entries=new Map();settlementProofs.set(ctx.db,entries);}
+ const key=JSON.stringify([ctx.auth.currentUser.uid,p.teacherUid,p.studentId,p.classId,p.credentialVersion,testId]);
+ const signature=JSON.stringify([session.templateId,session.resolved,session.correct,session.wrong,session.blank,timestamp(session.completedAt)]);
+ return {has:()=>session.status==='completed'&&!session.duelId&&entries.get(key)?.signature===signature&&Date.now()-entries.get(key).at<60000,
+  mark:()=>{if(session.status!=='completed'||session.duelId)return;entries.set(key,{signature,at:Date.now()});if(entries.size>32)entries.delete(entries.keys().next().value);}};
 }
 async function settle(ctx,p,testId,committedSession){
-  const path=quizPath(p.teacherUid,p.studentId,testId),session=committedSession||(await getDocFromServer(ref(ctx.db,path))).data();if(session.status!=='completed'&&!session.duelId)return;
+  const path=quizPath(p.teacherUid,p.studentId,testId),session=committedSession||(await getDocFromServer(ref(ctx.db,path))).data();if(session.status!=='completed'&&!session.duelId)return {session};
+  const proof=settlementProof(ctx,p,testId,session);if(proof.has())return {session};
   const results=await getDocs(collection(ctx.db,`${path}/results`));
-  const correct=results.docs.filter(r=>r.data().isCorrect);if(!correct.length)return;
-  const awards=await getDocs(query(collection(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions`),where(documentId(),'in',correct.map(r=>r.id)))),owned=new Set(awards.docs.map(a=>a.id)),pending=correct.filter(r=>!owned.has(r.id));if(!pending.length)return;
-  const current=(await serverPeriod(ctx)).weekKey;
-  for(const r of pending){const at=session.duelId?r.data().gradedAt:session.completedAt;await award(ctx,p,testId,r.id,arenaPeriod(at.toDate()).weekKey,current);}
+  const correct=results.docs.filter(r=>r.data().isCorrect),resultIds=results.docs.map(r=>r.id);
+  const completeView=resultIds.length===session.resolved&&correct.length===session.correct;
+  const covered=()=>{if(timestamp(session.completedAt)!==null&&completeView)proof.mark();};
+  // Preserve fresh DTO reads for live duels and incomplete legacy projections.
+  const view=awards=>session.duelId&&session.status!=='completed'?{}:{session,awards:completeView?awards:undefined,resultIds:completeView?resultIds:undefined};
+  if(!correct.length){covered();return view({docs:[]});}
+  const awards=await getDocs(query(collection(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions`),where(documentId(),'in',correct.map(r=>r.id)))),owned=new Map(awards.docs.map(a=>[a.id,a])),pending=correct.filter(r=>!owned.has(r.id));
+  if(pending.length){const current=(await serverPeriod(ctx)).weekKey;
+   for(const r of pending){const at=session.duelId?r.data().gradedAt:session.completedAt,saved=await award(ctx,p,testId,r.id,arenaPeriod(at.toDate()).weekKey,current);owned.set(r.id,{id:r.id,data:()=>saved});}
+  }
+  covered();return view({docs:[...owned.values()]});
 }
 async function answer(ctx,p,data){
   const testId=id(data.testSessionId),q=id(data.questionId),choice=String(data.selectedChoiceId);
   const before=await getDocFromServer(ref(ctx.db,`${base(p.teacherUid,p.studentId)}/awardedQuestions/${q}`));
   const locked=await submit(ctx,p,testId,q,choice),graded=await grade(ctx,p,testId,q,locked),result=graded.result;
   const normalSession=graded.session?.status==='active'&&!graded.session.duelId?graded.session:undefined;
-  await settle(ctx,p,testId,normalSession);
-  const test=await quizDTO(ctx,p,testId,q,normalSession);
+  const settled=await settle(ctx,p,testId,normalSession);
+  const test=await quizDTO(ctx,p,testId,q,settled.session,settled.awards,settled.resultIds);
   // The private key was read only after the immutable submission committed.
   // A blank did not need it for grading but still needs the existing feedback.
   const key=graded.answerKey||(await getDocFromServer(ref(ctx.db,`privateQuizKeys/${locked.session.templateId}/answers/${q}`))).data();
@@ -246,7 +271,7 @@ export async function sparkCall(name,data,ctx){
     const {saveQuizBehavior}=await import('./quiz-behavior.mjs');return saveQuizBehavior(ctx,p,data);
   }
   if(name==='prepareArena')return {...await serverPeriod(ctx),classId:p.classId,className:p.className};
-  if(name==='quizCatalog')return catalog(ctx,p);
+  if(name==='quizCatalog')return catalog(ctx,p,Number(data?.refreshToken)>0);
   if(name==='startDuelTest'){
     const key=`${ctx.auth.currentUser.uid}:${id(data.duelId)}`;
     if(duelStarts.has(key))return duelStarts.get(key);
@@ -264,12 +289,17 @@ export async function sparkCall(name,data,ctx){
     if(!pack)throw Error('Geçerli test paketi bulunamadı.');
     const testId=crypto.randomUUID();await setDoc(ref(ctx.db,quizPath(p.teacherUid,p.studentId,testId)),{templateId:pack.templateId,classId:p.classId,resolved:0,correct:0,wrong:0,blank:0,lastQuestionId:'',status:'active',startedAt:serverTimestamp(),completedAt:null});return quizDTO(ctx,p,testId);
   }
-  if(name==='getTestSession'){const testId=id(data.testSessionId),session=await getDocFromServer(ref(ctx.db,quizPath(p.teacherUid,p.studentId,testId)));if(session.exists())await settle(ctx,p,testId);return quizDTO(ctx,p,testId);}
-  if(name==='submitAnswer'){clearReportCache(ctx.db);return answer(ctx,p,data);}
+  if(name==='getTestSession'){clearArenaRows(ctx.db);try{const testId=id(data.testSessionId),session=await getDocFromServer(ref(ctx.db,quizPath(p.teacherUid,p.studentId,testId)));if(!session.exists())return await quizDTO(ctx,p,testId);const settled=await settle(ctx,p,testId,session.data());return await quizDTO(ctx,p,testId,undefined,settled.session,settled.awards,settled.resultIds);}finally{clearArenaRows(ctx.db);}}
+  if(name==='submitAnswer'){clearReportCache(ctx.db);clearArenaRows(ctx.db);try{return await answer(ctx,p,data);}finally{clearArenaRows(ctx.db);}}
   if(name==='finishTest'){
-    const testId=id(data.testSessionId),quiz=await quizDTO(ctx,p,testId);if(quiz.legacyReadOnly)throw Error('Eski test geçmişi salt okunurdur. Yeni test seç.');
+    clearArenaRows(ctx.db);try{
+    const testId=id(data.testSessionId);let snapshot=await getDocFromServer(ref(ctx.db,quizPath(p.teacherUid,p.studentId,testId)));
+    if(!snapshot.exists()){const old=await quizDTO(ctx,p,testId);if(old.legacyReadOnly)throw Error('Eski test geçmişi salt okunurdur. Yeni test seç.');snapshot=await getDocFromServer(ref(ctx.db,quizPath(p.teacherUid,p.studentId,testId)));if(!snapshot.exists())throw Error('Test bulunamadı.');}
+    if(snapshot.data().status==='completed'){const settled=await settle(ctx,p,testId,snapshot.data());return await quizDTO(ctx,p,testId,undefined,settled.session,settled.awards,settled.resultIds);}
+    const quiz=await quizDTO(ctx,p,testId,undefined,snapshot.data());
     for(const q of quiz.questions)if(!quiz.answeredQuestionIds.includes(q.questionId)){await submit(ctx,p,testId,q.questionId,'');await grade(ctx,p,testId,q.questionId);}
-    await settle(ctx,p,testId);return quizDTO(ctx,p,testId);
+    const settled=await settle(ctx,p,testId);return await quizDTO(ctx,p,testId,undefined,settled.session,settled.awards,settled.resultIds);
+    }finally{clearArenaRows(ctx.db);}
   }
   throw Error(`Desteklenmeyen veri işlemi: ${name}`);
 }

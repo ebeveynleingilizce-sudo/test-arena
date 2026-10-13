@@ -3,6 +3,8 @@ import {collection,doc,onSnapshot,query,where,type Unsubscribe} from 'firebase/f
 import {db} from '../data/firebase';
 import {errorMessage} from '../ui/components';
 import type {ArenaClass,Student} from '../domain/models';
+import {readStudentCodePages} from '../data/student-code-pages.mjs';
+import {measuredListener} from '../data/read-measurement.mjs';
 
 export function useTeacherClasses(uid?:string,scope:{classId?:string;storageUid?:string;codes?:boolean}={}){
  const [metadata,setMetadata]=useState({classes:[] as ArenaClass[],error:''});
@@ -35,16 +37,24 @@ export function useTeacherClasses(uid?:string,scope:{classId?:string;storageUid?
  const key=uid&&storageUid&&classId?`${uid}:${storageUid}:${classId}:${!!scope.codes}`:'';
  useEffect(()=>{
   setRoster({key,students:[],codes:{},error:'',loading:!!key});if(!key||!storageUid||!classId)return;
-  let alive=true;const codeStops=new Map<string,Unsubscribe>(),codes:Record<string,string>={};
-  const stop=onSnapshot(query(collection(db,'teachers',storageUid,'students'),where('classId','==',classId),where('status','==','active')),{includeMetadataChanges:true},s=>{
-   if(!alive||s.metadata.fromCache)return;const ids=new Set(s.docs.map(d=>d.id));
-   for(const [id,unsubscribe]of codeStops)if(!ids.has(id)){unsubscribe();codeStops.delete(id);delete codes[storageUid+'~'+id];}
+  let alive=true,revision=0;const versions=new Map<string,number>(),codes:Record<string,string>={};
+  const stop=measuredListener(db,`teachers/${storageUid}/students:${classId}`,observe=>onSnapshot(query(collection(db,'teachers',storageUid,'students'),where('classId','==',classId),where('status','==','active')),{includeMetadataChanges:true},s=>{
+   observe(s);
+   // Code queries must follow the committed profile version, never the local
+   // optimistic profile event emitted before a code-rotation batch commits.
+   if(!alive||s.metadata.fromCache||s.metadata.hasPendingWrites)return;const ids=new Set(s.docs.map(d=>d.id));
+   const run=++revision;
+   for(const id of versions.keys())if(!ids.has(id)){versions.delete(id);delete codes[storageUid+'~'+id];}
+   const changed=scope.codes?s.docs.filter(d=>versions.get(d.id)!==d.data().credentialVersion).map(d=>d.id):[];
+   for(const id of changed)delete codes[storageUid+'~'+id];
    setRoster({key,students:s.docs.map(d=>d.data() as Student),codes:{...codes},error:'',loading:false});
-   if(scope.codes)for(const d of s.docs)if(!codeStops.has(d.id))codeStops.set(d.id,onSnapshot(doc(db,'teachers',storageUid,'studentCodes',d.id),{includeMetadataChanges:true},v=>{
-    if(!alive||v.metadata.fromCache)return;codes[storageUid+'~'+d.id]=v.data()?.code||'';setRoster(previous=>previous.key===key?{...previous,codes:{...codes}}:previous);
-   },e=>{if(alive){delete codes[storageUid+'~'+d.id];setRoster(previous=>({...previous,codes:{...codes},error:'Kısa kodlar yüklenemedi. '+errorMessage(e)}));}}));
-  },e=>{if(alive){codeStops.forEach(s=>s());codeStops.clear();setRoster({key,students:[],codes:{},loading:false,error:'Sınıf öğrencileri yüklenemedi. '+errorMessage(e)});}});
-  return()=>{alive=false;stop();codeStops.forEach(s=>s());};
+   if(changed.length)void readStudentCodePages(db,storageUid,changed,()=>alive&&run===revision).then(values=>{
+    if(!alive||run!==revision)return;
+    Object.assign(codes,values);for(const d of s.docs)if(values[storageUid+'~'+d.id])versions.set(d.id,d.data().credentialVersion);
+    setRoster(previous=>previous.key===key?{...previous,codes:{...codes}}:previous);
+   }).catch(e=>{if(alive&&run===revision){versions.clear();for(const id of Object.keys(codes))delete codes[id];setRoster(previous=>({...previous,codes:{},error:'Kısa kodlar yüklenemedi. '+errorMessage(e)}));}});
+  },e=>{if(alive){revision++;versions.clear();setRoster({key,students:[],codes:{},loading:false,error:'Sınıf öğrencileri yüklenemedi. '+errorMessage(e)});}}));
+  return()=>{alive=false;revision++;stop();};
  },[key,storageUid,classId]);
  const current=roster.key===key?roster:{students:[],codes:{} as Record<string,string>,error:'',loading:!!key};
  return {classes:metadata.classes,students:current.students,codes:current.codes,error:metadata.error||current.error,studentsLoading:!!scope.classId&&(!cls||current.loading)};

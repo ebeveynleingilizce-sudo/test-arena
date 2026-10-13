@@ -5,22 +5,31 @@ import {useSession} from '../app/Session';
 import {useDuelLobby} from '../app/DuelLobby';
 import {useArena} from '../app/useArena';
 import {call,db} from '../data/firebase';
-import {duelStart,duelEnd,duelRoundSeconds,duelScore,endDuel,heartbeat,invite,respond,publishAnswer,watchAnswers,type Duel as Game,type DuelAnswer} from '../data/duel.mjs';
+import {duelStart,duelEnd,duelRoundSeconds,duelScore,endDuel,heartbeat,invite,respond,publishAnswer,watchAnswers,readDuelHistory,type Duel as Game,type DuelAnswer} from '../data/duel.mjs';
 import type {Catalog,Quiz,AnswerResult} from '../domain/quiz';
 import {StudentLayout} from '../ui/StudentLayout';
 import {MathVisual} from '../ui/MathVisual';
 import '../ui/duel.css';
 type Pack={templateId:string;name:string;grade:number;subject:string};
 export function Duel(){
- const {student,role}=useSession(),lobby=useDuelLobby(),arena=useArena();
+ const {student,role}=useSession(),lobby=useDuelLobby(),arena=useArena(false);
+ const [past,setPast]=useState<Game[]>([]),[historyBusy,setHistoryBusy]=useState(false),[historyMore,setHistoryMore]=useState(true);
+ const historyCursor=useRef<Awaited<ReturnType<typeof readDuelHistory>>['cursor']>(undefined),historyGeneration=useRef(0),historyWorking=useRef(false);
+ useEffect(()=>{historyGeneration.current++;historyCursor.current=undefined;historyWorking.current=false;setPast([]);setHistoryBusy(false);setHistoryMore(true);return()=>{historyGeneration.current++;};},[student?.teacherUid,student?.classId,student?.studentId,student?.credentialVersion]);
+ async function moreHistory(){
+  if(!student||historyWorking.current)return;const run=historyGeneration.current;historyWorking.current=true;setHistoryBusy(true);
+  try{const page=await readDuelHistory(db,student,historyCursor.current);if(run!==historyGeneration.current)return;historyCursor.current=page.cursor;setHistoryMore(page.hasMore);setPast(previous=>[...new Map([...previous,...page.rows].map(d=>[d.id,d])).values()]);}
+  catch{if(run===historyGeneration.current){historyCursor.current=undefined;setHistoryMore(true);setPast([]);setError('Düello geçmişi yüklenemedi. Yeniden dene.');}}
+  finally{if(run===historyGeneration.current){historyWorking.current=false;setHistoryBusy(false);}}
+ }
  const [packs,setPacks]=useState<Pack[]>([]),[selected,setSelected]=useState(''),[chosen,setChosen]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState('');
  useEffect(()=>{let alive=true;if(student)void call<Catalog>('quizCatalog',{}).then(c=>{const out:Pack[]=[];for(const g of c.curricula||[])for(const s of g.subjects)for(const u of s.units)for(const p of s.navigationModel==='theme-test'?u.packs:u.topics.flatMap(t=>t.packs))if(p.count===10&&p.templateId)out.push({templateId:p.templateId,name:`${u.displayName} · ${p.name}`,grade:g.grade,subject:s.name});if(alive){setPacks(out);setSelected(out[0]?.templateId||'');}}).catch(()=>{if(alive)setError('Soru paketleri yüklenemedi.');});return()=>{alive=false;};},[student?.gradeLevel,student?.studentId]);
  useEffect(()=>{const d=lobby.duels.find(d=>d.acceptedAt&&d.status==='active'&&duelEnd(d)>lobby.now);if(d)setChosen(d.id);},[lobby.duels,lobby.now]);
  if(role!=='student'||!student)return <Navigate to="/ogrenci-giris" replace/>;
  const name=(s:string)=>arena.rows?.find(r=>r.studentId===s)?.displayName||'Sınıf arkadaşın';
- const active=lobby.duels.find(d=>d.acceptedAt&&d.status==='active'&&duelEnd(d)>lobby.now),game=lobby.duels.find(d=>d.id===(active?.id||chosen));
+ const active=lobby.duels.find(d=>d.acceptedAt&&d.status==='active'&&duelEnd(d)>lobby.now),game=[...lobby.duels,...past].find(d=>d.id===(active?.id||chosen));
  const pending=lobby.duels.filter(d=>d.createdAt&&d.status==='pending'&&d.createdAt.toMillis()+60000>lobby.now);
- const history=lobby.duels.filter(d=>d.acceptedAt&&duelEnd(d)<=lobby.now).sort((a,b)=>b.acceptedAt!.toMillis()-a.acceptedAt!.toMillis());
+ const history=[...new Map([...past,...lobby.duels].map(d=>[d.id,d])).values()].filter(d=>d.acceptedAt&&duelEnd(d)<=lobby.now).sort((a,b)=>b.acceptedAt!.toMillis()-a.acceptedAt!.toMillis());
  const occupied=(s:string)=>(lobby.busyDuels||lobby.duels).some(d=>d.participants.includes(s)&&(d.status==='pending'&&d.createdAt&&d.createdAt.toMillis()+60000>lobby.now||d.status==='active'&&d.acceptedAt&&duelEnd(d)>lobby.now));
  async function act(work:()=>Promise<unknown>){setBusy(true);setError('');try{await work();}catch(e){setError((e as {code?:string}).code?'İşlem tamamlanamadı. Davet süresi veya bağlantını kontrol et.':(e as Error).message);}finally{setBusy(false);}}
  return <StudentLayout><section className="duel-shell"><header className="duel-heading"><span className="eyebrow">SINIF ARENA · CANLI 1’E 1</span><h1>Düello</h1><p>{student.className} · Aynı sorular. Aynı süre. Bilginle yarış.</p><Link to="/ogrenci/arena">← Arena</Link></header>{(error||lobby.error)&&<p className="form-error" role="alert">{error||lobby.error}</p>}
@@ -29,7 +38,7 @@ export function Duel(){
  {pending.map(d=><div className="duel-invite" key={d.id}><p><strong>{name(d.from===student.studentId?d.to:d.from)}</strong>{d.to===student.studentId?' seni düelloya davet ediyor.':' yanıtı bekleniyor.'}<small>{Math.max(0,Math.ceil((d.createdAt.toMillis()+60000-lobby.now)/1000))} saniye kaldı</small></p>{d.to===student.studentId&&<div><button className="button primary" disabled={busy} onClick={()=>void act(()=>respond(db,student,d.id,true))}>Kabul et</button><button className="button outline" disabled={busy} onClick={()=>void act(()=>respond(db,student,d.id,false))}>Reddet</button></div>}</div>)}
  <label className="duel-pack">Yarışılacak test<select value={selected} onChange={e=>setSelected(e.target.value)} disabled={busy||occupied(student.studentId)}>{packs.map(p=><option key={p.templateId} value={p.templateId}>{p.grade}. Sınıf · {p.subject} · {p.name}</option>)}</select></label>{!packs.length&&<p>10 soruluk uygun bir test paketi bulunamadı.</p>}
  <h2>Çevrimiçi rakipler</h2><p className="duel-muted">Rakibin de uygulamayı açık tutmalı. İki öğrencinin erişebildiği kademe kullanılır.</p><ul className="duel-rivals">{lobby.presence.filter(p=>p.studentId!==student.studentId&&p.at&&p.at.toMillis()+75000>lobby.now).map(p=><li key={p.studentId}><span className="arena-avatar" aria-hidden="true">{name(p.studentId).slice(0,1)}</span><span><strong>{name(p.studentId)}</strong><small>{arena.rows?.find(r=>r.studentId===p.studentId)?.academicXP||0} XP · {occupied(p.studentId)?'Meşgul':'Çevrimiçi'}</small></span><button className="button primary" disabled={busy||!selected||occupied(p.studentId)||occupied(student.studentId)} onClick={()=>void act(()=>invite(db,student,p.studentId,selected))}>Davet et</button></li>)}</ul>{!lobby.presence.some(p=>p.studentId!==student.studentId&&p.at&&p.at.toMillis()+75000>lobby.now)&&<p role="status">Şu anda çevrimiçi sınıf arkadaşın yok.</p>}
- {history.length>0&&<><h2>Düello geçmişi</h2><ul className="duel-history">{history.slice(0,20).map(d=><li key={d.id}><span>{name(d.from===student.studentId?d.to:d.from)}<small>{d.acceptedAt!.toDate().toLocaleString('tr-TR')}</small></span><button className="button outline" onClick={()=>setChosen(d.id)}>Sonucu gör</button></li>)}</ul></>}
+ <h2>Düello geçmişi</h2>{history.length>0&&<ul className="duel-history">{history.map(d=><li key={d.id}><span>{name(d.from===student.studentId?d.to:d.from)}<small>{d.acceptedAt!.toDate().toLocaleString('tr-TR')}</small></span><button className="button outline" onClick={()=>setChosen(d.id)}>Sonucu gör</button></li>)}</ul>}{historyMore&&<button className="button outline duel-back" disabled={historyBusy} onClick={()=>void moreHistory()}>{historyBusy?'Geçmiş yükleniyor…':past.length?'Daha eski düelloları yükle':'Düello geçmişini göster'}</button>}
  </>}{game?.acceptedAt&&duelEnd(game)<=lobby.now&&<button className="button outline duel-back" onClick={()=>setChosen('')}>Rakip listesine dön</button>}</section></StudentLayout>;
 }
 function Match({game,rival}:{game:Game;rival:string}){

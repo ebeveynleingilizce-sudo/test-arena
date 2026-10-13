@@ -1,4 +1,4 @@
-import type {Firestore,Timestamp} from 'firebase/firestore';
+import type {Firestore,Timestamp,QueryDocumentSnapshot,DocumentData} from 'firebase/firestore';
 import type {Student} from '../domain/models';
 export interface Duel {id:string;participants:string[];from:string;to:string;templateId:string;roundSeconds?:20;status:'pending'|'active'|'declined'|'expired'|'completed';createdAt:Timestamp;acceptedAt:Timestamp|null;endedAt?:Timestamp;endReason?:'timeout'|'left'|'disconnected';leftBy?:string}
 export interface DuelAnswer {studentId:string;index:number;isCorrect:boolean;submittedAt:Timestamp}
@@ -13,6 +13,7 @@ export function watchLobby(db:Firestore,p:Student,next:(s:{presence:Presence[];d
 export function watchRivals(db:Firestore,p:Student,next:(s:{presence:Presence[];busyDuels:Duel[]})=>void,error:(e:unknown)=>void,options?:{presenceStudentId?:string;includeBusy?:boolean}):()=>void;
 export function watchAnswers(db:Firestore,p:Student,id:string,next:(a:DuelAnswer[])=>void,error:(e:unknown)=>void):()=>void;
 export function heartbeat(db:Firestore,p:Student):Promise<void>;
+export function readDuelHistory(db:Firestore,p:Student,cursor?:QueryDocumentSnapshot<DocumentData>):Promise<{rows:Duel[];cursor?:QueryDocumentSnapshot<DocumentData>;hasMore:boolean}>;
 export function closeExpired(db:Firestore,p:Student,duels:Duel[],now:number,presence?:Presence[]):Promise<void>;
 export function invite(db:Firestore,p:Student,to:string,templateId:string):Promise<string>;
 export function respond(db:Firestore,p:Student,id:string,accept:boolean):Promise<void>;

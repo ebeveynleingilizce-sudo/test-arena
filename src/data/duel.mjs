@@ -1,17 +1,43 @@
-import {collection,doc,getDocFromServer,onSnapshot,query,where,runTransaction,setDoc,updateDoc,serverTimestamp} from 'firebase/firestore';
+import {collection,doc,getDocFromServer,getDocsFromServer,onSnapshot,query,where,orderBy,limit,startAfter,runTransaction,setDoc,updateDoc,serverTimestamp} from 'firebase/firestore';
 const root=p=>`teachers/${p.teacherUid}/classes/${p.classId}`;
 import {readQuizTemplate} from './quiz-template.mjs';
-import {measuredListener} from './read-measurement.mjs';
+import {measuredListener,measuredRead} from './read-measurement.mjs';
 export const roundSeconds=20;
 export const duelRoundSeconds=d=>d.roundSeconds===20?20:30;
 export const duelStart=d=>d.acceptedAt?.toMillis()+10000;
 export const duelEnd=d=>d.endedAt?.toMillis()??duelStart(d)+duelRoundSeconds(d)*10000;
 export function duelScore(d,answers,s){const seconds=duelRoundSeconds(d),start=duelStart(d),end=duelEnd(d);return answers.filter(a=>a.studentId===s&&a.isCorrect&&a.submittedAt.toMillis()>=start+a.index*seconds*1000&&a.submittedAt.toMillis()<start+(a.index+1)*seconds*1000&&a.submittedAt.toMillis()<=end).reduce((n,a)=>n+1000+Math.max(0,300-Math.floor((a.submittedAt.toMillis()-start-a.index*seconds*1000)/1000)*10),0);}
 export function watchLobby(db,p,next,error,{includeRivals=true}={}){
- const path=root(p),state={presence:[],duels:[],busyDuels:[]};const emit=()=>next({...state});
- const stops=[onSnapshot(query(collection(db,`${path}/duels`),where('participants','array-contains',p.studentId)),s=>{state.duels=s.docs.map(d=>({...d.data(),id:d.id}));emit();},error)];
+ const path=root(p),state={presence:[],duels:[],busyDuels:[]};let alive=true;const emit=()=>{if(alive)next({...state});};
+ const recent=new Map();
+ const stops=[measuredListener(db,`${path}/duels:personal-live`,observe=>onSnapshot(query(collection(db,`${path}/duels`),where('participants','array-contains',p.studentId),where('status','in',['pending','active'])),s=>{
+  observe(s);
+  // Retain a bounded set of final states for an open match's result screen.
+  for(const change of s.docChanges())if(change.type==='removed'){
+   const d=change.doc.data();if(!['pending','active'].includes(d.status))recent.set(change.doc.id,{...d,id:change.doc.id});else {
+    recent.delete(change.doc.id);
+    // Filter removals can carry the previous snapshot. Fetch just this match's
+    // authoritative final state; never reopen a live historical query.
+    void measuredRead(db,()=>getDocFromServer(change.doc.ref)).then(final=>{
+     if(!alive||!final.exists()||['pending','active'].includes(final.data().status))return;
+     recent.set(final.id,{...final.data(),id:final.id});while(recent.size>20)recent.delete(recent.keys().next().value);
+     state.duels=[...state.duels.filter(v=>['pending','active'].includes(v.status)),...recent.values()];emit();
+    }).catch(e=>{if(alive)error(e);});
+   }
+  }
+  while(recent.size>20)recent.delete(recent.keys().next().value);
+  const live=s.docs.map(d=>({...d.data(),id:d.id}));for(const d of live)recent.delete(d.id);
+  state.duels=[...live,...recent.values()];emit();
+ },error))];
  if(includeRivals)stops.push(watchRivals(db,p,s=>{Object.assign(state,s);emit();},error));
- return()=>stops.forEach(s=>s());
+ return()=>{alive=false;stops.forEach(s=>s());};
+}
+export async function readDuelHistory(db,p,cursor){
+ const constraints=[where('participants','array-contains',p.studentId),where('acceptedAt','>',new Date(0)),orderBy('acceptedAt','desc')];
+ if(cursor)constraints.push(startAfter(cursor));
+ const snapshot=await measuredRead(db,()=>getDocsFromServer(query(collection(db,`${root(p)}/duels`),...constraints,limit(21))));
+ const docs=snapshot.docs.slice(0,20);
+ return {rows:docs.map(d=>({...d.data(),id:d.id})),cursor:docs.at(-1),hasMore:snapshot.size>20};
 }
 // Presence heartbeats fan out to every subscriber. Only the rival screen needs
 // the class-wide streams; personal invitations stay subscribed everywhere.
@@ -22,7 +48,7 @@ export function watchRivals(db,p,next,error,{presenceStudentId,includeBusy=true}
  if(includeBusy)stops.push(measuredListener(db,`${path}/duels:busy`,observe=>onSnapshot(query(collection(db,`${path}/duels`),where('status','in',['pending','active'])),s=>{observe(s);if(!alive)return;state.busyDuels=s.docs.map(d=>({...d.data(),id:d.id}));emit();},error)));
  return()=>{alive=false;stops.forEach(s=>s());};
 }
-export function watchAnswers(db,p,id,next,error){return onSnapshot(collection(db,`${root(p)}/duels/${id}/answers`),s=>next(s.docs.map(d=>d.data())),error);}
+export function watchAnswers(db,p,id,next,error){const path=`${root(p)}/duels/${id}/answers`;return measuredListener(db,path,observe=>onSnapshot(collection(db,path),s=>{observe(s);next(s.docs.map(d=>d.data()));},error));}
 export async function heartbeat(db,p){await setDoc(doc(db,`${root(p)}/presence/${p.studentId}`),{at:serverTimestamp()});}
 export async function endDuel(db,p,id,reason='left',departedId=p.studentId){
  const ref=doc(db,`${root(p)}/duels/${id}`);await runTransaction(db,async tx=>{const d=(await tx.get(ref)).data();if(!d||d.status!=='active')return;tx.update(ref,{status:'completed',endedAt:serverTimestamp(),endReason:reason,leftBy:reason==='timeout'?'':departedId});});

@@ -3,10 +3,12 @@ import {Link,useLocation} from 'react-router-dom';
 import {useSession} from './Session';
 import {call,db} from '../data/firebase';
 import {heartbeat,closeExpired,watchLobby,watchRivals,duelEnd,type Duel,type Presence} from '../data/duel.mjs';
+import {usePageVisible} from './usePageVisible';
 const Context=createContext({duels:[] as Duel[],busyDuels:[] as Duel[],presence:[] as Presence[],now:Date.now(),error:''});
 export const useDuelLobby=()=>useContext(Context);
 export function DuelLobby({children}:{children:ReactNode}){
  const showRivals=useLocation().pathname.replace(/\/$/,'')==='/ogrenci/duello';
+ const pageVisible=usePageVisible();
  const {student}=useSession(),[state,setState]=useState({duels:[] as Duel[],busyDuels:[] as Duel[],presence:[] as Presence[]}),[now,setNow]=useState(Date.now()),[offset,setOffset]=useState(0),[error,setError]=useState('');
  const active=state.duels.find(d=>d.participants.includes(student?.studentId||'')&&d.status==='active'&&d.acceptedAt&&duelEnd(d)>now);
  const rivalId=showRivals&&active?active.participants.find(id=>id!==student?.studentId):undefined;
@@ -22,11 +24,11 @@ export function DuelLobby({children}:{children:ReactNode}){
   return()=>{alive=false;stop();clearInterval(timer);document.removeEventListener('visibilitychange',ping);};
  },[student?.teacherUid,student?.studentId,student?.classId,student?.credentialVersion]);
  useEffect(()=>{
-  setState(previous=>({...previous,presence:[],busyDuels:[]}));if(!student||!showRivals)return;
+  setState(previous=>({...previous,presence:[],busyDuels:[]}));if(!student||!showRivals||!pageVisible&&!rivalId)return;
   let alive=true;
   const stop=watchRivals(db,student,s=>{if(alive){setState(previous=>({...previous,...s}));setError('');}},()=>{if(alive)setError('Rakip listesi yüklenemedi. Bağlantını kontrol et.');},{presenceStudentId:rivalId,includeBusy:!rivalId});
   return()=>{alive=false;stop();};
- },[showRivals,rivalId,student?.teacherUid,student?.studentId,student?.classId,student?.credentialVersion]);
+ },[showRivals,rivalId,pageVisible,student?.teacherUid,student?.studentId,student?.classId,student?.credentialVersion]);
  useEffect(()=>{if(student&&state.duels.some(d=>d.status==='pending'&&d.createdAt&&d.createdAt.toMillis()+60000<=now||d.status==='active'&&d.acceptedAt&&(duelEnd(d)<=now||state.presence.some(p=>p.studentId!==student.studentId&&d.participants.includes(p.studentId)&&p.at.toMillis()+15000<=now))))void closeExpired(db,student,state.duels,now,state.presence).catch(()=>{});},[student?.studentId,state.duels,state.presence,Math.floor(now/3000)]);
  const incoming=state.duels.find(d=>d.to===student?.studentId&&d.status==='pending'&&d.createdAt&&d.createdAt.toMillis()+60000>now);
  return <Context.Provider value={{...state,now,error}}>{incoming&&<Link className="duel-notice" to="/ogrenci/duello">Sınıfından bir düello daveti var · Gör →</Link>}{children}</Context.Provider>;
