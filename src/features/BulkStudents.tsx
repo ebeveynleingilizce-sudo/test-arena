@@ -5,7 +5,7 @@ import {classGrades,classGradeLabel} from '../ui/ClassGrades';
 import type { ArenaClass } from '../domain/models';
 
 type Result = { name: string; studentId?: string; code?: string; error?: string };
-export function BulkStudents({ cls, close, completed }: { cls: ArenaClass; close: () => void; completed: () => void }) {
+export function BulkStudents({ cls, close, completed }: { cls: ArenaClass; close: () => void; completed: (ids:string[]) => void }) {
   const [input, setInput] = useState(''), [busy, setBusy] = useState(false), [error, setError] = useState(''), [notice, setNotice] = useState('');
   const [gradeLevel,setGradeLevel]=useState(cls.defaultGradeLevel);
   const [results, setResults] = useState<Result[] | null>(null), [requestId, setRequestId] = useState(() => crypto.randomUUID()), [locked, setLocked] = useState(false);
@@ -16,7 +16,7 @@ export function BulkStudents({ cls, close, completed }: { cls: ArenaClass; close
     setBusy(true); setLocked(true); setError(''); setNotice('');
     try {
       const response = await call<{results: Result[]}>('bulkCreateStudents', { classId: cls.classId, storageUid:cls.storageUid, gradeLevel, names, requestId });
-      setResults(response.results); completed();
+      setResults(response.results); completed(response.results.filter(r=>r.code&&r.studentId).map(r=>r.studentId!));
     } catch (e) { setError(errorMessage(e) + ' Sonuç alınamadı; aynı listeyle yeniden denemek çift kayıt oluşturmaz.'); }
     finally { setBusy(false); }
   }

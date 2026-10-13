@@ -1,10 +1,12 @@
 import type {Content, TDocumentDefinitions} from 'pdfmake/interfaces';
-import {number,percent,type AnalyticsReport,type AnalyticsStudent,type Period} from './analytics';
+import {number,percent,type AnalyticsReport,type AnalyticsStudent,type Period,type BehaviorHistory} from './analytics';
+import {arenaPeriod} from '../../shared/arena-period.mjs';
 
 export interface AnalyticsPdfInput {
   report:AnalyticsReport; period:Period; section:string; students:AnalyticsStudent[];
   classId?:string; studentId?:string; gradeLevel?:number;
   subjectLabel?:string; unitLabel?:string; showMetrics:boolean;
+  history?:{rows:BehaviorHistory[];complete:boolean};
 }
 // A pure snapshot transformation: this module has no Firebase dependency.
 export function analyticsPdfDocument(input:AnalyticsPdfInput):TDocumentDefinitions {
@@ -25,6 +27,25 @@ export function analyticsPdfDocument(input:AnalyticsPdfInput):TDocumentDefinitio
     {text:`Rapor zamanı: ${new Date(report.serverNow).toLocaleString('tr-TR',{timeZone:'Europe/Istanbul'})} (İstanbul)`,style:'muted'},
     {text:complete?'Kapsam: Öğrencinin tüm dersleri, üniteleri ve konuları':[input.gradeLevel?`Kademe: ${input.gradeLevel}. Sınıf`:null,detailed?`Ders: ${input.subjectLabel||'Tüm dersler'}`:null,detailed?`Ünite: ${input.unitLabel||'Tüm üniteler'}`:null].filter(Boolean).join(' | '),margin:[0,6,0,8],style:'muted'},
   ];
+  if(complete){
+    const date=(value:number)=>new Date(value).toLocaleDateString('tr-TR',{timeZone:'Europe/Istanbul'});
+    const weeklyStart=date(arenaPeriod(new Date(report.serverNow)).startsAt);
+    content.push({text:`Tarih kapsamı: Genel - tüm kayıtlı dönemler (başlangıç tarihi hazır raporda yok). Bu hafta - ${weeklyStart} / ${date(report.serverNow)}.`,style:'muted',margin:[0,4,0,8]});
+    const topics=report.dimensions.filter(d=>d.kind==='topic'&&d.overall.solved>0);
+    const comparable=topics.filter(d=>d.overall.solved>=5);
+    const label=(d:typeof topics[number])=>`${d.subjectName} / ${d.unitName||'Ünite bilgisi yok'} / ${d.topicName||'Konu bilgisi yok'} (${d.gradeLevel}. Sınıf)`;
+    const strengths=[...comparable].filter(d=>d.overall.correct/d.overall.solved>=0.8).sort((a,b)=>b.overall.correct/b.overall.solved-a.overall.correct/a.overall.solved||b.overall.solved-a.overall.solved).slice(0,3);
+    const review=[...comparable].filter(d=>d.overall.correct/d.overall.solved<0.8).sort((a,b)=>a.overall.correct/a.overall.solved-b.overall.correct/b.overall.solved||b.overall.solved-a.overall.solved).slice(0,3);
+    content.push({text:'Öğretmen ve veli için akademik değerlendirme',style:'heading'},
+      {text:`Genel dönemde ${number(student.overall.solved)} soru yanıtlandı: ${number(student.overall.correct)} doğru, ${number(student.overall.wrong)} yanlış. Başarı: ${percent(student.overall)}. Bu hafta ${number(student.weekly.solved)} soru yanıtlandı ve ${number(student.weeklyAcademicXP)} Academic XP kazanıldı.`,margin:[0,4,0,8]},
+      {text:'Güçlü alanlar',bold:true},
+      strengths.length?{ul:strengths.map(d=>`${label(d)}: ${percent(d.overall)}, ${number(d.overall.solved)} yanıt.`),margin:[0,4,0,8]}:{text:'En az 5 yanıt ve %80 başarı ölçütünü karşılayan konu bulunmuyor.',style:'muted',margin:[0,4,0,8]},
+      {text:'Tekrar önerilen konular',bold:true},
+      review.length?{ul:review.map(d=>`${label(d)}: ${percent(d.overall)}, ${number(d.overall.wrong)} yanlış / ${number(d.overall.solved)} yanıt. Yanlış yapılan soruların açıklamalarıyla tekrar önerilir.`),margin:[0,4,0,8]}:{text:'En az 5 yanıtta %80 altında kalan konu bulunmuyor.',style:'muted',margin:[0,4,0,8]},
+      {text:'Bu değerlendirme yalnızca kayıtlı yanıtları gösterir. Az çalışılmış konular için kesin başarı yargısı üretilmez; aynı konu farklı kademelerde ayrı değerlendirilir.',style:'muted'},
+      {text:'Gelişim ve çalışma düzeni',style:'heading'},
+      {text:'Hazır raporda önceki haftaların ayrı sayaçları ve günlük çalışma serisi bulunmuyor. Bu nedenle zaman içindeki başarı değişimi, düzenlilik veya önceki dönemle karşılaştırma hesaplanmadı. Haftalık değerler genel dönemin içindedir; iki bağımsız dönem değildir.',style:'muted',margin:[0,4,0,8]});
+  }
   if(input.showMetrics){const counts=metrics[period];content.push({text:'Performans özeti',style:'heading'},table(['Ölçüt','Değer'],[
     ['Çözülen soru',number(counts.solved)],['Doğru / Yanlış',`${number(counts.correct)} / ${number(counts.wrong)}`],
     ...(counts.blank===undefined?[]:[['Boş',number(counts.blank)]]),['Başarı',percent(counts)],
@@ -42,6 +63,16 @@ export function analyticsPdfDocument(input:AnalyticsPdfInput):TDocumentDefinitio
       ]),['*',42,42,42,35,45]));else content.push({text:'Bu dönemde kayıtlı çalışma yok.',style:'muted'});
     }
     content.push({text:'Boş sütunundaki "-", eski kayıtta bu sayının bulunmadığını belirtir. Ekran filtreleri bu tam öğrenci PDF raporunu daraltmaz.',style:'muted'});
+    if(input.history?.rows.length){
+      const history=[...input.history.rows].sort((a,b)=>(b.startedAt||0)-(a.startedAt||0));
+      content.push({text:'Önceden yüklenmiş test geçmişi',style:'heading',headlineLevel:1},
+        {text:`${history.length} test. ${input.history.complete?'Sayfalı geçmişin tüm sayfaları yüklendi.':'Yalnızca açılmış geçmiş sayfaları; tüm geçmişi temsil etmez.'} Tarihler test başlangıcıdır. Bu tabloda başarı ve mevcut test karşılaştırması boşlar dahil toplam soru sayısını kullanır. Karşılaştırma yalnızca hazır kayıtta varsa gösterilir.`,style:'muted'},
+        table(['Tarih / Test','Doğru','Yanlış','Boş','Başarı (tüm sorular)','Önceki testlere göre'],history.map(h=>[
+          `${h.startedAt?new Date(h.startedAt).toLocaleDateString('tr-TR',{timeZone:'Europe/Istanbul'}):'Tarih yok'}\n${h.subjectName} / ${h.unitName||'Ünite yok'} / ${h.packName} (${h.gradeLevel}. Sınıf)\n${h.status==='completed'?'Tamamlandı':'Tamamlanmadı'}`,
+          number(h.correct),number(h.wrong),number(h.blank),percent({solved:h.questionCount,correct:h.correct,wrong:h.wrong}),
+          h.accuracyChange===null||h.accuracyChange===undefined?'-':`${h.accuracyChange>0?'+':''}${h.accuracyChange.toLocaleString('tr-TR',{maximumFractionDigits:1})} yüzde puan\n${h.previousTestCount} önceki test`,
+        ]),['*',35,35,30,45,78]));
+    }
   }else if(detailed){
     const rows=report.dimensions.filter(d=>d.kind===(section==='topics'?'topic':'subject')&&d[period].solved)
       .sort((a,b)=>a.gradeLevel-b.gradeLevel||a.subjectName.localeCompare(b.subjectName,'tr')||(a.topicName||'').localeCompare(b.topicName||'','tr'));
@@ -56,7 +87,7 @@ export function analyticsPdfDocument(input:AnalyticsPdfInput):TDocumentDefinitio
       s.displayName,s.gradeLevel,number(s[period].solved),number(s[period].correct),number(s[period].wrong),percent(s[period]),number(s.academicXP),number(s.weeklyAcademicXP),`#${period==='weekly'?s.weeklyRank:s.overallRank}`,
     ]),['*',40,48,48,48,52,55,60,36]));else content.push({text:'Bu görünümde öğrenci yok.',style:'muted'});
   }
-  content.push({text:'Soru: çalışma miktarı. Başarı: doğru / tüm cevaplar. XP: oyunlaştırılmış ilerleme. Aynı soruyu tekrar çözmek yeniden XP üretmez. Bu dosya belirtilen zamanda hazırlanmış raporun çıktısıdır.',style:'muted',margin:[0,10,0,0]});
+  content.push({text:'Soru: yanıtlanan soru sayısı. Başarı: doğru / yanıtlanan soru; boşlar bu orana dahil değildir. XP: oyunlaştırılmış ilerleme. Aynı soruyu tekrar çözmek yeniden XP üretmez. Bu dosya belirtilen zamanda hazırlanmış raporun çıktısıdır.',style:'muted',margin:[0,10,0,0]});
   return {pageSize:'A4',pageOrientation:!student&&!detailed?'landscape':'portrait',pageMargins:[36,66,36,44],
     pageBreakBefore:(node,following)=>node.headlineLevel===1&&(following.length===0||node.startPosition.verticalRatio>0.82),
     defaultStyle:{font:'Roboto',fontSize:10,color:'#10223a'},info:{title:`Test Arena - ${scope}`,author:'Test Arena'},

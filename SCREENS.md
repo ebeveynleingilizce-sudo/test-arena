@@ -316,13 +316,17 @@ Göster:
 
 Kısa kod yeterlidir.
 
+Yeni eklenen veya kodu bu ekranda yenilenen öğrenci, yalnızca istemci durumunda listenin başına taşınır. İlgili satır görünür alana kaydırılır; gerekiyorsa kademe filtresi tüm kademelere döner. Toplu eklemenin başarılı öğrencileri de başa alınır. Sıralama için Firestore alanı veya sorgusu eklenmez.
+
+Sınıf yönetimindeki **Sınıf Öğretmenleri**, mevcut üyelik aboneliğini kullanır. Kurucu, sahip ve aktif davetliler gösterilir; mevcut öğretmen **Siz** etiketiyle belirtilir. Hazır kayıtta veya mevcut Auth oturumunda ad varsa kullanılır, yoksa e-posta ve eksik ad açıklaması gösterilir. Ad bilgisi için ek sorgu açılmaz.
+
 ---
 
 ## 19 — Öğrenci Detayı
 
 Öğrenci adına tıklandığında seçilen öğrencinin genel, haftalık, ders, ünite ve konu analizi tek seferde otomatik yüklenir. Genel görünümde tüm analiz bölümleri birlikte gösterilir. Öğrenci detayındaki dönem, ders, ünite ve sekme değişimleri hazır veri üzerinde uygulanır; tekrar Raporu göster düğmesi gerektirmez ve yeni analiz sorgusu başlatmaz. Test geçmişi ilgili bölümde istek üzerine sayfalanır. Sınıf genel raporunun butonla yüklenmesi korunur.
 
-Hazır raporda **PDF indir** bulunur. Öğrenci PDF'si sekmeden bağımsız olarak tüm ders, ünite ve konu istatistiklerini genel ve haftalık ayrı tablolar halinde içerir; ekranın yerel filtresi PDF'yi daraltmaz. Dosya hazır veriden tarayıcıda oluşturulur; yeni Firestore sorgusu açılmaz. Raporda öğrenci kimliği, kapsam ve hazırlama zamanı yer alır. Test geçmişi ayrı sayfalı akıştır; bu PDF dışa aktarımına dahil değildir.
+Hazır raporda **PDF indir** bulunur. Öğrenci PDF'si sekmeden bağımsız olarak tüm ders, ünite ve konu istatistiklerini genel ve haftalık ayrı tablolar halinde içerir; ekranın yerel filtresi PDF'yi daraltmaz. Dosya hazır veriden tarayıcıda oluşturulur; yeni Firestore sorgusu açılmaz. Raporda öğrenci kimliği, kapsam ve hazırlama zamanı yer alır. En az beş yanıt bulunan konulardan güçlü alanlar ve tekrar önerileri hesaplanır. Eksik boş sayısı, dönem başlangıcı ve günlük gelişim verisi uydurulmaz. Test geçmişi ayrı sayfalı akıştır; yalnızca daha önce açılmış ve yüklenmiş sayfalar PDF'ye dahil edilebilir. Kısmi geçmişin kapsamı açıkça belirtilir; PDF yeni geçmiş sorgusu başlatmaz.
 
 Göster:
 

@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { call } from '../data/firebase';
 import {classGradeLabel} from '../ui/ClassGrades';
 import {PagedTestHistory} from './PagedTestHistory';
 import { errorMessage } from '../ui/components';
-import { number, percent, sortStudents, type AnalyticsReport, type AnalyticsStudent, type Dimension, type Period, type Performance } from '../domain/analytics';
+import { number, percent, sortStudents, type AnalyticsReport, type AnalyticsStudent, type Dimension, type Period, type Performance, type BehaviorHistory } from '../domain/analytics';
 
 function Metrics({ data, period, students }: { data: Performance; period: Period; students?: number }) {
   const c = data[period];
@@ -28,6 +28,9 @@ export function TeacherAnalytics({ view, uid, classId, studentId, revision, clas
   const [requestedScope,setRequestedScope]=useState('');
   const [loadedScope,setLoadedScope]=useState('');
   const [pdfBusy,setPdfBusy]=useState(false),[pdfError,setPdfError]=useState('');
+  const historyScope=JSON.stringify([uid,storageUid,studentId]);
+  const [readyHistory,setReadyHistory]=useState<{scope:string;rows:BehaviorHistory[];complete:boolean}>();
+  const rememberHistory=useCallback((rows:BehaviorHistory[],complete:boolean)=>setReadyHistory({scope:historyScope,rows,complete}),[historyScope]);
   const [localGrade,setLocalGrade]=useState('');
   const [subject,setSubject]=useState(''),[unitId,setUnitId]=useState('');
   const [dimensionOptions,setDimensionOptions]=useState<Dimension[]>([]);
@@ -54,7 +57,7 @@ export function TeacherAnalytics({ view, uid, classId, studentId, revision, clas
     const students=sortStudents(report.students.filter(s=>(!classId||s.classId===classId)&&(!studentId||s.studentId===studentId)&&(!filter||`${s.storageUid}~${s.classId}`===filter)),sort,period);
     const input={report:structuredClone(report),period,section:sectionTab,students:structuredClone(students),classId,studentId,gradeLevel:effectiveGrade,showMetrics:!!student||!!cls&&classSection!=='analysis',subjectLabel:dimensionOptions.find(d=>d.subject===subject)?.subjectName||subject,unitLabel:dimensionOptions.find(d=>d.unitId===unitId)?.unitName||unitId};
     setPdfBusy(true);setPdfError('');
-    try{const {downloadAnalyticsPdf}=await import('../domain/analytics-pdf');await downloadAnalyticsPdf(input);}catch{setPdfError('PDF oluşturulamadı. Yeniden deneyebilirsin.');}finally{setPdfBusy(false);}
+    try{const {downloadAnalyticsPdf}=await import('../domain/analytics-pdf');await downloadAnalyticsPdf({...input,...(readyHistory?.scope===historyScope?{history:structuredClone(readyHistory)}:{})});}catch{setPdfError('PDF oluşturulamadı. Yeniden deneyebilirsin.');}finally{setPdfBusy(false);}
   };
   const controls=<><div className="analytics-toolbar"><div className="analytics-period" aria-label="Rapor dönemi"><button aria-pressed={period === 'overall'} onClick={() => setPeriod('overall')}>Genel</button><button aria-pressed={period === 'weekly'} onClick={() => setPeriod('weekly')}>Bu hafta</button></div>{!showReport&&!automaticDetail&&<button className="button primary" disabled={requested&&loading} onClick={()=>{if(requested)setRefresh(v=>v+1);else setRequestedScope(scope);}}>{requested&&loading?'Hazırlanıyor…':'Raporu göster'}</button>}{showReport&&<button className="text-button" onClick={()=>setRefresh(v=>v+1)}>Verileri yenile</button>}</div>
     {showReport&&sectionTab!=='history'&&<button className="button secondary" disabled={pdfBusy} onClick={()=>void downloadPdf()}>{pdfBusy?'PDF hazırlanıyor…':'PDF indir'}</button>}{automaticDetail&&showReport&&<p className="field-hint">PDF öğrencinin genel ve haftalık tüm ders, ünite ve konu istatistiklerini içerir.</p>}{pdfError&&<p role="alert">{pdfError}</p>}
@@ -82,7 +85,7 @@ export function TeacherAnalytics({ view, uid, classId, studentId, revision, clas
     {(!student && (view === 'home' || view === 'analytics' || classSection === 'overview')) && <section><div className="analytics-section-heading"><h2>Öğrenci karşılaştırması</h2><span>Oranı soru hacmiyle birlikte değerlendir.</span></div><div className="analytics-filters">{!classId && <label>Sınıf filtresi<select aria-label="Sınıf filtresi" value={filter} onChange={e => setFilter(e.target.value)}><option value="">Tüm sınıflar</option>{report.classes.map(c => <option key={`${c.storageUid}~${c.classId}`} value={`${c.storageUid}~${c.classId}`}>{c.className}</option>)}</select></label>}<label>Sıralama<select aria-label="Sıralama" value={sort} onChange={e => setSort(e.target.value)}>{[['most','En çok soru çözen'],['least','En az soru çözen'],['high','En yüksek başarı'],['low','En düşük başarı'],['xp','En yüksek XP'],['arena','Arena sırası']].map(([value,label]) => <option key={value} value={value}>{label}</option>)}</select></label></div><StudentTable students={visible} period={period}/></section>}
     {automaticDetail&&student&&sectionTab==='general'&&<section><h2>Ders performansı</h2><PerformanceRows dimensions={subjectDimensions} period={period} kind="subject"/><h2>Ünite performansı</h2><PerformanceRows dimensions={detailDimensions} period={period} kind="unit"/><h2>Konu performansı</h2><PerformanceRows dimensions={detailDimensions} period={period} kind="topic"/></section>}
     {(cls || student) && (sectionTab === 'subjects' || sectionTab === 'topics') && <section><h2>{sectionTab === 'topics' ? 'Konu performansı' : 'Ders performansı'}</h2><PerformanceRows dimensions={sectionTab==='subjects'?subjectDimensions:detailDimensions} period={period} kind={sectionTab === 'topics' ? 'topic' : 'subject'}/></section>}
-    {student&&tab==='history'&&<PagedTestHistory key={student.storageUid+'~'+student.studentId} studentId={student.studentId} storageUid={student.storageUid}/>}
+    {student&&tab==='history'&&<PagedTestHistory key={student.storageUid+'~'+student.studentId} studentId={student.studentId} storageUid={student.storageUid} onLoaded={rememberHistory}/>}
     <p className="analytics-footnote">İlk kabul edilen cevap sayılır; yeni testte tekrar çözme çalışmaya dahildir. Aynı soru yeniden XP üretmez. Kaldırılan öğrenciler aktif rapora dahil edilmez. Son yenileme: {new Date(report.serverNow).toLocaleTimeString('tr-TR')}.</p>
   </section>;
 }
