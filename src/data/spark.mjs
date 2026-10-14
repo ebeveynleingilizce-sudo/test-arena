@@ -276,6 +276,11 @@ export async function sparkCall(name,data,ctx){
   }
   if(name==='prepareArena')return {...await serverPeriod(ctx),classId:p.classId,className:p.className};
   if(name==='quizCatalog')return catalog(ctx,p,Number(data?.refreshToken)>0);
+  if(name==='testPackProgress'){
+    const {readPackProgress}=await import('./test-pack-progress.mjs');
+    if(!Array.isArray(data.templateIds)||data.templateIds.length>300)throw Error('Geçersiz test listesi.');
+    return readPackProgress(ctx,p,data.templateIds.map(id));
+  }
   if(name==='startDuelTest'){
     const key=`${ctx.auth.currentUser.uid}:${id(data.duelId)}`;
     if(duelStarts.has(key))return duelStarts.get(key);

@@ -34,6 +34,14 @@ function CurriculumSelection({ catalog }: { catalog: Catalog }) {
   const labels = {grade:'Kademe',subject:'Ders',unit:section,topic:'Konu',pack:'Test'}, index = steps.indexOf(step);
   const titles = {grade:'Kademeni seç',subject:'Hangi ders?',unit:section === 'Tema' ? 'Temanı seç' : section === 'Theme' ? 'Theme seç' : 'Üniteni seç',topic:'Konunu seç',pack:'Testini seç'};
   const packs = (themeOnly ? unit?.packs : topic?.packs) || [];
+  const [progress,setProgress]=useState<Record<string,'active'|'completed'>>({}),[progressError,setProgressError]=useState('');
+  const templateIds=JSON.stringify(packs.map(p=>p.templateId).filter(Boolean));
+  useEffect(()=>{
+    let alive=true;setProgress({});setProgressError('');
+    const ids=JSON.parse(templateIds);
+    if(step==='pack'&&ids.length)void call<Record<string,'active'|'completed'>>('testPackProgress',{templateIds:ids}).then(value=>{if(alive)setProgress(value);}).catch(()=>{if(alive)setProgressError('Testlerin tamamlanma durumu yüklenemedi.');});
+    return()=>{alive=false;};
+  },[step,templateIds,student?.teacherUid,student?.studentId]);
   async function start(packId: string) {
     setBusy(true);setError('');
     try { const q = await call<Quiz>('startTest',{grade,subjectId,unitId,...(themeOnly ? {} : {topicId}),packId});navigate('/ogrenci/coz/'+q.testSessionId); }
@@ -49,7 +57,7 @@ function CurriculumSelection({ catalog }: { catalog: Catalog }) {
       {step === 'unit' && !availableUnits.length && <p className="quiz-hint">Bu derste henüz soru bulunmuyor.</p>}
       {step === 'topic' && unit?.topics.map(t => <button key={t.id} onClick={() => {setTopicId(t.id);setStep('pack');}}><strong>{t.name}</strong><small>{t.count ? `${t.count} soru` : 'Henüz soru yok'}</small><span>→</span></button>)}
     </div>
-    {step === 'pack' && <section className="test-pack-section"><div className="quiz-summary"><span>{grade}. Sınıf · {subject?.name}</span><span className="curriculum-unit-name">{unit?.displayName}</span>{!themeOnly && <strong>{topic?.name}</strong>}</div><div className="selection-list test-pack-list">{packs.map(p => <button key={p.id} disabled={busy} onClick={() => void start(p.id)}><strong>{p.name}</strong><small>{p.count} soru</small><span>→</span></button>)}</div>{!packs.length && <p className="quiz-hint">{themeOnly ? 'Bu temada henüz eşleştirilmiş soru bulunmuyor.' : 'Bu konuda henüz soru bulunmuyor. Başka bir konu seçebilirsin.'}</p>}<p className="quiz-hint">Her yeni doğru cevap +1 XP. Aynı soruyu tekrar çözmek yeni XP vermez.</p></section>}
+    {step === 'pack' && <section className="test-pack-section"><div className="quiz-summary"><span>{grade}. Sınıf · {subject?.name}</span><span className="curriculum-unit-name">{unit?.displayName}</span>{!themeOnly && <strong>{topic?.name}</strong>}</div><div className="selection-list test-pack-list">{packs.map(p => <button key={p.id} disabled={busy} onClick={() => void start(p.id)}><strong>{p.name}{p.templateId && progress[p.templateId] && <span className={'test-pack-status '+progress[p.templateId]}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{progress[p.templateId] === 'completed' ? <path d="m5 12 4 4L19 6"/> : <><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>}</svg>{progress[p.templateId] === 'completed' ? 'Tamamlandı' : 'Yarım kaldı'}</span>}</strong><small>{p.count} soru</small><span>→</span></button>)}</div>{progressError && <p role="status" className="quiz-hint">{progressError}</p>}{!packs.length && <p className="quiz-hint">{themeOnly ? 'Bu temada henüz eşleştirilmiş soru bulunmuyor.' : 'Bu konuda henüz soru bulunmuyor. Başka bir konu seçebilirsin.'}</p>}<p className="quiz-hint">Her yeni doğru cevap +1 XP. Aynı soruyu tekrar çözmek yeni XP vermez.</p></section>}
     {error && <p role="alert" className="form-error">{error}</p>}{index > 0 && <button className="text-button quiz-back" disabled={busy} onClick={() => {setError('');setStep(steps[index-1]);}}>← Geri</button>}
   </Shell>;
 }
