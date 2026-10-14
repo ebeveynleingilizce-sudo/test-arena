@@ -123,6 +123,8 @@ Başla CTA.
 
 ## 08 — Soru Çözme
 
+Öğretmen Soru Bankası da varsayılan olarak aynı soru ve seçenek görünümünü kullanır. Kademe/ders/ünite seçimi, soru sayacı ve ilerleme göstergesi bulunur. Öğretmen cevap seçmeden önceki/sonraki soruya geçebilir; **Doğru cevabı göster** ve **Cevabı gizle** yalnız yerel inceleme durumunu değiştirir. Seçenek işaretlemek isteğe bağlıdır. Öğretmen incelemesi test sonucu, davranış kaydı veya XP oluşturmaz. Sonraki soru sayfası açık istekle yüklenir. Mevcut tam ekran ve hata bildirme korunur. Yetkili yöneticilerin eski düzenleme araçları **Soru yönetimini aç** arkasındadır; yetkiler değişmez.
+
 Göster:
 
 - ders
