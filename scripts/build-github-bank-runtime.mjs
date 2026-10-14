@@ -1,0 +1,11 @@
+import {mkdirSync,copyFileSync,readdirSync} from 'node:fs';
+import {join,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const target=join(root,'functions/runtime');
+const copy=path=>{const out=join(target,path);mkdirSync(dirname(out),{recursive:true});copyFileSync(join(root,path),out);};
+for(const name of ['curriculum-bank','canonical-scope','v3-visuals','package-images'])copy(`scripts/${name}.mjs`);
+copy('shared/question-bank.mjs');copy('data/soru-bankasi/SCHEMA.json');
+for(const file of readdirSync(join(root,'functions/visuals')))if(file.endsWith('.mjs'))copy('functions/visuals/'+file);
+for(const file of readdirSync(join(root,'data/mufredat')))if(/^\d+-sinif(?:-ui-v2)?\.json$/.test(file))copy('data/mufredat/'+file);
+console.log('GitHub bank runtime prepared; no question sources or credentials bundled.');

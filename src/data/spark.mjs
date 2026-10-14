@@ -223,7 +223,11 @@ export async function sparkCall(name,data,ctx){
     try{await identity(ctx);return {userUid:ctx.auth.currentUser.uid};}catch(e){await signOut(ctx.auth);throw e;}
   }
   if(name==='syncQuestionBank'){
-    if(!ctx.emulator)throw Error('Canlı soru importu yalnız güvenilir yerel importer üzerinden yapılır.');
+    if(!ctx.emulator){
+      if(ctx.auth.currentUser?.email?.toLowerCase()!=='tunc@test.com')throw Error('Admin yetkisi gerekli.');
+      const {getFunctions,httpsCallable}=await import('firebase/functions');
+      return (await httpsCallable(getFunctions(ctx.app,'europe-west1'),'syncQuestionBank',{timeout:540000})({})).data;
+    }
     const response=await fetch('/__local/question-bank-sync',{method:'POST',headers:{Authorization:`Bearer ${await ctx.auth.currentUser.getIdToken()}`,'Content-Type':'application/json'},body:'{}'});
     if(!response.ok)throw Error('Local admin güncellemesi başarısız.');return response.json();
   }

@@ -233,6 +233,8 @@ Destek:
 
 ## 15 — Öğretmen Ana Panel
 
+**Soru Bankasını Güncelle** yalnızca `tunc@test.com` hesabında ve mevcut soru bankası admin yetkisi doğrulanınca görünür. Tek düğme GitHub'daki private soru deposunun yeni/değişmiş JSON dosyalarını sunucu üzerinden senkronize eder; düzenleme veya dosya seçme ekranına yönlendirmez. Diğer öğretmenlerin ana paneli bu alan için ek yetki sorgusu açmaz. Yeni soru sayısı ve hatalı dosyalar kısa bir sonuçta gösterilir. Sunucu bağlantısı ve Secret yapılandırması tamamlanmadan canlı senkronizasyon kullanılamaz.
+
 Göster:
 
 - öğretmenin sınıfları

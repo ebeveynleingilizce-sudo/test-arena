@@ -2,6 +2,7 @@ node_modules/
 dist/
 *.tsbuildinfo
 functions/lib/
+functions/runtime/
 .firebase/
 firebase-export-*/
 *-debug.log

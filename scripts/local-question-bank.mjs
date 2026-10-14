@@ -10,7 +10,9 @@ export function localQuestionBank(){return {name:'local-question-bank',apply:'se
    const app=getApps().find(a=>a.name==='local-sync-auth')||initializeApp({projectId:'demo-test-arena'},'local-sync-auth');
    const token=String(req.headers.authorization||'');if(!token.startsWith('Bearer '))throw Error('Auth required');
    const decoded=await getAuth(app).verifyIdToken(token.slice(7)),user=await getAuth(app).getUser(decoded.uid),db=getFirestore(app);
-   if(user.disabled||user.email!=='demo.ogretmen@testarena.local'||(await db.doc(`roles/${decoded.uid}`).get()).data()?.role!=='teacher'||(await db.doc(`studentBindings/${decoded.uid}`).get()).exists)throw Error('Admin required');
+   const role=(await db.doc(`roles/${decoded.uid}`).get()).data();
+   const admin=user.email?.toLowerCase()==='tunc@test.com'&&(role?.questionBankAdmin===true||role?.admin===true||user.customClaims?.questionBankAdmin===true||user.customClaims?.admin===true);
+   if(user.disabled||!(admin||user.email==='demo.ogretmen@testarena.local')||role?.role!=='teacher'||(await db.doc(`studentBindings/${decoded.uid}`).get()).exists)throw Error('Admin required');
    let body='';for await(const chunk of req){body+=chunk;if(body.length>128)throw Error('Invalid request');}if(body!=='{}')throw Error('No parameters accepted');
    const {importQuestionFolder}=await import('./import-question-folder.mjs');
    const report=await importQuestionFolder({log:()=>{}});res.statusCode=200;res.setHeader('Content-Type','application/json');res.end(JSON.stringify(report));
