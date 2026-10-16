@@ -29,13 +29,14 @@ import './ui/pwa.css';
 import './ui/teacher-viewport.css';
 import { InstallApp } from './ui/InstallApp';
 import { PwaUpdates } from './ui/PwaUpdates';
+import { Season2Welcome } from './ui/Season2Welcome';
 function App() {
   const { role, loading } = useSession();
   if (loading) return <main className="loading" role="status">Test Arena hazırlanıyor…</main>;
   return <Routes><Route path="/" element={role ? <Navigate to={role === 'teacher' ? '/ogretmen' : '/ogrenci'} replace/> : <RoleSelection/>}/><Route path="/ogretmen-giris" element={<TeacherLogin/>}/><Route path="/ogrenci-giris" element={<StudentLogin/>}/><Route path="/ogretmen/sinif-arenasi" element={<ClassroomArena/>}/><Route path="/ogretmen" element={<Teacher view="home"/>}/><Route path="/ogretmen/soru-bankasi" element={<Teacher view="bank"/>}/><Route path="/ogretmen/soru-hatalari" element={<Teacher view="reports"/>}/><Route path="/ogretmen/siniflar" element={<Teacher view="classes"/>}/><Route path="/ogretmen/siniflar/:classId" element={<Teacher view="students"/>}/><Route path="/ogretmen/ogrenciler" element={<Teacher view="analytics"/>}/><Route path="/ogretmen/ogrenciler/:studentId" element={<Teacher view="detail"/>}/><Route path="/ogrenci" element={<Welcome/>}/><Route path="/ogrenci/arena" element={<Arena/>}/><Route path="/ogrenci/duello" element={<Duel/>}/><Route path="/ogrenci/profil" element={<StudentProfile/>}/><Route path="/ogrenci/coz" element={<QuizSelection/>}/><Route path="/ogrenci/coz/:testId" element={<QuizSession/>}/><Route path="*" element={<Navigate to="/" replace/>}/></Routes>;
 }
 function Entry() {
-  return <SessionProvider><DuelLobby><App/><InstallApp/><PwaUpdates/></DuelLobby></SessionProvider>;
+  return <SessionProvider><DuelLobby><App/><InstallApp/><PwaUpdates/><Season2Welcome/></DuelLobby></SessionProvider>;
 }
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><BrowserRouter basename={import.meta.env.BASE_URL}><Entry/></BrowserRouter></React.StrictMode>);
 

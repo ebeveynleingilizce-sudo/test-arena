@@ -34,6 +34,8 @@ Başarılı girişten sonra oturum cihazda hatırlanabilir.
 
 ## 03 — Öğrenci Ana Ekranı
 
+2. sezon duyurusu yalnız doğrulanmış öğrenci oturumunda bu ana ekranda açılır. Onay/kapatma, mevcut profil aboneliği üzerinden izlenen `season2WelcomeSeen` alanına tek durum yazması yapar; ek sorgu açılmaz ve diğer cihazlarda yeniden gösterilmez. Kapatınca rota değişmez. Sıfırlama ve eşit başlangıç cümleleri yalnız doğrulanmış 33 öğrenci kapsamı için kullanılır; diğer öğrenciler genel yeni sezon metnini görür. Duyuru XP veya geçmiş sıfırlamaz. Giriş ve öğrenci rotalarında bakım ekranı gösterilmez.
+
 Göster:
 
 - öğrenci adı

@@ -1,5 +1,6 @@
 import {readFileSync,writeFileSync,mkdirSync,existsSync} from 'node:fs';
 import {sharedTeacherRules} from './shared-teacher-rules.mjs';
+import {addSeason2WelcomeRule} from './season2-welcome-rules.mjs';
 const quiz=readFileSync(new URL('../prototypes/spark/quiz.rules',import.meta.url),'utf8');
 let rules=quiz.replace("request.auth.uid == t\n      &&", "request.auth.uid == t && !exists(/databases/$(database)/documents/studentBindings/$(t))\n      &&");
 rules=rules.replace("test.status == 'active' && q in pack.questionIds","test.status == 'active' && pack.active == true && q in pack.questionIds");
@@ -150,6 +151,7 @@ rules=rules.replace("['templateId','classId','resolved','correct','wrong','blank
 rules=rules.replace("&& request.resource.data.resolved == 0 && request.resource.data.correct == 0","&& (request.resource.data.get('duelId','') == '' || duelQuiz(t,s,id,request.resource.data))\n          && request.resource.data.resolved == 0 && request.resource.data.correct == 0");
 rules=rules.replace(/completedInWeek\(t,s,request.resource.data.testSessionId,request.resource.data.weekKey\)\s+&& session\(t,s,request.resource.data.testSessionId\).status == 'completed'/,"awardSession(t,s,request.resource.data.testSessionId,q,request.resource.data.weekKey)");
 rules=rules.replace("&& knownQuestion(t,s,id,q)","&& knownQuestion(t,s,id,q) && duelSubmission(t,s,id,q,request.resource.data.selectedChoiceId)");
+rules=addSeason2WelcomeRule(rules);
 export const sparkRules=rules;
 if(process.argv.includes('--write')){
   const archive=new URL('../prototypes/legacy-functions/',import.meta.url);mkdirSync(archive,{recursive:true});

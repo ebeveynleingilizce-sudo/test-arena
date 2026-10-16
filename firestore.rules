@@ -760,5 +760,13 @@ service cloud.firestore {
     }
 
     match /{document=**} { allow read, write: if false; }
+    // A pupil may acknowledge this announcement once; no other profile field changes.
+    match /teachers/{t}/students/{s} {
+      allow update: if pupil(t,s)
+        && resource.data.get('season2WelcomeSeen',false) == false
+        && request.resource.data.season2WelcomeSeen == true
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['season2WelcomeSeen']);
+    }
+
   }
 }
