@@ -4,3 +4,4 @@
 
 
 .has-install-dock .modal-backdrop{z-index:110}
+.pwa-update .button{display:inline-flex;align-items:center;justify-content:center;gap:8px;max-width:100%;white-space:normal}.pwa-update .button:disabled{cursor:wait;opacity:.75}.pwa-update-spinner{width:16px;height:16px;flex-shrink:0;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:pwa-update-spin .8s linear infinite}@keyframes pwa-update-spin{to{transform:rotate(360deg)}}
