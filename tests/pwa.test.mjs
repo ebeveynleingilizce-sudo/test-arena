@@ -29,7 +29,7 @@ test('worker scopes precache to Pages subdirectory and updates only its own cach
   assert(w.precached.every(url=>url.startsWith('https://example.test/test-arena/')));
   w.handlers.activate({waitUntil:p=>done=p});await done;
   assert.deepEqual(w.removed,['test-arena-shell-v1']);assert.equal(w.claimed,1);
-  assert.equal(w.skipCount,0);w.handlers.message({data:{type:'SKIP_WAITING'}});assert.equal(w.skipCount,1);
+  assert.equal(w.skipCount,1);w.handlers.message({data:{type:'SKIP_WAITING'}});assert.equal(w.skipCount,2);
 });
 test('worker never intercepts Firebase, API, POST, private data or question images',()=>{
   const w=worker();

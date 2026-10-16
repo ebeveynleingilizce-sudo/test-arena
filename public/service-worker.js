@@ -3,9 +3,9 @@ const BASE = new URL('./', self.location.href);
 const local = path => new URL(path, BASE).href;
 const offline = local('offline.html');
 const staticFiles = ['offline.html','arena.svg','manifest.webmanifest','icons/arena-192.png','icons/arena-512.png','icons/apple-touch-icon.png'].map(local);
-self.addEventListener('install', event => {event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(staticFiles)));});
+self.addEventListener('install', event => {event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(staticFiles)).then(() => self.skipWaiting()));});
 self.addEventListener('message', event => {if (event.data?.type === 'SKIP_WAITING') void self.skipWaiting();});
-self.addEventListener('activate', event => {event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('test-arena-shell-') && key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim()));});
+self.addEventListener('activate', event => {event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('test-arena-shell-') && key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim()).then(() => {void self.clients.matchAll?.({type:'window'}).then(clients => {for(const client of clients)if(client.url.startsWith(local('ogrenci')))void client.navigate(local('ogrenci-giris')).catch(() => {});});}));});
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   if (event.request.method !== 'GET' || url.origin !== BASE.origin || !url.pathname.startsWith(BASE.pathname)) return;
