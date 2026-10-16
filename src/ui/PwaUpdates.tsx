@@ -6,16 +6,48 @@ export function PwaUpdates() {
   const cleanup = useRef<() => void>(() => {});
   useEffect(() => {
     if (!import.meta.env.PROD || !('serviceWorker' in navigator)) return;
-    let alive = true, registration: ServiceWorkerRegistration | undefined;
+    let alive = true, checking = false, registration: ServiceWorkerRegistration | undefined;
+    const watched = new Set<ServiceWorker>();
     const check = () => {if (registration?.waiting && navigator.serviceWorker.controller && alive) setReady(registration);};
-    const found = () => {registration?.installing?.addEventListener('statechange', check);};
-    const visible = () => {if (document.visibilityState === 'visible') void registration?.update().catch(() => {});};
+    const found = () => {
+      const worker = registration?.installing;
+      if (worker && !watched.has(worker)) {
+        watched.add(worker);
+        worker.addEventListener('statechange', check);
+      }
+      check();
+    };
+    const visible = async () => {
+      if (!alive || !registration || document.visibilityState !== 'visible') return;
+      found();
+      if (checking || registration.waiting) return;
+      checking = true;
+      try {await registration.update();} catch {/* Keep the current app usable offline. */}
+      finally {checking = false; if (alive) found();}
+    };
     void navigator.serviceWorker.register(`${import.meta.env.BASE_URL}service-worker.js`, {scope: import.meta.env.BASE_URL, updateViaCache: 'none'}).then(reg => {
       if (!alive) return;
-      registration = reg; check(); reg.addEventListener('updatefound', found);
+      registration = reg;
+      reg.addEventListener('updatefound', found);
+      found(); // updatefound can precede register() resolving on an installed app.
+      void visible();
     }).catch(() => {});
     document.addEventListener('visibilitychange', visible);
-    return () => {alive = false; cleanup.current(); registration?.removeEventListener('updatefound', found); document.removeEventListener('visibilitychange', visible);};
+    window.addEventListener('focus', visible);
+    window.addEventListener('pageshow', visible);
+    window.addEventListener('online', visible);
+    const interval = window.setInterval(() => void visible(), 5 * 60 * 1000);
+    return () => {
+      alive = false;
+      cleanup.current();
+      window.clearInterval(interval);
+      registration?.removeEventListener('updatefound', found);
+      for (const worker of watched) worker.removeEventListener('statechange', check);
+      document.removeEventListener('visibilitychange', visible);
+      window.removeEventListener('focus', visible);
+      window.removeEventListener('pageshow', visible);
+      window.removeEventListener('online', visible);
+    };
   }, []);
   function refresh() {
     if (busy.current || !ready) return;
